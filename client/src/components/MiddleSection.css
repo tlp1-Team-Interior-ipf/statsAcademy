@@ -1,0 +1,156 @@
+/* Asegúrate de que el HTML y el Body ocupen el 100% de la altura del viewport */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  /* Previene el desbordamiento de la pantalla */
+}
+
+/* Asegúrate de que el contenedor principal ocupe al menos el 100% de la altura del viewport */
+.middle-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 100px;
+  box-sizing: border-box;
+  background-image: url('../../public/img/fondo.jpg');
+  /* Cambia 'path/to/your/background-image.jpg' por la ruta de tu imagen */
+  background-size: cover;
+  /* Ajusta la imagen para que cubra todo el contenedor */
+  background-position: center;
+  /* Centra la imagen */
+  background-repeat: no-repeat;
+  /* Evita que la imagen se repita */
+  background-attachment: fixed;
+  /* Mantiene la imagen fija al fondo */
+  font-family: 'Krub';
+  min-height: 100vh;
+  /* Asegura que el contenedor ocupe al menos el 100% de la altura de la ventana */
+  color: white;
+  /* Cambia el color del texto a blanco para mayor contraste */
+  overflow: hidden;
+  /* Previene el desbordamiento del contenedor */
+}
+
+.text-content {
+  flex: 1;
+  min-width: 100px;
+  text-align: left;
+  /* Ajusta el texto a la izquierda */
+  margin-left: 30px;
+  /* Añade margen izquierdo */
+  margin-top: -50px;
+  /* Ajusta el margen superior para subir el texto */
+}
+
+.bars-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 100px;
+  /* Ajusta este valor según sea necesario */
+}
+
+.bars {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 400px;
+  /* Ajusta según sea necesario */
+}
+
+.bar {
+  width: 70px;
+  /* Ajusta el ancho de las barras */
+  background-color: #49BA81;
+  transition: height 0.2s ease-in-out;
+  margin: 0 19px;
+  /* Ajusta la separación entre las barras */
+  max-height: 400px;
+  /* Limite de altura en pixeles */
+}
+
+.bar:nth-child(2) {
+  background-color: #107C89;
+}
+
+.bar:nth-child(3) {
+  background-color: #1C3D72;
+}
+
+.image-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 300px;
+}
+
+.image-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.text-content h1 {
+  font-size: 3.5em;
+  /* Agranda el tamaño del texto */
+}
+
+.text-content h2 {
+  font-size: 3.0em;
+  /* Agranda el tamaño del texto */
+}
+
+.text-content h4 {
+  font-size: 2em;
+  /* Agranda el tamaño del texto */
+}
+
+.text-content button {
+  background-color: #ffffff;
+  color: black;
+  border-radius: 40px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  font-family: 'Krub';
+  font-size: 1.2em;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  .middle-section {
+    flex-direction: column;
+    padding: 20px;
+    margin-top: 0;
+    /* Ajusta el margin-top en pantallas pequeñas */
+  }
+
+  .text-content {
+    text-align: center;
+    margin-left: 0;
+    /* Quita el margen izquierdo en pantallas pequeñas */
+    margin-top: 0;
+    /* Ajusta el margen superior en pantallas pequeñas */
+  }
+
+  .image-content {
+    margin-top: 20px;
+  }
+
+  .bars {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .bar {
+    width: 30px;
+    /* Ajusta el ancho de las barras en pantallas pequeñas */
+    margin: 5px 0;
+    /* Ajusta la separación entre las barras en pantallas pequeñas */
+  }
+}
