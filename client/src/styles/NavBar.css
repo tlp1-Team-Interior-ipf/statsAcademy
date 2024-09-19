@@ -1,0 +1,54 @@
+/* Estilos básicos del navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #e8f4f7; /* Ajusta este color si quieres otro fondo */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Para darle un pequeño sombreado */
+  }
+  
+  .navbar-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-logo {
+    height: 40px; /* Ajusta según el tamaño del logo */
+    margin-right: 10px;
+  }
+  
+  .navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4a4a4a;
+  }
+  
+  .navbar-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .register {
+    background-color: #4dc4ff;
+    color: white;
+  }
+  
+  .login {
+    background-color: #333;
+    color: white;
+  }
+  
+  .btn:hover {
+    opacity: 0.9;
+  }
+  
