@@ -1,9 +1,9 @@
 import express from 'express';
 import cors from 'cors';
-import 'dotenv/config';
+import { environments } from './src/config/environments.js';
 import { router } from './src/routes/routes.js';
 import { errorHandler } from './src/middlewares/errorHandler.js';
-import { connectDB } from './src/config/db.js';
+import { connectDB } from './src/database/connection.js';
 
 
 const app = express();
@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const PORT = process.env.PORT || 3000;
+const PORT = environments.PORT;
 
 // Middleware para manejar rutas
 app.use('/', router);
