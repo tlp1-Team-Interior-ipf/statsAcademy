@@ -1,0 +1,36 @@
+.main-view-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh; /* Mantén el tamaño para ocupar toda la pantalla */
+    background-color: #f8f9fa; /* Fondo claro */
+}
+
+.text-section {
+    width: 45%; /* Distribución similar */
+    text-align: left;
+}
+
+.carousel-section {
+    width: 50%; /* Mantén el carrusel */
+}
+
+.cta-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff; /* Color del botón principal */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.cta-button:hover {
+    background-color: #0056b3; /* Cambio de color al hover */
+}
+
+.legend {
+    background-color: rgba(0, 0, 0, 0.5); /* Para darle contraste a los textos del carrusel */
+    color: white;
+}

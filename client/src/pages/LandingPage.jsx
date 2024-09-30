@@ -1,12 +1,16 @@
 import NavBar from "../components/NavBar";
-import MiddleSection from "../components/MiddleSection";
+import MainView from "../components/MainView";
+import TutorBanner from "../components/TutorBanner";
+import ToolsBanner from "../components/ToolsBanner";
 
 
 function LandingPage () {
     return (
         <>
         <NavBar />
-        <MiddleSection />
+        <MainView />
+        <TutorBanner />
+        <ToolsBanner />
         </>
     );
 }
