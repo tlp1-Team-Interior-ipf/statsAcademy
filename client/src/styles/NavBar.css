@@ -1,13 +1,12 @@
-/* Estilos básicos del navbar */
+/* Estilos para el navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #10132F; /* Color de fondo oscuro */
-  font-family: 'Krub', sans-serif; /* Fuente 'Krub' */
-  color: white; /* Texto en blanco */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Pequeño sombreado */
+  background-color: #10132F;
+  color: white;
+  font-family: 'Krub', sans-serif;
 }
 
 .navbar-left {
@@ -16,14 +15,21 @@
 }
 
 .navbar-logo {
-  height: 50px; /* Ajusta según el tamaño del logo */
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo-img {
+  width: 50px; /* Tamaño del logotipo */
+  margin-left: 0px; /* Espaciado entre el texto y el logotipo */
   margin-right: 10px;
 }
 
 .navbar-brand {
-  font-size: 2em; /* Ajustamos el tamaño de fuente */
-  font-family: 'Kufam', sans-serif; /* Fuente 'Kufam' para la marca */
-  color: white; /* Texto en blanco */
+  font-family: 'Kufam', sans-serif;
+  font-size: 2em;
+  color: white;
+  cursor: pointer;
 }
 
 .navbar-right {
@@ -32,46 +38,34 @@
 }
 
 .btn {
-  padding: 10px 20px;
+  background-color: #49BA81;
+  color: black;
   border: none;
-  border-radius: 40px; /* Bordes redondeados */
+  border-radius: 40px;
+  padding: 10px 20px;
+  font-family: 'Krub', sans-serif;
   font-size: 1.2em;
-  cursor: pointer;
   margin-left: 10px;
-  font-family: 'Krub', sans-serif; /* Fuente 'Krub' */
-  transition: opacity 0.3s ease;
-}
-
-/* Botón de registro */
-.register {
-  background-color: #49BA81; /* Verde similar */
-  color: black;
-}
-
-/* Botón de inicio de sesión */
-.login {
-  background-color: #49BA81; /* Verde similar */
-  color: black;
+  cursor: pointer;
 }
 
 .btn:hover {
-  opacity: 0.9; /* Efecto de hover */
+  background-color: #3ea770;
 }
 
-/* Responsive adjustments */
+.btn.login {
+  margin-right: 10px;
+}
+
+.navbar-toggler-icon {
+  color: white;
+}
+
 @media (max-width: 768px) {
-  .navbar {
+  .navbar-left, .navbar-right {
     flex-direction: column;
   }
-
-  .navbar-left,
-  .navbar-right {
-    width: 100%;
-    justify-content: center;
-  }
-
   .btn {
-    width: 100%; /* Botones más anchos en pantallas pequeñas */
-    margin: 10px 0;
+    margin: 5px 0;
   }
 }
