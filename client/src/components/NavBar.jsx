@@ -7,7 +7,7 @@ const Navbar = () => {
       <div className="navbar-left">
         {/* Logo */}
         <img
-          src="https://imgur.com/a/41MyRGB" // Coloca aquí la URL del logo o usa una imagen local
+          src="" // Coloca aquí la URL del logo o usa una imagen local
           alt="Stats Academy Logo"
           className="navbar-logo"
         />

@@ -1,54 +1,77 @@
 /* Estilos básicos del navbar */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #e8f4f7; /* Ajusta este color si quieres otro fondo */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Para darle un pequeño sombreado */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #10132F; /* Color de fondo oscuro */
+  font-family: 'Krub', sans-serif; /* Fuente 'Krub' */
+  color: white; /* Texto en blanco */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Pequeño sombreado */
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  height: 50px; /* Ajusta según el tamaño del logo */
+  margin-right: 10px;
+}
+
+.navbar-brand {
+  font-size: 2em; /* Ajustamos el tamaño de fuente */
+  font-family: 'Kufam', sans-serif; /* Fuente 'Kufam' para la marca */
+  color: white; /* Texto en blanco */
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 40px; /* Bordes redondeados */
+  font-size: 1.2em;
+  cursor: pointer;
+  margin-left: 10px;
+  font-family: 'Krub', sans-serif; /* Fuente 'Krub' */
+  transition: opacity 0.3s ease;
+}
+
+/* Botón de registro */
+.register {
+  background-color: #49BA81; /* Verde similar */
+  color: black;
+}
+
+/* Botón de inicio de sesión */
+.login {
+  background-color: #49BA81; /* Verde similar */
+  color: black;
+}
+
+.btn:hover {
+  opacity: 0.9; /* Efecto de hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
   }
-  
-  .navbar-left {
-    display: flex;
-    align-items: center;
-  }
-  
-  .navbar-logo {
-    height: 40px; /* Ajusta según el tamaño del logo */
-    margin-right: 10px;
-  }
-  
-  .navbar-brand {
-    font-size: 24px;
-    font-weight: bold;
-    color: #4a4a4a;
-  }
-  
+
+  .navbar-left,
   .navbar-right {
-    display: flex;
-    align-items: center;
+    width: 100%;
+    justify-content: center;
   }
-  
+
   .btn {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-left: 10px;
+    width: 100%; /* Botones más anchos en pantallas pequeñas */
+    margin: 10px 0;
   }
-  
-  .register {
-    background-color: #4dc4ff;
-    color: white;
-  }
-  
-  .login {
-    background-color: #333;
-    color: white;
-  }
-  
-  .btn:hover {
-    opacity: 0.9;
-  }
-  
+}

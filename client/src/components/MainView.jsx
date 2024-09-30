@@ -1,19 +1,18 @@
 import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import '../styles/MainView.css'; // Importamos los estilos personalizados
+import '../styles/MainView.css'; // Mantén los estilos aquí
 
 const MainView = () => {
     return (
         <div className="main-view-container">
             {/* Contenedor del texto y botón */}
             <div className="text-section">
-                <h2>Paquete de productividad en línea</h2>
+                <h2>Aprendizaje en Estadística</h2>
                 <p>
-                    Reúna todos sus documentos, presentaciones, PDF, gráficos y publicaciones digitales bajo un mismo techo con Visual Paradigm Online.
-                    VP Online une equipos, objetivos y acciones en un solo lugar.
+                    Descubre la manera más efectiva de aprender Estadística con nuestras tutorías personalizadas.
                 </p>
-                <button className="cta-button">Empiece gratis</button>
+                <button className="cta-button">Comienza ahora</button>
             </div>
 
             {/* Contenedor del carrusel */}
@@ -21,15 +20,15 @@ const MainView = () => {
                 <Carousel autoPlay infiniteLoop showThumbs={false}>
                     <div>
                         <img src="https://via.placeholder.com/600x400" alt="Imagen 1" />
-                        <p className="legend">Concepto 1</p>
+                        <p className="legend">Tema 1</p>
                     </div>
                     <div>
                         <img src="https://via.placeholder.com/600x400" alt="Imagen 2" />
-                        <p className="legend">Concepto 2</p>
+                        <p className="legend">Tema 2</p>
                     </div>
                     <div>
                         <img src="https://via.placeholder.com/600x400" alt="Imagen 3" />
-                        <p className="legend">Concepto 3</p>
+                        <p className="legend">Tema 3</p>
                     </div>
                 </Carousel>
             </div>

@@ -4,7 +4,7 @@ import LandingPage from './pages/LandingPage'; // Asegúrate de que la ruta sea 
 function App() {
   return (
     <div className="App">
-      <LandingPage /> {/* Renderizamos la LandingPage */}
+      <LandingPage /> 
     </div>
   );
 }
