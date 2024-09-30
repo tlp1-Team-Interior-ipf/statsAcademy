@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';  // Importa useNavigate para la navegación
-
-import './Home.css';
+import '../styles/Home.css';
 
 const Home = () => {
   const navigate = useNavigate();  // Obtiene la función navigate

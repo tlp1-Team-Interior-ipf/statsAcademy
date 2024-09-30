@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import './LogInForm.css';
+import '../styles/LogInForm.css';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/authContext';
 import swal from 'sweetalert';
