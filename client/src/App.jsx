@@ -1,10 +1,10 @@
-import './App.css';
-import LandingPage from './pages/LandingPage'; // Asegúrate de que la ruta sea correcta
+import React from 'react';
+import AppRoutes from './routes/Routes';
 
 function App() {
   return (
     <div className="App">
-      <LandingPage /> 
+      <AppRoutes />
     </div>
   );
 }

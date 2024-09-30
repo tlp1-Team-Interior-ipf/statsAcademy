@@ -1,0 +1,12 @@
+.user-profile {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .user-details {
+    margin-bottom: 20px;
+  }  
