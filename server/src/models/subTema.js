@@ -2,7 +2,7 @@ import { sequelize } from "../database/configDB.js";
 import { DataTypes } from "sequelize";
 
 
-export const Temas = sequelize.define('Temas', {
+export const SubTemas = sequelize.define('SubTemas', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -12,14 +12,8 @@ export const Temas = sequelize.define('Temas', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    descripcion: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    estado: {
-        type: DataTypes.ENUM('dictado', 'no dictado'),
-        allowNull: false
-    },
-}, {
+}, 
+{
     timestamps: false,
-});
+},
+);

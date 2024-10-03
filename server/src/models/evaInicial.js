@@ -2,7 +2,7 @@ import { sequelize } from "../database/configDB.js";
 import { DataTypes } from "sequelize";
 
 
-export const EvaluacionesModel = sequelize.define('Evaluaciones', {
+export const EvaInicialModel = sequelize.define('EvaInicial', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -12,14 +12,14 @@ export const EvaluacionesModel = sequelize.define('Evaluaciones', {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    tipo: {
-        type: DataTypes.ENUM('Parcial', 'Inicial'),
+    nivel: {
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
 },
 {
     timestamps: true,
     deletedAt: 'deletedAt',
-    tableName: 'Evaluaciones',
+    tableName: 'EvaInicial',
 },
 );
