@@ -3,12 +3,12 @@ import { environments } from "../config/environments.js";
 
 
 export const sequelize = new Sequelize(
-    environments.DB.DB_NAME,
-    environments.DB.DB_USER,
-    environments.DB.DB_PASSWORD,
+    environments.DB_NAME,
+    environments.DB_USER,
+    environments.DB_PASSWORD,
     {
-        host: environments.DB.DB_HOST,
-        dialect: environments.DB.DB_DIALECT,
-        port: environments.DB.DB_PORT,
+        host: environments.DB_HOST,
+        port: environments.DB_PORT,
+        dialect: environments.DB_DIALECT,
     },
 );

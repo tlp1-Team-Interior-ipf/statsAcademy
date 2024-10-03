@@ -1,0 +1,22 @@
+import express from 'express';
+import cors from 'cors';
+import { environments } from '../config/environments.js';
+import { connectDB } from '../database/connection.js';
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+const PORT = environments.PORT;
+
+export const listen = async () => {
+    try {
+        await connectDB();
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}`);
+        });
+    } catch (err) {
+        console.log("Unable to connect to the database", err);
+    };
+};
