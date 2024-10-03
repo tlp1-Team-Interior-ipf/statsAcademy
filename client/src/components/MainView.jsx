@@ -8,6 +8,8 @@ const MainView = () => {
         <div className="main-view-container">
             {/* Contenedor del texto y botón */}
             <div className="text-section">
+                <h1>Stats Academy</h1>
+                <br></br>
                 <h2>Aprendizaje en Estadística</h2>
                 <p>
                     Descubre la manera más efectiva de aprender Estadística con nuestras tutorías personalizadas.
@@ -19,15 +21,15 @@ const MainView = () => {
             <div className="carousel-section">
                 <Carousel autoPlay infiniteLoop showThumbs={false}>
                     <div>
-                        <img src="https://via.placeholder.com/600x400" alt="Imagen 1" />
+                        <img src="/img/tema1.png" alt="Imagen 1" />
                         <p className="legend">Tema 1</p>
                     </div>
                     <div>
-                        <img src="https://via.placeholder.com/600x400" alt="Imagen 2" />
+                        <img src="/img/tema2.png" alt="Imagen 2" />
                         <p className="legend">Tema 2</p>
                     </div>
                     <div>
-                        <img src="https://via.placeholder.com/600x400" alt="Imagen 3" />
+                        <img src="/img/tema3.png" alt="Imagen 3" />
                         <p className="legend">Tema 3</p>
                     </div>
                 </Carousel>

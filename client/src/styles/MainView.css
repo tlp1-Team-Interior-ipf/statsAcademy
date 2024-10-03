@@ -3,18 +3,32 @@
     justify-content: space-between;
     align-items: center;
     height: 100vh;
-    background-color: #f8f9fa;
-    padding: 0 5%; /* Añadimos padding lateral para centrar mejor */
-    box-sizing: border-box; /* Aseguramos que el padding no afecte el tamaño total */
+    padding: 0 5%; /* Padding lateral para centrar mejor */
+    box-sizing: border-box;
+    
+    /* Fondo autoajustable */
+    background-image: url('../assets/backgroundmainview.jpg'); /* Ruta de la imagen de fondo */
+    background-size: cover; /* Asegura que el fondo cubra todo el contenedor */
+    background-position: center; /* Centra la imagen de fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-color: #f8f9fa; /* Color de respaldo por si la imagen no carga */
+    position: relative; /* Para añadir elementos superpuestos como una capa de opacidad */
 }
 
 .text-section {
     width: 45%;
     text-align: left;
+    z-index: 1; /* Asegura que el texto esté sobre el fondo */
+}
+.text-section h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    font-family: 'Kufam';
 }
 
 .carousel-section {
     width: 50%;
+    z-index: 1; /* Asegura que el carrusel esté sobre el fondo */
 }
 
 .cta-button {
@@ -35,4 +49,16 @@
 .legend {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
+}
+
+/* Capa de opacidad para mejorar la legibilidad del texto sobre la imagen */
+.main-view-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(0, 0, 0, 0.4); Capa semitransparente negra */
+    z-index: 0; /* Mantiene la capa debajo del contenido */
 }
