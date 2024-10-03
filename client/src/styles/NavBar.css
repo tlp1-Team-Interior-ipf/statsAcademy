@@ -1,5 +1,6 @@
 /* Estilos para el navbar */
-.navbar {
+
+.custom-navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,35 +10,34 @@
   font-family: 'Krub', sans-serif;
 }
 
-.navbar-left {
+.custom-navbar-left {
   display: flex;
   align-items: center;
 }
 
-.navbar-logo {
+.custom-navbar-logo {
   display: flex;
   align-items: center;
 }
 
-.navbar-logo-img {
+.custom-navbar-logo-img {
   width: 50px; /* Tamaño del logotipo */
-  margin-left: 0px; /* Espaciado entre el texto y el logotipo */
   margin-right: 10px;
 }
 
-.navbar-brand {
+.custom-navbar-brand {
   font-family: 'Kufam', sans-serif;
   font-size: 2em;
   color: white;
   cursor: pointer;
 }
 
-.navbar-right {
+.custom-navbar-right {
   display: flex;
   align-items: center;
 }
 
-.btn {
+.custom-btn {
   background-color: #49BA81;
   color: black;
   border: none;
@@ -47,25 +47,22 @@
   font-size: 1.2em;
   margin-left: 10px;
   cursor: pointer;
+  transition: background-color 0.3s ease; /* Agrega transición */
 }
 
-.btn:hover {
+.custom-btn:hover {
   background-color: #3ea770;
 }
 
-.btn.login {
+.custom-btn.login {
   margin-right: 10px;
 }
 
-.navbar-toggler-icon {
-  color: white;
-}
-
 @media (max-width: 768px) {
-  .navbar-left, .navbar-right {
+  .custom-navbar-left, .custom-navbar-right {
     flex-direction: column;
   }
-  .btn {
+  .custom-btn {
     margin: 5px 0;
   }
 }

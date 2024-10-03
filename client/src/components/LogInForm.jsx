@@ -1,8 +1,10 @@
 import React, { useState, useContext } from 'react';
-import '../styles/LogInForm.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/LogInForm.css'; // Asegúrate de que el archivo CSS esté bien configurado
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/authContext';
 import swal from 'sweetalert';
+
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -28,6 +30,11 @@ const LoginForm = () => {
       }, 2000);
     } catch (error) {
       console.log('Error al ingresar', error);
+      swal({
+        title: "Error",
+        text: "Credenciales incorrectas. Intenta de nuevo.",
+        icon: "error",
+      });
     }
   };
 
@@ -39,7 +46,7 @@ const LoginForm = () => {
             <img
               src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
               className="img-fluid"
-              alt="Sample image"
+              alt="Sample"
             />
           </div>
           <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
@@ -53,10 +60,11 @@ const LoginForm = () => {
                   placeholder="Email"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
+                  required
                 />
               </div>
-              <div className="form-outline mb-3">
-                <label className="form-label" htmlFor="passwordInput">Contraseña</label>
+              <label className="form-label" htmlFor="passwordInput">Contraseña</label>
+              <div className="form-outline mb-4">
                 <input
                   type="password"
                   id="passwordInput"
@@ -64,11 +72,12 @@ const LoginForm = () => {
                   placeholder="Contraseña"
                   value={password}
                   onChange={e => setPassword(e.target.value)}
+                  required
                 />
               </div>
               <div className="d-flex justify-content-between align-items-center">
                 <div className="form-check mb-0">
-                  <input className="form-check-input me-2" type="checkbox" value="" id="rememberMeCheck" />
+                  <input className="form-check-input me-2" type="checkbox" id="rememberMeCheck" />
                   <label className="form-check-label" htmlFor="rememberMeCheck">
                     Recordarme
                   </label>

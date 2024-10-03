@@ -9,17 +9,9 @@ const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
 
   // Navegación para los botones
-  const handleSignInClick = () => {
-    navigate('/signin');
-  };
-
-  const handleLogInClick = () => {
-    navigate('/login');
-  };
-
-  const handleHomeClick = () => {
-    navigate('/');
-  };
+  const handleSignInClick = () => navigate('/signin');
+  const handleLogInClick = () => navigate('/login');
+  const handleHomeClick = () => navigate('/');
 
   const handleLogOutClick = async () => {
     await logout();
@@ -30,47 +22,36 @@ const Navbar = () => {
       timer: 2000,
       buttons: false,
     });
-    setTimeout(() => {
-      navigate('/');
-    }, 2000);
+    setTimeout(() => navigate('/'), 2000);
   };
 
   return (
-    <nav className="navbar">
-      <div className="navbar-left">
+    <nav className="custom-navbar">
+      <div className="custom-navbar-left">
         {/* Logo */}
-        <a href="#" className="navbar-logo" onClick={handleHomeClick}>
+        <a href="#" className="custom-navbar-logo" onClick={handleHomeClick}>
           <img
             src="img/tutorialogo.png" // URL o imagen local del logo
             alt="Stats Academy Logo"
-            className="navbar-logo-img"
+            className="custom-navbar-logo-img"
           />
         </a>
         {/* Nombre del sistema */}
-        <span className="navbar-brand" onClick={handleHomeClick}>Stats Academy</span>
+        <span className="custom-navbar-brand" onClick={handleHomeClick}>Stats Academy</span>
       </div>
 
-      <div className="navbar-right">
+      <div className="custom-navbar-right">
         {/* Botones dependiendo del estado de autenticación */}
         {user.isLogged ? (
-          <button
-            className="btn logout"
-            onClick={handleLogOutClick}
-          >
+          <button className="custom-btn logout" onClick={handleLogOutClick}>
             Cerrar Sesión
           </button>
         ) : (
           <>
-            <button
-              className="btn register"
-              onClick={handleSignInClick}
-            >
+            <button className="custom-btn register" onClick={handleSignInClick}>
               Regístrate
             </button>
-            <button
-              className="btn login"
-              onClick={handleLogInClick}
-            >
+            <button className="custom-btn login" onClick={handleLogInClick}>
               Iniciar sesión
             </button>
           </>
