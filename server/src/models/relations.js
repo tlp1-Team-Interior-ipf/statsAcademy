@@ -1,11 +1,14 @@
 import { UserModel } from "./user.js";
 import { Chat } from "./modelChat.js";
-import { EvaluacionesModel } from "./evaluaciones.js";
+import { EvaInicialModel } from "./evaInicial.js";
 import { PreguntasModel } from "./preguntas.js";
 import { RespuestasModel } from "./respuestas.js";
 import { Programa } from "./programa.js";
 import { Unidades } from "./unidades.js";
 import { Temas } from "./temas.js";
+import { SubTemas } from "./subTema.js";
+import { Calificaciones } from "./calificaciones.js";
+import { Progreso } from "./progreso.js";
 
 const relations = () => {
     // relacion de uno a muchos con la tabla User y la tabla Chat
@@ -21,14 +24,14 @@ const relations = () => {
         onDelete: 'CASCADE',
     });
 
-    // relacion de uno a muchos con la tabla Evaluaciones y la tabla de preguntas
-    EvaluacionesModel.hasMany(PreguntasModel, {
-        foreignKey: 'evaluacionId',
+    // relacion de uno a muchos con la tabla Evaluación Inicial y la tabla de preguntas
+    EvaInicialModel.hasMany(PreguntasModel, {
+        foreignKey: 'evaInicialId',
         as: 'preguntas',
     });
 
-    PreguntasModel.belongsTo(EvaluacionesModel, {
-        foreignKey: 'evaluacionId',
+    PreguntasModel.belongsTo(EvaInicialModel, {
+        foreignKey: 'evaInicialId',
         as: 'evaluacion',
     });
 
@@ -63,6 +66,61 @@ const relations = () => {
     Temas.belongsTo(Unidades, {
         foreignKey: 'unidadId',
         as: 'unidad',
+    });
+
+    // relacion de uno a muchos con la tabla de Temas y la tabla de SubTemas
+    Temas.hasMany(SubTemas, {
+        foreignKey: 'temaId',
+        as: 'subTemas',
+    });
+
+    SubTemas.belongsTo(Temas, {
+        foreignKey: 'temaId',
+        as: 'tema',
+    });
+
+    // relacion uno a uno entre la tabla de Temas y la tabla de Calificaciones
+    Temas.hasOne(Calificaciones, {
+        foreignKey: 'temaId',
+        as: 'calificacion',
+    });
+
+    Calificaciones.belongsTo(Temas, {
+        foreignKey: 'temaId',
+        as: 'tema',
+    });
+
+    // relacion uno a uno entre la tabla de Temas y la tabla de Progreso
+    Temas.hasOne(Progreso, {
+        foreignKey: 'temaId',
+        as: 'progreso',
+    });
+
+    Progreso.belongsTo(Temas, {
+        foreignKey: 'temaId',
+        as: 'tema',
+    });
+
+    // relacion uno a uno entre la tabla de User y la tabla de Progreso
+    UserModel.hasOne(Progreso, {
+        foreignKey: 'userId',
+        as: 'progreso',
+    });
+
+    Progreso.belongsTo(UserModel, {
+        foreignKey: 'userId',
+        as: 'user',
+    });
+
+    // relacion uno a uno entre la tabla de User y la tabla de Evaluacion Inicial
+    UserModel.hasOne(EvaInicialModel, {
+        foreignKey: 'userId',
+        as: 'evaInicial',
+    });
+
+    EvaInicialModel.belongsTo(UserModel, {
+        foreignKey: 'userId',
+        as: 'user',
     });
 };
 
