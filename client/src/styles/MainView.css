@@ -2,23 +2,25 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100vh; /* Mantén el tamaño para ocupar toda la pantalla */
-    background-color: #f8f9fa; /* Fondo claro */
+    height: 100vh;
+    background-color: #f8f9fa;
+    padding: 0 5%; /* Añadimos padding lateral para centrar mejor */
+    box-sizing: border-box; /* Aseguramos que el padding no afecte el tamaño total */
 }
 
 .text-section {
-    width: 45%; /* Distribución similar */
+    width: 45%;
     text-align: left;
 }
 
 .carousel-section {
-    width: 50%; /* Mantén el carrusel */
+    width: 50%;
 }
 
 .cta-button {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #007bff; /* Color del botón principal */
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
@@ -27,10 +29,10 @@
 }
 
 .cta-button:hover {
-    background-color: #0056b3; /* Cambio de color al hover */
+    background-color: #0056b3;
 }
 
 .legend {
-    background-color: rgba(0, 0, 0, 0.5); /* Para darle contraste a los textos del carrusel */
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
 }

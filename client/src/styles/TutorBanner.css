@@ -1,0 +1,32 @@
+.banner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto; /* Ajusta la altura al contenido */
+    padding: 40px 0; /* Espacio superior e inferior para darle aire */
+    background-color: #f0f0f0;
+}
+
+.banner-content {
+    text-align: center;
+}
+
+h2 {
+    font-size: 28px; /* Tamaño ajustado para el título */
+    color: #333;
+    margin-bottom: 15px; /* Espacio más pequeño entre el título y el botón */
+}
+
+.cta-button {
+    padding: 10px 20px;
+    font-size: 16px; /* Tamaño de texto ligeramente más pequeño */
+    background-color: #49BA81;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    background-color: #218838;
+}
