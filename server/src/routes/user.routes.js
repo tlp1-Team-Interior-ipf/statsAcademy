@@ -19,7 +19,7 @@ const userRouter = Router();
 userRouter.post('/login', loginUserSchema, ctrlLoginUser);
 
 // Ruta para obtener todos los usuarios (requiere autenticación)
-userRouter.get('/', authenticateUser, ctrlGetAllUsers);
+userRouter.get('/', ctrlGetAllUsers);
 
 // Ruta para obtener un usuario por ID (requiere autenticación)
 userRouter.get('/:id', authenticateUser, ctrlGetUser);
