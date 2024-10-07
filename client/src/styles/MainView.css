@@ -1,17 +1,15 @@
 .main-view-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start; /* Mantén flex-start para alinear hacia la parte superior */
     height: 100vh;
     padding: 0 5%; /* Padding lateral para centrar mejor */
     box-sizing: border-box;
+
+    /* Fondo gradiente */
+    background: rgb(16,19,47);
+    background: linear-gradient(180deg, rgba(16,19,47,1) 0%, rgba(0,212,255,1) 68%, rgba(250,250,250,1) 96%);
     
-    /* Fondo autoajustable */
-    background-image: url('../assets/backgroundmainview.jpg'); /* Ruta de la imagen de fondo */
-    background-size: cover; /* Asegura que el fondo cubra todo el contenedor */
-    background-position: center; /* Centra la imagen de fondo */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    background-color: #f8f9fa; /* Color de respaldo por si la imagen no carga */
     position: relative; /* Para añadir elementos superpuestos como una capa de opacidad */
 }
 
@@ -19,46 +17,47 @@
     width: 45%;
     text-align: left;
     z-index: 1; /* Asegura que el texto esté sobre el fondo */
-}
-.text-section h1 {
-    font-size: 4rem;
-    margin-bottom: 20px;
-    font-family: 'Kufam';
+    color: #ffffff;
+    margin-top: 40px; /* Ajusta este valor para mover el texto hacia abajo */
 }
 
+.text-section h1 {
+    font-size: 5em;
+    margin-bottom: 20px;
+    font-family: 'Kufam', sans-serif;
+}
+
+.text-section p {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+}
 .carousel-section {
     width: 50%;
     z-index: 1; /* Asegura que el carrusel esté sobre el fondo */
+    margin-top: 60px; /* Ajusta este valor para mover el carrusel hacia abajo */
 }
 
-.cta-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: white;
+.text-section-move-down {
+    margin-top: 170px; /* Clase personalizada para mover la sección de texto hacia abajo */
+}
+
+.carousel-section-move-down {
+    margin-top: 100px; /* Clase personalizada para mover la sección del carrusel hacia abajo */
+}
+
+.start-button {
+    background-color: #b7f2d3;
+    color: black;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    border-radius: 40px;
+    padding: 10px 20px;
+    font-family: 'Krub', sans-serif;
+    font-size: 1.2em;
     margin-top: 20px;
-}
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Agrega transición */
 
-.cta-button:hover {
-    background-color: #0056b3;
 }
-
-.legend {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-}
-
-/* Capa de opacidad para mejorar la legibilidad del texto sobre la imagen */
-.main-view-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* background-color: rgba(0, 0, 0, 0.4); Capa semitransparente negra */
-    z-index: 0; /* Mantiene la capa debajo del contenido */
+.start-button:hover {
+    background-color: #3EA770; /* Color de fondo al hacer hover */
 }

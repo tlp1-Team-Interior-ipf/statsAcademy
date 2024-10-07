@@ -7,18 +7,18 @@ const MainView = () => {
     return (
         <div className="main-view-container">
             {/* Contenedor del texto y botón */}
-            <div className="text-section">
+            <div className="text-section text-section-move-down">
                 <h1>Stats Academy</h1>
-                <br></br>
+                <br />
                 <h2>Aprendizaje en Estadística</h2>
                 <p>
                     Descubre la manera más efectiva de aprender Estadística con nuestras tutorías personalizadas.
                 </p>
-                <button className="cta-button">Comienza ahora</button>
+                <button className="start-button">Comienza ahora</button>
             </div>
 
             {/* Contenedor del carrusel */}
-            <div className="carousel-section">
+            <div className="carousel-section carousel-section-move-down">
                 <Carousel autoPlay infiniteLoop showThumbs={false}>
                     <div>
                         <img src="/img/tema1.png" alt="Imagen 1" />
