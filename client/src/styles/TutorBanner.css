@@ -1,26 +1,32 @@
+/* TutorBanner.css */
 .banner-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: auto; /* Ajusta la altura al contenido */
-    padding: 40px 0; /* Espacio superior e inferior para darle aire */
-    background-color: #f0f0f0;
+    height: 400px; /* Ajusta la altura si es necesario */
+    padding: 0;
+    background: linear-gradient(to bottom, #ffffff 20%, #0E7684 20%); /* 20% superior blanca, 80% restante verde */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para resaltar el banner */
 }
 
 .banner-content {
+    width: 60%; /* El banner ocupa el 60% del ancho de la pantalla */
+    background: #B7F2D3;
     text-align: center;
+    padding: 60px; /* Mayor espacio para que se vea más grande */
+    border-radius: 10px; /* Redondeado para diferenciar el contenido */
 }
 
 h2 {
-    font-size: 28px; /* Tamaño ajustado para el título */
+    font-size: 28px;
     color: #333;
-    margin-bottom: 15px; /* Espacio más pequeño entre el título y el botón */
+    margin-bottom: 15px;
 }
 
 .cta-button {
     padding: 10px 20px;
-    font-size: 16px; /* Tamaño de texto ligeramente más pequeño */
-    background-color: #49BA81;
+    font-size: 16px;
+    background-color: #0E7684;
     color: white;
     border: none;
     border-radius: 5px;
@@ -28,5 +34,5 @@ h2 {
 }
 
 .cta-button:hover {
-    background-color: #218838;
+    background-color: #06555b; /* Un tono más oscuro del verde para el hover */
 }

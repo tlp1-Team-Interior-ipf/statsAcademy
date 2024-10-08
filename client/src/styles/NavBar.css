@@ -66,3 +66,17 @@
     margin: 5px 0;
   }
 }
+
+.custom-navbar {
+  position: fixed; /* Mantiene el navbar fijo en la parte superior */
+  top: 0; /* Posiciona el navbar en la parte superior de la página */
+  width: 100%; /* Hace que el navbar ocupe todo el ancho de la ventana */
+  z-index: 1000; /* Asegura que el navbar esté por encima de otros elementos */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px; /* Ajusta el padding para hacer el navbar más delgado */
+  background-color: #10132F;
+  color: white;
+  font-family: 'Krub', sans-serif;
+}

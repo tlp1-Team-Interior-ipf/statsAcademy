@@ -8,7 +8,7 @@
 
     /* Fondo gradiente */
     background: rgb(16,19,47);
-    background: linear-gradient(180deg, rgba(16,19,47,1) 0%, rgba(0,212,255,1) 68%, rgba(250,250,250,1) 96%);
+    background: linear-gradient(180deg, rgba(16,19,47,1) 7%, rgba(0,212,255,1) 69%, rgba(255,255,255,1) 97%);
     
     position: relative; /* Para añadir elementos superpuestos como una capa de opacidad */
 }
@@ -34,7 +34,7 @@
 .carousel-section {
     width: 50%;
     z-index: 1; /* Asegura que el carrusel esté sobre el fondo */
-    margin-top: 60px; /* Ajusta este valor para mover el carrusel hacia abajo */
+    margin-top: 100px; /* Ajusta este valor para mover el carrusel hacia abajo */
 }
 
 .text-section-move-down {
@@ -42,7 +42,7 @@
 }
 
 .carousel-section-move-down {
-    margin-top: 100px; /* Clase personalizada para mover la sección del carrusel hacia abajo */
+    margin-top: 200px; /* Ajusta este valor para mover el carrusel aún más abajo */
 }
 
 .start-button {
