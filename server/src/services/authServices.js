@@ -4,7 +4,6 @@ import { generateToken } from '../utils/jsonwebtoken.js';
 import { findUserByEmail } from '../utils/findUser.js';
 import { DatabaseError } from '../utils/errorHandler.js';
 
-
 export const createUser = async (user) => {
     try {
         const existingUser = await UserModel.findOne({ where: { email: user.email } });
@@ -17,7 +16,7 @@ export const createUser = async (user) => {
         return newUser;
 
     } catch (error) {
-        throw new DatabaseError(error);
+        DatabaseError(error);
     };
 };
 
@@ -32,6 +31,6 @@ export const loginUser = async (email, password) => {
         const token = await generateToken({ id: user.id });
         return token;
     } catch (error) {
-        throw new DatabaseError(error);
+        DatabaseError(error);
     };
 };

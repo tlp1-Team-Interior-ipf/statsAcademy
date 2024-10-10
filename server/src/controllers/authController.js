@@ -13,7 +13,8 @@ export const createUserController = async (req, res, next) => {
 
 export const loginUserController = async (req, res, next) => {
     try {
-        const user = await loginUser(req.body);
+        const { email, password } = req.body;
+        const user = await loginUser(email, password);
         responseHandler(res, 200, user);
     } catch (error) {
         next(error);

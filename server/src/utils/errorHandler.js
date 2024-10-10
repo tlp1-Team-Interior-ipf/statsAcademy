@@ -12,5 +12,5 @@ export const DatabaseError = (error) => {
         throw new Error('Duplicate entry detected');
     };
 
-    throw new Error('Database error');
+    throw new Error('Database error: ' + error.message);
 };
