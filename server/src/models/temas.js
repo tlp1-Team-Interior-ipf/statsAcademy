@@ -13,7 +13,7 @@ export const Temas = sequelize.define('Temas', {
         allowNull: false
     },
     descripcion: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false
     },
     estado: {

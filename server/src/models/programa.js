@@ -13,7 +13,7 @@ export const Programa = sequelize.define('programa', {
         allowNull: false
     },
     descripcion: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false
     },
 }, {
