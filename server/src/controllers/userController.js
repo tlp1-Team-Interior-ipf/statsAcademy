@@ -6,6 +6,7 @@ import {getAllUsers,
         updateUser,
  } from '../services/userServices.js';
 import { createJWT } from '../utils/jsonwebtoken.js';
+import { validationResult } from 'express-validator';
 
 
 export const ctrlGetAllUsers = async (_req, res) => {
@@ -36,6 +37,15 @@ export const ctrlGetUser = async (req, res) => {
 };
 
 export const ctrlCreateUser = async (req, res) => {
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array().reduce((acc, error) => {
+            acc[error.param] = error.msg;
+            return acc;
+        }, {}) });
+    }
+
     try {
         const user = await createUser(req.body);
         const token = await createJWT({ user: user.id });
