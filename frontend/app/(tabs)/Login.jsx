@@ -1,116 +1,68 @@
-import React, { useState, useContext } from 'react';
-import { TextInput, View, Text, Pressable, Image, ImageBackground, ScrollView, Alert } from 'react-native';
-import { Stack, router } from 'expo-router';
+import React from 'react';
+import { View, Text, Image, ScrollView } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
+import { router, Stack } from 'expo-router';
 import { StylesLogin } from '@/components/Styles';
-import { UserContext } from '@/context/userContext'
-import { validationUser } from '@/components/Validations'
-import { ComponentModal } from '@/components/Modal'
-import {MyButton} from '@/components/Icons'
-import { Button, CheckBox } from '@rneui/base';
-import AsyncStorage from '@react-native-async-storage/async-storage'
-
+import { FormInput } from '../../components/FormInput';
+import userLoginForm from '../../hooks/userLoginForm';
+import SubmitButton from '../../components/SubmitButton';
+import { SocialButtons2 } from '../../components/SocialButtons';
+import { Checkbox2 } from '../../components/CheckBoxs';
 
  const Login = () => {
-
   const image1 = require('@/img/login.png')
 
-  const { users } = useContext(UserContext)
-  const [email, setEmail] = useState('');
-  const [pass, setPass] = useState('');
-  const [modalVisible, setModalVisible] = useState(false);
-
-  const loginUser = async () => {
-
-    try {
-        const response = await fetch('http://192.168.147.123:3000/users/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                email: email,
-                password: pass,
-            }),
-        });
-
-        const data = await response.json();
-        console.log("Estado de la respuesta:", response.status);
-        console.log(data);
-
-        if (response.ok) {
-            const token = data.token; 
-            console.log("tokennnn:", token)
-            await AsyncStorage.setItem('userToken', token);
-
-            setEmail('');
-            setPass('');
-            router.push('explore');
-        } else {
-            // Manejo de errores de validación
-            if (data.errors) {
-                setUserError(data.errors.username ? data.errors.username.msg : '');
-                setEmailError(data.errors.email ? data.errors.email.msg : '');
-                setPassError(data.errors.password ? data.errors.password.msg : '');
-            } else {
-                Alert.alert('Error de inicio de sesión', data.message || 'Hubo un problema con el registro');
-            }
-        }
-    } catch (error) {
-        Alert.alert('Error', 'No se pudo conectar con el servidor');
-    }
-};
+  const { email, 
+          setEmail, 
+          pass, 
+          setPass, 
+          errorMessage, 
+          loginUser,
+          isChecked,
+          setIsChecked
+  } = userLoginForm();
 
   return (
     <>
 
-      <View style={StylesLogin.container}>
-      <Stack.Screen options={{headerShown:false}}  />
-        <Image source={image1}  style={{width: 270, height: 350, maxHeight: 'auto', maxWidth: 'auto'}}/>
+      <ScrollView>
+        <View style={StylesLogin.container}>
+        <Stack.Screen options={{headerShown:false}}  />
+          <Image source={image1}  style={{width: 270, height: 350, maxHeight: 'auto', maxWidth: 'auto', top: 45}}/>
 
-        <View style={{backgroundColor:'#fff', width: '107%', borderRadius:15, padding: 50, top: 45, paddingVertical: 15}}>
-            
-            <Text style={StylesLogin.title} >Stats Academy</Text>
-                <TextInput
-                    style={StylesLogin.subtitle}
-                    placeholder="Email"
-                    onChangeText={textoNuevo => setEmail(textoNuevo)}
-                    value={email}
-                />
+          <View style={{backgroundColor:'#fff', width: '113%', borderRadius:15, padding: 55, top: 45, alignItems: 'center'}}>
+              
+              <Text style={{fontSize: 35, marginVertical: 20, textAlign: 'center'}}>Stats Academy</Text>
+              <FormInput
+                placeholder="Email"
+                value={email}
+                setValue={setEmail}
+                validation={() => true}
+                IconComponent={MaterialIcons}
+                iconName="email"
+              />
 
-                <TextInput
-                    style={StylesLogin.subtitle}
-                    placeholder="Password"
-                    onChangeText={contraseña => setPass(contraseña)}
-                    value={pass} 
-                    secureTextEntry
-                />
+              <FormInput
+                placeholder="Contraseña"
+                value={pass}
+                setValue={setPass}
+                validation={() => true}
+                IconComponent={MaterialIcons}
+                iconName="password"
+                secureTextEntry
+              />
+              <SubmitButton handleSubmit={loginUser} errorMessage={errorMessage} titleButton={'LOGIN'} />
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <Checkbox2 title={'Recúerdame'} isChecked={isChecked} setIsChecked={setIsChecked} />
+                <Text style={{color:'#00f'}} onPress={() => router.push("Setting")}>Olvidé mi contraseña</Text>
+              </View>
+              
+              <SocialButtons2 />
 
-                <Button 
-                  buttonStyle={{borderRadius:10, margin: 'auto', width:240}}
-                  title="LOGIN"
-                  onPress={loginUser} 
-                />
-
-                <View>
-                  <CheckBox title={'Recúerdame'} />
-                </View>
-                
-                <Text style={{textAlign: 'center'}}>O logeate con una red social</Text>
-        
-                <View style={{display:'flex', flexDirection:'row', gap: 5, margin: 'auto', marginVertical: 10}}>
-                  <MyButton iconName="logo-facebook" iconSize={15} />
-                  <MyButton iconName="logo-google" iconSize={15} />
-                </View>
-        
-                <Pressable onPress={() => router.push("Register")}>
-                  <Text style={{textAlign: 'center'}}>No tienes una cuenta? <Text style={{color:'#33f'}}>Registrate Ahora</Text></Text>
-                </Pressable>
-        
+          </View>
+          
         </View>
-        
-
-      <ComponentModal visible={modalVisible} setVisible={setModalVisible} />
-    </View>
+      </ScrollView>
     </>
   );
 }

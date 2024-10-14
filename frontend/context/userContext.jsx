@@ -1,19 +1,25 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const UserContext = createContext();
 
- const UserProvider = ({ children }) => {
-    const [users, setUsers] = useState([
-        { name: 'Carmen', email: 'email01@gmail.com', password: 'abc' },
-        { name: 'Valeria', email: 'email02@gmail.com', password: 'abcd' },
-        { name: 'Antonela', email: 'email03@gmail.com', password: 'abcde' },
-    ]);
+const UserProvider = ({ children }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    return (
-        <UserContext.Provider value={{ users, setUsers }}>
-            {children}
-        </UserContext.Provider>
-    );
+  useEffect(() => {
+    const checkLoginStatus = async () => {
+      const value = await AsyncStorage.getItem('isLoggedIn');
+      setIsLoggedIn(value === 'true');
+    };
+    
+    checkLoginStatus();
+  }, []);
+
+  return (
+    <UserContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+      {children}
+    </UserContext.Provider>
+  );
 };
 
-export default UserProvider
+export default UserProvider;

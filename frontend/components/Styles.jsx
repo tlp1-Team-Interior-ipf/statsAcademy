@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native"
 
-
 export const StylesLogin = StyleSheet.create({
     centeredView: {
       flex: 1,
@@ -9,7 +8,8 @@ export const StylesLogin = StyleSheet.create({
     },
     title: {
       textAlign: 'center',
-      fontSize: 30
+      fontSize: 30,
+      padding: 20
     },
     subtitle: {
       fontSize: 20,
@@ -23,8 +23,8 @@ export const StylesLogin = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      padding: 10,
-      backgroundColor: '#36f'
+      padding: 20,
+      backgroundColor: '#36f',
     },
     image: {
       width: 200,
