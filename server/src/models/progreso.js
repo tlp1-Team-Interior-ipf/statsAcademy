@@ -8,6 +8,10 @@ export const Progreso = sequelize.define('Progreso', {
         primaryKey: true,
         autoIncrement: true
     },
+    progreso: {
+        type: DataTypes.FLOAT,
+        allowNull: false
+    },
 }, 
 {
     timestamps: false,
