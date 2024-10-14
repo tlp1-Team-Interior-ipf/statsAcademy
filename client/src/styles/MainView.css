@@ -7,8 +7,8 @@
     box-sizing: border-box;
 
     /* Fondo gradiente */
-    background: rgb(16,19,47);
-    background: linear-gradient(180deg, rgba(16,19,47,1) 7%, rgba(0,212,255,1) 69%, rgba(255,255,255,1) 97%);
+    background: rgb(16, 19, 47);
+    background: linear-gradient(180deg, rgba(16, 19, 47, 1) 7%, rgba(0, 212, 255, 1) 69%, rgba(255, 255, 255, 1) 97%);
     
     position: relative; /* Para añadir elementos superpuestos como una capa de opacidad */
 }
@@ -31,10 +31,14 @@
     font-size: 1.3em;
     margin-bottom: 20px;
 }
+
 .carousel-section {
     width: 50%;
     z-index: 1; /* Asegura que el carrusel esté sobre el fondo */
-    margin-top: 100px; /* Ajusta este valor para mover el carrusel hacia abajo */
+    margin-top: 150px; /* Ajusta este valor para mover el carrusel hacia arriba */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombreado */
+    border-radius: 10px; /* Bordes redondeados (opcional) */
+    overflow: hidden; /* Asegura que el borde no sobresalga */
 }
 
 .text-section-move-down {
@@ -55,9 +59,90 @@
     font-size: 1.2em;
     margin-top: 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Agrega transición */
-
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Agrega transición para el sombreado */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombreado del botón */
 }
+
 .start-button:hover {
     background-color: #3EA770; /* Color de fondo al hacer hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Aumenta el sombreado al hacer hover */
+}
+
+/* Estilos para el carrusel */
+.carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden; /* Oculta elementos que se desbordan */
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease; /* Transición suave para el movimiento */
+}
+
+.carousel-item {
+    min-width: 100%; /* Asegura que cada item ocupe todo el ancho del contenedor */
+    box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el ancho total */
+    position: relative; /* Para posicionar la leyenda sobre la imagen */
+}
+
+.carousel-section .carousel-caption {
+    position: absolute;
+    bottom: 20px; /* Coloca la leyenda en la parte inferior */
+    left: 50%; /* Centra horizontalmente */
+    transform: translateX(-50%); /* Ajusta la posición al centro */
+    color: white;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente para la leyenda */
+    padding: 10px;
+    border-radius: 5px; /* Bordes redondeados para la leyenda */
+    z-index: 10; /* Asegura que esté sobre otros elementos */
+}
+
+/* Estilos para los controles */
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white; /* Color de los controles */
+    font-size: 2em; /* Tamaño de los iconos */
+}
+
+.carousel-control-prev {
+    left: 10px; /* Alineación a la izquierda */
+}
+
+.carousel-control-next {
+    right: 10px; /* Alineación a la derecha */
+}
+
+/* Estilos para los indicadores */
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%, 0); /* Centra horizontalmente */
+    display: flex;
+    justify-content: center;
+    list-style: none; /* Sin lista */
+    margin: 0; /* Eliminar margen */
+    padding: 0; /* Eliminar padding */
+}
+
+.carousel-indicators li {
+    background-color: #3EA770; /* Color de los indicadores */
+    cursor: pointer;
+    margin: 0 5px; /* Añadir margen entre indicadores */
+    border-radius: 50%; /* Añadir bordes redondeados si se desea */
+}
+
+.carousel-indicators li.active {
+    background-color: #ffffff; /* Color del indicador activo */
+}
+
+/* Estilos adicionales para el carrusel */
+.carousel-item img {
+    object-fit: cover; /* Asegura que la imagen llene el área correctamente */
+    height: 60vh; /* Ajusta la altura de las imágenes */
 }

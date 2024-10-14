@@ -4,7 +4,7 @@ import '../styles/ToolsBanner.css'; // Puedes añadir aquí los estilos CSS
 const ToolsBanner = () => {
   return (
     <div className="herramientas-container">
-      <h2 className="herramientas-title">Herramientas que necesitas</h2>
+      <h2 className="herramientas-title">Tenemos las herramientas que necesitas:</h2>
       <div className="tarjetas-container">
         <div className="tarjeta tarjeta-perfil">
           <div className="tarjeta-contenido">

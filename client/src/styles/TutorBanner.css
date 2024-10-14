@@ -1,4 +1,3 @@
-/* TutorBanner.css */
 .banner-container {
     display: flex;
     justify-content: center;
@@ -7,14 +6,16 @@
     padding: 0;
     background: linear-gradient(to bottom, #ffffff 20%, #0E7684 20%); /* 20% superior blanca, 80% restante verde */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para resaltar el banner */
+    position: relative; /* Necesario para que los elementos posicionados absolutamente se ubiquen en relación a este contenedor */
 }
 
 .banner-content {
-    width: 60%; /* El banner ocupa el 60% del ancho de la pantalla */
+    width: 80%; /* El banner ocupa el 60% del ancho de la pantalla */
     background: #B7F2D3;
-    text-align: center;
+    text-align: left;
     padding: 60px; /* Mayor espacio para que se vea más grande */
     border-radius: 10px; /* Redondeado para diferenciar el contenido */
+    z-index: 1; /* Asegura que el contenido esté por encima de la imagen */
 }
 
 h2 {
@@ -36,3 +37,13 @@ h2 {
 .cta-button:hover {
     background-color: #06555b; /* Un tono más oscuro del verde para el hover */
 }
+
+.tutor-image {
+    position: absolute; /* Para posicionarlo en relación al contenedor */
+    left: 60%; /* Centra horizontalmente la imagen */
+    transform: translateX(-50%) translateY(-20%); /* Ajusta la posición para centrarla exactamente */
+    top: -8px; /* Ajusta la cantidad de desplazamiento hacia arriba para superponerla */
+    width: 250px; /* Aumenta el tamaño de la imagen según tus necesidades */
+    z-index: 2; /* Mantiene la imagen por encima del contenido del banner */
+}
+

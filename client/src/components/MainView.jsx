@@ -1,12 +1,11 @@
 import React from 'react';
-import { Carousel } from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import '../styles/MainView.css'; // Mantén los estilos aquí
+import { Carousel } from 'react-bootstrap';
+
+import '../styles/MainView.css';
 
 const MainView = () => {
     return (
         <div className="main-view-container">
-            {/* Contenedor del texto y botón */}
             <div className="text-section text-section-move-down">
                 <h1>Stats Academy</h1>
                 <br />
@@ -17,21 +16,38 @@ const MainView = () => {
                 <button className="start-button">Comienza ahora</button>
             </div>
 
-            {/* Contenedor del carrusel */}
             <div className="carousel-section carousel-section-move-down">
-                <Carousel autoPlay infiniteLoop showThumbs={false}>
-                    <div>
-                        <img src="/img/tema1.png" alt="Imagen 1" />
-                        <p className="legend">Tema 1</p>
-                    </div>
-                    <div>
-                        <img src="/img/tema2.png" alt="Imagen 2" />
-                        <p className="legend">Tema 2</p>
-                    </div>
-                    <div>
-                        <img src="/img/tema3.png" alt="Imagen 3" />
-                        <p className="legend">Tema 3</p>
-                    </div>
+                <Carousel controls={true} indicators={true}>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src="/img/tema1.png"
+                            alt="Tema 1"
+                        />
+                        <Carousel.Caption>
+                            <h5>Tema 1</h5>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src="/img/tema2.png"
+                            alt="Tema 2"
+                        />
+                        <Carousel.Caption>
+                            <h5>Tema 2</h5>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src="/img/tema3.png"
+                            alt="Tema 3"
+                        />
+                        <Carousel.Caption>
+                            <h5>Tema 3</h5>
+                        </Carousel.Caption>
+                    </Carousel.Item>
                 </Carousel>
             </div>
         </div>
