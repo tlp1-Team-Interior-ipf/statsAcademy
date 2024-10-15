@@ -10,8 +10,9 @@
 
 .herramientas-title {
   font-size: 32px;
+  font-weight : 500;
   margin-bottom: 40px;
-  color: #111111; /* Asegúrate de que el texto sea legible sobre la imagen */
+  color: #3a3a3a; /* Asegúrate de que el texto sea legible sobre la imagen */
 }
 
 .tarjetas-container {

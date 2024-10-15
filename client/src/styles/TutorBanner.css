@@ -4,7 +4,7 @@
     align-items: center;
     height: 400px; /* Ajusta la altura si es necesario */
     padding: 0;
-    background: linear-gradient(to bottom, #ffffff 20%, #0E7684 20%); /* 20% superior blanca, 80% restante verde */
+    background: linear-gradient(to bottom, #ffffff 10%, #0E7684 10%); /* 20% superior blanca, 80% restante verde */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para resaltar el banner */
     position: relative; /* Necesario para que los elementos posicionados absolutamente se ubiquen en relación a este contenedor */
 }
