@@ -1,12 +1,15 @@
-import React, { useContext, useEffect } from 'react'; // Asegúrate de importar React
-import { StyleSheet, View, Text, Image, Dimensions, ImageBackground, ScrollView } from 'react-native';
-import { Button, Icon } from '@rneui/themed';
-import { Stack, router } from 'expo-router';
+import React, { useEffect, useState, useRef, useContext } from 'react';
+import { StyleSheet, View, Text, Image, Dimensions, ImageBackground, ScrollView, Animated } from 'react-native';
+import { Button } from '@rneui/themed';
 import Carousel from 'react-native-reanimated-carousel';
 import { MyButton2 } from '@/components/Icons';
 import { BlurView } from 'expo-blur';
-import { UserContext } from '@/context/userContext'; // Importa el contexto
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ButtonStart } from '@/components/SocialButtons'
+import Navbar from '@/components/Navbar'
+import { Stack } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
+import { UserContext } from '@/context/userContext';
+
 
 const { width } = Dimensions.get('window');
 
@@ -19,56 +22,51 @@ const data = [
 const background = require("@/img/img1.jpg");
 
 export default function HomeScreen() {
-  const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
+  const [showDraw, setShowDraw] = useState(false)
+  const slideAnim = useRef(new Animated.Value(360)).current;
+  const { isLoggedIn } = useContext(UserContext);
 
   useEffect(() => {
-    const checkLoginStatus = async () => {
-      try {
-        const value = await AsyncStorage.getItem('isLoggedIn');
-        if (value === 'true') {
-          setIsLoggedIn(true);
-        }
-      } catch (error) {
-        console.error('Error al obtener el estado de autenticación', error);
-      }
-    };
-    
-    checkLoginStatus();
-  }, [setIsLoggedIn]);
+    Animated.timing(slideAnim, {
+      toValue: showDraw ? 0 : 360,
+      duration: 300,
+      useNativeDriver: true,
+    }).start();
+  }, [showDraw]);
+  
+  const mostrar = () => {
+    console.log("djkwsadnjnkj")
+    setShowDraw(!showDraw);
+  };
 
   return (
     <>
+      <Stack.Screen options={{headerShown: false}} />
       <ImageBackground source={background} style={{ flex: 1 }}>
         <ScrollView>
-          <View style={styles.container}>
-            <Stack.Screen options={{ headerShown: false }} />
-            <View style={styles.item}>
-              <Image source={require('../../img/tutorialogo.png')} style={styles.image} />
-            </View>
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              {!isLoggedIn && (
-                <Button
-                  buttonStyle={{ paddingHorizontal: 45, borderRadius: 20 }}
-                  title="Login"
-                  onPress={() => router.push("Login")}
-                />
+          <Navbar action={mostrar} />
+          <Animated.View style={{
+            backgroundColor: '#22f', 
+            width: '80%', 
+            height: '100%', 
+            zIndex: 10, 
+            position: 'absolute', 
+            top: 40, 
+            right: 0,
+            transform: [{ translateX: slideAnim }],
+            alignItems: 'flex-end'
+            }}>
+              <Ionicons name='close' size={40} color={'#ddd'} onPress={mostrar} style={{padding: 10}} />
+              {isLoggedIn && (
+                <Button title={'CERRAR SESIÓN'}></Button>
               )}
-              <Icon name='menu' size={40} color={'#ddd'} />
-            </View>
-          </View>
-
+          </Animated.View>
           <Text style={{ fontSize: 50, textAlign: 'left', paddingLeft: 10, color: '#fff' }}>Stats Academy</Text>
           <Text style={{ fontSize: 30, textAlign: 'left', paddingLeft: 10, color: '#fff' }}>Aprendizaje en Estadística</Text>
           <Text style={{ fontSize: 22, textAlign: 'left', paddingLeft: 10, color: '#fff' }}>
             Descubre la manera más efectiva de aprender Estadística con nuestra tutoria personalizada
           </Text>
-          <Button
-            buttonStyle={{ paddingHorizontal: 15, borderRadius: 20, width: 120, margin: 10 }}
-            title="COMENZAR"
-            onPress={() => router.push("/Login")}
-            color={'#149'}
-          />
-
+          <ButtonStart />
           <View>
             <Carousel
               width={width}

@@ -12,11 +12,11 @@ export const MyButton = ({ iconName, iconSize }) => {
   );
 };
 
-export const MyButton2 = ({ iconName, iconSize }) => {
+export const MyButton2 = ({ iconName, iconSize, color, action }) => {
   return (
-    <Pressable>
+    <Pressable onPress={action}>
       <View style={styles.buttonContainer2}>
-        <Ionicons name={iconName} size={iconSize} color="white" />
+        <Ionicons name={iconName} size={iconSize} color={color} />
       </View>
     </Pressable>
   );
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   
   buttonContainer2: {
     flexDirection: 'row',
-    width:25,
+    width:40,
     marginHorizontal: 0,
     padding:0,
     justifyContent: 'center',

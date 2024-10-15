@@ -1,67 +1,56 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Button, NativeBaseProvider, Spinner, Text, View } from 'native-base';
-import { useContext, useEffect, useState } from 'react';
-import { UserContext } from '@/context/userContext';
-import { router } from 'expo-router';
-
-const clearAsyncStorage = async () => {
-  try {
-    await AsyncStorage.clear();
-    console.log('AsyncStorage vaciado con éxito.');
-    router.push("Login")
-  } catch (error) {
-    console.error('Error al vaciar AsyncStorage:', error);
-  }
-};
-
-const checkAsyncStorage = async () => {
-  try {
-    const userToken = await AsyncStorage.getItem('userToken');
-    const isLoggedIn = await AsyncStorage.getItem('isLoggedIn');
-
-    console.log('userToken:', userToken || 'No hay userToken almacenado.');
-    console.log('isLoggedIn:', isLoggedIn || 'No hay estado de sesión (isLoggedIn) almacenado.');
-
-  } catch (error) {
-    console.log('Error obteniendo los datos del AsyncStorage:', error);
-  }
-};
+import {  NativeBaseProvider } from 'native-base';
+import useAuth from '@/hooks/useAuth';
+import ActionButtons from '@/hooks/ActionButtons';
+import LoadingSpinner from '@/components/LoadingSpinner'
+import { ScrollView, StyleSheet, View } from 'react-native';
+import MyCard from '@/components/Card'
+import Navbar from '@/components/Navbar'
+import { Stack } from 'expo-router';
+import { BlurView } from 'expo-blur';
+import { Button } from '@rneui/themed';
 
 const Explore = () => {
-  const { isLoggedIn } = useContext(UserContext);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const checkLoginStatus = async () => {
-      await checkAsyncStorage(); // Verifica el AsyncStorage al cargar
-      setLoading(false); // Cambia el estado de carga
-    };
-
-    checkLoginStatus();
-  }, []);
-
-  useEffect(() => {
-    if (!isLoggedIn && !loading) {
-      router.push('Login'); // Redirigir si no está autenticado
-    }
-  }, [isLoggedIn, loading]);
+  const { loading } = useAuth();
+  const image1 = require('@/img/calendar.png')
+  const image2 = require('@/img/kanban.png')
 
   if (loading) {
-    return (
-      <NativeBaseProvider>
-            <Spinner color="blue" />
-      </NativeBaseProvider>
-    );
+    return <LoadingSpinner />
   }
 
   return (
     <NativeBaseProvider>
-      <View>
-        <Button onPress={clearAsyncStorage}><Text>Borrar token</Text></Button>
-        <Button onPress={checkAsyncStorage}><Text>Ver AsyncStorage</Text></Button>
-      </View>
+      <ScrollView>
+        <Navbar action={{}}/>
+        <Stack.Screen options={{headerShown: false}} />
+        <ActionButtons />  
+          <View style={{gap: 10, marginVertical: 10}}>
+            <MyCard title={'Organizador'} subtitle={'Organizador de tareas para gestionar actividades y otros eventos importantes'} image={image2} window={'Kanban'} />
+            <MyCard title={'Calendario'} subtitle={'Calendario para definir fechas importantes'} image={image1} window={'Calendar'} />
+          </View>
+
+          <BlurView
+          style={styles.blurView}
+          tint='systemThinMaterialDark'
+          // blurAmount={10}
+          intensity={40}
+        />
+      </ScrollView>
     </NativeBaseProvider>
-  )
+  );
 };
+
+const styles = StyleSheet.create({
+  blurView: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 1,
+  },
+});
 
 export default Explore;

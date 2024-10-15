@@ -30,7 +30,7 @@ const Register = () => {
         <Stack.Screen options={{ headerShown: false }} />
         <Image source={require('@/img/login.png')} style={{ width: 270, height: 350, maxHeight: 'auto', maxWidth: 'auto', top: 30}} />
         
-        <View style={{ backgroundColor: '#fff', borderRadius: 15, padding: 55, top: 30, width: '113%'}}>
+        <View style={{ backgroundColor: '#fff', borderRadius: 15, padding: 55, top: 30, width: '113%', alignItems: 'center'}}>
           <Text style={{fontSize: 35, marginVertical: 20, textAlign: 'center'}}>Stats Academy</Text>
 
           <FormInput

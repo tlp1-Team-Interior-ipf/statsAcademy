@@ -26,7 +26,7 @@ export const useRegisterForm = () => {
     }
 
     try {
-      const response = await fetch('http://192.168.147.123:3000/users/', {
+      const response = await fetch('http://192.168.31.123:3000/users/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

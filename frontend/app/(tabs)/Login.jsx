@@ -11,7 +11,7 @@ import { Checkbox2 } from '../../components/CheckBoxs';
 
  const Login = () => {
   const image1 = require('@/img/login.png')
-
+  
   const { email, 
           setEmail, 
           pass, 

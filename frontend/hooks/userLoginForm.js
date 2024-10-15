@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { router } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { UserContext } from '@/context/userContext';
 
 const userLoginForm = () => {
 
@@ -8,13 +9,13 @@ const userLoginForm = () => {
     const [pass, setPass] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [isChecked, setIsChecked] = useState(false);
+    const { setIsLoggedIn } = useContext(UserContext);
     
-
     const loginUser = async () => {
 
         console.log(email, pass)
         try {
-            const response = await fetch('http://192.168.147.123:3000/users/login', {
+            const response = await fetch('http://192.168.31.123:3000/users/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -30,15 +31,17 @@ const userLoginForm = () => {
             console.log(data);
     
             if (response.ok) {
+                console.log("respuesta: ", response)
                 const token = data.token.token; 
                 console.log("tokennnn:", token)
                 await AsyncStorage.setItem('userToken', token); // guardo el token
 
                 await AsyncStorage.setItem('isLoggedIn', 'true'); // guardo el estado de login
-    
+
                 setEmail('');
                 setPass('');
                 setErrorMessage('');
+                setIsLoggedIn(true)
                 router.push('explore');
             } else {
                 setErrorMessage(data.message || 'Contraseña o Email incorrecto');
