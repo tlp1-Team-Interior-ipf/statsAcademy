@@ -1,0 +1,83 @@
+/* Estilos para el navbar */
+
+.custom-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #10132F;
+  color: white;
+  font-family: 'Krub', sans-serif;
+}
+
+.custom-navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.custom-navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.custom-navbar-logo-img {
+  width: 50px; /* Tamaño del logotipo */
+  margin-right: 10px;
+}
+
+.custom-navbar-brand {
+  font-family: 'Kufam', sans-serif;
+  font-size: 1.6em;
+  color: white;
+  cursor: pointer;
+}
+
+.custom-navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.custom-btn {
+  background-color: #49BA81;
+  color: black;
+  border: none;
+  border-radius: 40px;
+  padding: 5px 15px; /* Ajuste para que los botones sean más delgados */
+  font-family: 'Krub', sans-serif;
+  font-size: 1em; /* Opcional: reducir el tamaño de la fuente si es necesario */
+  margin-left: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Agrega transición */
+}
+
+
+.custom-btn:hover {
+  background-color: #3ea770;
+}
+
+.custom-btn.login {
+  margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+  .custom-navbar-left, .custom-navbar-right {
+    flex-direction: column;
+  }
+  .custom-btn {
+    margin: 5px 0;
+  }
+}
+
+.custom-navbar {
+  position: fixed; /* Mantiene el navbar fijo en la parte superior */
+  top: 0; /* Posiciona el navbar en la parte superior de la página */
+  width: 100%; /* Hace que el navbar ocupe todo el ancho de la ventana */
+  z-index: 1000; /* Asegura que el navbar esté por encima de otros elementos */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px; /* Ajusta el padding para hacer el navbar más delgado */
+  background-color: #10132F;
+  color: white;
+  font-family: 'Krub', sans-serif;
+}

@@ -1,0 +1,49 @@
+.banner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px; /* Ajusta la altura si es necesario */
+    padding: 0;
+    background: linear-gradient(to bottom, #ffffff 10%, #0E7684 10%); /* 20% superior blanca, 80% restante verde */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para resaltar el banner */
+    position: relative; /* Necesario para que los elementos posicionados absolutamente se ubiquen en relación a este contenedor */
+}
+
+.banner-content {
+    width: 80%; /* El banner ocupa el 60% del ancho de la pantalla */
+    background: #B7F2D3;
+    text-align: left;
+    padding: 60px; /* Mayor espacio para que se vea más grande */
+    border-radius: 10px; /* Redondeado para diferenciar el contenido */
+    z-index: 1; /* Asegura que el contenido esté por encima de la imagen */
+}
+
+h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.cta-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #0E7684;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    background-color: #06555b; /* Un tono más oscuro del verde para el hover */
+}
+
+.tutor-image {
+    position: absolute; /* Para posicionarlo en relación al contenedor */
+    left: 60%; /* Centra horizontalmente la imagen */
+    transform: translateX(-50%) translateY(-20%); /* Ajusta la posición para centrarla exactamente */
+    top: -8px; /* Ajusta la cantidad de desplazamiento hacia arriba para superponerla */
+    width: 250px; /* Aumenta el tamaño de la imagen según tus necesidades */
+    z-index: 2; /* Mantiene la imagen por encima del contenido del banner */
+}
+

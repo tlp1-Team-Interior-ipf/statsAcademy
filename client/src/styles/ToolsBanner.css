@@ -1,0 +1,75 @@
+.herramientas-container {
+  text-align: center;
+  padding: 60px 20px;
+  background-image: url('../assets/backgroundtools.png'); /* Ruta a tu imagen de fondo */
+  background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-color: #f5f5f5; /* Color de fondo por defecto (se mostrará si la imagen no carga) */
+}
+
+.herramientas-title {
+  font-size: 32px;
+  font-weight : 500;
+  margin-bottom: 40px;
+  color: #3a3a3a; /* Asegúrate de que el texto sea legible sobre la imagen */
+}
+
+.tarjetas-container {
+  display: flex;
+  justify-content: center;
+  gap: 150px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.tarjeta {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  height: 270px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tarjeta-contenido {
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 15px;
+}
+
+.tarjeta h3 {
+  font-size: 20px;
+  margin: 0;
+}
+
+/* Estilos para las tarjetas individuales */
+.tarjeta-perfil {
+  background-image: url('../assets/studenta.png');
+}
+
+.tarjeta-anotador {
+  background-image: url('../assets/anotador.png');
+}
+
+.tarjeta-calendario {
+  background-image: url('../assets/calendar.png');
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .tarjeta {
+    width: 150px;
+    height: 220px;
+  }
+
+  .tarjetas-container {
+    gap: 20px;
+  }
+}
