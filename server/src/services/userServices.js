@@ -12,7 +12,7 @@ export const getAllUsers = async () => {
 
             return users;
     } catch (error) {
-        throw new DatabaseError(error);
+        DatabaseError(error);
     };
 };
 
@@ -22,7 +22,7 @@ export const getUserById = async (id) => {
         const user = await findUserById(id);
         return user;
     } catch (error) {
-        throw new DatabaseError(error);
+        DatabaseError(error);
     };
 };
 
@@ -33,7 +33,7 @@ export const updateUser = async (id, user) => {
         const updatedUser = await existingUser.update(user);
         return updatedUser;
     } catch (error) {
-        throw new DatabaseError(error);
+        DatabaseError(error);
     };
 };
 
@@ -44,6 +44,6 @@ export const deleteUser = async (id) => {
         await user.destroy();
         return user;
     } catch (error) {
-        throw new DatabaseError(error);
+        DatabaseError(error);
     };
 };

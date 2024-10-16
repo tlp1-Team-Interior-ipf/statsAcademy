@@ -22,7 +22,7 @@ export const calcularProgreso = async (userId) => {
         return saveProgreso;
 
     } catch (error) {
-        throw new DatabaseError(error);
+        DatabaseError(error);
     };
 };
 
@@ -32,6 +32,6 @@ export const getProgreso = async (userId) => {
         const progreso = await Progreso.findOne({ userId: userId });
         return progreso ? progreso.progreso : null;
     } catch (error) {
-        throw new DatabaseError(error);
+        DatabaseError(error);
     };
 };
