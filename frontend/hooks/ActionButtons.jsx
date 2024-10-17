@@ -1,13 +1,15 @@
-import { Button, Text, View } from 'native-base';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from 'expo-router';
 import { UserContext } from '@/context/userContext';
 import { useContext } from 'react';
+import { ShowDrawer } from './showDrawer';
 
-const ActionButtons = () => {
+export const ActionButtons = () => {
   const { setIsLoggedIn } = useContext(UserContext);
+  const { mostrar } = ShowDrawer();
 
   const clearAsyncStorage = async () => {
+    mostrar();
     try {
       await AsyncStorage.clear();
       console.log('AsyncStorage vaciado con éxito.');
@@ -30,12 +32,10 @@ const ActionButtons = () => {
     }
   };
 
-  return (
-    <View style={{ margin: 'auto', gap: 10 }}>
-      <Button onPress={clearAsyncStorage}><Text style={{color:'#fff'}}>CERRAR SESIÓN</Text></Button>
-      <Button onPress={checkAsyncStorage}><Text style={{color:'#fff'}}>Ver AsyncStorage</Text></Button>
-    </View>
-  );
+  return {
+    clearAsyncStorage,
+    checkAsyncStorage
+  }
 };
 
-export default ActionButtons;
+export default ActionButtons

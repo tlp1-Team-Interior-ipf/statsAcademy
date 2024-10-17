@@ -30,8 +30,8 @@ const MyCard = ({ title, subtitle, image, window }) => {
 
       {/* Animated View que cambia su maxHeight */}
       <Animated.View style={[styles.content, { maxHeight }]}>
-        <Text style={{fontWeight: 'bold'}}>{title}</Text>
-        <Text>{subtitle}</Text>
+        <Text style={{fontWeight: 'bold', color:'#ddd'}}>{title}</Text>
+        <Text style={{ color:'#ddd' }}>{subtitle}</Text>
       </Animated.View>
     </View>
   );
@@ -40,7 +40,7 @@ const MyCard = ({ title, subtitle, image, window }) => {
 const styles = StyleSheet.create({
   container: {
     width: 300,
-    backgroundColor: '#fff',
+    backgroundColor: '#111',
     borderRadius: 5,
     padding: 10,
     alignItems: 'center',

@@ -1,15 +1,11 @@
-import React, { useEffect, useState, useRef, useContext } from 'react';
-import { StyleSheet, View, Text, Image, Dimensions, ImageBackground, ScrollView, Animated } from 'react-native';
+import React from 'react';
+import { StyleSheet, View, Text, Image, Dimensions, ScrollView } from 'react-native';
 import { Button } from '@rneui/themed';
 import Carousel from 'react-native-reanimated-carousel';
 import { MyButton2 } from '@/components/Icons';
-import { BlurView } from 'expo-blur';
 import { ButtonStart } from '@/components/SocialButtons'
 import Navbar from '@/components/Navbar'
 import { Stack } from 'expo-router';
-import { Ionicons } from '@expo/vector-icons';
-import { UserContext } from '@/context/userContext';
-
 
 const { width } = Dimensions.get('window');
 
@@ -19,48 +15,14 @@ const data = [
   { id: 3, image: require('@/img/img2.jpg') },
 ];
 
-const background = require("@/img/img1.jpg");
-
 export default function HomeScreen() {
-  const [showDraw, setShowDraw] = useState(false)
-  const slideAnim = useRef(new Animated.Value(360)).current;
-  const { isLoggedIn } = useContext(UserContext);
-
-  useEffect(() => {
-    Animated.timing(slideAnim, {
-      toValue: showDraw ? 0 : 360,
-      duration: 300,
-      useNativeDriver: true,
-    }).start();
-  }, [showDraw]);
   
-  const mostrar = () => {
-    console.log("djkwsadnjnkj")
-    setShowDraw(!showDraw);
-  };
-
   return (
     <>
       <Stack.Screen options={{headerShown: false}} />
-      <ImageBackground source={background} style={{ flex: 1 }}>
+      <View style={{backgroundColor: '#111'}}>
         <ScrollView>
-          <Navbar action={mostrar} />
-          <Animated.View style={{
-            backgroundColor: '#22f', 
-            width: '80%', 
-            height: '100%', 
-            zIndex: 10, 
-            position: 'absolute', 
-            top: 40, 
-            right: 0,
-            transform: [{ translateX: slideAnim }],
-            alignItems: 'flex-end'
-            }}>
-              <Ionicons name='close' size={40} color={'#ddd'} onPress={mostrar} style={{padding: 10}} />
-              {isLoggedIn && (
-                <Button title={'CERRAR SESIÓN'}></Button>
-              )}
-          </Animated.View>
+          <Navbar/>
           <Text style={{ fontSize: 50, textAlign: 'left', paddingLeft: 10, color: '#fff' }}>Stats Academy</Text>
           <Text style={{ fontSize: 30, textAlign: 'left', paddingLeft: 10, color: '#fff' }}>Aprendizaje en Estadística</Text>
           <Text style={{ fontSize: 22, textAlign: 'left', paddingLeft: 10, color: '#fff' }}>
@@ -115,13 +77,7 @@ export default function HomeScreen() {
 
         </ScrollView>
 
-        <BlurView
-          style={styles.blurView}
-          tint='systemThinMaterialDark'
-          blurAmount={10}
-          intensity={40}
-        />
-      </ImageBackground>
+      </View>
     </>
   );
 }
