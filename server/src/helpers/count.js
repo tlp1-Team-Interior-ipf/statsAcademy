@@ -13,7 +13,7 @@ export const countTemas = async () => {
 
 export const countTemasDictados = async () => {
     try {
-        const count = await Temas.count({ estado: 'dictado' });
+        const count = await Temas.count({ where: { estado: 'dictado' } });
         return count;
     } catch (error) {
         throw new Error(error);
