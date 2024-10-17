@@ -9,4 +9,5 @@ export const environments = {
     DB_PORT: process.env.DB_PORT,
     DB_DIALECT: process.env.DB_DIALECT,
     SECRET_KEY: process.env.SECRET_KEY,
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
 };

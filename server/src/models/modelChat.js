@@ -6,8 +6,8 @@ export const Chat = sequelize.define('Chat', {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    response: {
-      type: DataTypes.TEXT,
+    sender: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
   }, {
