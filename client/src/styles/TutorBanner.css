@@ -5,23 +5,26 @@
     height: 400px; /* Ajusta la altura si es necesario */
     padding: 0;
     background: linear-gradient(to bottom, #ffffff 10%, #0E7684 10%); /* 20% superior blanca, 80% restante verde */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para resaltar el banner */
     position: relative; /* Necesario para que los elementos posicionados absolutamente se ubiquen en relación a este contenedor */
 }
 
 .banner-content {
     width: 80%; /* El banner ocupa el 60% del ancho de la pantalla */
-    background: #B7F2D3;
+    background: rgb(183,242,211);
+    background: linear-gradient(90deg, rgba(183,242,211,1) 54%, rgba(164,196,235,1) 100%);
     text-align: left;
     padding: 60px; /* Mayor espacio para que se vea más grande */
     border-radius: 10px; /* Redondeado para diferenciar el contenido */
     z-index: 1; /* Asegura que el contenido esté por encima de la imagen */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para resaltar el contenido del banner */
 }
+
 
 h2 {
     font-size: 28px;
     color: #333;
     margin-bottom: 15px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Sombra para el texto de los títulos */
 }
 
 .cta-button {
@@ -32,10 +35,13 @@ h2 {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para el botón */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transición suave para el hover */
 }
 
 .cta-button:hover {
     background-color: #06555b; /* Un tono más oscuro del verde para el hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Incrementa la sombra al hacer hover */
 }
 
 .tutor-image {
@@ -45,5 +51,5 @@ h2 {
     top: -8px; /* Ajusta la cantidad de desplazamiento hacia arriba para superponerla */
     width: 250px; /* Aumenta el tamaño de la imagen según tus necesidades */
     z-index: 2; /* Mantiene la imagen por encima del contenido del banner */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Añade sombra a la imagen para dar una sensación de flotación */
 }
-
