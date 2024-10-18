@@ -92,7 +92,7 @@ export const ctrlLoginUser = async (req, res) => {
             return res.status(404).json({ error: 'User not found' });
         }
         const token = await createJWT({ user: user.id });
-        res.status(200).json({ token });
+        res.status(200).json({ token, userId: user.id });
     } catch (error) {
         console.error(error);
         res.status(401).json({ error: 'Unauthorized' });

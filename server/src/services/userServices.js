@@ -19,9 +19,15 @@ export async function getAllUsers() {
 
 export async function createUser (user) {
     try {
-        const existingUser = await UserModel.findOne({ where: { email: user.email } });
+        const existingEmail = await UserModel.findOne({ where: { email: user.email } });
+        if (existingEmail) {
+            throw new Error('A user with this email already exists');
+        }
+
+        const existingUser = await UserModel.findOne({ where: { username: user.username } });
+
         if (existingUser) {
-           throw new Error('User already exists');
+            throw new Error('A user with this username already exists');
         }
 
         const hashedPassword = await hashPassword(user.password);
