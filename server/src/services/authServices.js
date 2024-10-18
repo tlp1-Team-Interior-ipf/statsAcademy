@@ -28,8 +28,9 @@ export const loginUser = async (email, password) => {
         if (!isPasswordValid) {
             throw new Error('Invalid Password');
         };
+        const userObject = user.dataValues;
         const token = await generateToken({ id: user.id });
-        return token;
+        return { ...userObject, token };
     } catch (error) {
         DatabaseError(error);
     };

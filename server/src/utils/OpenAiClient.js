@@ -10,10 +10,11 @@ export const fetchOpenAIResponse = async (messages) => {
     try {
         const response = await openai.chat.completions.create({
             model: 'gpt-4',
-            messages,
+            messages: messages,
             temperature: 0.7,
         });
 
+        console.log(messages);
         const modelResponse = response.choices[0].message.content;
         if (!modelResponse) throw new Error('No se pudo obtener una respuesta del modelo');
         
@@ -23,13 +24,12 @@ export const fetchOpenAIResponse = async (messages) => {
     }
 };
 
-export const evaluateResponse = async (userMessage, modelResponse) => {
+export const evaluateResponse = async (modelResponse) => {
     try {
         const evaluation = await openai.chat.completions.create({
             model: 'gpt-4',
             messages: [
                 { role: 'system', content: `Evalúa si el estudiante entendió el tema. Respuesta numérica de 0 a 100.` },
-                { role: 'user', content: userMessage },
                 { role: 'assistant', content: modelResponse }
             ],
             temperature: 0.3,

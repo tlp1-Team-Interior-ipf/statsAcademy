@@ -9,9 +9,9 @@ import { fetchOpenAIResponse, evaluateResponse } from "../utils/OpenAiClient.js"
 export const FetchModelResponse = async ( message, userId ) => {
     try {
         const chatHistory = await getChatHistory(userId);
-        const nextTopic = await getNextTopic(userId);
+        const nextTopic = await getNextTopic();
 
-        const previousContext = chatHistory.map(chat => ({
+        let previousContext = chatHistory.map(chat => ({
             role: chat.sender === 'user' ? 'user' : 'assistant',
             content: chat.message,
         }));
@@ -28,19 +28,33 @@ export const FetchModelResponse = async ( message, userId ) => {
             content: message,
         });
 
-        const modelResponse = await fetchOpenAIResponse([...previousContext, systemMessage]);
+        const modelResponse = await fetchOpenAIResponse([ systemMessage, ...previousContext
+        ]);
 
-        await Chat.create({ userId, message, sender: 'user' });
+        await Chat.create({ userId, message: message, sender: 'user' });
         await Chat.create({ userId, message: modelResponse, sender: 'assistant' });
 
-        const comprehensionLevel = await evaluateResponse(message, modelResponse);
-
+        const comprehensionLevel = await evaluateResponse(modelResponse);
+        console.log(comprehensionLevel);
         if (comprehensionLevel >= 70) {
-            await updateTopicStatus(userId, nextTopic.id);
+            await updateTopicStatus( nextTopic.id);
         };
 
         
         return modelResponse;
+    } catch (error) {
+        DatabaseError(error);
+    };
+};
+
+
+export const ChatHistory = async ( userId ) => {
+    try {
+        const chatHistory = await getChatHistory(userId);
+        if (!chatHistory) {
+            throw new Error('No se encontró historial de chat');
+        };
+        return chatHistory;
     } catch (error) {
         DatabaseError(error);
     };
