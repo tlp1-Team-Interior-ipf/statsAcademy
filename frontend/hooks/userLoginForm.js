@@ -28,6 +28,7 @@ const userLoginForm = () => {
     
             const data = await response.json();
             console.log("Estado de la respuesta:", response.status);
+            console.log("Estado usuaio:", response);
             console.log(data);
     
             if (response.ok) {
@@ -35,6 +36,10 @@ const userLoginForm = () => {
                 const token = data.token.token; 
                 console.log("tokennnn:", token)
                 await AsyncStorage.setItem('userToken', token); // guardo el token
+
+                const userId = data.user.id;
+
+                await AsyncStorage.setItem('userId', userId.toString());
 
                 await AsyncStorage.setItem('isLoggedIn', 'true'); // guardo el estado de login
 

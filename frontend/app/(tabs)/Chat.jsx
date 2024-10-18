@@ -2,6 +2,7 @@ import { ScrollView, TextInput, View } from 'react-native'
 import { Stack } from 'expo-router'
 import { Ionicons } from '@expo/vector-icons';
 import { useRef, useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Chat = () => {
     const [input, setInput] = useState('');
@@ -51,12 +52,15 @@ const Chat = () => {
         setInput('');
     
         try {
+          const token = AsyncStorage.getItem('userToken')
+          const userId = AsyncStorage.getItem('userId')
+
           const response = await fetch('http://localhost:3000/ask', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ question: input })
+            body: JSON.stringify({ question: input, userId: userId })
           });
     
           const data = await response.json();
