@@ -4,10 +4,13 @@ import { ButtonList } from "./SocialButtons";
 import { Ionicons } from "@expo/vector-icons";
 import { UserContext } from "@/context/userContext";
 import ActionButtons from "@/hooks/ActionButtons";
+import { router } from "expo-router";
 
 const MyDrawer = ({ slideAnim, mostrar }) => {
   const { isLoggedIn } = useContext(UserContext);
-    const { clearAsyncStorage } = ActionButtons();
+  const { handleLogout, redirectLogin, redirectRegister } = ActionButtons();
+
+    
 
     return(
         <Animated.View style={{
@@ -27,10 +30,10 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
                 <>
                   <View style={{justifyContent: 'flex-start', flex: 10, top: 50, gap: 10}}>
                     <View style={{borderWidth: 2, borderRadius: 5, borderColor: '#ddd',  width: 250}}>
-                      <ButtonList content={'Iniciar sesión'} action={() => router.push('Login')}/>
+                      <ButtonList content={'Iniciar sesión'} action={redirectLogin}/>
                     </View>
                     <View style={{borderWidth: 2, borderRadius: 5, borderColor: '#ddd',  width: 250}}>
-                      <ButtonList content={'Registrarse'} action={() => router.push('Register')}/>
+                      <ButtonList content={'Registrarse'} action={redirectRegister}/>
                     </View>
                   </View>
                 </>
@@ -57,7 +60,7 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
                               <Text style={{color: '#fff', paddingVertical: 5, fontSize: 17, fontWeight: 'bold'}}>Aplicación</Text>
                               <View style={{borderWidth: 2, borderRadius: 5, borderColor: '#ddd',  width: 250}}>
                                 <ButtonList content={'Invitar amigos'} />
-                                <ButtonList content={'Cerrar sesión'} action={clearAsyncStorage} />
+                                <ButtonList content={'Cerrar sesión'} action={handleLogout} />
                               </View>
                             </View>
                           

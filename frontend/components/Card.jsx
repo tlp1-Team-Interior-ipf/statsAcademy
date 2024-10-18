@@ -23,7 +23,7 @@ const MyCard = ({ title, subtitle, image, window }) => {
       <AntDesign 
         name={showContent ? "down" : "up"} 
         size={24} 
-        color={'#fff'}
+        color={'#ddd'}
         style={styles.icon} 
         onPress={() => setShowContent(!showContent)} 
       />
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     margin: 'auto',
     // Propiedades de sombra para iOS
-    shadowColor: '#000',
+    shadowColor: '#fff',
     shadowOffset: {
       width: 0,
       height: 2,

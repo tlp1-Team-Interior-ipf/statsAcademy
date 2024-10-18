@@ -28,25 +28,24 @@ const userLoginForm = () => {
     
             const data = await response.json();
             console.log("Estado de la respuesta:", response.status);
-            console.log("Estado usuaio:", response);
-            console.log(data);
+            console.log("Estado usuaio:", data);
     
             if (response.ok) {
-                console.log("respuesta: ", response)
+                
                 const token = data.token.token; 
-                console.log("tokennnn:", token)
+
+                const userId = data.userId;
+                
                 await AsyncStorage.setItem('userToken', token); // guardo el token
 
-                const userId = data.user.id;
-
-                await AsyncStorage.setItem('userId', userId.toString());
+                await AsyncStorage.setItem('userId', userId.toString()); // guardo el id del usuario
 
                 await AsyncStorage.setItem('isLoggedIn', 'true'); // guardo el estado de login
 
                 setEmail('');
                 setPass('');
                 setErrorMessage('');
-                setIsLoggedIn(true)
+                setIsLoggedIn(true);
                 router.push('explore');
             } else {
                 setErrorMessage(data.message || 'Contraseña o Email incorrecto');

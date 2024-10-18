@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, Image, StyleSheet, Pressable } from 'react-native';
+import { View, Image, StyleSheet, Pressable, Text } from 'react-native';
 import { MyButton2 } from './Icons';
 import { ButtonProfile } from './Icons';
 import { UserContext } from '@/context/userContext';

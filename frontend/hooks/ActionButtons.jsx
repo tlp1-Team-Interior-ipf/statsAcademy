@@ -32,9 +32,27 @@ export const ActionButtons = () => {
     }
   };
 
+  const handleLogout = () => {
+    mostrar();
+    clearAsyncStorage();
+  }
+
+  const redirectLogin = () => {
+    mostrar();
+    router.push('Login');
+  }
+
+  const redirectRegister = () => {
+    mostrar();
+    router.push('Register');
+  }
+
   return {
     clearAsyncStorage,
-    checkAsyncStorage
+    checkAsyncStorage,
+    handleLogout,
+    redirectLogin,
+    redirectRegister
   }
 };
 

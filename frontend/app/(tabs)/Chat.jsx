@@ -1,7 +1,7 @@
-import { ScrollView, TextInput, View } from 'react-native'
-import { Stack } from 'expo-router'
-import { Ionicons } from '@expo/vector-icons';
-import { useRef, useState } from 'react';
+import { ScrollView, TextInput, View, Text} from 'react-native'
+import { router, Stack } from 'expo-router'
+import { AntDesign, Ionicons } from '@expo/vector-icons';
+import { useRef, useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Chat = () => {
@@ -88,7 +88,19 @@ const Chat = () => {
 
     return (
     <View style={{ flex: 1, backgroundColor: '#111' }}>
-      <Stack.Screen options={{ headerShown: false }} />
+      <Stack.Screen 
+                options={{ 
+                    title: 'Tutor Gauss', 
+                    headerShown: true,
+                    headerStyle: { 
+                        backgroundColor: '#111' 
+                    },
+                    headerTintColor: '#ddd',
+                    headerLeft: () => (
+                        <AntDesign name="arrowleft" size={22} color={'#ddd'} onPress={() => router.push('explore')} style={{ paddingLeft: 20 }} />
+                    )
+                }}
+            />
       <ScrollView ref={scrollViewRef} style={{ flex: 1 }}>
         <View style={{ padding: 10 }}>
           {messages.map((message, index) => (

@@ -44,7 +44,7 @@ export default function Layout() {
         {appIsReady && (
           <Stack screenOptions={{headerShown: false}}>
             <ProtectedRoute>
-              <Slot /> 
+              <Slot />
             </ProtectedRoute>
           </Stack>
         )}

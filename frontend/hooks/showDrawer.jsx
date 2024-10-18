@@ -9,7 +9,7 @@ export const ShowDrawer = () => {
     Animated.timing(slideAnim, {
       toValue: showDraw ? 0 : 360,
       duration: 300,
-      useNativeDriver: true,
+      useNativeDriver: false,
     }).start();
   }, [showDraw]);
   

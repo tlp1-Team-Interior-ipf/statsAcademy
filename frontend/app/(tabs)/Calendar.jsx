@@ -18,7 +18,7 @@ const Calendario = () => {
             backgroundColor: '#111', 
           },
           headerLeft: () => (
-            <AntDesign name='arrowleft' onPress={() => router.back()} size={22} color={'#ddd'} style={{paddingLeft: 20}} />
+            <AntDesign name='arrowleft' onPress={() => router.push('explore')} size={22} color={'#ddd'} style={{paddingLeft: 20}} />
           ),
         }} />
             <View style={{backgroundColor: '#111', height:'100%'}}>
@@ -48,7 +48,7 @@ const Calendario = () => {
                             Eventos importantes
                         </Text>
 
-                        <Pressable style={{borderWidth: 1, borderRadius: 5, padding: 5, borderColor: '#ddd', margin: 'auto'}}>
+                        <Pressable style={{borderWidth: 1, borderRadius: 5, padding: 10, borderColor: '#ddd', margin: 'auto', width: '50%', alignItems: 'center'}}>
                             <Text style={{color: '#ddd'}}>Añadir evento importante</Text>
                         </Pressable>
                 </View>

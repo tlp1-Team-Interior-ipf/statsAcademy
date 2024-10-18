@@ -22,7 +22,9 @@ export default function HomeScreen() {
       <Stack.Screen options={{headerShown: false}} />
       <View style={{backgroundColor: '#111'}}>
         <ScrollView>
-          <Navbar/>
+          <View style={{zIndex: 1}}>
+            <Navbar />
+          </View>
           <Text style={{ fontSize: 50, textAlign: 'left', paddingLeft: 10, color: '#fff' }}>Stats Academy</Text>
           <Text style={{ fontSize: 30, textAlign: 'left', paddingLeft: 10, color: '#fff' }}>Aprendizaje en Estadística</Text>
           <Text style={{ fontSize: 22, textAlign: 'left', paddingLeft: 10, color: '#fff' }}>

@@ -37,6 +37,7 @@ export const useRegisterForm = () => {
       });
 
       const data = await response.json();
+      console.log("response data: ", data.error)
       if (response.ok) {
         await AsyncStorage.setItem('userToken', data.token.token);
         setUserCreate('');
@@ -44,7 +45,7 @@ export const useRegisterForm = () => {
         setPassCreate('');
         router.push('Login');
       } else {
-        Alert.alert('Error de registro', data.message || 'Hubo un problema con el registro');
+        Alert.alert('Error de registro', data.error || 'Hubo un problema con el registro');
       }
     } catch (error) {
       Alert.alert('Error', 'No se pudo conectar con el servidor');
