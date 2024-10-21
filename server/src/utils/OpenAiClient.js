@@ -29,14 +29,15 @@ export const evaluateResponse = async (modelResponse) => {
         const evaluation = await openai.chat.completions.create({
             model: 'gpt-4',
             messages: [
-                { role: 'system', content: `Evalúa si el estudiante entendió el tema. Respuesta numérica de 0 a 100.` },
+                { role: 'system', content: `Evalúa si el estudiante ha mostrado un buen entendimiento del tema en su respuesta: ${modelResponse}. La respuesta que brindes debe de ser numerica de un rango de 0 a 100, solo quiero esa respuesta, una nota numerica.` },
                 { role: 'assistant', content: modelResponse }
             ],
             temperature: 0.3,
         });
 
-        const comprehensionLevel = parseInt(evaluation.choices[0].message.content);
-        return comprehensionLevel;
+        const comprehensionLevel = evaluation.choices[0].message.content;
+        const comprehension = parseInt(comprehensionLevel);
+        return comprehension;
     } catch (error) {
         DatabaseError(error);
     }
