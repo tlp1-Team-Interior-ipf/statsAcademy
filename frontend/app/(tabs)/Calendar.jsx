@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { View, Text, Pressable } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import AntDesign from '@expo/vector-icons/AntDesign';
+import  MyStagger  from '@/components/StaggerButtons'
 
 const Calendario = () => {
     const [selected, setSelected] = useState('');
@@ -53,6 +54,7 @@ const Calendario = () => {
                         </Pressable>
                 </View>
             </View>
+            <MyStagger />
         </>
     )
 }

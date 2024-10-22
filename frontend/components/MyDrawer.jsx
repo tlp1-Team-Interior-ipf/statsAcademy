@@ -4,7 +4,6 @@ import { ButtonList } from "./SocialButtons";
 import { Ionicons } from "@expo/vector-icons";
 import { UserContext } from "@/context/userContext";
 import ActionButtons from "@/hooks/ActionButtons";
-import { router } from "expo-router";
 
 const MyDrawer = ({ slideAnim, mostrar }) => {
   const { isLoggedIn } = useContext(UserContext);

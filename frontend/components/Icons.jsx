@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   buttonContainer2: {
     flexDirection: 'row',
     width:40,
-    marginHorizontal: 0,
+    marginHorizontal: -10,
     padding:0,
     justifyContent: 'center',
     alignItems: 'center'

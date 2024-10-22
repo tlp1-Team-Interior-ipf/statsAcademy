@@ -6,6 +6,7 @@ import { MyButton2 } from '@/components/Icons';
 import { ButtonStart } from '@/components/SocialButtons'
 import Navbar from '@/components/Navbar'
 import { Stack } from 'expo-router';
+import  MyStagger  from '@/components/StaggerButtons'
 
 const { width } = Dimensions.get('window');
 
@@ -63,10 +64,10 @@ export default function HomeScreen() {
                 <Text style={{ color: '#fff', fontSize: 10, textAlign: 'center', marginBottom: 10 }}>Términos y Condiciones</Text>
                 <Text style={{ color: '#fff', fontSize: 12, textAlign: 'center' }}>StatsAcademy®</Text>
                 <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 5 }}>
-                  <MyButton2 iconName={'logo-facebook'} />
-                  <MyButton2 iconName={'logo-linkedin'} />
-                  <MyButton2 iconName={'logo-instagram'} />
-                  <MyButton2 iconName={'logo-github'} />
+                  <MyButton2 iconName={'facebook-official'} iconSize={13} color={'#ddd'} action={null}/>
+                  <MyButton2 iconName={'linkedin-square'} iconSize={13} color={'#ddd'} action={null}/>
+                  <MyButton2 iconName={'instagram'} iconSize={13} color={'#ddd'} action={null}/>
+                  <MyButton2 iconName={'github'} iconSize={13} color={'#ddd'} action={null}/>
                 </View>
               </View>
               <View style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -76,8 +77,8 @@ export default function HomeScreen() {
               </View>
             </View>
           </View>
-
         </ScrollView>
+              <MyStagger />
 
       </View>
     </>

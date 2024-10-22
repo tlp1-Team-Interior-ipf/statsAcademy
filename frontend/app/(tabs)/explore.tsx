@@ -6,6 +6,7 @@ import MyCard from '@/components/Card'
 import Navbar from '@/components/Navbar'
 import { Stack } from 'expo-router';
 import { Text } from 'react-native';
+import  MyStagger  from '@/components/StaggerButtons'
 
 const Explore = () => {
   const { loading } = useAuth();
@@ -33,6 +34,7 @@ const Explore = () => {
             </View>
         </ScrollView>
       </View>
+      <MyStagger />
     </NativeBaseProvider>
   );
 };
