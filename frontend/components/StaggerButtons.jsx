@@ -11,7 +11,7 @@ const Example = () => {
     isOpen,
     onToggle
   } = useDisclose();
-  return <Center style={{position: 'absolute', left: 280, top: -320}}>
+  return <Center style={{position: 'absolute', left: 290, top: -320}}>
       <Box alignItems="center" minH="220">
         <Stagger visible={isOpen} initial={{
           opacity: 0,

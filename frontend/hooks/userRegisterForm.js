@@ -26,7 +26,7 @@ export const useRegisterForm = () => {
     }
 
     try {
-      const response = await fetch('http://192.168.129.123:3000/users/', {
+      const response = await fetch('http://192.168.7.123:3000/users/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -37,7 +37,7 @@ export const useRegisterForm = () => {
       });
 
       const data = await response.json();
-      console.log("response data: ", data.error)
+      
       if (response.ok) {
         await AsyncStorage.setItem('userToken', data.token.token);
         setUserCreate('');

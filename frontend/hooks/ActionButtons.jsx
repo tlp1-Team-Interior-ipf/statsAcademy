@@ -2,19 +2,21 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from 'expo-router';
 import { UserContext } from '@/context/userContext';
 import { useContext } from 'react';
-import { ShowDrawer } from './showDrawer';
-
+import  {ShowDrawer}  from './showDrawer';
 export const ActionButtons = () => {
   const { setIsLoggedIn } = useContext(UserContext);
   const { mostrar } = ShowDrawer();
 
   const clearAsyncStorage = async () => {
-    mostrar();
     try {
       await AsyncStorage.clear();
-      console.log('AsyncStorage vaciado con éxito.');
+      const token = await AsyncStorage.getItem('userToken');
+      
+      console.log('AsyncStorage vaciado con éxito: ', token);
       setIsLoggedIn(false);
       router.push("/");
+      mostrar("cerrar");
+
     } catch (error) {
       console.error('Error al vaciar AsyncStorage:', error);
     }
@@ -32,27 +34,9 @@ export const ActionButtons = () => {
     }
   };
 
-  const handleLogout = () => {
-    mostrar();
-    clearAsyncStorage();
-  }
-
-  const redirectLogin = () => {
-    mostrar();
-    router.push('Login');
-  }
-
-  const redirectRegister = () => {
-    mostrar();
-    router.push('Register');
-  }
-
   return {
     clearAsyncStorage,
     checkAsyncStorage,
-    handleLogout,
-    redirectLogin,
-    redirectRegister
   }
 };
 

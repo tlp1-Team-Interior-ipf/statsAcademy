@@ -2,12 +2,12 @@ import { Router } from 'express';
 import { authenticateUser } from '../middlewares/authMiddleware.js';
 import { 
     ctrlCreateUser, 
-ctrlDeleteUser, 
-ctrlGetAllUsers, 
-ctrlGetUser, 
-ctrlUpdateUser,
-ctrlLoginUser,
-ctrlGetUserByToken,
+    ctrlDeleteUser, 
+    ctrlGetAllUsers, 
+    ctrlGetUser, 
+    ctrlUpdateUser,
+    ctrlLoginUser,
+    ctrlGetUserByToken,
 } from '../controllers/userController.js';
 import { createUserSchema, loginUserSchema } from '../models/Schema/userSchema.js';
 import { validator } from '../middlewares/validator.js';

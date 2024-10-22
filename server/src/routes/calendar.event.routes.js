@@ -1,7 +1,6 @@
 import { Router } from 'express';
 
-import { validator } from '../middlewares/validator.js';
-import { CreateEvent, GetEvents } from '../controllers/eventController.js';
+import { CreateEvent, GetEvents, UpdateEvent, DeleteEvent } from '../controllers/eventController.js';
 
 const CalendarEvents = Router();
 
@@ -12,9 +11,9 @@ CalendarEvents.get('/', GetEvents);
 CalendarEvents.post('/', CreateEvent);
 
 // Ruta para actualizar un evento existente por ID (requiere autenticación)
-// CalendarEvents.put('/:id', authenticateUser, UpdateEvent);
+CalendarEvents.put('/:id', UpdateEvent);
 
 // Ruta para eliminar un evento por ID (requiere autenticación)
-// CalendarEvents.delete('/:id', authenticateUser, DeleteEvent);
+CalendarEvents.delete('/:id', DeleteEvent);
 
 export default CalendarEvents;
