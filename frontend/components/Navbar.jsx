@@ -8,7 +8,7 @@ import MyDrawer from '@/components/MyDrawer'
 
 const Navbar = () => {
   const { isLoggedIn } = useContext(UserContext);
-  const { mostrar, slideAnim } = ShowDrawer();
+  const { mostrar, slideAnim,  } = ShowDrawer();
 
   return (
     <View style={styles.container}>

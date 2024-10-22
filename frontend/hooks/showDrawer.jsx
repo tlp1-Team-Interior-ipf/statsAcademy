@@ -3,7 +3,7 @@ import { Animated } from "react-native";
 
 export const ShowDrawer = () => {
     const [showDraw, setShowDraw] = useState(false);
-    const slideAnim = useRef(new Animated.Value(360)).current;
+    const slideAnim = useRef(new Animated.Value(showDraw ? 0 : 360)).current;
 
   useEffect(() => {
     Animated.timing(slideAnim, {
@@ -14,7 +14,14 @@ export const ShowDrawer = () => {
   }, [showDraw]);
   
   const mostrar = () => {
-    console.log("Drawer mostrado")
+      // setShowDraw(prevState => !prevState)
+    // if(action === 'cerrar') {
+    //   console.log("Drawer cerrado")
+    //   setShowDraw(false);
+    // } else {
+    //   console.log("Drawer mostrado")
+    //   setShowDraw(prevState => !prevState);
+    // }
     setShowDraw(!showDraw);
   };
 
@@ -22,6 +29,7 @@ export const ShowDrawer = () => {
   return {
       mostrar,
       slideAnim,
-      showDraw
+      showDraw,
+      setShowDraw
   }
 }

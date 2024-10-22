@@ -8,9 +8,23 @@ import { router } from "expo-router";
 
 const MyDrawer = ({ slideAnim, mostrar }) => {
   const { isLoggedIn } = useContext(UserContext);
-  const { handleLogout, redirectLogin, redirectRegister } = ActionButtons();
+  const { clearAsyncStorage } = ActionButtons();
 
-    
+  const handleLogin = () => {
+    mostrar();
+    router.push('Login');
+  }
+
+  const handleRegister = () => {
+    mostrar();
+    router.push('Register');
+  }
+
+  const handleLogout = () => {
+    clearAsyncStorage();
+    mostrar();
+    router.push('/');
+  }
 
     return(
         <Animated.View style={{
@@ -30,10 +44,10 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
                 <>
                   <View style={{justifyContent: 'flex-start', flex: 10, top: 50, gap: 10}}>
                     <View style={{borderWidth: 2, borderRadius: 5, borderColor: '#ddd',  width: 250}}>
-                      <ButtonList content={'Iniciar sesión'} action={redirectLogin}/>
+                      <ButtonList content={'Iniciar sesión'} action={handleLogin}/>
                     </View>
                     <View style={{borderWidth: 2, borderRadius: 5, borderColor: '#ddd',  width: 250}}>
-                      <ButtonList content={'Registrarse'} action={redirectRegister}/>
+                      <ButtonList content={'Registrarse'} action={handleRegister}/>
                     </View>
                   </View>
                 </>
