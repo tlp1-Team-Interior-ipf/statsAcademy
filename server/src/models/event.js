@@ -15,11 +15,10 @@ export const EventModel = sequelize.define('Event', {
         type: DataTypes.DATE,
         allowNull: false,
     },
-    user: {
-        type: DataTypes.STRING,
+    userId: {
+        type: DataTypes.INTEGER,
         allowNull: false
     }
-    
 },
 {
     timestamps: true,
@@ -27,3 +26,4 @@ export const EventModel = sequelize.define('Event', {
     tableName: 'Event',
 },
 );
+
