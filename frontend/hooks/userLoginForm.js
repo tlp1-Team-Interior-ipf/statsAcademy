@@ -17,7 +17,7 @@ const userLoginForm = () => {
 
         console.log(email, pass)
         try {
-            const response = await fetch('http://192.168.166.247:3000/users/login', {
+            const response = await fetch('http://192.168.166.123:3000/users/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -29,8 +29,7 @@ const userLoginForm = () => {
             });
             
             const data = await response.json();
-            console.log("Estado de la respuesta:", response.status);
-            console.log("Estado usuaio:", data);
+            console.log("Usuario logueado:", data);
             
             if (response.ok) {
                 

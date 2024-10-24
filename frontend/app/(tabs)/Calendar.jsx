@@ -1,9 +1,8 @@
 import {Stack, router} from 'expo-router'
 import { useEffect, useState } from 'react';
 import { View, Text, Pressable, ScrollView, TextInput, Button, Platform } from 'react-native';
-import { Calendar } from 'react-native-calendars';
+import { Calendar, LocaleConfig } from 'react-native-calendars';
 import AntDesign from '@expo/vector-icons/AntDesign';
-import  MyStagger  from '@/components/StaggerButtons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Ionicons} from '@expo/vector-icons';
 import DateTimePickerAndroid from '@react-native-community/datetimepicker'
@@ -16,13 +15,31 @@ const Calendario = () => {
     const [date, setDate] = useState(new Date());
     const [showDate, setShowDate] = useState(false);
 
-    const fetchEvents = async () => {
+    LocaleConfig.locales['es'] = {
+        monthNames: [
+            'Enero', 'Febrero', 'Marzo', 'Abril',
+            'Mayo', 'Junio', 'Julio', 'Agosto',
+            'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+        ],
+        monthNamesShort: [
+            'Ene', 'Feb', 'Mar', 'Abr',
+            'May', 'Jun', 'Jul', 'Ago',
+            'Sep', 'Oct', 'Nov', 'Dic'
+        ],
+        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sab'],
+        today: 'Hoy'
+    };
+    
+    LocaleConfig.defaultLocale = 'es';
+
+    useEffect(() => {
+        const fetchEvents = async () => {
             try {
                 const token = await AsyncStorage.getItem('userToken');
-                console.log("token en el frontendddd: ", token)
-               
-    
-                const response = await fetch('http://192.168.7.123:3000/calendarEvent', {
+                console.log("Token en el frontend:", token);
+                
+                const response = await fetch('http://192.168.166.123:3000/calendarEvent', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -30,24 +47,34 @@ const Calendario = () => {
                     }
                 });
 
-                console.log("respuesta:", response.ok)
-    
+                console.log("Respuesta:", response.ok);
+
                 if (!response.ok) {
                     throw new Error('Error al obtener los eventos');
                 }
-    
-                const eventData = await response.json();
-                setEvents(eventData);
-                console.log('Eventos obtenidos:', eventData);
-    
-            } catch (error) { }
-    }
-    
-    useEffect(() => {
-        fetchEvents();
-    }, [token])
 
-    const onChange = (event, selectedDate) => {
+                const eventData = await response.json();
+
+                if (eventData.length === 0) {
+                    console.log("Uy no tienes eventos, vaciaré tu array.");
+                    setEvents([]); 
+                } else {
+                    
+                    if (JSON.stringify(eventData) !== JSON.stringify(events)) {
+                        setEvents(eventData);
+                        console.log('Eventos obtenidos:', eventData);
+                    }
+                }
+
+
+            } catch (error) { }
+        };
+
+        fetchEvents();
+
+    }, [token]);
+
+    const onChange = (selectedDate) => {
         const currentDate = selectedDate || date;
         setShowDate(Platform.OS === 'ios');
         setDate(currentDate)
@@ -136,6 +163,7 @@ const Calendario = () => {
                             textSectionTitleColor: '#fff', // Color de día [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
                             calendarBackground: '#111' // Color de fondo del calendario,
                     }}
+                    
                 />
                 </View>
                 <View  style={{alignItems: 'center'}}>
@@ -147,21 +175,24 @@ const Calendario = () => {
                             <Text style={{color: '#ddd'}}>Añadir evento importante</Text>
                         </Pressable>
                             
-                        <View style={{height: 300, top: 10, margin: 'auto'}}>
+                        <View style={{height: 300, width: 300, top: 10, margin: 'auto'}}>
                         
                             {events.length === 0 ? (
-                                <View style={{margin: 'auto', justifyContent: 'center', backgroundColor: '#111', height: 350}}>
+                                <View style={{margin: 'auto', justifyContent: 'center', backgroundColor: '#111', height: 350, alignItems: 'center'}}>
                                     <Text style={{color: '#ddd'}}>No hay eventos programados</Text>
                                 </View>
                             ):(
-                                events.map((event) => (
-                                    <ScrollView>
-                                        <View key={event.id} style={{ padding: 17, backgroundColor: '#36f', borderRadius: 5, margin: 5, marginHorizontal: 10, gap: 10 }}>
-                                        <Text style={{ color: "#fff" }}>Evento: {event.event}</Text>
-                                        <Text style={{ color: "#fff" }}>Fecha: {event.date}</Text>
-                                    </View>
-                                    </ScrollView>
-                                ))
+                                <ScrollView>
+                                    {
+                                        events.map((event) => (
+                                            <View key={event.id} style={{ height: 80, width: '90%', padding: 17, backgroundColor: '#36f', borderRadius: 5, margin: 5, marginHorizontal: 10, gap: 10 }}>
+                                                <Text style={{ color: "#fff" }}>Fecha: {event.date}</Text>
+                                                <Text style={{ color: "#fff" }}>Evento: {event.event}</Text>
+                                            </View>
+                                        ))
+                                    }
+                                </ScrollView>
+
                             )}
                         </View>
                             {
@@ -171,9 +202,10 @@ const Calendario = () => {
                             }
                 </View>
             </View>
-            <MyStagger />
         </>
     )
+
 }
+
 
 export default Calendario;

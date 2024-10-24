@@ -40,15 +40,15 @@ export default function Layout() {
 
   return (
     <UserProvider>
-      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        {appIsReady && (
-          <Stack screenOptions={{headerShown: false}}>
-            <ProtectedRoute>
-              <Slot />
-            </ProtectedRoute>
-          </Stack>
-        )}
-      </ThemeProvider>
+        <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+          {appIsReady && (
+            <Stack screenOptions={{headerShown: false}}>
+              <ProtectedRoute>
+                <Slot />
+              </ProtectedRoute>
+            </Stack>
+          )}
+        </ThemeProvider>
     </UserProvider>
   );
 }
