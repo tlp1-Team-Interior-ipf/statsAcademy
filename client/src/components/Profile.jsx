@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import '../styles/profile.css';
+import './profile.css';
 import ThematicUnitsCard from './ThematicUnitsCard';
 import { AuthContext } from '../context/authContext';
 

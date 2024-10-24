@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import swal from 'sweetalert';
-import '../styles/Chat.css';
+import './Chat.css';
 
 function App() {
   const [question, setQuestion] = useState('');

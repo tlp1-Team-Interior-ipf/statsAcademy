@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';  // Importa useNavigate para la navegación
-import '../styles/Home.css';
+
+import './Home.css';
 
 const Home = () => {
   const navigate = useNavigate();  // Obtiene la función navigate
@@ -16,7 +17,7 @@ const Home = () => {
       <ul className="cards">
         <li>
           <button className="card" onClick={() => navigate('/home/profile')}>
-            <img src="img/studentnf.PNG" className="card__image" alt="Perfil del alumno" />
+            <img src="img/student.avif" className="card__image" alt="Perfil del alumno" />
             <div className="card__overlay">
               <div className="card__header">
                 <svg className="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
@@ -44,7 +45,7 @@ const Home = () => {
         </li>
         <li>
           <button className="card" onClick={handleCardClick}>
-            <img src="img/tutor.png" className="card__image" alt="Tutor Inteligente" />
+            <img src="img/tutor.jpg" className="card__image" alt="Tutor Inteligente" />
             <div className="card__overlay">
               <div className="card__header">
                 <svg className="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>

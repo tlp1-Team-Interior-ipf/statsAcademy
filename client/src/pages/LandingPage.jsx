@@ -1,20 +1,18 @@
-import React from 'react';
-import Navbar from '../components/NavBar';
-import MainView from '../components/MainView';
-import ToolsBanner from '../components/ToolsBanner';
-import TutorBanner from '../components/TutorBanner';
-import Footer from '../components/Footer';
+import NavBar from "../components/NavBar";
+import MainView from "../components/MainView";
+import TutorBanner from "../components/TutorBanner";
+import ToolsBanner from "../components/ToolsBanner";
 
-const LandingPage = () => {
+
+function LandingPage () {
     return (
-        <div>
-            <Navbar />
-            <MainView />
-            <TutorBanner />
-            <ToolsBanner />
-            <Footer />
-        </div>
+        <>
+        <NavBar />
+        <MainView />
+        <TutorBanner />
+        <ToolsBanner />
+        </>
     );
-};
+}
 
 export default LandingPage;

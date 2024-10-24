@@ -1,4 +1,4 @@
-import '../styles/ThematicUnitsCard.css';
+import './ThematicUnitsCard.css';
 import { UnidadesTematicas } from '../data/data';
 
 const ThematicUnitsCard = () => {
