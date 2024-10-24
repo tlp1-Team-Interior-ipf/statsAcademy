@@ -45,7 +45,7 @@ const Navbar = () => {
         {/* Logo */}
         <a href="#" className="custom-navbar-logo" onClick={handleHomeClick}>
           <img
-            src="img/tutorialogo.png" // URL o imagen local del logo
+            src="/img/tutorialogo.png" // URL o imagen local del logo
             alt="Stats Academy Logo"
             className="custom-navbar-logo-img"
           />

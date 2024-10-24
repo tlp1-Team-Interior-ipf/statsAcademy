@@ -15,6 +15,7 @@
   .home-container {
     text-align: center;
     padding: 2rem;
+    margin-top: 60px; /* Añade margen superior para compensar la altura del navbar */
   }
   
   .home-title {

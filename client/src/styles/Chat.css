@@ -1,15 +1,7 @@
 .Chat {
-    text-align: center;
     display: flex;
     flex-direction: column;
     height: 91vh;
-}
-
-.Chat-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
 }
 
 .chat-container {
@@ -21,21 +13,49 @@
 }
 
 .message {
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 10px;
-    max-width: 70%;
-    font-size: 20px;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border-radius: 20px;
+    max-width: 60%;
+    font-size: 18px;
+    word-wrap: break-word;
+    position: relative;
+    text-align: justify; /* Justifica el texto dentro del mensaje */
 }
 
+/* Ajustar la alineación de los mensajes de usuario y bot */
 .message.user {
     background-color: #DCF8C6;
-    font-size: 20px;
     align-self: flex-end;
+    border-bottom-right-radius: 0; /* Punta del globo */
 }
 
 .message.bot {
     background-color: #E5E5EA;
+    align-self: flex-start;
+    border-bottom-left-radius: 0; /* Punta del globo */
+}
+
+/* Triángulo en la parte inferior izquierda para el bot */
+.message.bot::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border-color: #E5E5EA transparent transparent transparent;
+}
+
+/* Triángulo en la parte inferior derecha para el usuario */
+.message.user::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: -10px;
+    width: 0;
+    height: 0;
+    border-color: #DCF8C6 transparent transparent transparent;
 }
 
 .input-form {
@@ -43,6 +63,9 @@
     padding: 10px;
     border-top: 1px solid #ccc;
     background: #fff;
+    position: fixed; /* Fija el formulario */
+    bottom: 0; /* Lo mantiene al fondo */
+    width: 100%; /* Se asegura de ocupar todo el ancho */
 }
 
 .input-form input {
@@ -65,4 +88,21 @@
 
 .input-form button:hover {
     background-color: #197d4b;
+}
+
+/* Animación fade-in */
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+  
+/* Animación que se aplicará al enviar un nuevo mensaje */
+.message {
+    animation: fadeIn 0.4s ease-out;
 }

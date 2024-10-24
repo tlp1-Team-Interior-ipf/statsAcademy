@@ -1,11 +1,11 @@
-import NavBar from "../components/NavBar";
+import Navbar from "../components/Navbar";
 import Chat from "../components/Chat";
 
 
 function ChatPage () {
     return (
         <>
-        <NavBar />
+            <Navbar/>
         <Chat/>
         </>
     );

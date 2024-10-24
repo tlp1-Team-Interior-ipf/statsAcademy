@@ -30,7 +30,7 @@ const Home = () => {
         </li>
         <li>
           <button className="card" onClick={() => navigate('/home/calendar')}>
-            <img src="img/calendar.avif" className="card__image" alt="Organizador" />
+            <img src="img/calendarnf.PNG" className="card__image" alt="Organizador" />
             <div className="card__overlay">
               <div className="card__header">
                 <svg className="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
