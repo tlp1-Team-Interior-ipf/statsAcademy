@@ -1,7 +1,8 @@
 import { FontAwesome } from '@expo/vector-icons';
-import React from 'react';
-import { View, TouchableOpacity, StyleSheet, Pressable } from 'react-native';
+import React, {useContext} from 'react';
+import { View, TouchableOpacity, StyleSheet, Pressable, Image } from 'react-native';
 import { Ionicons } from 'react-native-vector-icons';
+import { UserContext } from '@/context/userContext';
 
 export const MyButton = ({ iconName, iconSize }) => {
   return (
@@ -24,9 +25,10 @@ export const MyButton2 = ({ iconName, iconSize, color, action }) => {
 };
 
 export const ButtonProfile = ({action}) => {
+  const {user} = useContext(UserContext);
   return(
     <Pressable onPress={action}>
-      <View style={{width: 35, height: 35, borderWidth: 1, borderRadius:25, borderColor: '#ddd'}}></View>
+      <Image source={{uri: user.profileImage}} style={{width: 35, height: 35, borderWidth: 1, borderRadius: 50, borderColor: '#ddd'}} />
     </Pressable>
   )
 }

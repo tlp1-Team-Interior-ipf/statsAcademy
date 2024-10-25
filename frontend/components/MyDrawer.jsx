@@ -1,14 +1,17 @@
-import { useContext } from "react";
-import { Animated, View, Text, Pressable } from "react-native";
+import { useContext, useState } from "react";
+import { Animated, View, Text, Pressable, Image } from "react-native";
 import { ButtonList } from "./SocialButtons";
 import { Ionicons } from "@expo/vector-icons";
 import { UserContext } from "@/context/userContext";
 import ActionButtons from "@/hooks/ActionButtons";
 import { router } from "expo-router";
+import { useImagePicker } from '@/hooks/useImagePicker';
 
 const MyDrawer = ({ slideAnim, mostrar }) => {
-  const { isLoggedIn } = useContext(UserContext);
+  const { isLoggedIn, user, updateUserProfile } = useContext(UserContext);
   const { clearAsyncStorage } = ActionButtons();
+  // const [profile, setProfile] = useState(null)
+  const { pickImage } = useImagePicker();
 
   const handleLogin = () => {
     mostrar();
@@ -24,6 +27,13 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
     clearAsyncStorage();
     mostrar();
     router.navigate('/');
+  }
+
+  const handleChangeAvatar = async () => {
+    const imageUrl = await pickImage();
+    if(imageUrl) {
+      updateUserProfile(imageUrl)
+    }
   }
 
     return(
@@ -52,9 +62,15 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
                   </View>
                 </>
                 ):  ( <><View style={{justifyContent: 'flex-start', flex: 10, alignItems: 'center'}}>
-                          <View style={{width: 100, height: 100, borderWidth: 1, borderColor: '#fff', borderRadius: 50, margin: 10}}></View>
-        
-                              <Pressable>
+                          <View style={{width: 100, height: 100, borderWidth: 1, borderColor: '#fff', borderRadius: 50, margin: 10, alignItems: 'center', justifyContent: 'center'}}>
+                            {user.profileImage ? (
+                              <Image source={{uri: user.profileImage}} style={{width: 100, height: 100, borderWidth: 1, borderColor: '#ddd', borderRadius: 50}} />
+                            ): <Ionicons name="person" size={60} color={'#ddd'} />}
+                          </View>
+                          <Text style={{ color: '#fff', paddingVertical: 5, fontSize: 17, fontWeight: 'bold' }}>
+                            {user ? `${user.name}` : 'Inicia sesión'}
+                          </Text>
+                              <Pressable android_ripple={{ color:'rgba(0, 255, 255, 0.2)', borderless: false, radius: 150}} onPress={handleChangeAvatar}>
                                 <Text style={{color: '#ddd', textAlign: 'center', margin: 5, fontSize: 15}}>Cambiar avatar </Text>
                               </Pressable>
         
