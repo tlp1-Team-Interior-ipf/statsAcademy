@@ -9,7 +9,7 @@ const openai = new Openai({
 export const fetchOpenAIResponse = async (messages) => {
     try {
         const response = await openai.chat.completions.create({
-            model: 'gpt-4',
+            model: 'gpt-4o-mini',
             messages: messages,
             temperature: 0.7,
         });
@@ -27,7 +27,7 @@ export const fetchOpenAIResponse = async (messages) => {
 export const evaluateResponse = async (modelResponse) => {
     try {
         const evaluation = await openai.chat.completions.create({
-            model: 'gpt-4',
+            model: 'gpt-4o-mini',
             messages: [
                 { role: 'system', content: `Evalúa si el estudiante ha mostrado un buen entendimiento del tema en su respuesta: ${modelResponse}. La respuesta que brindes debe de ser numerica de un rango de 0 a 100, solo quiero esa respuesta, una nota numerica.` },
                 { role: 'assistant', content: modelResponse }

@@ -1,5 +1,6 @@
 import { Temas } from "../models/temas.js";
 import { DatabaseError } from "../utils/errorHandler.js";
+import { calcularProgreso } from '../services/progresoService.js';
 
 
 export const getNextTopic = async () => {
@@ -14,9 +15,10 @@ export const getNextTopic = async () => {
     };
 };
 
-export const updateTopicStatus = async (topicId) => {
+export const updateTopicStatus = async (topicId, userId) => {
     try {
         await Temas.update({ estado: 'dictado' }, { where: { id: topicId } });
+        await calcularProgreso(userId);
     } catch (error) {
         DatabaseError(error);
     };

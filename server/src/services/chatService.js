@@ -37,7 +37,7 @@ export const FetchModelResponse = async ( message, userId ) => {
         const comprehensionLevel = await evaluateResponse(modelResponse);
         console.log(comprehensionLevel);
         if (comprehensionLevel >= 70) {
-            await updateTopicStatus( nextTopic.id);
+            await updateTopicStatus( nextTopic.id, userId);
         };
 
         

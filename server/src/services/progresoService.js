@@ -1,6 +1,7 @@
 import { Progreso } from '../models/progreso.js';
 import { countTemas, countTemasDictados } from '../helpers/count.js';
 import { DatabaseError } from '../utils/errorHandler.js';
+import { where } from 'sequelize';
  
 
 export const calcularProgreso = async (userId) => {
@@ -17,6 +18,9 @@ export const calcularProgreso = async (userId) => {
         const saveProgreso = await Progreso.upsert({
             userId: userId,
             progreso: porcentajeProgreso.toFixed(2)
+        },
+        {
+        where: { userId: userId }
         });
 
         return saveProgreso;
