@@ -29,7 +29,7 @@ const Home = () => {
           </button>
         </li>
         <li>
-          <button className="card" onClick={() => navigate('/home/calendar')}>
+          <button className="card" onClick={() => navigate('/home/tools')}>
             <img src="img/calendarnf.PNG" className="card__image" alt="Organizador" />
             <div className="card__overlay">
               <div className="card__header">
