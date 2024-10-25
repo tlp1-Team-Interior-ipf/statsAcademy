@@ -11,12 +11,12 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      <h1 className="home-title">Bienvenido a su Inicio</h1>
+      <h1 className="home-title">Bienvenido a su inicio</h1>
       <h2 className="home-subtitle">¿Qué desea hacer?</h2>
       <ul className="cards">
         <li>
           <button className="card" onClick={() => navigate('/home/profile')}>
-            <img src="img/student.avif" className="card__image" alt="Perfil del alumno" />
+            <img src="img/studentnf.PNG" className="card__image" alt="Perfil del alumno" />
             <div className="card__overlay">
               <div className="card__header">
                 <svg className="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
@@ -30,7 +30,7 @@ const Home = () => {
         </li>
         <li>
           <button className="card" onClick={() => navigate('/home/calendar')}>
-            <img src="img/calendar.avif" className="card__image" alt="Organizador" />
+            <img src="img/calendarnf.PNG" className="card__image" alt="Organizador" />
             <div className="card__overlay">
               <div className="card__header">
                 <svg className="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
@@ -44,7 +44,7 @@ const Home = () => {
         </li>
         <li>
           <button className="card" onClick={handleCardClick}>
-            <img src="img/tutor.jpg" className="card__image" alt="Tutor Inteligente" />
+            <img src="img/tutor.png" className="card__image" alt="Tutor Inteligente" />
             <div className="card__overlay">
               <div className="card__header">
                 <svg className="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
