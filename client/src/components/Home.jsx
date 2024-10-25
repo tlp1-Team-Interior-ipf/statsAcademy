@@ -11,7 +11,7 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      <h1 className="home-title">Bienvenido a su Inicio</h1>
+      <h1 className="home-title">Bienvenido a su inicio</h1>
       <h2 className="home-subtitle">¿Qué desea hacer?</h2>
       <ul className="cards">
         <li>
