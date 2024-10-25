@@ -6,6 +6,7 @@ import ProfilePage from "../pages/ProfilePage";
 import ToolsPage from "../pages/ToolsPage";
 import CalendarPage from "../pages/CalendarPage";
 import TodoAppPage from "../pages/TodoAppPage";
+import ProgressPage from "../pages/ProgressPage";
 import { PrivateRoute } from './PrivateRoute';
 
 export const PrivateRoutes = () => (
@@ -55,6 +56,14 @@ export const PrivateRoutes = () => (
       element={
         <PrivateRoute>
           <ProfilePage />
+        </PrivateRoute>
+      }
+    />
+        <Route
+      path="/progress"
+      element={
+        <PrivateRoute>
+          <ProgressPage />
         </PrivateRoute>
       }
     />
