@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import { AuthContext } from '../context/authContext'; // Contexto de autenticación
@@ -7,6 +7,20 @@ import '../styles/NavBar.css'; // Estilos CSS
 const Navbar = () => {
   const navigate = useNavigate();
   const { user, logout } = useContext(AuthContext);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Manejar el scroll para mostrar la línea
+  const handleScroll = () => {
+    const scrollTop = window.scrollY;
+    setIsScrolled(scrollTop > 50); // Cambia este valor para ajustar cuando aparece la línea
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   // Navegación para los botones
   const handleSignInClick = () => navigate('/signin');
@@ -26,7 +40,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="custom-navbar">
+    <nav className={`custom-navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="custom-navbar-left">
         {/* Logo */}
         <a href="#" className="custom-navbar-logo" onClick={handleHomeClick}>
@@ -57,6 +71,8 @@ const Navbar = () => {
           </>
         )}
       </div>
+      {/* Línea debajo del navbar */}
+      <div className="custom-navbar-line"></div>
     </nav>
   );
 };

@@ -7,9 +7,10 @@
     box-sizing: border-box;
 
     /* Fondo gradiente */
-    background: rgb(16, 19, 47);
-    background: linear-gradient(180deg, rgba(16, 19, 47, 1) 7%, rgba(0, 212, 255, 1) 69%, rgba(255, 255, 255, 1) 97%);
-    
+    /* /* background: rgb(165, 226, 255); */
+    background: #10132F;
+    /* background: linear-gradient(180deg, rgba(165, 226, 255, 1) 0%, rgba(255, 255, 255, 1) 100%); */
+
     position: relative; /* Para añadir elementos superpuestos como una capa de opacidad */
 }
 
@@ -17,18 +18,19 @@
     width: 45%;
     text-align: left;
     z-index: 1; /* Asegura que el texto esté sobre el fondo */
-    color: #ffffff;
+    color: #ffff;
     margin-top: 40px; /* Ajusta este valor para mover el texto hacia abajo */
 }
 
 .text-section h1 {
-    font-size: 5em;
+    font-size: 4.7em;
     margin-bottom: 20px;
     font-family: 'Kufam', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Añade sombra al título */
 }
 
 .text-section p {
-    font-size: 1.3em;
+    font-size: 1.1em;
     margin-bottom: 20px;
 }
 
@@ -145,4 +147,20 @@
 .carousel-item img {
     object-fit: cover; /* Asegura que la imagen llene el área correctamente */
     height: 60vh; /* Ajusta la altura de las imágenes */
+}
+
+.logo {
+    width: 150px; /* Ajusta el tamaño como desees */
+    height: auto; /* Mantiene la proporción de la imagen */
+    margin-bottom: 20px; /* Espacio entre el logo y el título */
+}
+
+/* Agrega estas clases de animación */
+.fade-in {
+    opacity: 0; /* Comienza invisible */
+    transition: opacity 1s ease-in-out; /* Transición suave para la aparición */
+}
+
+.fade-in.visible {
+    opacity: 1; /* Aparece gradualmente */
 }
