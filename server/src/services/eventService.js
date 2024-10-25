@@ -52,6 +52,10 @@ export async function updateEvent(userId, eventData) {
 export async function deleteEvent(userId) {
     try {
         const event = await EventModel.findByPk(userId);
+
+        if(!event) {
+            throw new Error("No existe el evento")
+        }
         
         await event.destroy();
         return { message: 'Event deleted successfully' };
