@@ -16,7 +16,7 @@ const SignInForm = () => {
     const user = { username, email, password };
 
     try {
-      const response = await fetch('http://localhost:4000/users', {
+      const response = await fetch('http://localhost:4000/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

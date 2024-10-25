@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
-import swal from 'sweetalert';
+import { useAuth } from '../hooks/ContextHook';
+import ReactMarkdown from 'react-markdown';
 import '../styles/Chat.css';
 
-function App() {
+function Chat() {
   const [question, setQuestion] = useState('');
   const [messages, setMessages] = useState([{ type: 'bot', text: '¡Bienvenido! ¿En qué puedo ayudarte hoy?' }]);
-  const socket = useRef(null);
   const messagesEndRef = useRef(null);
+  const { user } = useAuth();
+  const id = user.data.id;
 
   // Función para hacer scroll al final del contenedor de mensajes
   const scrollToBottom = () => {
@@ -18,56 +20,70 @@ function App() {
     scrollToBottom();
   }, [messages]);
 
+  // Obtenemos el historial del chat al cargar la página
   useEffect(() => {
-    return () => {
-      if (socket.current) {
-        socket.current.close();
+    const fetchChatHistory = async () => {
+      try {
+        const response = await fetch(`http://localhost:4000/chat/history/${id}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        if (response.ok) {
+          const result = await response.json();
+          const formattedMessages = result.data.map((msg) => ({
+            type: msg.sender === 'user' ? 'user' : 'bot',
+            text: msg.message,
+          }));
+          setMessages(formattedMessages);
+        } else {
+          throw new Error('Error al recuperar el historial del chat');
+        }
+      } catch (error) {
+        console.error('Error al obtener el historial del chat:', error);
       }
     };
-  }, []);
+      if (id) {
+        fetchChatHistory();
+      }
+    }, [id]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if (question.trim() === '') return;
+    if (question.trim() === '' || !id) return;
 
     setMessages([...messages, { type: 'user', text: question }]);
     setQuestion('');
 
-    socket.current = new WebSocket('ws://localhost:8000/ws/ask');
 
-    socket.current.onopen = () => {
-      socket.current.send(question);
-      swal({
-        title: "Mensaje enviado!",
-        text: "El mensaje se ha enviado correctamente!",
-        icon: "success",
-        timer: 1000
+    try {
+      const response = await fetch(`http://localhost:4000/chat/${id}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ question }),
       });
-    };
 
-    let accumulatedMessage = "";
 
-    socket.current.onmessage = (event) => {
-      if (event.data === 'END') {
+    const data = await response.json();
+
+    if (response.ok) {
         setMessages((prevMessages) => [
           ...prevMessages,
-          { type: 'bot', text: accumulatedMessage.trim() }
+          { type: 'bot', text: data.response },
         ]);
-        socket.current.close();
+        
       } else {
-        accumulatedMessage += event.data + " ";
-      }
-    };
-
-    socket.current.onerror = (error) => {
-      setMessages([...messages, { type: 'bot', text: 'Ocurrió un error.' }]);
-      console.error('WebSocket error:', error);
-    };
-
-    socket.current.onclose = () => {
-      console.log('WebSocket connection closed');
-    };
+        throw new Error('Error en la respuesta');
+      };
+    
+  } catch (error) {
+    console.error('Error en la petición:', error);
+    setMessages([...messages, { type: 'bot', text: 'Ocurrió un error' }]);
   };
+};
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter' || event.keyCode === 13) {
@@ -82,7 +98,11 @@ function App() {
         <div className="chat-container">
           {messages.map((message, index) => (
             <div key={index} className={`message ${message.type}`}>
-              {message.text}
+              {message.type === 'bot' ? (
+                <ReactMarkdown>{message.text}</ReactMarkdown>
+              ) : (
+                message.text
+              )}
             </div>
           ))}
           {/* Div invisible para mantener el scroll al final */}
@@ -104,4 +124,4 @@ function App() {
   );
 }
 
-export default App;
+export default Chat;

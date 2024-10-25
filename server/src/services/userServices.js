@@ -1,83 +1,49 @@
 import { UserModel } from '../models/user.js';
-import { hashPassword, comparePassword } from '../utils/hash.js';
-import { findUserById } from '../utils/findUsersById.js';
+import { findUserById } from '../utils/findUser.js';
+import { DatabaseError } from '../utils/errorHandler.js';
 
-export async function getAllUsers() {
+export const getAllUsers = async () => {
     try {
-        const users = await UserModel.findAll();
+         const users = await UserModel.findAll();
 
-        if (!users || users.length === 0) {
+         if (!users || users.length === 0) {
             throw new Error('No users found');
-        }
+         };
 
-        return users;
-
+            return users;
     } catch (error) {
-        throw error;
-    }
+        DatabaseError(error);
+    };
 };
 
-export async function createUser (user) {
+
+export const getUserById = async (id) => {
     try {
-        const existingUser = await UserModel.findOne({ where: { email: user.email } });
-        if (existingUser) {
-           throw new Error('User already exists');
-        }
-
-        const hashedPassword = await hashPassword(user.password);
-        const newUser = await UserModel.create({ ...user, password: hashedPassword });
-        return newUser;
-
-    } catch (error) {
-        throw error;
-    }
-};
-
-export async function getUserById (userId) {
-    try {
-        const user = await findUserById(userId);
+        const user = await findUserById(id);
         return user;
     } catch (error) {
-        throw error;
-    }
+        DatabaseError(error);
+    };
 };
 
-export async function deleteUser (userId) {
+
+export const updateUser = async (id, user) => {
     try {
-        const user = await findUserById(userId);
-
-        await user.destroy();
-        return { message: 'User deleted successfully' };
-
-    } catch (error) {
-        throw error;
-    }
-};
-
-export async function updateUser (userId, updatedUserData) {
-    try {
-        const existingUser = await findUserById(userId);
-
-        const updatedUser = await existingUser.update(updatedUserData);
+        const existingUser =  await findUserById(id);
+        const updatedUser = await existingUser.update(user);
         return updatedUser;
-
     } catch (error) {
-        throw error;
-    }
+        DatabaseError(error);
+    };
 };
 
-export async function loginUser(email, password) {
+
+export const deleteUser = async (id) => {
     try {
-        const user = await UserModel.findOne({ where: { email } });
-        if (!user) {
-            throw new Error('User not found');
-        }
-        const isPasswordValid = await comparePassword(password, user.password);
-        if (!isPasswordValid) {
-            throw new Error('Invalid password');
-        }
+        const user = await findUserById(id);
+        await user.destroy();
         return user;
     } catch (error) {
-        throw error;
-    }
+        DatabaseError(error);
+    };
 };
