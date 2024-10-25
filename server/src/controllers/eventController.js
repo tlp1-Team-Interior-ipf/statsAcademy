@@ -4,18 +4,14 @@ import jwt from 'jsonwebtoken'
 export const CreateEvent = async (req, res) => {
     try {
         const authHeader = req.headers['authorization'];
-        console.log("header",authHeader)
         const token = authHeader && authHeader.split(' ')[1]
-        console.log("token en backend:", token)
         if(!token) {
             return res.status(403).json({error: "No token found"})
         }
 
         const user = jwt.verify(token, process.env.SECRET_KEY);
-        console.log("usuariooooo verificadoo: ", user)
 
         const userId = user.user;
-        console.log("id de usuarioooooo: ", userId)
         
         const eventData = {...req.body, userId};
 
@@ -32,7 +28,6 @@ export const GetEvents = async (req, res) => {
         const token = req.headers.authorization.split(' ')[1]
         
         const user = jwt.verify(token, process.env.SECRET_KEY);
-        console.log("usuarioooosjaksajfsfjb:", user)
         const userId = user.user
         if(!userId) {
             res.status(400).json({ error: "No se ha proporcionado el ID del usuario" })
