@@ -1,86 +1,72 @@
+import React, { useState, useEffect, useRef } from 'react';
+import swal from 'sweetalert';
 import '../styles/Chat.css';
-import React, { useState, useEffect, useRef, useContext } from 'react';
-import ReactMarkdown from 'react-markdown';
-import { AuthContext } from '../context/authContext';
 
 function App() {
   const [question, setQuestion] = useState('');
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([{ type: 'bot', text: '¡Bienvenido! ¿En qué puedo ayudarte hoy?' }]);
+  const socket = useRef(null);
   const messagesEndRef = useRef(null);
-  const { user } = useContext(AuthContext);
-  const id = user.data.id;
 
-
-  // Recupera el historial del chat cuando se monta el componente
-  useEffect(() => {
-    const fetchChatHistory = async () => {
-      try {
-        const response = await fetch(`http://localhost:4000/chat/history/${id}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-
-        if (response.ok) {
-          const result = await response.json();
-          const formattedMessages = result.data.map((msg) => ({
-            type: msg.sender === 'user' ? 'user' : 'bot',
-            text: msg.message,
-          }));
-          setMessages(formattedMessages);
-        } else {
-          throw new Error('Error al recuperar el historial del chat');
-        }
-      } catch (error) {
-        console.error('Error al obtener el historial del chat:', error);
-      }
-    };
-
-    if (id) {
-      fetchChatHistory(); // Solo llama a la función si userId está disponible
-    }
-  }, [id]); // Dependencia de userId para asegurarse de que está disponible antes de hacer la solicitud
-
-  // Scroll automático al final de los mensajes
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
-
+  // Función para hacer scroll al final del contenedor de mensajes
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const handleSubmit = async (event) => {
+  // Cuando los mensajes cambien, hacemos scroll al final
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  useEffect(() => {
+    return () => {
+      if (socket.current) {
+        socket.current.close();
+      }
+    };
+  }, []);
+
+  const handleSubmit = (event) => {
     event.preventDefault();
-    if (question.trim() === '' || !id) return;
+    if (question.trim() === '') return;
 
     setMessages([...messages, { type: 'user', text: question }]);
     setQuestion('');
 
-    try {
-      const response = await fetch(`http://localhost:4000/chat/${id}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ question }),
+    socket.current = new WebSocket('ws://localhost:8000/ws/ask');
+
+    socket.current.onopen = () => {
+      socket.current.send(question);
+      swal({
+        title: "Mensaje enviado!",
+        text: "El mensaje se ha enviado correctamente!",
+        icon: "success",
+        timer: 1000
       });
+    };
 
-      const data = await response.json();
+    let accumulatedMessage = "";
 
-      if (response.ok) {
+    socket.current.onmessage = (event) => {
+      if (event.data === 'END') {
         setMessages((prevMessages) => [
           ...prevMessages,
-          { type: 'bot', text: data.response },
+          { type: 'bot', text: accumulatedMessage.trim() }
         ]);
+        socket.current.close();
       } else {
-        throw new Error('Error en la respuesta');
+        accumulatedMessage += event.data + " ";
       }
-    } catch (error) {
-      console.error('Error en la petición:', error);
-      setMessages([...messages, { type: 'bot', text: 'Ocurrió un error' }]);
-    }
+    };
+
+    socket.current.onerror = (error) => {
+      setMessages([...messages, { type: 'bot', text: 'Ocurrió un error.' }]);
+      console.error('WebSocket error:', error);
+    };
+
+    socket.current.onclose = () => {
+      console.log('WebSocket connection closed');
+    };
   };
 
   const handleKeyDown = (event) => {
@@ -96,13 +82,10 @@ function App() {
         <div className="chat-container">
           {messages.map((message, index) => (
             <div key={index} className={`message ${message.type}`}>
-              {message.type === 'bot' ? (
-                <ReactMarkdown>{message.text}</ReactMarkdown>
-              ) : (
-                message.text
-              )}
+              {message.text}
             </div>
           ))}
+          {/* Div invisible para mantener el scroll al final */}
           <div ref={messagesEndRef} />
         </div>
         <form className="input-form" onSubmit={handleSubmit}>

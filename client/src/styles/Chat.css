@@ -1,17 +1,11 @@
+/* Contenedor principal del chat */
 .Chat {
-    text-align: center;
     display: flex;
     flex-direction: column;
     height: 91vh;
 }
 
-.Chat-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-}
-
+/* Contenedor de mensajes */
 .chat-container {
     flex-grow: 1;
     display: flex;
@@ -20,29 +14,65 @@
     padding: 20px;
 }
 
+/* Estilo de los globos de mensajes */
 .message {
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 10px;
-    max-width: 70%;
-    font-size: 20px;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border-radius: 20px;
+    max-width: 60%;
+    font-size: 18px;
+    word-wrap: break-word;
+    position: relative;
+    text-align: justify; /* Justificación del texto */
+    animation: fadeIn 0.4s ease-out; /* Animación de aparición */
 }
 
+/* Ajuste de alineación y color para mensajes de usuario y bot */
 .message.user {
     background-color: #DCF8C6;
-    font-size: 20px;
     align-self: flex-end;
+    border-bottom-right-radius: 0;
 }
 
 .message.bot {
     background-color: #E5E5EA;
+    align-self: flex-start;
+    border-bottom-left-radius: 0;
 }
 
+/* Triángulo en la parte inferior izquierda para el bot */
+.message.bot::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-top-color: #E5E5EA;
+}
+
+/* Triángulo en la parte inferior derecha para el usuario */
+.message.user::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: -10px;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-top-color: #DCF8C6;
+}
+
+/* Estilo del formulario de entrada */
 .input-form {
     display: flex;
     padding: 10px;
     border-top: 1px solid #ccc;
     background: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 .input-form input {
@@ -65,4 +95,16 @@
 
 .input-form button:hover {
     background-color: #197d4b;
+}
+
+/* Animación fade-in para los mensajes */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
