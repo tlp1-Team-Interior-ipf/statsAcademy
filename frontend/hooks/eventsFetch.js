@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState, useCallback } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useFocusEffect } from 'expo-router';
 
 const useFetchEvents = () => {
     const [events, setEvents] = useState([]);
 
-    useEffect(() => {
-        const fetchEvents = async () => {
+    const fetchEvents = useCallback(() => {
+        const fn = async () => {
             const token = await AsyncStorage.getItem('userToken');
             const response = await fetch('http://192.168.185.123:3000/calendarEvent', {
                 method: 'GET',
@@ -19,10 +20,12 @@ const useFetchEvents = () => {
                 const eventData = await response.json();
                 setEvents(eventData.length ? eventData : []);
             }
-        };
-
-        fetchEvents();
+        
+        }
+        fn()
     }, []);
+
+    useFocusEffect(fetchEvents);
 
     return { events, setEvents };
 };

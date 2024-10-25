@@ -23,7 +23,7 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
   const handleLogout = () => {
     clearAsyncStorage();
     mostrar();
-    router.dismissAll('/');
+    router.navigate('/');
   }
 
     return(
