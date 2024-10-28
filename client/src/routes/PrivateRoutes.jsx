@@ -3,6 +3,10 @@ import HomePage from "../pages/HomePage";
 import ChatPage from "../pages/ChatPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import ProfilePage from "../pages/ProfilePage";
+import ToolsPage from "../pages/ToolsPage";
+import CalendarPage from "../pages/CalendarPage";
+import TodoAppPage from "../pages/TodoAppPage";
+import ProgressPage from "../pages/ProgressPage";
 import { PrivateRoute } from './PrivateRoute';
 
 export const PrivateRoutes = () => (
@@ -23,11 +27,43 @@ export const PrivateRoutes = () => (
         </PrivateRoute>
       }
     />
+    <Route
+      path="/calendar"
+      element={
+        <PrivateRoute>
+          <CalendarPage />
+        </PrivateRoute>
+      }
+    />
+    <Route
+      path="/todoapp"
+      element={
+        <PrivateRoute>
+          <TodoAppPage />
+        </PrivateRoute>
+      }
+    />
+    <Route
+      path="/tools"
+      element={
+        <PrivateRoute>
+          <ToolsPage />
+        </PrivateRoute>
+      }
+    />
         <Route
       path="/profile"
       element={
         <PrivateRoute>
           <ProfilePage />
+        </PrivateRoute>
+      }
+    />
+        <Route
+      path="/progress"
+      element={
+        <PrivateRoute>
+          <ProgressPage />
         </PrivateRoute>
       }
     />

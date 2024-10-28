@@ -16,7 +16,7 @@ const Home = () => {
       <ul className="cards">
         <li>
           <button className="card" onClick={() => navigate('/home/profile')}>
-            <img src="img/studentnf.PNG" className="card__image" alt="Perfil del alumno" />
+            <img src="img/studentprofile.png" className="card__image" alt="Perfil del alumno" />
             <div className="card__overlay">
               <div className="card__header">
                 <svg className="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
@@ -29,8 +29,8 @@ const Home = () => {
           </button>
         </li>
         <li>
-          <button className="card" onClick={() => navigate('/home/calendar')}>
-            <img src="img/calendarnf.PNG" className="card__image" alt="Organizador" />
+          <button className="card" onClick={() => navigate('/home/tools')}>
+            <img src="img/tools.png" className="card__image" alt="Organizador" />
             <div className="card__overlay">
               <div className="card__header">
                 <svg className="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>

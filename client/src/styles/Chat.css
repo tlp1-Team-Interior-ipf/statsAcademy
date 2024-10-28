@@ -1,9 +1,11 @@
+/* Contenedor principal del chat */
 .Chat {
     display: flex;
     flex-direction: column;
     height: 91vh;
 }
 
+/* Contenedor de mensajes */
 .chat-container {
     flex-grow: 1;
     display: flex;
@@ -12,6 +14,7 @@
     padding: 20px;
 }
 
+/* Estilo de los globos de mensajes */
 .message {
     padding: 12px 15px;
     margin: 10px 0;
@@ -20,20 +23,21 @@
     font-size: 18px;
     word-wrap: break-word;
     position: relative;
-    text-align: justify; /* Justifica el texto dentro del mensaje */
+    text-align: justify; /* Justificación del texto */
+    animation: fadeIn 0.4s ease-out; /* Animación de aparición */
 }
 
-/* Ajustar la alineación de los mensajes de usuario y bot */
+/* Ajuste de alineación y color para mensajes de usuario y bot */
 .message.user {
     background-color: #DCF8C6;
     align-self: flex-end;
-    border-bottom-right-radius: 0; /* Punta del globo */
+    border-bottom-right-radius: 0;
 }
 
 .message.bot {
     background-color: #E5E5EA;
     align-self: flex-start;
-    border-bottom-left-radius: 0; /* Punta del globo */
+    border-bottom-left-radius: 0;
 }
 
 /* Triángulo en la parte inferior izquierda para el bot */
@@ -44,7 +48,8 @@
     left: -10px;
     width: 0;
     height: 0;
-    border-color: #E5E5EA transparent transparent transparent;
+    border: 10px solid transparent;
+    border-top-color: #E5E5EA;
 }
 
 /* Triángulo en la parte inferior derecha para el usuario */
@@ -55,17 +60,19 @@
     right: -10px;
     width: 0;
     height: 0;
-    border-color: #DCF8C6 transparent transparent transparent;
+    border: 10px solid transparent;
+    border-top-color: #DCF8C6;
 }
 
+/* Estilo del formulario de entrada */
 .input-form {
     display: flex;
     padding: 10px;
     border-top: 1px solid #ccc;
     background: #fff;
-    position: fixed; /* Fija el formulario */
-    bottom: 0; /* Lo mantiene al fondo */
-    width: 100%; /* Se asegura de ocupar todo el ancho */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 .input-form input {
@@ -90,19 +97,14 @@
     background-color: #197d4b;
 }
 
-/* Animación fade-in */
+/* Animación fade-in para los mensajes */
 @keyframes fadeIn {
     0% {
-      opacity: 0;
-      transform: translateY(20px);
+        opacity: 0;
+        transform: translateY(20px);
     }
     100% {
-      opacity: 1;
-      transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
-}
-  
-/* Animación que se aplicará al enviar un nuevo mensaje */
-.message {
-    animation: fadeIn 0.4s ease-out;
 }
