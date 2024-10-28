@@ -1,16 +1,8 @@
 import React from 'react';
 import { Button, Text, TextInput, View } from 'react-native';
 import  MyStagger  from '@/components/StaggerButtons';
-import useAuth from '@/hooks/useAuth';
 
 const Setting = () => {
-  const { loading } = useAuth();
-
-  if (!loading) {
-    return (
-      <Text>Cargando...</Text>
-    );
-  }
 
   return (
     <>

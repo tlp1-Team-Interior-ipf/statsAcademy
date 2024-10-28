@@ -9,9 +9,13 @@ export const ActionButtons = () => {
 
   const clearAsyncStorage = async () => {
     try {
+      const profileImage = await AsyncStorage.getItem('profileImage');
       await AsyncStorage.clear();
       const token = await AsyncStorage.getItem('userToken');
-      
+      if(profileImage) {
+        await AsyncStorage.setItem('profileImage', profileImage);
+      }      
+      console.log("url asegurada",profileImage)
       console.log('AsyncStorage vaciado con éxito: ', token);
       setIsLoggedIn(false);
       router.push("/");

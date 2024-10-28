@@ -7,7 +7,7 @@ const UserProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState({
     username: null,
-    profileImage: null
+    profileImage: null,
   });
 
   useEffect(() => {
@@ -19,6 +19,7 @@ const UserProvider = ({ children }) => {
         username: username,
         profileImage: profileImage, 
       });
+      
       setIsLoggedIn(value === 'true');
     };
     
@@ -30,7 +31,7 @@ const UserProvider = ({ children }) => {
       ...prevUser,
       profileImage: newProfileImage,
     }));
-    AsyncStorage.setItem('profileImage', newProfileImage); // Guarda la imagen en AsyncStorage
+    AsyncStorage.setItem('profileImage', newProfileImage);
   };
 
   return (

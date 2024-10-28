@@ -11,13 +11,12 @@ const userLoginForm = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [isChecked, setIsChecked] = useState(false);
     const { setIsLoggedIn, setUser } = useContext(UserContext);
-    const {mostrar} = ShowDrawer();
     
     const loginUser = async () => {
 
         console.log(email, pass)
         try {
-            const response = await fetch('http://192.168.185.123:3000/users/login', {
+            const response = await fetch('http://192.168.136.123:3000/users/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -37,10 +36,15 @@ const userLoginForm = () => {
                 const userId = data.userId;
                 const userName = data.name;
                 console.log("uy encontré un nombre de usuario: ", userName)
+
+                const profileImage = await AsyncStorage.getItem('profileImage');
+                console.log("uy encontré un avatar: ", profileImage)
+                
                 
                 const userData = { 
                     id: userId, 
                     name: userName, 
+                    profileImage: profileImage
                 };
                 
                 await AsyncStorage.setItem('userToken', token); // guardo el token

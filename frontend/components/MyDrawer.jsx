@@ -6,11 +6,11 @@ import { UserContext } from "@/context/userContext";
 import ActionButtons from "@/hooks/ActionButtons";
 import { router } from "expo-router";
 import { useImagePicker } from '@/hooks/useImagePicker';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const MyDrawer = ({ slideAnim, mostrar }) => {
   const { isLoggedIn, user, updateUserProfile } = useContext(UserContext);
   const { clearAsyncStorage } = ActionButtons();
-  // const [profile, setProfile] = useState(null)
   const { pickImage } = useImagePicker();
 
   const handleLogin = () => {
