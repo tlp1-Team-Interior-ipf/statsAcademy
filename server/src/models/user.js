@@ -1,4 +1,4 @@
-import { sequelize } from "../config/db.js";
+import { sequelize } from "../database/configDB.js";
 import { DataTypes } from "sequelize";
 
 export const UserModel = sequelize.define('User', {
@@ -26,7 +26,7 @@ export const UserModel = sequelize.define('User', {
 },
 {
     timestamps: true, // Esta opción agrega automáticamente las columnas createdAt y updatedAt
-    deletedAt: 'deletedAt', // Si quieres usar soft delete, puedes configurar la columna deletedAt aquí
+    deletedAt: 'deletedAt',
     tableName: 'User',
 },
 );

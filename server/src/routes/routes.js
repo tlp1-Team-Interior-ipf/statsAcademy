@@ -1,10 +1,16 @@
 import { Router } from 'express';
-import userRouter from './user.routes.js';
-import modelRouter from './model.Routes.js';
+import authRouter from './authRoutes.js';
+import userRouter from './userRoutes.js';
+import temaRouter from './temaRoutes.js';
+import progresoRouter from './progresoRoutes.js';
+import chatRouter from './chatRoutes.js';
 
-const router = Router();
+const routes = Router();
 
-router.use('/users', userRouter);
-router.use(modelRouter);
+routes.use('/auth', authRouter);
+routes.use('/users', userRouter);
+routes.use('/temas', temaRouter);
+routes.use('/progreso', progresoRouter);
+routes.use('/chat', chatRouter);
 
-export { router };
+export default routes;

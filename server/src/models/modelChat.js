@@ -1,17 +1,13 @@
 import { DataTypes } from 'sequelize';
-import { sequelize } from '../config/db.js';
+import { sequelize } from '../database/configDB.js';
 
 export const Chat = sequelize.define('Chat', {
-    userId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
     message: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    response: {
-      type: DataTypes.TEXT,
+    sender: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
   }, {
