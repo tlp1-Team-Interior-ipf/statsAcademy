@@ -36,8 +36,12 @@ const userLoginForm = () => {
                 const userId = data.userId;
                 const userName = data.name;
                 console.log("uy encontré un nombre de usuario: ", userName)
+                console.log("uy encontré un identificador de usuario: ", userId)
 
-                const profileImage = await AsyncStorage.getItem('profileImage');
+                const profileImageKey = `profileImage_${userId}`;
+                console.log("uy encontré una clave unica: ", profileImageKey)
+                
+                const profileImage = await AsyncStorage.getItem(profileImageKey);
                 console.log("uy encontré un avatar: ", profileImage)
                 
                 
@@ -51,6 +55,7 @@ const userLoginForm = () => {
                 await AsyncStorage.setItem('userId', userId.toString()); // guardo el id del usuario
                 await AsyncStorage.setItem('username', userName.toString()); // guardo el name del usuario
                 await AsyncStorage.setItem('isLoggedIn', 'true'); // guardo el estado de login
+
 
                 setUser(userData);
                 setIsLoggedIn(true);

@@ -42,7 +42,7 @@ export default function Layout() {
     <UserProvider>
         <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
           {appIsReady && (
-            <Stack screenOptions={{headerShown: false}}>
+            <Stack screenOptions={{headerShown: false, animation: 'fade'}}>
               <ProtectedRoute>
                 <Slot />
               </ProtectedRoute>

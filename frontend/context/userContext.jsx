@@ -31,7 +31,12 @@ const UserProvider = ({ children }) => {
       ...prevUser,
       profileImage: newProfileImage,
     }));
-    AsyncStorage.setItem('profileImage', newProfileImage);
+    const userNameUnique = user.name;
+    const profileImageKey = `profileImageKey_${userNameUnique}`;
+
+    AsyncStorage.setItem(profileImageKey, newProfileImage);
+    console.log("usuario: ", user.name)
+    AsyncStorage.setItem('username', user.name);
   };
 
   return (

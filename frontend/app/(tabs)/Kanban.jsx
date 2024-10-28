@@ -10,7 +10,7 @@ const Kanban = () => {
             <View style={{backgroundColor: '#111', height: '100%'}}>
                 <Stack.Screen 
                     options={{ 
-                        title: 'Organizador de tareas', 
+                        title: 'Mis metas personales', 
                         headerStyle: { 
                             backgroundColor: '#111' 
                         },
@@ -21,7 +21,7 @@ const Kanban = () => {
                     }}
                 />
                 <Pressable style={stylesKanban.buttonAdd} android_ripple={{ color:'rgba(0, 255, 255, 0.2)', borderless: false, radius: 250}}>
-                    <Text style={stylesKanban.textButtonAdd}>Añadir tarea</Text>
+                    <Text style={stylesKanban.textButtonAdd}>Añadir</Text>
                 </Pressable>
                 <ScrollView horizontal={true}>
                     <View style={{ gap: 10, flexDirection: 'row', margin: 10}}>
@@ -70,53 +70,3 @@ const stylesKanban = StyleSheet.create({
     }
 })
 export default Kanban
-
-// import { GestureHandlerRootView } from 'react-native-gesture-handler';
-// import React, { useRef, useState } from "react";
-// import { View, StyleSheet, PanResponder } from "react-native";
-
-// const DraggableBox = () => {
-//     const [position, setPosition] = useState({ x: 0, y: 0 });
-//     const panResponder = useRef(
-//         PanResponder.create({
-//             onStartShouldSetPanResponder: () => true,
-//             onPanResponderMove: (evt, gestureState) => {
-//                 // Actualiza la posición del cuadro según el movimiento del dedo
-//                 setPosition({
-//                     x: position.x + gestureState.dx,
-//                     y: position.y + gestureState.dy,
-//                 });
-//             },
-//             onPanResponderRelease: () => {
-//                 // Resetea el movimiento al soltar (opcional)
-//             },
-//         })
-//     ).current;
-
-//     return (
-//         <View style={styles.container}>
-//             <View
-//                 {...panResponder.panHandlers}
-//                 style={[styles.box, { transform: [{ translateX: position.x }, { translateY: position.y }] }]}
-//             />
-//         </View>
-//     );
-// };
-
-// const styles = StyleSheet.create({
-//     container: {
-//         flex: 1,
-//         justifyContent: "center",
-//         alignItems: "center",
-//         backgroundColor: "#111",
-//     },
-//     box: {
-//         width: 100,
-//         height: 100,
-//         backgroundColor: "#ff6347",
-//         borderRadius: 10,
-//     },
-// });
-
-// export default DraggableBox;
-

@@ -3,29 +3,33 @@ import { router } from 'expo-router';
 import { UserContext } from '@/context/userContext';
 import { useContext } from 'react';
 import  {ShowDrawer}  from './showDrawer';
-export const ActionButtons = () => {
-  const { setIsLoggedIn } = useContext(UserContext);
-  const { mostrar } = ShowDrawer();
 
+export const ActionButtons = () => {
+
+  const { setIsLoggedIn, user } = useContext(UserContext);
+  const { mostrar } = ShowDrawer();
   const clearAsyncStorage = async () => {
+
     try {
-      const profileImage = await AsyncStorage.getItem('profileImage');
+      const profileImageKey = `profileImage_${user.id}`
+      const profileImage = await AsyncStorage.getItem(profileImageKey); 
       await AsyncStorage.clear();
-      const token = await AsyncStorage.getItem('userToken');
-      if(profileImage) {
-        await AsyncStorage.setItem('profileImage', profileImage);
-      }      
-      console.log("url asegurada",profileImage)
-      console.log('AsyncStorage vaciado con éxito: ', token);
+
+      if (profileImage) {
+        await AsyncStorage.setItem(profileImageKey, profileImage); 
+      }
+  
+      console.log("Avatar guardado en el AsyncStorage: ", profileImage);
+  
       setIsLoggedIn(false);
       router.push("/");
       mostrar("cerrar");
-
+  
     } catch (error) {
       console.error('Error al vaciar AsyncStorage:', error);
     }
   };
-
+  
   const checkAsyncStorage = async () => {
     try {
       const userToken = await AsyncStorage.getItem('userToken');

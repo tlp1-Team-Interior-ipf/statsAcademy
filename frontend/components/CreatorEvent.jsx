@@ -3,14 +3,11 @@ import { View, Text, TextInput, Pressable, KeyboardAvoidingView } from 'react-na
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DateTimePickerComponent from './DateTimePickerComponent';
-import { Success } from './notifications';
-
 
 const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected }) => {
     const [descriptionEvent, setDescriptionEvent] = useState('');
     const [date, setDate] = useState(new Date());
     const [showDate, setShowDate] = useState(false);
-    const [showSuccess, setShowSuccess] = useState(false);
 
     const handleSubmitEvent = async () => {
         try {
@@ -34,14 +31,6 @@ const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected })
             setSelected(''); 
             setShowCreatorEvent(false);
 
-            console.log("notifiacion mostrada...")
-            setShowSuccess(true);
-
-            setTimeout(() => {
-                setShowSuccess(false); 
-                console.log("notificacion ocultada...")
-            }, 3000);
-
         } catch (error) {
             console.error("Error en el servidor:", error);
         }
@@ -63,7 +52,6 @@ const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected })
         
         return (
             <KeyboardAvoidingView>
-            {showSuccess && <Success />}
             <View style={{ borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, backgroundColor: '#222', borderColor: '#ddd', position: 'absolute', alignItems: 'flex-end', justifyContent: 'center', width: 250, height: 220, zIndex: 20, top: -400, left: -130, gap: 10 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 34 }}>
                     <Text style={{ color: '#ddd', fontWeight: 'bold', fontSize: 17 }}>

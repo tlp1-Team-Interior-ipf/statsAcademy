@@ -7,11 +7,18 @@ import ActionButtons from "@/hooks/ActionButtons";
 import { router } from "expo-router";
 import { useImagePicker } from '@/hooks/useImagePicker';
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { uploadCloudinary } from "./Upload.Cloudinary";
 
 const MyDrawer = ({ slideAnim, mostrar }) => {
   const { isLoggedIn, user, updateUserProfile } = useContext(UserContext);
   const { clearAsyncStorage } = ActionButtons();
   const { pickImage } = useImagePicker();
+
+  const handleUpload = async (imageUri) => {
+    const imageUrl = await uploadCloudinary(imageUri, user);
+    console.log('Imagen subida con éxito:', imageUrl);
+    return imageUrl
+  };
 
   const handleLogin = () => {
     mostrar();
@@ -29,10 +36,23 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
     router.navigate('/');
   }
 
+  const handleProfile = () => {
+    mostrar();
+    router.navigate('/userProfile');
+  }
+
   const handleChangeAvatar = async () => {
-    const imageUrl = await pickImage();
-    if(imageUrl) {
-      updateUserProfile(imageUrl)
+    const imageUri = await pickImage();
+    if(imageUri) {
+      const imageUrl = await handleUpload(imageUri);
+      if(imageUrl) {
+        console.log("usuario que subira la imagen a cloudinary: ", user.name)
+        const profileImageKey = `profileImage_${user.id}`;
+        console.log("imagen guardada con la clave: ", profileImageKey)
+        await AsyncStorage.setItem(profileImageKey, imageUrl)
+        updateUserProfile(imageUrl)
+
+      }
     }
   }
 
@@ -77,10 +97,9 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
                             <View>
                               <Text style={{color: '#fff', paddingVertical: 5, fontSize: 17, fontWeight: 'bold'}}>Cuenta</Text>
                               <View style={{borderWidth: 2, borderRadius: 5, borderColor: '#ddd',  width: 250}}>
-                                <ButtonList content={'Perfil de usuario'} />
+                                <ButtonList content={'Perfil de usuario'} action={handleProfile} />
                                 <ButtonList content={'Mi cuenta'} />
-                                <ButtonList content={'Notificaciones'} />
-                                <ButtonList content={'Ayuda'} />
+                                <ButtonList content={'Notificaciones'} action={() => router.push('Notifications')} />
                                 <ButtonList content={'Configuración'} />
                                 <ButtonList content={'Idioma'} />
                               </View>
@@ -89,6 +108,7 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
                             <View style={{marginVertical: 20}}>
                               <Text style={{color: '#fff', paddingVertical: 5, fontSize: 17, fontWeight: 'bold'}}>Aplicación</Text>
                               <View style={{borderWidth: 2, borderRadius: 5, borderColor: '#ddd',  width: 250}}>
+                                <ButtonList content={'Ayuda'} />
                                 <ButtonList content={'Invitar amigos'} />
                                 <ButtonList content={'Cerrar sesión'} action={handleLogout} />
                               </View>
