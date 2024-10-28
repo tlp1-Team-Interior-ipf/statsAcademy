@@ -9,8 +9,8 @@ import { connectDB } from './src/config/db.js';
 const app = express();
 app.use(cors({
     origin: 'http://localhost:8081', // Cambia esto si tu frontend está en otra dirección
-    methods: ['GET', 'POST', 'OPTIONS'], // Permite las solicitudes que necesites
-    allowedHeaders: ['Content-Type'], // Permite los headers que necesites
+    methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE'], // Permite las solicitudes que necesites
+    allowedHeaders: ['Content-Type', 'Authorization'], // Permite los headers que necesites
     credentials: true, // Si necesitas enviar cookies o autenticación
 }));
 app.options('*', cors());
