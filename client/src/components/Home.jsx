@@ -44,7 +44,7 @@ const Home = () => {
         </li>
         <li>
           <button className="card" onClick={handleCardClick}>
-            <img src="img/tutor.png" className="card__image" alt="Tutor Inteligente" />
+            <img src="img/gausvector3.png" className="card__image" alt="Tutor Inteligente" />
             <div className="card__overlay">
               <div className="card__header">
                 <svg className="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
