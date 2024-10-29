@@ -12,7 +12,7 @@ const Navbar = () => {
   // Manejar el scroll para mostrar la línea
   const handleScroll = () => {
     const scrollTop = window.scrollY;
-    setIsScrolled(scrollTop > 50); // Cambia este valor para ajustar cuando aparece la línea
+    setIsScrolled(scrollTop > 50); 
   };
 
   useEffect(() => {
@@ -26,6 +26,7 @@ const Navbar = () => {
   const handleSignInClick = () => navigate('/signin');
   const handleLogInClick = () => navigate('/login');
   const handleHomeClick = () => navigate('/');
+  const handleProfileClick = () => navigate('/home/profile');
 
   const handleLogOutClick = async () => {
     await logout();
@@ -57,9 +58,14 @@ const Navbar = () => {
       <div className="custom-navbar-right">
         {/* Botones dependiendo del estado de autenticación */}
         {user.isLogged ? (
-          <button className="custom-btn logout" onClick={handleLogOutClick}>
-            Cerrar Sesión
-          </button>
+          <>
+            <button className="custom-btn logout" onClick={handleLogOutClick}>
+              Cerrar Sesión
+            </button>
+            <button className="custom-btn profile" onClick={handleProfileClick}>
+              Mi perfil
+            </button>
+          </>
         ) : (
           <>
             <button className="custom-btn register" onClick={handleSignInClick}>
