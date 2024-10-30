@@ -3,7 +3,8 @@ import { responseHandler } from '../utils/responseHandler.js';
 
 export const createUserController = async (req, res, next) => {
     try {
-        const user = await createUser(req.body);
+        const { username, email, password } = req.body;
+        const user = await createUser({ username, email, password });
         responseHandler(res, 201, user);
     } catch (error) {
         next(error);
