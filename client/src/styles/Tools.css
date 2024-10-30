@@ -1,111 +1,55 @@
 .tools-container {
+  padding-top: 150px; /* Mueve las tarjetas hacia abajo para mayor separación respecto al título */
   text-align: center;
-  padding: 2rem;
-}
-
-.tools-title {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.tools-subtitle {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
 }
 
 .tools-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin: 4rem 5vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px; /* Aumenta el espacio entre las tarjetas */
   padding: 0;
   list-style-type: none;
 }
 
 .tools-card {
   position: relative;
-  display: flex;
-  flex-direction: column; /* Cambia a flex para alinear el contenido verticalmente */
-  justify-content: space-between; /* Espacio entre elementos dentro de la tarjeta */
-  height: 300px; /* Ajusta la altura para mantener la simetría */
-  border-radius: calc(var(--curve) * 1px);
+  width: 350px; /* Aumenta el tamaño de las tarjetas */
+  height: 350px;
+  border-radius: 25px;
   overflow: hidden;
-  text-decoration: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+  cursor: pointer;
 }
-
-.tools-card {
-  position: relative;
-  display: flex;
-  flex-direction: column; /* Cambia a flex para alinear el contenido verticalmente */
-  justify-content: space-between; /* Espacio entre elementos dentro de la tarjeta */
-  height: 300px; /* Ajusta la altura para mantener la simetría */
-  border-radius: calc(var(--curve) * 1px);
-  overflow: hidden;
-  text-decoration: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
-}
-
 
 .tools-card:hover {
-  transform: translateY(-5px);
+  transform: scale(1.05);
 }
 
 .tools-card__image {
-  width: 100%; /* Ocupa todo el ancho de la tarjeta */
-  height: 60%; /* Ajusta la altura de la imagen */
-  object-fit: cover; /* Mantiene la proporción de la imagen */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
 }
 
 .tools-card__overlay {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
-  right: 0;
-  z-index: 1;
-  border-radius: calc(var(--curve) * 1px);
-  background-color: var(--surface-color);
-  transform: translateY(100%);
-  transition: transform 0.2s ease-in-out;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 15px;
 }
 
 .tools-card:hover .tools-card__overlay {
-  transform: translateY(0);
-}
-
-.tools-card__header {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 1em;
-  padding: 1em;
-  background-color: var(--surface-color);
-}
-
-.tools-card__arc {
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  bottom: 100%;
-  right: 0;
-  fill: var(--surface-color);
-  z-index: 1;
-}
-
-.tools-card__header-text {
-  flex: 1;
-}
-
-.tools-card__title {
-  font-size: 1em;
-  margin: 0;
-  color: #333;
-}
-
-.tools-card__description {
-  padding: 1em;
-  margin: 0;
-  color: #555;
+  opacity: 1;
 }
