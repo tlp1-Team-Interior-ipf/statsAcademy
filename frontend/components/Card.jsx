@@ -5,13 +5,13 @@ import { router } from "expo-router";
 
 const MyCard = ({ title, subtitle, image, window }) => {
   const [showContent, setShowContent] = useState(false);
-  const maxHeight = useRef(new Animated.Value(0)).current; // Controlar la altura máxima del contenedor
+  const maxHeight = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     Animated.timing(maxHeight, {
-      toValue: showContent ? 80 : 0, // Ajustar la altura máxima según el contenido
+      toValue: showContent ? 80 : 0,
       duration: 300,
-      useNativeDriver: false, // Necesitamos que esto sea false para animar la maxHeight
+      useNativeDriver: false,
     }).start();
   }, [showContent]);
 
@@ -28,7 +28,6 @@ const MyCard = ({ title, subtitle, image, window }) => {
         onPress={() => setShowContent(!showContent)} 
       />
 
-      {/* Animated View que cambia su maxHeight */}
       <Animated.View style={[styles.content, { maxHeight }]}>
         <Text style={{fontWeight: 'bold', color:'#ddd'}}>{title}</Text>
         <Text style={{ color:'#ddd' }}>{subtitle}</Text>
@@ -45,15 +44,18 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: 'center',
     margin: 'auto',
-    // Propiedades de sombra para iOS
-    shadowColor: '#fff',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.5,
-    elevation: 5,
+     // Sombra para iOS
+     shadowColor: 'gray',
+     shadowOffset: {
+       width: 0,
+       height: 4,
+     },
+     shadowOpacity: 0.1,
+     shadowRadius: 8,
+     // Sombra para Android
+     elevation: 4,
+     justifyContent: 'center',
+     alignItems: 'center',
   },
   image: {
     width: 250,

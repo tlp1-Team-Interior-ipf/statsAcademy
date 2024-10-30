@@ -87,13 +87,13 @@ const Chat = () => {
       };
 
     return (
-    <View style={{ flex: 1, backgroundColor: '#111' }}>
+    <View style={{ flex: 1, backgroundColor: '#10132F' }}>
       <Stack.Screen 
                 options={{ 
                     title: 'Tutor Gauss', 
                     headerShown: true,
                     headerStyle: { 
-                        backgroundColor: '#111' 
+                        backgroundColor: '#10132F' 
                     },
                     headerTintColor: '#ddd',
                     headerLeft: () => (

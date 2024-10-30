@@ -7,12 +7,12 @@ const Kanban = () => {
 
     return(
         <GestureHandlerRootView style={{ flex: 1 }}>
-            <View style={{backgroundColor: '#111', height: '100%'}}>
+            <View style={{backgroundColor: '#10132F', height: '100%'}}>
                 <Stack.Screen 
                     options={{ 
                         title: 'Mis metas personales', 
                         headerStyle: { 
-                            backgroundColor: '#111' 
+                            backgroundColor: '#10132F' 
                         },
                         headerTintColor: '#ddd',
                         headerLeft: () => (

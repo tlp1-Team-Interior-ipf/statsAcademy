@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, Dimensions, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, Image, Dimensions, ScrollView, ActivityIndicator } from 'react-native';
 import { Button } from '@rneui/themed';
 import Carousel from 'react-native-reanimated-carousel';
 import { MyButton2 } from '@/components/Icons';
@@ -7,6 +7,7 @@ import { ButtonStart } from '@/components/SocialButtons'
 import Navbar from '@/components/Navbar'
 import { Stack } from 'expo-router';
 import  MyStagger  from '@/components/StaggerButtons'
+import { useFonts, Kufam_400Regular } from '@expo-google-fonts/kufam';
 
 const { width } = Dimensions.get('window');
 
@@ -16,17 +17,25 @@ const data = [
   { id: 3, image: require('@/img/img2.jpg') },
 ];
 
+
 export default function HomeScreen() {
+  let [fontsLoaded] = useFonts({
+    Kufam_400Regular,
+  });
+  
+  if (!fontsLoaded) {
+    return <ActivityIndicator size="large" color="#0000ff" />;
+  }
   
   return (
     <>
       <Stack.Screen options={{headerShown: false}} />
-      <View style={{backgroundColor: '#111'}}>
+      <View style={{backgroundColor: '#10132F'}}>
         <ScrollView>
           <View style={{zIndex: 1}}>
             <Navbar />
           </View>
-          <Text style={{ fontSize: 50, textAlign: 'left', paddingLeft: 10, color: '#fff' }}>Stats Academy</Text>
+          <Text style={{ fontSize: 50, textAlign: 'left', paddingLeft: 10, color: '#fff', fontFamily: 'Kufam_400Regular'  }}>Stats Academy</Text>
           <Text style={{ fontSize: 30, textAlign: 'left', paddingLeft: 10, color: '#fff' }}>Aprendizaje en Estadística</Text>
           <Text style={{ fontSize: 22, textAlign: 'left', paddingLeft: 10, color: '#fff' }}>
             Descubre la manera más efectiva de aprender Estadística con nuestra tutoria personalizada

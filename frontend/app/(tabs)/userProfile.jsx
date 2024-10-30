@@ -11,12 +11,12 @@ const userProfile = () => {
   
     return(
         <>
-            <View style={{height: '100%', backgroundColor: '#111', alignItems: 'center'}}>
+            <View style={{height: '100%', backgroundColor: '#10132F', alignItems: 'center'}}>
             <Stack.Screen 
                     options={{ 
                         title: 'Mi perfil', 
                         headerStyle: { 
-                            backgroundColor: '#111' ,
+                            backgroundColor: '#10132F' ,
                         },
                         headerTintColor: '#ddd',
                         headerLeft: () => (

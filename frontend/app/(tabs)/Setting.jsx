@@ -6,7 +6,7 @@ const Setting = () => {
 
   return (
     <>
-    <View style={{height: '100%'}}>
+    <View style={{height: '100%', backgroundColor: '#10132F'}}>
       <Text style={{textAlign: 'center'}}>Enviaremos un enlace a tu email para para que cambies tu contraseña</Text>
       <TextInput placeholder='Email' style={{borderWidth: 1, borderRadius: 5, padding: 10, margin: 10}} />
       <View style={{alignItems:'center'}}>

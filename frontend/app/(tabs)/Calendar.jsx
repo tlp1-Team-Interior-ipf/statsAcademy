@@ -20,12 +20,12 @@ const Calendario = () => {
                 headerShown: true,
                 headerBackTitleVisible: true,
                 headerTintColor: '#fff',
-                headerStyle: { backgroundColor: '#111' },
+                headerStyle: { backgroundColor: '#10132F' },
                 headerLeft: () => (
                     <AntDesign name='arrowleft' onPress={() => router.push('explore')} size={22} color={'#ddd'} style={{ paddingLeft: 20 }} />
                 ),
             }} />
-            <View style={{ backgroundColor: '#111', height: '100%' }}>
+            <View style={{ backgroundColor: '#10132F', height: '100%' }}>
                 <Calendar
                     onDayPress={day => {
                         setSelected(day.dateString);

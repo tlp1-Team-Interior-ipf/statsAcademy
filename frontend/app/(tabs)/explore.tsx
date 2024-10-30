@@ -21,7 +21,7 @@ const Explore = () => {
   return (
     <NativeBaseProvider>
     <Stack.Screen options={{headerShown: false}} />
-      <View style={{backgroundColor: '#111', height: '100%'}}>
+      <View style={{backgroundColor: '#10132F', height: '100%'}}>
         <ScrollView>
           <View style={{zIndex: 1}}>
             <Navbar/>
