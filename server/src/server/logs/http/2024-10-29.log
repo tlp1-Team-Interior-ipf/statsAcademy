@@ -1,0 +1,8 @@
+[2024-10-29T12:19:58.964Z] ::1 - - [29/Oct/2024:12:19:58 +0000] "POST /auth/register HTTP/1.1" 201 246 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+
+[2024-10-29T12:20:21.366Z] ::1 - - [29/Oct/2024:12:20:21 +0000] "POST /auth/login HTTP/1.1" 200 394 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+
+[2024-10-29T12:23:28.631Z] ::1 - - [29/Oct/2024:12:23:28 +0000] "GET /chat/history/3 HTTP/1.1" 500 685 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+
+[2024-10-29T12:23:28.644Z] ::1 - - [29/Oct/2024:12:23:28 +0000] "GET /chat/history/3 HTTP/1.1" 500 685 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+
