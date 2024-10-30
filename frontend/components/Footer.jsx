@@ -31,7 +31,6 @@ export const Footer = () => {
 const stylesFooter = StyleSheet.create({
 
     footer: {
-        // backgroundColor: '#054c51',
         width: '100%',
         height: 150,
         justifyContent: 'center',
