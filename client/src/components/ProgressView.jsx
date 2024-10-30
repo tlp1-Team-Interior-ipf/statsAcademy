@@ -14,7 +14,7 @@ const ProgressView = () => {
 
     const fetchProgress = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/progreso/${id}`);
+        const response = await axios.get(`http://localhost:4000/progress/${id}`);
         if (response.data.success) {
           setProgress(response.data.data);
         } else {
