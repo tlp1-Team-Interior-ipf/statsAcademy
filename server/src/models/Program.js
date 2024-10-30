@@ -18,5 +18,5 @@ export const Program = sequelize.define('program', {
     },
 }, {
     tableName: 'program',
-    timestamps: true,
+    timestamps: false,
 });

@@ -18,9 +18,9 @@ export const Topic = sequelize.define('topics', {
     },
     status: {
         type: DataTypes.ENUM('dictated', 'not dictated'),
-        allowNull: false
+        allowNull: true
     },
 }, {
     tableName: 'topics',
-    timestamps: true,
+    timestamps: false,
 });
