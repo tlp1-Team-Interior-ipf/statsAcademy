@@ -126,7 +126,7 @@ const Chat = () => {
             borderWidth: 1,
             borderRadius: 5,
             padding: 10,
-            backgroundColor: '#222',
+            backgroundColor: '#225',
             borderColor: '#ddd',
             color: '#ddd',
             flex: 1,

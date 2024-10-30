@@ -2,7 +2,8 @@ import React from 'react';
 import { View, Text, Pressable } from 'react-native';
 import { MyButton } from '@/components/Icons';
 import { router } from 'expo-router';
-import { Button, NativeBaseProvider } from 'native-base'
+import { NativeBaseProvider } from 'native-base'
+import { Button } from '@rneui/themed';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AntDesign } from '@expo/vector-icons';
 
@@ -54,11 +55,11 @@ export const ButtonStart = () => {
     <>
       <NativeBaseProvider>
         <Button
-          style={{ paddingHorizontal: 15, borderRadius: 20, width: 120, margin: 10 }}
+          buttonStyle={{ paddingHorizontal: 15, borderRadius: 25, width: 120, height: 45, margin: 10 }}
           onPress={checkLoginStatusAndRedirect}
           color={'#149'}
         >
-          <Text style={{color: '#fff', fontSize: 15}}>EMPEZAR</Text>
+          <Text style={{color: '#fff', fontSize: 17}}>EMPEZAR</Text>
         </Button>
       </NativeBaseProvider>
     </>

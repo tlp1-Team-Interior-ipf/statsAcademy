@@ -40,7 +40,7 @@ const Calendario = () => {
                         dayTextColor: '#fff',
                         monthTextColor: '#fff',
                         textSectionTitleColor: '#fff',
-                        calendarBackground: '#111',
+                        calendarBackground: '#225',
                     }}
                 />
                 <View style={{ alignItems: 'center' }}>
@@ -52,7 +52,7 @@ const Calendario = () => {
                     </Pressable>
                     <View style={{ height: 300, width: 310, top: 10, margin: 'auto', left: 10 }}>
                         {events.length === 0 ? (
-                            <View style={{ margin: 'auto', justifyContent: 'center', backgroundColor: '#111', height: 300, alignItems: 'center', left:-10 }}>
+                            <View style={{ margin: 'auto', justifyContent: 'center', backgroundColor: '#10132F', height: 300, alignItems: 'center', left:-10 }}>
                                 <Text style={{ color: '#ddd' }}>No hay eventos programados</Text>
                             </View>
                         ) : (

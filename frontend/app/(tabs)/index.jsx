@@ -15,8 +15,14 @@ const data = [
   { id: 1, image: require('@/img/background2.jpg') },
   { id: 2, image: require('@/img/background1.jpg') },
   { id: 3, image: require('@/img/img2.jpg') },
+  
 ];
 
+const tutorBanner = require('@/img/los elegiiiidooss/tutorbanner.png');
+const tutoriaLogo = require('@/img/tutorialogo.png');
+const anotadorSinFondo = require('@/img/los elegiiiidooss/anotadorSinFondo.png');
+const calendarioSinFondo = require('@/img/los elegiiiidooss/calendarioSinFondo.png');
+const studentprofile = require('@/img/los elegiiiidooss/studentprofile.png');
 
 export default function HomeScreen() {
   let [fontsLoaded] = useFonts({
@@ -57,35 +63,41 @@ export default function HomeScreen() {
             />
           </View>
 
-          <View style={{ margin: 10 }}>
-            <View style={{ width: '100%', backgroundColor: '#66f', height: 200, padding: 10, justifyContent: 'center', alignItems: 'center', borderRadius: 5 }}>
-              <Text style={{ color: '#fff', fontSize: 30 }}>FORMA PARTE</Text>
-              <Button title="Únete ahora" color={'#149'} />
+          <View style={{ backgroundColor: '#04617c', margin: 'auto', paddingHorizontal: 0, width: 510, paddingVertical: 20, alignItems: 'center' }}>
+            <View style={{ width: 450, backgroundColor: '#5bc8ca',  marginHorizontal: 0, justifyContent: 'space-between',  borderRadius: 5, flexDirection: 'row'}}>
+              <View style={{flexDirection: 'column'}}>
+                <Text style={{ color: '#fff', fontSize: 30, width: 250, textAlign: 'center' }}>¡Prueba Gaus! Nuestro tutor inteligente</Text>
+                <Button title="Únete ahora" color={'#058b94'} buttonStyle={{margin: 'auto', marginVertical: 10, borderRadius: 5 }} />
+              
+              </View>
+              <View style={{ flexDirection: 'column' }}>
+                  <Image source={tutorBanner} style={{ width:160, height:180, position: 'absolute', top: -135, left: -80, zIndex: 10}} />
+                  <Image source={tutoriaLogo} style={{ width:100, height:80, zIndex: 10, top: 80, left: -50 }} />
+              </View>
             </View>
           </View>
-
-          <View style={styles.footer}>
-            <View>
-              <Text style={{ color: '#fff', fontSize: 10 }}>Todos los derechos reservados © 2024</Text>
-            </View>
-            <View style={{ display: 'flex', flexDirection: 'row', paddingTop: 15, gap: 50 }}>
-              <View>
-                <Text style={{ color: '#fff', fontSize: 10, textAlign: 'center', marginBottom: 10 }}>Términos y Condiciones</Text>
-                <Text style={{ color: '#fff', fontSize: 12, textAlign: 'center' }}>StatsAcademy®</Text>
-                <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 5 }}>
-                  <MyButton2 iconName={'facebook-official'} iconSize={13} color={'#ddd'} action={null}/>
-                  <MyButton2 iconName={'linkedin-square'} iconSize={13} color={'#ddd'} action={null}/>
-                  <MyButton2 iconName={'instagram'} iconSize={13} color={'#ddd'} action={null}/>
-                  <MyButton2 iconName={'github'} iconSize={13} color={'#ddd'} action={null}/>
+              <View style={{ backgroundColor: '#0b246c', width: '100%', height: '30%'}}>
+                <Text style={{ textAlign: 'center', color: '#ddd', fontSize: 25, top: 25 }}>Tenemos las herramientas que necesitas</Text>
+                <View style={{flexDirection: 'row', justifyContent: 'center', gap: 20, alignItems: 'center', top: 50}}>
+                  <View style={{borderWidth: 1, borderColor: '#3366ff80', borderRadius: 2, backgroundColor: '#3366ff50'}}>
+                  <Image source={studentprofile} style={{ width:140, height:140, marginVertical: 10 }}/>
+                    <View style={{backgroundColor: '#3366ff80', height: 40, justifyContent: 'center'}}>
+                      <Text style={{ textAlign: 'center', fontSize: 17, color: '#ddd'}}>Perfil de Alumno</Text>
+                    </View>
+                  </View>
+                  <View style={{borderWidth: 1, borderColor: '#3366ff80', borderRadius: 2, backgroundColor: '#3366ff50'}}>
+                  <Image source={anotadorSinFondo} style={{ width:140, height:140, marginVertical: 10 }}/>
+                    <View style={{backgroundColor: '#3366ff80', height: 40, justifyContent: 'center' }} > 
+                      <Text style={{ textAlign: 'center', fontSize: 17, color: '#ddd'}}>Anotador</Text>
+                    </View>
+                  </View>
+                  <View style={{borderWidth: 1, borderColor: '#3366ff80', borderRadius: 2, backgroundColor: '#3366ff50'}}>
+                    <Image source={calendarioSinFondo} style={{ width:150, height:160 }}/>
+                    <View style={{backgroundColor: '#3366ff80', height: 40, justifyContent: 'center'}} >
+                      <Text style={{ textAlign: 'center', fontSize: 17, color: '#ddd'}}>Calendario</Text></View>  
+                  </View>
                 </View>
               </View>
-              <View style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <Text style={{ color: '#fff', fontSize: 10, textAlign: 'center', marginBottom: 10 }}>Política de Privacidad</Text>
-                <Text style={{ color: '#fff', fontSize: 11, textAlign: 'center' }}>CONTACTANOS</Text>
-                <Text style={{ color: '#fff', fontSize: 9, textAlign: 'center' }}>statsacademy@gmail.com</Text>
-              </View>
-            </View>
-          </View>
         </ScrollView>
               <MyStagger />
 

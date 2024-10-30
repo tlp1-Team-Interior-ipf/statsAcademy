@@ -25,14 +25,14 @@ const Kanban = () => {
                 </Pressable>
                 <ScrollView horizontal={true}>
                     <View style={{ gap: 10, flexDirection: 'row', margin: 10}}>
-                        <View style={{ backgroundColor: '#333', width: 250, height: 650, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: '#666' }}>
+                        <View style={{ backgroundColor: '#336', width: 250, height: 650, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: '#666' }}>
                             <Text style={stylesKanban.textColumn}>Por hacer</Text>
                             
                         </View>
-                        <View style={{ backgroundColor: '#333', width: 250, height: 650, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: '#666' }}>
+                        <View style={{ backgroundColor: '#336', width: 250, height: 650, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: '#666' }}>
                             <Text style={stylesKanban.textColumn}>En proceso</Text>
                         </View>
-                        <View style={{ backgroundColor: '#333', width: 250, height: 650, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: '#666' }}>
+                        <View style={{ backgroundColor: '#336', width: 250, height: 650, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: '#666' }}>
                             <Text style={stylesKanban.textColumn}>Finalizadas</Text>
                         </View>
                     </View>

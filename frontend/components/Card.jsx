@@ -1,11 +1,21 @@
 import { StyleSheet, View, Text, Image, Animated, Pressable } from "react-native";
-import AntDesign from '@expo/vector-icons/AntDesign';
 import { useEffect, useRef, useState } from "react";
 import { router } from "expo-router";
+import { AntDesign, EvilIcons, MaterialCommunityIcons, MaterialIcons, FontAwesome5, Entypo } from '@expo/vector-icons';
 
-const MyCard = ({ title, subtitle, image, window }) => {
+const iconLibraries = {
+  EvilIcons: EvilIcons,
+  MaterialCommunityIcons: MaterialCommunityIcons,
+  FontAwesome5: FontAwesome5,
+  MaterialIcons: MaterialIcons,
+  AntDesign: AntDesign,
+  Entypo: Entypo
+};
+
+const MyCard = ({ title, subtitle, image, window, NameLibrariIcon, nameIcon, sizeIcon }) => {
   const [showContent, setShowContent] = useState(false);
   const maxHeight = useRef(new Animated.Value(0)).current;
+  const IconComponent = iconLibraries[NameLibrariIcon];
 
   useEffect(() => {
     Animated.timing(maxHeight, {
@@ -17,8 +27,14 @@ const MyCard = ({ title, subtitle, image, window }) => {
 
   return (
     <View style={styles.container}>
-      <Pressable onPress={() => router.push(window)}>
-        <Image source={image} style={styles.image} />
+      <Pressable style={{alignItems: 'center'}} onPress={() => router.push(window)}>
+        {/* <Image source={image} style={styles.image} /> */}
+        {IconComponent ? (
+          <IconComponent name={nameIcon} size={sizeIcon} color={'#ddd'} />
+          ) : (
+              <Text>Icon not found</Text>
+          )
+        }
       </Pressable>
       <AntDesign 
         name={showContent ? "down" : "up"} 
@@ -39,7 +55,7 @@ const MyCard = ({ title, subtitle, image, window }) => {
 const styles = StyleSheet.create({
   container: {
     width: 300,
-    backgroundColor: '#111',
+    backgroundColor: '#111762',
     borderRadius: 5,
     padding: 10,
     alignItems: 'center',

@@ -8,6 +8,7 @@ import { router } from "expo-router";
 import { useImagePicker } from '@/hooks/useImagePicker';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { uploadCloudinary } from "./Upload.Cloudinary";
+import { Footer } from '@/components/Footer'
 
 const MyDrawer = ({ slideAnim, mostrar }) => {
   const { isLoggedIn, user, updateUserProfile } = useContext(UserContext);
@@ -58,7 +59,7 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
 
     return(
         <Animated.View style={{
-            backgroundColor: '#222', 
+            backgroundColor: '#114', 
             width: 280, 
             height: 1000, 
             zIndex: 10, 
@@ -113,7 +114,8 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
                                 <ButtonList content={'Cerrar sesión'} action={handleLogout} />
                               </View>
                             </View>
-                          
+                            
+                            <Footer />
                         </View>
                       </>
                     )

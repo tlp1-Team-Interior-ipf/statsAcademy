@@ -74,7 +74,7 @@ const styleCardProfile = StyleSheet.create({
     containerCardProfile: {
         height: 150, 
         width: 130, 
-        backgroundColor: '#444',
+        backgroundColor: '#111762',
         borderRadius: 5,
         padding: 10,
         alignItems: 'center'
@@ -83,7 +83,7 @@ const styleCardProfile = StyleSheet.create({
     subContainerCardProfile: {
         height: 55, 
         width: 120, 
-        backgroundColor: '#666',
+        backgroundColor: '#4d55b3',
         borderRadius: 5,
         padding: 10,
         alignItems: 'center',

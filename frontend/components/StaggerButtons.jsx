@@ -56,8 +56,8 @@ const Example = () => {
         </Stagger>
       </Box>
       <HStack alignItems="center">
-        <IconButton variant="solid" borderRadius="full" size="lg" onPress={onToggle} bg="#36f" icon={<Icon as={MaterialCommunityIcons} size="6" name="dots-horizontal" color="warmGray.50" _dark={{
-          color: "warmGray.50"
+        <IconButton variant="solid" borderRadius="full" size="lg" onPress={onToggle} bg="#349" icon={<Icon as={MaterialCommunityIcons} size="6" name="dots-horizontal" color="warmGray.50" _dark={{
+          color: "#11d"
       }} />} />
       </HStack>
     </Center>;

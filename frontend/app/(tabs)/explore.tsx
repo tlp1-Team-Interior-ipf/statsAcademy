@@ -10,9 +10,9 @@ import  MyStagger  from '@/components/StaggerButtons'
 
 const Explore = () => {
   const { loading } = useAuth();
-  const ImgChat = require('@/img/CHAT.jpg')
-  const ImgKanban = require('@/img/Kanban2.png')
-  const ImgCalendario = require('@/img/Calendario2.png')
+  const ImgChat = require('@/img/los elegiiiidooss/gausvector2.png')
+  const ImgKanban = require('@/img/los elegiiiidooss/todoapp.png')
+  const ImgCalendario = require('@/img/los elegiiiidooss/tools.png')
 
   if (loading) {
     return <LoadingSpinner />
@@ -28,9 +28,9 @@ const Explore = () => {
           </View>
           <Text style={{textAlign: 'center', fontSize: 35, color: '#ddd', top: -20}}>Bienvenido a tu inicio</Text>
             <View style={{gap: 10, marginVertical: 10}}>
-              <MyCard title={'Organizador'} subtitle={'Organizador de tareas para gestionar actividades y otros eventos importantes'} image={ImgKanban} window={'Kanban'} />
-              <MyCard title={'Calendario'} subtitle={'Calendario para definir fechas importantes'} image={ImgCalendario} window={'Calendar'} />
-              <MyCard title={'Chat'} subtitle={'Chat para las clases interactivas'} image={ImgChat} window={'Chat'} />
+              <MyCard title={'Chat'} subtitle={'Chat para las clases interactivas'} image={null} window={'Chat'} NameLibrariIcon={"Entypo"} nameIcon={"chat"} sizeIcon={170} />
+              <MyCard title={'Organizador'} subtitle={'Organizador de tareas para gestionar actividades y otros eventos importantes'} image={null} window={'Kanban'} NameLibrariIcon={"FontAwesome5"} nameIcon={"tasks"} sizeIcon={170} />
+              <MyCard title={'Calendario'} subtitle={'Calendario para definir fechas importantes'} image={null} window={'Calendar'} NameLibrariIcon={"AntDesign"} nameIcon={"calendar"} sizeIcon={170} />
             </View>
         </ScrollView>
       </View>
