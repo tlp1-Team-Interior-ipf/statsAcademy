@@ -2,24 +2,25 @@ import { sequelize } from "../database/configDB.js";
 import { DataTypes } from "sequelize";
 
 
-export const Temas = sequelize.define('Temas', {
+export const Topic = sequelize.define('topics', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    nombre: {
+    name: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    descripcion: {
+    description: {
         type: DataTypes.TEXT,
         allowNull: false
     },
-    estado: {
-        type: DataTypes.ENUM('dictado', 'no dictado'),
+    status: {
+        type: DataTypes.ENUM('dictated', 'not dictated'),
         allowNull: false
     },
 }, {
-    timestamps: false,
+    tableName: 'topics',
+    timestamps: true,
 });

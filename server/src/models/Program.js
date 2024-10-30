@@ -2,20 +2,21 @@ import { sequelize } from '../database/configDB.js';
 import { DataTypes } from 'sequelize';
 
 
-export const Programa = sequelize.define('programa', {
+export const Program = sequelize.define('program', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    nombre: {
+    name: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    descripcion: {
+    description: {
         type: DataTypes.TEXT,
         allowNull: false
     },
 }, {
-    timestamps: false,
+    tableName: 'program',
+    timestamps: true,
 });

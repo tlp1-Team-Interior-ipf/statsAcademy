@@ -2,18 +2,19 @@ import { sequelize } from "../database/configDB.js";
 import { DataTypes } from "sequelize";
 
 
-export const Progreso = sequelize.define('Progreso', {
+export const Progress = sequelize.define('Progress', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    progreso: {
+    progress: {
         type: DataTypes.FLOAT,
         allowNull: false
     },
 }, 
 {
-    timestamps: false,
+    tableName: 'progress',
+    timestamps: true,
 },
 );

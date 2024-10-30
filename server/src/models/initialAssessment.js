@@ -2,17 +2,17 @@ import { sequelize } from "../database/configDB.js";
 import { DataTypes } from "sequelize";
 
 
-export const EvaInicialModel = sequelize.define('EvaInicial', {
+export const initialAssessment = sequelize.define('initialAssessment', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
-    nota: {
+    note: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    nivel: {
+    level: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
@@ -20,6 +20,6 @@ export const EvaInicialModel = sequelize.define('EvaInicial', {
 {
     timestamps: true,
     deletedAt: 'deletedAt',
-    tableName: 'EvaInicial',
+    tableName: 'initialAssessment',
 },
 );

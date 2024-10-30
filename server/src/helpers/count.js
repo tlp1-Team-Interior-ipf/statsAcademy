@@ -1,9 +1,9 @@
-import { Temas } from "../models/temas.js";
+import { Topic } from "../models/Topic.js";
 
 
-export const countTemas = async () => {
+export const countTopics = async () => {
     try {
-        const count = await Temas.count();
+        const count = await Topic.count();
         return count;
     } catch (error) {
         throw new Error(error);
@@ -11,9 +11,9 @@ export const countTemas = async () => {
 };
 
 
-export const countTemasDictados = async () => {
+export const countTopicsDictated = async () => {
     try {
-        const count = await Temas.count({ where: { estado: 'dictado' } });
+        const count = await Topic.count({ where: { status: 'dictated' } });
         return count;
     } catch (error) {
         throw new Error(error);

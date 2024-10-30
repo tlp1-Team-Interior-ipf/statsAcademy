@@ -1,7 +1,7 @@
 import { sequelize } from "../database/configDB.js";
 import { DataTypes } from "sequelize";
 
-export const RespuestasModel = sequelize.define('Respuestas', {
+export const Answer = sequelize.define('answers', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -15,6 +15,6 @@ export const RespuestasModel = sequelize.define('Respuestas', {
 {
     timestamps: true,
     deletedAt: 'deletedAt',
-    tableName: 'Respuestas',
+    tableName: 'answers',
 },
 );

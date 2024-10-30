@@ -1,7 +1,7 @@
 import { Chat } from "../models/modelChat.js";
 import { DatabaseError } from "../utils/errorHandler.js";
 import { getChatHistory } from "../helpers/ChatHistory.js";
-import { getNextTopic, updateTopicStatus } from "../helpers/TemasHelpers.js";
+import { getNextTopic, updateTopicStatus } from "../helpers/TopicsHelpers.js";
 import { fetchOpenAIResponse, evaluateResponse } from "../utils/OpenAiClient.js";
 
 

@@ -2,13 +2,13 @@ import { sequelize } from "../database/configDB.js";
 import { DataTypes } from "sequelize";
 
 
-export const PreguntasModel = sequelize.define('Preguntas', {
+export const Questions = sequelize.define('questions', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
-    pregunta: {
+    question: {
         type: DataTypes.STRING,
         allowNull: false,
     },
@@ -16,6 +16,6 @@ export const PreguntasModel = sequelize.define('Preguntas', {
 {
     timestamps: true,
     deletedAt: 'deletedAt',
-    tableName: 'Preguntas',
+    tableName: 'questions',
 },
 );

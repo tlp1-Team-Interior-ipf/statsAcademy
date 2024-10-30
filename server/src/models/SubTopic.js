@@ -2,20 +2,19 @@ import { sequelize } from "../database/configDB.js";
 import { DataTypes } from "sequelize";
 
 
-export const Unidades = sequelize.define('Unidades', {
+export const SubTopic = sequelize.define('subtopics', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    nombre: {
+    name: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    descripcion: {
-        type: DataTypes.TEXT,
-        allowNull: false
-    },
-}, {
-    timestamps: false,
-});
+}, 
+{
+    tableName: 'subtopics',
+    timestamps: true,
+},
+);

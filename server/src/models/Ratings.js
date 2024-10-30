@@ -2,18 +2,19 @@ import { sequelize } from "../database/configDB.js";
 import { DataTypes } from "sequelize";
 
 
-export const Calificaciones = sequelize.define('Calificaciones', {
+export const Ratings = sequelize.define('ratings', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    nota: {
+    note: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
 }, 
 {
-    timestamps: false,
+    tableName: 'ratings',
+    timestamps: true,
 },
 );
