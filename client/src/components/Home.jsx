@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSpring, animated } from '@react-spring/web';
 import '../styles/Home.css';
 
 const cards = [
@@ -22,7 +23,7 @@ const cards = [
     description: '¡Toma una evaluación para medir tus conocimientos!',
     imageSrc: 'img/studentprofile.png',
     altText: 'Perfil del alumno',
-    route: '/home/profile',
+    route: '/home/evaluation',
   },
 ];
 
@@ -52,18 +53,32 @@ const CardGrid = () => {
       <h2 className="home-subtitle">¿Qué desea hacer?</h2>
       <div className="card-grid">
         {cards.map((card, index) => (
-          <div key={index} className="card-container">
-            <h3 className="card-title">{card.title}</h3>
-            <Card
-              description={card.description}
-              imageSrc={card.imageSrc}
-              altText={card.altText}
-              route={card.route}
-            />
-          </div>
+          <AnimatedCardContainer key={index} card={card} />
         ))}
       </div>
     </div>
+  );
+};
+
+// Componente que envuelve cada tarjeta con animación
+const AnimatedCardContainer = ({ card }) => {
+  const animationProps = useSpring({
+    from: { opacity: 0, transform: 'translateY(50px)' },
+    to: { opacity: 1, transform: 'translateY(0px)' },
+    config: { tension: 200, friction: 20 },
+    delay: 200,
+  });
+
+  return (
+    <animated.div style={animationProps} className="card-container">
+      <h3 className="card-title">{card.title}</h3>
+      <Card
+        description={card.description}
+        imageSrc={card.imageSrc}
+        altText={card.altText}
+        route={card.route}
+      />
+    </animated.div>
   );
 };
 

@@ -1,11 +1,11 @@
 import Navbar from '../components/NavBar';
-import Profile from '../components/Profile';
+import ProgressView from '../components/ProgressView';
 
 const ProfilePage = () => {
     return (
         <div>
         <Navbar />
-        <Profile />
+        <ProgressView />
         </div>
     );
     };
