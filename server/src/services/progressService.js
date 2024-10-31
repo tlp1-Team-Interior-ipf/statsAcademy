@@ -33,7 +33,9 @@ export const calculateProgress = async (userId) => {
 
 export const getProgress = async (userId) => {
     try {
-        const progress = await Progress.findOne({ where: { userId: userId } });
+        const progress = await Progress.findOne({ where: { userId: userId },
+            order: [['createdAt', 'DESC']]
+        });
         return progress ? progress.progress : null;
     } catch (error) {
         DatabaseError(error);

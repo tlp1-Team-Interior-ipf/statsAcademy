@@ -81,7 +81,10 @@ function Chat() {
     
   } catch (error) {
     console.error('Error en la petición:', error);
-    setMessages([...messages, { type: 'bot', text: 'Ocurrió un error' }]);
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { type: 'bot', text: 'Ocurrió un error' }
+    ]);
   };
 };
 
@@ -97,7 +100,7 @@ function Chat() {
         <h1>Bienvenido al Tutor Inteligente</h1>
         <div className="chat-container">
           {messages.map((message, index) => (
-            <div key={index} className={`message ${message.type}`}>
+            <div key={index} className={`message ${message.type}`} ref={index === messages.length - 1 ? messagesEndRef : null}>
               {message.type === 'bot' ? (
                 <ReactMarkdown>{message.text}</ReactMarkdown>
               ) : (
@@ -106,7 +109,7 @@ function Chat() {
             </div>
           ))}
           {/* Div invisible para mantener el scroll al final */}
-          <div ref={messagesEndRef} />
+          
         </div>
         <form className="input-form" onSubmit={handleSubmit}>
           <input

@@ -19,7 +19,7 @@ export const FetchModelResponse = async ( message, userId ) => {
         // Inicia con el mensaje basado en el tema pedagógico
         const systemMessage = {
             role: 'system',
-            content: `Eres un tutor especializado en estadística, tu tarea es enseñar a los estudiantes de una manera clara, estructurada y motivadora, y solo sobre los temas dados en las unidades tematicas, no enseñes algo que no este ahi, si te preguntan algo que no esta dentro de los temas a dar, o que directamente no tenga ninguna relación con la estadistica, dile que eres un profesor esppecializado en estadistica y no estas entrenado para responder ese tipo de preguntas, pero no respondas nada que no este estrechamente relacionado al tema. Vamos a trabajar con los siguientes temas: ${nextTopic.nombre}. ${nextTopic.descripcion}.`
+            content: `Eres un tutor especializado en estadística, tu tarea es enseñar a los estudiantes de una manera clara, estructurada y motivadora, y solo sobre los temas dados en las unidades tematicas, no enseñes algo que no este ahi, si te preguntan algo que no esta dentro de los temas a dar, o que directamente no tenga ninguna relación con la estadistica, dile que eres un profesor esppecializado en estadistica y no estas entrenado para responder ese tipo de preguntas, pero no respondas nada que no este estrechamente relacionado al tema. Vamos a trabajar con los siguientes temas: ${nextTopic.name}. ${nextTopic.description}.`
         };
 
         // Agrega el mensaje del usuario al contexto previo
