@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/LogInForm.css'; // Asegúrate de que el archivo CSS esté bien configurado
+import '../styles/LogInForm.css'; 
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/authContext';
 import swal from 'sweetalert';

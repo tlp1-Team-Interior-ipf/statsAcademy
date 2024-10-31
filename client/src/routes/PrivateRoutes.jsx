@@ -8,7 +8,9 @@ import CalendarPage from "../pages/CalendarPage";
 import TodoAppPage from "../pages/TodoAppPage";
 import ProgressPage from "../pages/ProgressPage";
 import EvaluationPage from "../pages/EvaluatoryPage";
+import InitialTestPage from "../pages/InitialTestPage";
 import { PrivateRoute } from './PrivateRoute';
+
 
 
 export const PrivateRoutes = () => (
@@ -74,6 +76,14 @@ export const PrivateRoutes = () => (
       element={
         <PrivateRoute>
           <EvaluationPage />
+        </PrivateRoute>
+      }
+    />
+    <Route
+      path="/initialtest"
+      element={
+        <PrivateRoute>
+          <InitialTestPage />
         </PrivateRoute>
       }
     />

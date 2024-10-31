@@ -27,14 +27,14 @@ function Exams() {
       description: "Toma una prueba para saber tu nivel inicial.",
       imageSrc: "/img/inicialtest.png",
       altText: "Evaluación Inicial",
-      route: "/home/initial-evaluation",
+      route: "/home/initialtest",
     },
     {
       title: "Evaluacion Periódica",
       description: "Pon a prueba tus conocimientos hasta el momento.",
       imageSrc: "/img/periodictest.webp",
       altText: "Evaluación Periódica",
-      route: "/home/periodic-evaluation",
+      route: "/home/periodictest",
     },
   ];
 

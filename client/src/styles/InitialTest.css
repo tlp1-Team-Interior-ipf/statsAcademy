@@ -1,0 +1,60 @@
+/* Estilos generales */
+.initial-test-body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.initial-test-container {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 120px auto;
+}
+
+.initial-test-title {
+  text-align: center;
+}
+
+/* Contenedor principal del contenido debajo del navbar */
+.initial-test-main-container {
+  padding-top: 100px;
+  min-height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Input y botón */
+.initial-test-input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.initial-test-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #5cb85c;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.initial-test-button:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+/* Puntuación y Resultado */
+.initial-test-score {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+}
