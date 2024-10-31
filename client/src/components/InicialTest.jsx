@@ -33,7 +33,7 @@ const InitialTest = () => {
   const currentQuestion = selectedQuestions[currentQuestionIndex];
 
   const evaluateAnswer = async (userAnswer, correctAnswer) => {
-    const apiKey = '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' // Accede a la clave API desde el entorno
+    const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
 
     try {
       const response = await fetch("https://api.openai.com/v1/chat/completions", {
