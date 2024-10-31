@@ -25,14 +25,14 @@ function Exams() {
     {
       title: "Evaluación Inicial",
       description: "Toma una prueba para saber tu nivel inicial.",
-      imageSrc: "/img/todoapp.png",
+      imageSrc: "/img/inicialtest.png",
       altText: "Evaluación Inicial",
       route: "/home/initial-evaluation",
     },
     {
       title: "Evaluacion Periódica",
-      description: "Pon a prueba tus conocimientos hasta ahora.",
-      imageSrc: "/img/calendar.png",
+      description: "Pon a prueba tus conocimientos hasta el momento.",
+      imageSrc: "/img/periodictest.webp",
       altText: "Evaluación Periódica",
       route: "/home/periodic-evaluation",
     },
