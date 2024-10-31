@@ -1,64 +1,85 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';  // Importa useNavigate para la navegación
+import { useNavigate } from 'react-router-dom';
+import { useSpring, animated } from '@react-spring/web';
 import '../styles/Home.css';
 
-const Home = () => {
-  const navigate = useNavigate();  // Obtiene la función navigate
+const cards = [
+  {
+    title: 'Gauss - Tutor Inteligente',
+    description: 'Tutor Inteligente en Estadística para Ciencia de Datos.',
+    imageSrc: 'img/gausvector9.png',
+    altText: 'Tutor Inteligente',
+    route: '/home/chat',
+  },
+  {
+    title: 'Herramientas',
+    description: 'Herramientas que pueden serte útiles',
+    imageSrc: 'img/tools.png',
+    altText: 'Organizador',
+    route: '/home/tools',
+  },
+  {
+    title: 'Evaluatorio',
+    description: '¡Toma una evaluación para medir tus conocimientos!',
+    imageSrc: 'img/studentprofile.png',
+    altText: 'Perfil del alumno',
+    route: '/home/evaluation',
+  },
+];
 
-  const handleCardClick = () => {
-    navigate('/home/chat');  // Navega a la ruta '/chat' al hacer clic en la tarjeta del Tutor Inteligente
+// Componente Card para mostrar la imagen y descripción con la superposición
+const Card = ({ description, imageSrc, altText, route }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(route);
   };
 
+  return (
+    <div className="card" onClick={handleClick}>
+      <img src={imageSrc} alt={altText} className="card-image" />
+      <div className="card-overlay">
+        <p>{description}</p>
+      </div>
+    </div>
+  );
+};
+
+// Componente principal CardGrid
+const CardGrid = () => {
   return (
     <div className="home-container">
       <h1 className="home-title">Bienvenido a su inicio</h1>
       <h2 className="home-subtitle">¿Qué desea hacer?</h2>
-      <ul className="cards">
-        <li>
-          <button className="card" onClick={() => navigate('/home/profile')}>
-            <img src="img/studentnf.PNG" className="card__image" alt="Perfil del alumno" />
-            <div className="card__overlay">
-              <div className="card__header">
-                <svg className="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
-                <div className="card__header-text">
-                  <h3 className="card__title"><strong>Perfil del alumno</strong></h3>
-                </div>
-              </div>
-              <p className="card__description">Edita tu perfil con preferencias y datos relevantes.</p>
-            </div>
-          </button>
-        </li>
-        <li>
-          <button className="card" onClick={() => navigate('/home/tools')}>
-            <img src="img/calendarnf.PNG" className="card__image" alt="Organizador" />
-            <div className="card__overlay">
-              <div className="card__header">
-                <svg className="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
-                <div className="card__header-text">
-                  <h3 className="card__title"><strong>Organizador</strong></h3>
-                </div>
-              </div>
-              <p className="card__description">Organizador de tareas para gestionar actividades y otros eventos importantes.</p>
-            </div>
-          </button>
-        </li>
-        <li>
-          <button className="card" onClick={handleCardClick}>
-            <img src="img/tutor.png" className="card__image" alt="Tutor Inteligente" />
-            <div className="card__overlay">
-              <div className="card__header">
-                <svg className="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
-                <div className="card__header-text">
-                  <h3 className="card__title"><strong>Tutor Inteligente</strong></h3>
-                </div>
-              </div>
-              <p className="card__description">Tutor Inteligente en Estadística para Ciencia de Datos.</p>
-            </div>
-          </button>
-        </li>
-      </ul>
+      <div className="card-grid">
+        {cards.map((card, index) => (
+          <AnimatedCardContainer key={index} card={card} />
+        ))}
+      </div>
     </div>
   );
-}
+};
 
-export default Home;
+// Componente que envuelve cada tarjeta con animación
+const AnimatedCardContainer = ({ card }) => {
+  const animationProps = useSpring({
+    from: { opacity: 0, transform: 'translateY(50px)' },
+    to: { opacity: 1, transform: 'translateY(0px)' },
+    config: { tension: 200, friction: 20 },
+    delay: 200,
+  });
+
+  return (
+    <animated.div style={animationProps} className="card-container">
+      <h3 className="card-title">{card.title}</h3>
+      <Card
+        description={card.description}
+        imageSrc={card.imageSrc}
+        altText={card.altText}
+        route={card.route}
+      />
+    </animated.div>
+  );
+};
+
+export default CardGrid;

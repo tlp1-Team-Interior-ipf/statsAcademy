@@ -2,12 +2,14 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import ChatPage from "../pages/ChatPage";
 import NotFoundPage from "../pages/NotFoundPage";
-import ProfilePage from "../pages/ProfilePage";
+import ProfilePage from "../pages/ProgressPage";
 import ToolsPage from "../pages/ToolsPage";
 import CalendarPage from "../pages/CalendarPage";
 import TodoAppPage from "../pages/TodoAppPage";
 import ProgressPage from "../pages/ProgressPage";
+import EvaluationPage from "../pages/EvaluatoryPage";
 import { PrivateRoute } from './PrivateRoute';
+
 
 export const PrivateRoutes = () => (
   <Routes>
@@ -64,6 +66,14 @@ export const PrivateRoutes = () => (
       element={
         <PrivateRoute>
           <ProgressPage />
+        </PrivateRoute>
+      }
+    />
+    <Route
+      path="/evaluation"
+      element={
+        <PrivateRoute>
+          <EvaluationPage />
         </PrivateRoute>
       }
     />
