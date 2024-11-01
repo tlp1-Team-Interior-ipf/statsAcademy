@@ -8,6 +8,7 @@ import Navbar from '@/components/Navbar'
 import { Stack } from 'expo-router';
 import  MyStagger  from '@/components/StaggerButtons'
 import { useFonts, Kufam_400Regular } from '@expo-google-fonts/kufam';
+import LoadingSpinner from '@/components/LoadingSpinner';
 
 const { width } = Dimensions.get('window');
 
@@ -30,7 +31,14 @@ export default function HomeScreen() {
   });
   
   if (!fontsLoaded) {
-    return <ActivityIndicator size="large" color="#0000ff" />;
+    return (
+      <>
+      <View style={{backgroundColor: '#10132F', height: '100%'}}>
+        <Stack.Screen options={{headerShown: false}} />
+        <LoadingSpinner />
+      </View>
+      </>
+    )
   }
   
   return (

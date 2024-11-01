@@ -15,7 +15,14 @@ const Explore = () => {
   const ImgCalendario = require('@/img/los elegiiiidooss/tools.png')
 
   if (loading) {
-    return <LoadingSpinner />
+    return (
+      <>
+      <View style={{backgroundColor: '#10132F', height: '100%'}}>
+        <Stack.Screen options={{headerShown: false}} />
+        <LoadingSpinner />
+      </View>
+      </>
+    )
   }
 
   return (
