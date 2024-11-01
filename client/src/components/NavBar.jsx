@@ -12,7 +12,7 @@ const Navbar = () => {
   // Manejar el scroll para mostrar la línea
   const handleScroll = () => {
     const scrollTop = window.scrollY;
-    setIsScrolled(scrollTop > 50); // Cambia este valor para ajustar cuando aparece la línea
+    setIsScrolled(scrollTop > 50); 
   };
 
   useEffect(() => {
@@ -25,7 +25,9 @@ const Navbar = () => {
   // Navegación para los botones
   const handleSignInClick = () => navigate('/signin');
   const handleLogInClick = () => navigate('/login');
-  const handleHomeClick = () => navigate('/');
+  const handleLandingClick = () => navigate('/');
+  const handleProfileClick = () => navigate('/home/profile');
+  const handleHomeClick = () => navigate('/home');
 
   const handleLogOutClick = async () => {
     await logout();
@@ -43,7 +45,7 @@ const Navbar = () => {
     <nav className={`custom-navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="custom-navbar-left">
         {/* Logo */}
-        <a href="#" className="custom-navbar-logo" onClick={handleHomeClick}>
+        <a href="#" className="custom-navbar-logo" onClick={handleLandingClick}>
           <img
             src="/img/tutorialogo.png" // URL o imagen local del logo
             alt="Stats Academy Logo"
@@ -57,9 +59,17 @@ const Navbar = () => {
       <div className="custom-navbar-right">
         {/* Botones dependiendo del estado de autenticación */}
         {user.isLogged ? (
-          <button className="custom-btn logout" onClick={handleLogOutClick}>
-            Cerrar Sesión
-          </button>
+          <>
+            <button className="custom-btn logout" onClick={handleLogOutClick}>
+              Cerrar Sesión
+            </button>
+            <button className="custom-btn profile" onClick={handleProfileClick}>
+              Mi perfil
+            </button>
+            <button className="custom-btn profile" onClick={handleHomeClick}>
+              Inicio
+            </button>
+          </>
         ) : (
           <>
             <button className="custom-btn register" onClick={handleSignInClick}>

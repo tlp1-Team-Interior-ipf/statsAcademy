@@ -17,7 +17,10 @@ function Chat() {
 
   // Cuando los mensajes cambien, hacemos scroll al final
   useEffect(() => {
-    scrollToBottom();
+    const timer = setTimeout(() => {
+      scrollToBottom();
+    }, 100);
+    return () => clearTimeout(timer);
   }, [messages]);
 
   // Obtenemos el historial del chat al cargar la página
@@ -100,7 +103,7 @@ function Chat() {
         <h1>Bienvenido al Tutor Inteligente</h1>
         <div className="chat-container">
           {messages.map((message, index) => (
-            <div key={index} className={`message ${message.type}`} ref={index === messages.length - 1 ? messagesEndRef : null}>
+            <div key={index} className={`message ${message.type}`}>
               {message.type === 'bot' ? (
                 <ReactMarkdown>{message.text}</ReactMarkdown>
               ) : (
@@ -109,7 +112,7 @@ function Chat() {
             </div>
           ))}
           {/* Div invisible para mantener el scroll al final */}
-          
+          <div ref={messagesEndRef} />
         </div>
         <form className="input-form" onSubmit={handleSubmit}>
           <input

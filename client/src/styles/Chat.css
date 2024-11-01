@@ -12,6 +12,7 @@
     flex-direction: column;
     overflow-y: auto;
     padding: 20px;
+    padding-bottom: 5%;
 }
 
 /* Estilo de los globos de mensajes */

@@ -18,23 +18,23 @@ function AnimatedCardContainer({ children, index }) {
   );
 }
 
-function Tools() {
+function Exams() {
   const navigate = useNavigate();
 
   const cards = [
     {
-      title: "ToDo-App",
-      description: "Gestionador de tareas.",
-      imageSrc: "/img/todoapp.png",
-      altText: "Perfil del alumno",
-      route: "/home/todoapp",
+      title: "Evaluación Inicial",
+      description: "Toma una prueba para saber tu nivel inicial.",
+      imageSrc: "/img/inicialtest.png",
+      altText: "Evaluación Inicial",
+      route: "/home/initialtest",
     },
     {
-      title: "Calendario",
-      description: "Organiza tus fechas importantes.",
-      imageSrc: "/img/calendar.png",
-      altText: "Organizador",
-      route: "/home/calendar",
+      title: "Evaluacion Periódica",
+      description: "Pon a prueba tus conocimientos hasta el momento.",
+      imageSrc: "/img/periodictest.webp",
+      altText: "Evaluación Periódica",
+      route: "/home/periodictest",
     },
   ];
 
@@ -53,7 +53,7 @@ function Tools() {
         <FontAwesomeIcon icon={faArrowLeft} style={{ marginRight: '5px' }} /> Volver
       </button>
       <div className="home-container"> {/* Reutilizamos la clase de Home para el contenedor principal */}
-        <h1 className="home-title">Herramientas</h1>
+        <h1 className="home-title">Evaluatorio</h1>
         <div className="card-grid"> {/* Reutilizamos el grid de Home */}
           {cards.map((card, index) => (
             <AnimatedCardContainer key={index} index={index}>
@@ -74,4 +74,4 @@ function Tools() {
   );
 }
 
-export default Tools;
+export default Exams;
