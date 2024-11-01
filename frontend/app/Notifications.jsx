@@ -5,13 +5,13 @@ import { ScrollView, Text, View } from "react-native"
 const Notifications = () => {
 
     return(
-        <View style={{ height: '100%', backgroundColor: '#111' }}>
+        <View style={{ height: '100%', backgroundColor: '#10132F' }}>
             <Stack.Screen options={{
                 title: '  Notificaciones',
                 headerShown: true,
                 headerBackTitleVisible: true,
                 headerTintColor: '#fff',
-                headerStyle: { backgroundColor: '#111' },
+                headerStyle: { backgroundColor: '#10132F' },
                 headerLeft: () => (
                     <AntDesign name='arrowleft' onPress={() => router.push('explore')} size={22} color={'#ddd'} style={{ paddingLeft: 10 }} />
                 ),

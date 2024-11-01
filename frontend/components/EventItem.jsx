@@ -12,7 +12,7 @@ const formatDate = (dateString) => {
 
 const EventItem = ({ event, handleEditEvent, handleDeleteEvent }) => {
     return (
-        <View style={{ height: 80, width: '90%', padding: 17, backgroundColor: '#666', borderRadius: 5, margin: 5, borderTopWidth: 6, borderColor: '#56a' }}>
+        <View style={{ height: 80, width: '90%', padding: 17, backgroundColor: '#226', borderRadius: 5, margin: 5, borderTopWidth: 6, borderColor: '#56a' }}>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <View style={{gap: 5, width: '80%'}}>
                     <Text style={{ color: "#fff", fontWeight: 'bold' }}>Fecha: {formatDate(event.date)}</Text>

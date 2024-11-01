@@ -61,7 +61,7 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
         <Animated.View style={{
             backgroundColor: '#114', 
             width: 280, 
-            height: 1000, 
+            height: 1150, 
             zIndex: 10, 
             position: 'absolute', 
             top: 10, 
@@ -114,8 +114,9 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
                                 <ButtonList content={'Cerrar sesión'} action={handleLogout} />
                               </View>
                             </View>
-                            
-                            <Footer />
+                            <View style={{top: 100}}>
+                              <Footer />
+                            </View>
                         </View>
                       </>
                     )

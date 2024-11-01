@@ -14,14 +14,7 @@ export const ShowDrawer = () => {
   }, [showDraw]);
   
   const mostrar = () => {
-      // setShowDraw(prevState => !prevState)
-    // if(action === 'cerrar') {
-    //   console.log("Drawer cerrado")
-    //   setShowDraw(false);
-    // } else {
-    //   console.log("Drawer mostrado")
-    //   setShowDraw(prevState => !prevState);
-    // }
+    
     setShowDraw(!showDraw);
   };
 

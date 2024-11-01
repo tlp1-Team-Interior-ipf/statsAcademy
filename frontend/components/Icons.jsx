@@ -16,7 +16,7 @@ export const MyButton = ({ iconName, iconSize }) => {
 
 export const MyButton2 = ({ iconName, iconSize, color, action }) => {
   return (
-    <Pressable onPress={action}>
+    <Pressable onPress={action} android_ripple={{ color:'rgba(0, 255, 255, 0.2)', borderless: false, radius: 110}}>
       <View style={styles.buttonContainer2}>
         <FontAwesome name={iconName} size={iconSize} color={color} />
       </View>
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   buttonContainer2: {
     flexDirection: 'row',
     width:40,
-    marginHorizontal: -10,
+    marginHorizontal: 5,
     padding:0,
     justifyContent: 'center',
     alignItems: 'center'

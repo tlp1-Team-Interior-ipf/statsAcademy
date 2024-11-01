@@ -46,7 +46,7 @@ const MyCard = ({ title, subtitle, image, window, NameLibrariIcon, nameIcon, siz
 
       <Animated.View style={[styles.content, { maxHeight }]}>
         <Text style={{fontWeight: 'bold', color:'#ddd'}}>{title}</Text>
-        <Text style={{ color:'#ddd' }}>{subtitle}</Text>
+        <Text style={{ color:'#ddd', textAlign: 'center' }}>{subtitle}</Text>
       </Animated.View>
     </View>
   );

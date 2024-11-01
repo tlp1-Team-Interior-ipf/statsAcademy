@@ -63,38 +63,38 @@ export default function HomeScreen() {
             />
           </View>
 
-          <View style={{ backgroundColor: '#04617c', margin: 'auto', paddingHorizontal: 0, width: 510, paddingVertical: 20, alignItems: 'center' }}>
-            <View style={{ width: 450, backgroundColor: '#5bc8ca',  marginHorizontal: 0, justifyContent: 'space-between',  borderRadius: 5, flexDirection: 'row'}}>
-              <View style={{flexDirection: 'column'}}>
+          <View style={{ backgroundColor: '#04617c' }}>
+            <View style={{ backgroundColor: '#5bc8ca', padding: 10, margin: 10, justifyContent: 'space-between',  borderRadius: 5, flexDirection: 'row', gap: 20}}>
+              <View style={{flexDirection: 'column', right: 30}}>
                 <Text style={{ color: '#fff', fontSize: 30, width: 250, textAlign: 'center' }}>¡Prueba Gaus! Nuestro tutor inteligente</Text>
                 <Button title="Únete ahora" color={'#058b94'} buttonStyle={{margin: 'auto', marginVertical: 10, borderRadius: 5 }} />
               
               </View>
               <View style={{ flexDirection: 'column' }}>
                   <Image source={tutorBanner} style={{ width:160, height:180, position: 'absolute', top: -135, left: -80, zIndex: 10}} />
-                  <Image source={tutoriaLogo} style={{ width:100, height:80, zIndex: 10, top: 80, left: -50 }} />
+                  <Image source={tutoriaLogo} style={{ width:80, height:60, zIndex: 10, top: 80, left: -50 }} />
               </View>
             </View>
           </View>
-              <View style={{ backgroundColor: '#0b246c', width: '100%', height: '30%'}}>
+              <View style={{ backgroundColor: '#0b246c', width: '100%', height: 320}}>
                 <Text style={{ textAlign: 'center', color: '#ddd', fontSize: 25, top: 25 }}>Tenemos las herramientas que necesitas</Text>
-                <View style={{flexDirection: 'row', justifyContent: 'center', gap: 20, alignItems: 'center', top: 50}}>
-                  <View style={{borderWidth: 1, borderColor: '#3366ff80', borderRadius: 2, backgroundColor: '#3366ff50'}}>
-                  <Image source={studentprofile} style={{ width:140, height:140, marginVertical: 10 }}/>
-                    <View style={{backgroundColor: '#3366ff80', height: 40, justifyContent: 'center'}}>
-                      <Text style={{ textAlign: 'center', fontSize: 17, color: '#ddd'}}>Perfil de Alumno</Text>
+                <View style={{flexDirection: 'row', justifyContent: 'center', gap: 10, alignItems: 'center', top: 50}}>
+                  <View style={{borderWidth: 1, borderColor: '#3366ff80', borderRadius: 2, backgroundColor: '#3366ff50', padding: 5}}>
+                  <Image source={studentprofile} style={{ width:90, height:130, marginVertical: 10 }}/>
+                    <View style={{backgroundColor: '#3366ff80', height: 40, justifyContent: 'center', paddingHorizontal: 10, position: 'absolute', top: 120}}>
+                      <Text style={{ textAlign: 'center', fontSize: 17, color: '#ddd', width: 80}}>Perfil de Alumno</Text>
                     </View>
                   </View>
-                  <View style={{borderWidth: 1, borderColor: '#3366ff80', borderRadius: 2, backgroundColor: '#3366ff50'}}>
-                  <Image source={anotadorSinFondo} style={{ width:140, height:140, marginVertical: 10 }}/>
-                    <View style={{backgroundColor: '#3366ff80', height: 40, justifyContent: 'center' }} > 
-                      <Text style={{ textAlign: 'center', fontSize: 17, color: '#ddd'}}>Anotador</Text>
+                  <View style={{borderWidth: 1, borderColor: '#3366ff80', borderRadius: 2, backgroundColor: '#3366ff50', padding: 5}}>
+                  <Image source={anotadorSinFondo} style={{ width:90, height:130, marginVertical: 10 }}/>
+                    <View style={{backgroundColor: '#3366ff80', height: 40, justifyContent: 'center', paddingHorizontal: 10, position: 'absolute', top: 120 }} > 
+                      <Text style={{ textAlign: 'center', fontSize: 17, color: '#ddd', width: 80}}>Anotador</Text>
                     </View>
                   </View>
-                  <View style={{borderWidth: 1, borderColor: '#3366ff80', borderRadius: 2, backgroundColor: '#3366ff50'}}>
-                    <Image source={calendarioSinFondo} style={{ width:150, height:160 }}/>
-                    <View style={{backgroundColor: '#3366ff80', height: 40, justifyContent: 'center'}} >
-                      <Text style={{ textAlign: 'center', fontSize: 17, color: '#ddd'}}>Calendario</Text></View>  
+                  <View style={{borderWidth: 1, borderColor: '#3366ff80', borderRadius: 2, backgroundColor: '#3366ff50', padding: 5}}>
+                    <Image source={calendarioSinFondo} style={{ width:90, height:150 }}/>
+                    <View style={{backgroundColor: '#3366ff80', height: 40, justifyContent: 'center', paddingHorizontal: 10, position: 'absolute', top: 120}} >
+                      <Text style={{ textAlign: 'center', fontSize: 17, color: '#ddd', width: 80}}>Calendario</Text></View>  
                   </View>
                 </View>
               </View>

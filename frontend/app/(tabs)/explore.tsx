@@ -29,7 +29,7 @@ const Explore = () => {
           <Text style={{textAlign: 'center', fontSize: 35, color: '#ddd', top: -20}}>Bienvenido a tu inicio</Text>
             <View style={{gap: 10, marginVertical: 10}}>
               <MyCard title={'Chat'} subtitle={'Chat para las clases interactivas'} image={null} window={'Chat'} NameLibrariIcon={"Entypo"} nameIcon={"chat"} sizeIcon={170} />
-              <MyCard title={'Organizador'} subtitle={'Organizador de tareas para gestionar actividades y otros eventos importantes'} image={null} window={'Kanban'} NameLibrariIcon={"FontAwesome5"} nameIcon={"tasks"} sizeIcon={170} />
+              <MyCard title={'Organizador'} subtitle={'Organizador para gestionar actividades, objetivos, metas y otros eventos importantes'} image={null} window={'Kanban'} NameLibrariIcon={"FontAwesome5"} nameIcon={"tasks"} sizeIcon={170} />
               <MyCard title={'Calendario'} subtitle={'Calendario para definir fechas importantes'} image={null} window={'Calendar'} NameLibrariIcon={"AntDesign"} nameIcon={"calendar"} sizeIcon={170} />
             </View>
         </ScrollView>
