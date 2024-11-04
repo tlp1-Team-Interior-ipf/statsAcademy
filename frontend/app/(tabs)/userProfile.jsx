@@ -8,7 +8,6 @@ import { CardProfile } from "../../components/CardProfile";
 const userProfile = () => {
     const { user } = useContext(UserContext);
 
-  
     return(
         <>
             <View style={{height: '100%', backgroundColor: '#10132F', alignItems: 'center'}}>

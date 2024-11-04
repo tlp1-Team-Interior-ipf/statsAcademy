@@ -1,14 +1,14 @@
-import React from 'react';
-import { StyleSheet, View, Text, Image, Dimensions, ScrollView, ActivityIndicator } from 'react-native';
+import React, { useContext } from 'react';
+import { View, Text, Image, Dimensions, ScrollView } from 'react-native';
 import { Button } from '@rneui/themed';
 import Carousel from 'react-native-reanimated-carousel';
-import { MyButton2 } from '@/components/Icons';
 import { ButtonStart } from '@/components/SocialButtons'
 import Navbar from '@/components/Navbar'
-import { Stack } from 'expo-router';
+import { router, Stack } from 'expo-router';
 import  MyStagger  from '@/components/StaggerButtons'
 import { useFonts, Kufam_400Regular } from '@expo-google-fonts/kufam';
 import LoadingSpinner from '@/components/LoadingSpinner';
+import { UserContext } from '@/context/userContext';
 
 const { width } = Dimensions.get('window');
 
@@ -26,6 +26,7 @@ const calendarioSinFondo = require('@/img/los elegiiiidooss/calendarioSinFondo.p
 const studentprofile = require('@/img/los elegiiiidooss/studentprofile.png');
 
 export default function HomeScreen() {
+  const { isLoggedIn } = useContext(UserContext);
   let [fontsLoaded] = useFonts({
     Kufam_400Regular,
   });
@@ -75,7 +76,7 @@ export default function HomeScreen() {
             <View style={{ backgroundColor: '#5bc8ca', padding: 10, margin: 10, justifyContent: 'space-between',  borderRadius: 5, flexDirection: 'row', gap: 20}}>
               <View style={{flexDirection: 'column', right: 30}}>
                 <Text style={{ color: '#fff', fontSize: 30, width: 250, textAlign: 'center' }}>¡Prueba Gaus! Nuestro tutor inteligente</Text>
-                <Button title="Únete ahora" color={'#058b94'} buttonStyle={{margin: 'auto', marginVertical: 10, borderRadius: 5 }} />
+                <Button onPress={() => {isLoggedIn ? router.push('/Chat') : router.push('/Login')}} title="Únete ahora" color={'#058b94'} buttonStyle={{margin: 'auto', marginVertical: 10, borderRadius: 5 }} />
               
               </View>
               <View style={{ flexDirection: 'column' }}>
@@ -107,50 +108,8 @@ export default function HomeScreen() {
                 </View>
               </View>
         </ScrollView>
-              <MyStagger />
-
+            <MyStagger />
       </View>
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    backgroundColor: '#31f',
-    marginVertical: 40,
-  },
-  text: {
-    color: '#fff',
-  },
-  item: {
-    flexDirection: 'row',
-    gap: 25,
-    marginVertical: 10,
-  },
-  image: {
-    width: 35,
-    height: 35,
-    marginHorizontal: 10,
-  },
-  footer: {
-    backgroundColor: '#21b',
-    width: '100%',
-    height: 150,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 'auto',
-    padding: 5,
-  },
-  blurView: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    height: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 1,
-  },
-});

@@ -4,27 +4,27 @@
     "slug": "Tasks2.0",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/iconfondo.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/statsiconsplash.png",
+      "image": "./assets/images/iconfondo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#10132F"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/splashicon.png",
-        "backgroundColor": "#000000"
+        "foregroundImage": "./assets/images/iconfondo.png",
+        "backgroundColor": "#10132F"
       }
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/iconfondo.png"
     },
     "plugins": [
       "expo-router",

@@ -5,7 +5,6 @@ import { Calendar } from 'react-native-calendars';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import CreatorEvent from '../../components/CreatorEvent';
 import EventItem from '../../components/EventItem';
-import localeConfig from '../../components/CalendarLocalConfig'
 import useFetchEvents from '../../hooks/eventsFetch';
 
 const Calendario = () => {
@@ -67,6 +66,11 @@ const Calendario = () => {
                             setShowCreatorEvent={setShowCreatorEvent}
                             setEvents={setEvents}
                             setSelected={setSelected}
+                            addEvent={(newEvent) => {
+                                setEvents( prev => [
+                                    ...prev, newEvent
+                                ])
+                            }}
                         />
                     )}
                 </View>

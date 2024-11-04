@@ -1,4 +1,3 @@
-// useRegisterForm.js
 import { useState } from 'react';
 import { Alert } from 'react-native';
 import { router } from 'expo-router';
@@ -26,7 +25,7 @@ export const useRegisterForm = () => {
     }
 
     try {
-      const response = await fetch('http://192.168.235.247:3000/users/', {
+      const response = await fetch('http://192.168.235.123:4000/users/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DateTimePickerComponent from './DateTimePickerComponent';
 
-const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected }) => {
+const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected, addEvent }) => {
     const [descriptionEvent, setDescriptionEvent] = useState('');
     const [date, setDate] = useState(new Date());
     const [showDate, setShowDate] = useState(false);
@@ -13,7 +13,7 @@ const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected })
         try {
             const token = await AsyncStorage.getItem('userToken');
             console.log("token de usuario: ", token)
-            const response = await fetch("http://192.168.235.247:3000/calendarEvent/", {
+            const response = await fetch("http://192.168.235.123:4000/calendarEvent/", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -27,6 +27,10 @@ const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected })
                 throw new Error("Error al crear el evento");
             }
             
+            const data = await response.json()
+            console.log(data.event);
+            
+            addEvent(data.event)
             setDescriptionEvent('');
             setSelected(''); 
             setShowCreatorEvent(false);
@@ -94,3 +98,4 @@ const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected })
 };
 
 export default CreatorEvent;
+
