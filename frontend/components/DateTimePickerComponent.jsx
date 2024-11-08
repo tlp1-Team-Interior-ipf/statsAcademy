@@ -1,11 +1,14 @@
 import React from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { View } from 'react-native';
 
 const DateTimePickerComponent = ({ date, onChangeDate, setShowDate }) => {
  
   return (
     <>
+        <View style={{backgroundColor: '#36f'}}>
         <DateTimePicker
+          themeVariant='dark'
           value={date}
           mode="date"
           display={'spinner'}
@@ -17,6 +20,7 @@ const DateTimePickerComponent = ({ date, onChangeDate, setShowDate }) => {
             }
           }}
         />
+        </View>
     </>
   );
 };

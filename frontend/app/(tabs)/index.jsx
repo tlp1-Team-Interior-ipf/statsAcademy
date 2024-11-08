@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { View, Text, Image, Dimensions, ScrollView } from 'react-native';
 import { Button } from '@rneui/themed';
 import Carousel from 'react-native-reanimated-carousel';
@@ -9,7 +9,8 @@ import  MyStagger  from '@/components/StaggerButtons'
 import { useFonts, Kufam_400Regular } from '@expo-google-fonts/kufam';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { UserContext } from '@/context/userContext';
-
+import * as SplashScreen from 'expo-splash-screen';
+import {Video} from 'expo-av';
 const { width } = Dimensions.get('window');
 
 const data = [
@@ -21,26 +22,60 @@ const data = [
 
 const tutorBanner = require('@/img/los elegiiiidooss/tutorbanner.png');
 const tutoriaLogo = require('@/img/tutorialogo.png');
+const loading = require('../../assets/images/loading4.mp4');
+const loading2 = require('@/assets/images/loading3.gif');
 const anotadorSinFondo = require('@/img/los elegiiiidooss/anotadorSinFondo.png');
 const calendarioSinFondo = require('@/img/los elegiiiidooss/calendarioSinFondo.png');
 const studentprofile = require('@/img/los elegiiiidooss/studentprofile.png');
 
+SplashScreen.preventAutoHideAsync()
+  .then((result) => console.log(`SplashScreen.preventAutoHideAsync() succeeded: ${result}`))
+  .catch(console.warn);
+
 export default function HomeScreen() {
+  const [isAppReady, setIsAppReady] = useState(false);
   const { isLoggedIn } = useContext(UserContext);
   let [fontsLoaded] = useFonts({
     Kufam_400Regular,
   });
-  
-  if (!fontsLoaded) {
+
+  useEffect(() => {
+    const prepareApp = async () => {
+      try {
+        // Simula carga de recursos
+        await new Promise(resolve => setTimeout(resolve, 2000));
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        setIsAppReady(true);
+        SplashScreen.hideAsync(); // Oculta la pantalla de carga una vez esté lista
+      }
+    };
+
+    prepareApp();
+  }, []);
+ 
+  if (!isAppReady || !fontsLoaded) {
     return (
-      <>
-      <View style={{backgroundColor: '#10132F', height: '100%'}}>
-        <Stack.Screen options={{headerShown: false}} />
-        <LoadingSpinner />
+      <View style={{ backgroundColor: '#10132F', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
+      <Stack.Screen options={{headerShown: false}} />
+        
+         {/* <Image source={loading2} style={{width:550, height: 550}} /> */}
+          <Video source={loading} style={{width:250, height: 250}} rate={1.0} // Velocidad de reproducción
+            volume={1.0} // Nivel de volumen
+            isMuted={true} // Muteado
+            resizeMode="cover" // Cómo se redimensiona el video
+            shouldPlay={true} // Debería reproducirse automáticamente
+            isLooping={false} // No repetir el video (opcional)
+            useNativeControls={false} 
+          />
       </View>
-      </>
-    )
+    );
+
   }
+  
+  
+  
   
   return (
     <>

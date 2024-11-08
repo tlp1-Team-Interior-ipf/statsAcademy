@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import useDeleteEvent from '../hooks/useDeleteEvent';
 
 const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -10,7 +11,8 @@ const formatDate = (dateString) => {
     return `${year}-${month}-${day}`; 
 };
 
-const EventItem = ({ event, handleEditEvent, handleDeleteEvent }) => {
+const EventItem = ({ event, handleEditEvent, setEvents }) => {
+    const deleteEvent = useDeleteEvent(setEvents);
     return (
         <View style={{ height: 80, width: '90%', padding: 17, backgroundColor: '#226', borderRadius: 5, margin: 5, borderTopWidth: 6, borderColor: '#56a' }}>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -18,11 +20,11 @@ const EventItem = ({ event, handleEditEvent, handleDeleteEvent }) => {
                     <Text style={{ color: "#fff", fontWeight: 'bold' }}>Fecha: {formatDate(event.date)}</Text>
                     <Text style={{ color: "#fff" }}>Evento: {event.event}</Text>
                 </View>
-                <View style={{gap: 5}}>
-                    <Pressable onPress={() => handleEditEvent(event)}>
+                <View style={{gap: 5, justifyContent: 'center'}}>
+                    {/* <Pressable onPress={() => handleEditEvent(event)}>
                         <Ionicons name="pencil" size={20} color="#fff" />
-                    </Pressable>
-                    <Pressable onPress={() => handleDeleteEvent(event.id)}>
+                    </Pressable> */}
+                    <Pressable onPress={() => deleteEvent(event.id)}>
                         <Ionicons name="trash" size={20} color="#f00" />
                     </Pressable>
                 </View>

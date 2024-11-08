@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "Tasks2.0",
-    "slug": "Tasks2.0",
+    "name": "statsAcademy",
+    "slug": "statsAcademy",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/iconfondo.png",
+    "icon": "./assets/images/tutorialogo.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/iconfondo.png",
+      "image": "./assets/images/pantallacarga.png",
       "resizeMode": "contain",
       "backgroundColor": "#10132F"
     },
@@ -17,14 +17,17 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/iconfondo.png",
-        "backgroundColor": "#10132F"
-      }
+        "foregroundImage": "./assets/images/pantallacarga.png",
+        "backgroundColor": "#10132F",
+        "permissions": ["INTERNET"],
+        "android.permissions": true
+      },
+      "package": "com.david137.statsAcademy"
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/iconfondo.png"
+      "favicon": "./assets/images/pantallacarga.png"
     },
     "plugins": [
       "expo-router",
@@ -32,6 +35,11 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "3bf77ea4-3309-4bcc-a7c5-1cdc51de6bdd"
+      }
     }
   }
 }

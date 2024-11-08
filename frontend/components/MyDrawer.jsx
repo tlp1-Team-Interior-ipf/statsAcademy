@@ -100,7 +100,7 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
                               <View style={{borderWidth: 2, borderRadius: 5, borderColor: '#ddd',  width: 250}}>
                                 <ButtonList content={'Perfil de usuario'} action={handleProfile} />
                                 <ButtonList content={'Mi cuenta'} />
-                                <ButtonList content={'Notificaciones'} action={() => router.push('Notifications')} />
+                                <ButtonList content={'Notificaciones'} action={() => router.push('NotificationsComponent')} />
                                 <ButtonList content={'Configuración'} />
                                 <ButtonList content={'Idioma'} />
                               </View>

@@ -7,19 +7,28 @@ import Navbar from '@/components/Navbar'
 import { Stack } from 'expo-router';
 import { Text } from 'react-native';
 import  MyStagger  from '@/components/StaggerButtons'
+import { Video } from 'expo-av';
 
 const Explore = () => {
   const { loading } = useAuth();
   const ImgChat = require('@/img/los elegiiiidooss/gausvector2.png')
   const ImgKanban = require('@/img/los elegiiiidooss/todoapp.png')
   const ImgCalendario = require('@/img/los elegiiiidooss/tools.png')
+  const loading2 = require('../../assets/images/loading4.mp4');
 
   if (loading) {
     return (
       <>
       <View style={{backgroundColor: '#10132F', height: '100%'}}>
         <Stack.Screen options={{headerShown: false}} />
-        <LoadingSpinner />
+        <Video 
+          source={loading2} style={{width:250, height: 250}} rate={1.0} // Velocidad de reproducción
+          volume={1.0} // Nivel de volumen
+          isMuted={true} // Muteado
+          shouldPlay={true} // Debería reproducirse automáticamente
+          isLooping={false} // No repetir el video (opcional)
+          useNativeControls={false} 
+        />
       </View>
       </>
     )

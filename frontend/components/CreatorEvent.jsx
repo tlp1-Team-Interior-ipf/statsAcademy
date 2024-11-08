@@ -56,7 +56,7 @@ const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected, a
         
         return (
             <KeyboardAvoidingView>
-            <View style={{ borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, backgroundColor: '#222', borderColor: '#ddd', position: 'absolute', alignItems: 'flex-end', justifyContent: 'center', width: 250, height: 220, zIndex: 20, top: -400, left: -130, gap: 10 }}>
+            <View style={{ borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, backgroundColor: '#64a', borderColor: '#ddd', position: 'absolute', alignItems: 'flex-end', justifyContent: 'center', width: 250, height: 220, zIndex: 20, top: -400, left: -130, gap: 10 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 34 }}>
                     <Text style={{ color: '#ddd', fontWeight: 'bold', fontSize: 17 }}>
                         Crea tu evento importante
@@ -82,6 +82,7 @@ const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected, a
                         date={date}
                         onChangeDate={handleDateChange}
                         setShowDate={setShowDate}
+                        
                     />
                     )
                 }

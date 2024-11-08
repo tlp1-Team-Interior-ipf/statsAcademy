@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 35,
-    height: 35,
+    height: 30,
     marginHorizontal: 10,
   },
 });

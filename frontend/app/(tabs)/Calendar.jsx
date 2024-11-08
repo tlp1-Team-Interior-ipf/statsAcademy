@@ -6,6 +6,7 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import CreatorEvent from '../../components/CreatorEvent';
 import EventItem from '../../components/EventItem';
 import useFetchEvents from '../../hooks/eventsFetch';
+import '../../components/CalendarLocalConfig'
 
 const Calendario = () => {
     const [selected, setSelected] = useState('');
@@ -56,7 +57,7 @@ const Calendario = () => {
                             </View>
                         ) : (
                             <ScrollView>
-                                {events.map(event => <EventItem key={event.id} event={event}handleDeleteEvent={null} handleEditEvent={null}/>)}
+                                {events.map(event => <EventItem key={event.id} event={event} handleEditEvent={null} setEvents={setEvents} />)}
                             </ScrollView>
                         )}
                     </View>
