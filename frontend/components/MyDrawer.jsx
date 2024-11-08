@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Animated, View, Text, Pressable, Image } from "react-native";
+import { Animated, View, Text, Pressable, Image, ScrollView } from "react-native";
 import { ButtonList } from "./SocialButtons";
 import { Ionicons } from "@expo/vector-icons";
 import { UserContext } from "@/context/userContext";
@@ -58,19 +58,20 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
   }
 
     return(
-        <Animated.View style={{
-            backgroundColor: '#114', 
+      <Animated.View style={{
+        backgroundColor: '#114', 
             width: 280, 
             height: 1150, 
             zIndex: 10, 
             position: 'absolute', 
-            top: 10, 
+            top: 7, 
             right: 0,
             transform: [{ translateX: slideAnim }],
-            alignItems: 'flex-end'
+            alignItems: 'flex-end',
         }}>
             <Ionicons name='close' size={40} color={'#ddd'} onPress={mostrar} style={{padding: 10}} />
-            <View style={{margin: 'auto'}}>
+
+            <View style={{margin: 'auto', flex: 1}}>
               {!isLoggedIn ? (
                 <>
                   <View style={{justifyContent: 'flex-start', flex: 10, top: 50, gap: 10}}>
@@ -82,14 +83,17 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
                     </View>
                   </View>
                 </>
-                ):  ( <><View style={{justifyContent: 'flex-start', flex: 10, alignItems: 'center'}}>
+                ):  ( <>
+
+                        <View style={{justifyContent: 'flex-start', flex: 10, alignItems: 'center'}}>
+
                           <View style={{width: 100, height: 100, borderWidth: 1, borderColor: '#fff', borderRadius: 50, margin: 10, alignItems: 'center', justifyContent: 'center'}}>
                             {user.profileImage ? (
                               <Image source={{uri: user.profileImage}} style={{width: 100, height: 100, borderWidth: 1, borderColor: '#ddd', borderRadius: 50}} />
                             ): <Ionicons name="person" size={60} color={'#ddd'} />}
                           </View>
                           <Text style={{ color: '#fff', paddingVertical: 5, fontSize: 17, fontWeight: 'bold' }}>
-                            {user ? `${user.name}` : 'Inicia sesión'}
+                            {user ? `${user.name || user.username}` : `Inicia sesión`}
                           </Text>
                               <Pressable android_ripple={{ color:'rgba(0, 255, 255, 0.2)', borderless: false, radius: 150}} onPress={handleChangeAvatar}>
                                 <Text style={{color: '#ddd', textAlign: 'center', margin: 5, fontSize: 15}}>Cambiar avatar </Text>
@@ -98,29 +102,30 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
                             <View>
                               <Text style={{color: '#fff', paddingVertical: 5, fontSize: 17, fontWeight: 'bold'}}>Cuenta</Text>
                               <View style={{borderWidth: 2, borderRadius: 5, borderColor: '#ddd',  width: 250}}>
-                                <ButtonList content={'Perfil de usuario'} action={handleProfile} />
-                                <ButtonList content={'Mi cuenta'} />
-                                <ButtonList content={'Notificaciones'} action={() => router.push('NotificationsComponent')} />
-                                <ButtonList content={'Configuración'} />
-                                <ButtonList content={'Idioma'} />
+                                <ButtonList direction={'right'} content={'Perfil de usuario'} action={handleProfile} />
+                                <ButtonList direction={'right'} content={'Mi cuenta'} action={() => router.push('/MyAccount')} />
+                                <ButtonList direction={'right'} content={'Notificaciones'} action={() => router.push('NotificationsComponent')} />
+                                <ButtonList direction={'right'} content={'Configuración'} />
+                                <ButtonList direction={'right'} content={'Idioma'} action={() => router.push('/Idioma')} />
                               </View>
                             </View>
         
                             <View style={{marginVertical: 20}}>
                               <Text style={{color: '#fff', paddingVertical: 5, fontSize: 17, fontWeight: 'bold'}}>Aplicación</Text>
                               <View style={{borderWidth: 2, borderRadius: 5, borderColor: '#ddd',  width: 250}}>
-                                <ButtonList content={'Ayuda'} />
-                                <ButtonList content={'Invitar amigos'} />
-                                <ButtonList content={'Cerrar sesión'} action={handleLogout} />
+                                <ButtonList direction={'right'} content={'Ayuda'} action={() => router.push('/Ayuda')} />
+                                <ButtonList direction={'right'} content={'Invitar amigos'} />
+                                <ButtonList direction={'right'} content={'Cerrar sesión'} action={handleLogout} />
                               </View>
                             </View>
                             <View style={{top: 100}}>
                               <Footer />
                             </View>
+
                         </View>
                       </>
                     )
-              }
+                  }
             </View>
         </Animated.View>
     )

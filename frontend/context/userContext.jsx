@@ -6,6 +6,7 @@ export const UserContext = createContext();
 const UserProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState({
+    email: null,
     username: null,
     profileImage: null,
   });
@@ -14,8 +15,10 @@ const UserProvider = ({ children }) => {
     const checkLoginStatus = async () => {
       const value = await AsyncStorage.getItem('isLoggedIn');
       const username = await AsyncStorage.getItem('username');
+      const email = await AsyncStorage.getItem('email');
       const profileImage = await AsyncStorage.getItem('profileImage')
       setUser({
+        email: email,
         username: username,
         profileImage: profileImage, 
       });

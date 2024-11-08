@@ -29,10 +29,10 @@ const userProfile = () => {
                         ): <Ionicons name="person" size={60} color={'#ddd'} />}
                     </View>
                     <Text style={{ color: '#fff', paddingVertical: 5, fontSize: 20, fontWeight: 'bold' }}>
-                        {user ? `${user.name}` : 'Inicia sesión'}
+                        {user.name ? `${user.name}` : `${user.username}`}
                     </Text>
 
-                <ScrollView style={{top: 40}}>
+                <ScrollView style={{top: 20}}>
                     <View style={{ flexDirection: 'row', gap: 20, marginVertical: 10 }}>
                         <CardProfile NameLibrariIcon={'EvilIcons'} nameIcon={'check'} sizeIcon={40} textCardProfile={'Tareas hechas'} sizeText={22} showCounter={true} onPressEnabled={false} onPress={() => router.push('userProfile')}/>
                         <CardProfile NameLibrariIcon={'MaterialCommunityIcons'} nameIcon={'timer-sand-complete'} sizeIcon={30} textCardProfile={'Horas Dedicadas'} sizeText={22} showCounter={true} onPressEnabled={false} onPress={() => router.push('userProfile')}/>

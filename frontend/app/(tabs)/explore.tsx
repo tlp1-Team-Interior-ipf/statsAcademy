@@ -49,8 +49,8 @@ const Explore = () => {
               <MyCard title={'Calendario'} subtitle={'Calendario para definir fechas importantes'} image={null} window={'Calendar'} NameLibrariIcon={"AntDesign"} nameIcon={"calendar"} sizeIcon={170} />
             </View>
         </ScrollView>
-      </View>
       <MyStagger />
+      </View>
     </NativeBaseProvider>
   );
 };

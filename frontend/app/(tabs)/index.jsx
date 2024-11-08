@@ -7,16 +7,16 @@ import Navbar from '@/components/Navbar'
 import { router, Stack } from 'expo-router';
 import  MyStagger  from '@/components/StaggerButtons'
 import { useFonts, Kufam_400Regular } from '@expo-google-fonts/kufam';
-import LoadingSpinner from '@/components/LoadingSpinner';
 import { UserContext } from '@/context/userContext';
 import * as SplashScreen from 'expo-splash-screen';
 import {Video} from 'expo-av';
+
 const { width } = Dimensions.get('window');
 
 const data = [
-  { id: 1, image: require('@/img/background2.jpg') },
-  { id: 2, image: require('@/img/background1.jpg') },
-  { id: 3, image: require('@/img/img2.jpg') },
+  { id: 1, image: require('@/img/background2.jpg'), text: 'Nos adaptamos a diferentes dispositivos para tu comodidad.', },
+  { id: 2, image: require('@/img/background1.jpg'), text: 'Aprende estadística de manera fácil y divertida.', },
+  { id: 3, image: require('@/img/img2.jpg'), text: 'Únete a la academia y alcanza tus metas.', },
   
 ];
 
@@ -100,11 +100,26 @@ export default function HomeScreen() {
               scrollAnimationDuration={3000}
               loop
               renderItem={({ item }) => (
-                <View style={{ margin: 10, top: 40 }}>
-                  <Image source={item.image} style={{ width: '100%', height: 200 }} />
+                <View style={{ margin: 10, top: 40, backgroundColor: '#36f', justifyContent: 'center', alignItems: 'center', borderRadius: 5 }}>
+                  {/* <Image source={item.image} style={{ width: '100%', height: 200 }} /> */}
+                  <Text
+        style={{
+          color: '#fff',
+          fontSize: 24,
+          textAlign: 'center',
+          fontFamily: 'Kufam_400Regular',  // Asegúrate de que la fuente esté cargada
+          fontWeight: 'bold',
+          paddingHorizontal: 20,
+          paddingTop: 100,
+          top: -50
+        }}
+      >
+        {item.text}
+      </Text>
                 </View>
               )}
             />
+            
           </View>
 
           <View style={{ backgroundColor: '#04617c' }}>

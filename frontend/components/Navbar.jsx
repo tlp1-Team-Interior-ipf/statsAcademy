@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, Image, StyleSheet, Pressable, Text } from 'react-native';
+import { View, Image, StyleSheet, Pressable, Text, ScrollView } from 'react-native';
 import { MyButton2 } from './Icons';
 import { ButtonProfile } from './Icons';
 import { UserContext } from '@/context/userContext';
@@ -22,6 +22,7 @@ const Navbar = () => {
             : (<MyButton2 iconName={'user-circle-o'} iconSize={35} color={'#eee'} action={mostrar}/>)
           }
         </Pressable>
+
         <MyDrawer mostrar={mostrar} slideAnim={slideAnim}/>
       </View>
     </View>
