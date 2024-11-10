@@ -1,34 +1,24 @@
 import { sequelize } from "../database/configDB.js";
 import { DataTypes } from "sequelize";
 
-export const UserModel = sequelize.define('User', {
+export const EventModel = sequelize.define('Event', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
-    username: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-    },
-    email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-    },
-    password: {
+    event: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    profileImage: { 
-        type: DataTypes.STRING,
-        allowNull: true,
-    },  
+    date: {
+        type: DataTypes.DATE,
+        allowNull: false,
+    },
 },
 {
     timestamps: true,
     deletedAt: 'deletedAt',
-    tableName: 'User',
+    tableName: 'Event',
 },
 );

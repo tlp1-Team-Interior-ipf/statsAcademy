@@ -17,10 +17,9 @@ function Chat() {
 
   // Cuando los mensajes cambien, hacemos scroll al final
   useEffect(() => {
-    const timer = setTimeout(() => {
+    
       scrollToBottom();
-    }, 100);
-    return () => clearTimeout(timer);
+
   }, [messages]);
 
   // Obtenemos el historial del chat al cargar la página
