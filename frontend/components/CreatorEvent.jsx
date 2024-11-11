@@ -3,8 +3,11 @@ import { View, Text, TextInput, Pressable, KeyboardAvoidingView } from 'react-na
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DateTimePickerComponent from './DateTimePickerComponent';
+import {useTranslation} from 'react-i18next';
 
 const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected, addEvent }) => {
+    const {t} = useTranslation();
+
     const [descriptionEvent, setDescriptionEvent] = useState('');
     const [date, setDate] = useState(new Date());
     const [showDate, setShowDate] = useState(false);
@@ -57,9 +60,9 @@ const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected, a
         return (
             <KeyboardAvoidingView>
             <View style={{ borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, backgroundColor: '#64a', borderColor: '#ddd', position: 'absolute', alignItems: 'flex-end', justifyContent: 'center', width: 250, height: 220, zIndex: 20, top: -400, left: -130, gap: 10 }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 34 }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 24 }}>
                     <Text style={{ color: '#ddd', fontWeight: 'bold', fontSize: 17 }}>
-                        Crea tu evento importante
+                        {t('Modal-title')}
                     </Text>
                     <Ionicons name='close' size={22} color={'#ddd'} onPress={() => {
                         setShowCreatorEvent(false);
@@ -70,7 +73,7 @@ const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected, a
                     
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 65 }}>
                     <Text style={{ color: '#ddd', fontSize: 17, borderBottomWidth: 1, borderColor: '#ddd', padding: 5 }}>
-                        {selected ? `Fecha: ${selected}` : 'Seleccione la fecha'}
+                        {selected ? `${t('Event-date')} ${selected}` : `${t('Select-date')}`}
                     </Text>
                     <Pressable onPress={() => setShowDate(!showDate)} android_ripple={{ color: 'rgba(0, 255, 255, 0.2)', borderless: false, radius: 150 }}>
                         <Ionicons name='calendar' size={22} color={'#ddd'} />
@@ -87,10 +90,10 @@ const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected, a
                     )
                 }
 
-                <TextInput placeholder='Escriba su evento importante...' style={{ borderWidth: 1, borderRadius: 5, borderColor: '#ddd', padding: 10, color: '#ddd', width: '100%' }} placeholderTextColor={'#ddd'} value={descriptionEvent} onChangeText={text => setDescriptionEvent(text)} />
+                <TextInput placeholder={t('Input-event')} style={{ borderWidth: 1, borderRadius: 5, borderColor: '#ddd', padding: 10, color: '#ddd', width: '100%' }} placeholderTextColor={'#ddd'} value={descriptionEvent} onChangeText={text => setDescriptionEvent(text)} />
                 <Pressable style={{ borderWidth: 1, borderRadius: 5, padding: 10, borderColor: '#ddd', width: '100%' }} onPress={handleSubmitEvent} android_ripple={{ color: 'rgba(0, 255, 255, 0.2)', borderless: false, radius: 150 }}>
                     <Text style={{ color: '#ddd', textAlign: 'center' }}>
-                        Guardar
+                        {t('Button-save')}
                     </Text>
                 </Pressable>
             </View>

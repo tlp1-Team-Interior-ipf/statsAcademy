@@ -3,8 +3,11 @@ import { router, Stack } from 'expo-router'
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 import { useRef, useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useTranslation} from 'react-i18next';
 
 const Chat = () => {
+    const {t} = useTranslation();
+
     const [input, setInput] = useState('');
     const [messages, setMessages] = useState([])
     const scrollViewRef = useRef(null);
@@ -134,7 +137,7 @@ const Chat = () => {
           }}
           value={input}
           onChangeText={setInput}
-          placeholder='Escribir...'
+          placeholder={t('Write')}
           placeholderTextColor='#666'
         />
         <Ionicons

@@ -4,8 +4,11 @@ import { useContext } from "react";
 import { Image, Text, View, ScrollView } from "react-native"
 import { UserContext } from '../../context/userContext';
 import { CardProfile } from "../../components/CardProfile";
+import {useTranslation} from 'react-i18next';
 
 const userProfile = () => {
+    const {t} = useTranslation();
+
     const { user } = useContext(UserContext);
 
     return(
@@ -13,7 +16,7 @@ const userProfile = () => {
             <View style={{height: '100%', backgroundColor: '#10132F', alignItems: 'center'}}>
             <Stack.Screen 
                     options={{ 
-                        title: 'Mi perfil', 
+                        title: t('My-Profile'), 
                         headerStyle: { 
                             backgroundColor: '#10132F' ,
                         },
@@ -34,18 +37,18 @@ const userProfile = () => {
 
                 <ScrollView style={{top: 20}}>
                     <View style={{ flexDirection: 'row', gap: 20, marginVertical: 10 }}>
-                        <CardProfile NameLibrariIcon={'EvilIcons'} nameIcon={'check'} sizeIcon={40} textCardProfile={'Tareas hechas'} sizeText={22} showCounter={true} onPressEnabled={false} onPress={() => router.push('userProfile')}/>
-                        <CardProfile NameLibrariIcon={'MaterialCommunityIcons'} nameIcon={'timer-sand-complete'} sizeIcon={30} textCardProfile={'Horas Dedicadas'} sizeText={22} showCounter={true} onPressEnabled={false} onPress={() => router.push('userProfile')}/>
+                        <CardProfile NameLibrariIcon={'EvilIcons'} nameIcon={'check'} sizeIcon={40} textCardProfile={t('Profile-card-1')} sizeText={22} showCounter={true} onPressEnabled={false} onPress={() => router.push('userProfile')}/>
+                        <CardProfile NameLibrariIcon={'MaterialCommunityIcons'} nameIcon={'timer-sand-complete'} sizeIcon={30} textCardProfile={t('Profile-card-2')} sizeText={22} showCounter={true} onPressEnabled={false} onPress={() => router.push('userProfile')}/>
                     </View>
 
                     <View style={{ flexDirection: 'row', gap: 20, marginVertical: 10 }}>
-                        <CardProfile NameLibrariIcon={'FontAwesome5'} nameIcon={'medal'} sizeIcon={30} textCardProfile={'Logros Hechos'} sizeText={23} sizePaddingText={10} showCounter={false} onPressEnabled={false} onPress={() => router.push('userProfile')}/>
-                        <CardProfile NameLibrariIcon={'MaterialCommunityIcons'} nameIcon={'notebook-check'} sizeIcon={30} textCardProfile={'Mejores Notas'} sizeText={23} sizePaddingText={10} showCounter={false} onPressEnabled={true} onPress={() => router.push('MejoresNotas')}/>
+                        <CardProfile NameLibrariIcon={'FontAwesome5'} nameIcon={'medal'} sizeIcon={30} textCardProfile={t('Profile-card-3')} sizeText={23} sizePaddingText={10} showCounter={false} onPressEnabled={false} onPress={() => router.push('userProfile')}/>
+                        <CardProfile NameLibrariIcon={'MaterialCommunityIcons'} nameIcon={'notebook-check'} sizeIcon={30} textCardProfile={t('Profile-card-4')} sizeText={23} sizePaddingText={10} showCounter={false} onPressEnabled={true} onPress={() => router.push('MejoresNotas')}/>
                     </View>
 
                     <View style={{ flexDirection: 'row', gap: 20, marginVertical: 10 }}>
-                        <CardProfile NameLibrariIcon={'MaterialIcons'} nameIcon={'timeline'} sizeIcon={40} textCardProfile={'Recorrido de usuario'} sizeText={22} sizePaddingText={10} showCounter={false}  onPressEnabled={false} onPress={() => router.push('userProfile')}/>
-                        <CardProfile NameLibrariIcon={'MaterialCommunityIcons'} nameIcon={'notebook-minus'} sizeIcon={30} textCardProfile={'Peores Notas'} sizeText={23} sizePaddingText={10} showCounter={false} onPressEnabled={true} onPress={() => router.push('PeoresNotas')}/>
+                        <CardProfile NameLibrariIcon={'MaterialIcons'} nameIcon={'timeline'} sizeIcon={40} textCardProfile={t('Profile-card-5')} sizeText={22} sizePaddingText={10} showCounter={false}  onPressEnabled={false} onPress={() => router.push('userProfile')}/>
+                        <CardProfile NameLibrariIcon={'MaterialCommunityIcons'} nameIcon={'notebook-minus'} sizeIcon={30} textCardProfile={t('Profile-card-6')} sizeText={23} sizePaddingText={10} showCounter={false} onPressEnabled={true} onPress={() => router.push('PeoresNotas')}/>
                     </View>
                 </ScrollView>
                 

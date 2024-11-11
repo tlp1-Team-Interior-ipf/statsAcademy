@@ -6,6 +6,7 @@ import { NativeBaseProvider } from 'native-base'
 import { Button } from '@rneui/themed';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AntDesign } from '@expo/vector-icons';
+import {useTranslation} from 'react-i18next';
 
 export const SocialButtons = () => (
   <>
@@ -40,6 +41,7 @@ export const SocialButtons2 = () => (
 
 
 export const ButtonStart = () => {
+  const {t} = useTranslation();
 
   const checkLoginStatusAndRedirect = async () => {
     const token = await AsyncStorage.getItem('userToken');
@@ -59,7 +61,7 @@ export const ButtonStart = () => {
           onPress={checkLoginStatusAndRedirect}
           color={'#149'}
         >
-          <Text style={{color: '#fff', fontSize: 17}}>EMPEZAR</Text>
+          <Text style={{color: '#fff', fontSize: 17}}>{t('Button-Start')}</Text>
         </Button>
       </NativeBaseProvider>
     </>

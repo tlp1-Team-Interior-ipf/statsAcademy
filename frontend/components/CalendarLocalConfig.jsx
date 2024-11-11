@@ -1,22 +1,63 @@
+// import { LocaleConfig } from "react-native-calendars";
+
+// LocaleConfig.locales['es'] = {
+//     monthNames: [
+//         'Enero', 'Febrero', 'Marzo', 'Abril',
+//         'Mayo', 'Junio', 'Julio', 'Agosto',
+//         'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+//     ],
+//     monthNamesShort: [
+//         'Ene', 'Feb', 'Mar', 'Abr',
+//         'May', 'Jun', 'Jul', 'Ago',
+//         'Sep', 'Oct', 'Nov', 'Dic'
+//     ],
+//     dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+//     dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sab'],
+//     today: 'Hoy'
+// };
+
+
+// LocaleConfig.defaultLocale = 'es';
+
+// export default LocaleConfig;
+
 import { LocaleConfig } from "react-native-calendars";
 
-LocaleConfig.locales['es'] = {
-    monthNames: [
+const configureCalendarLocale = (locale) => {
+  if (locale === 'es') {
+    LocaleConfig.locales['es'] = {
+      monthNames: [
         'Enero', 'Febrero', 'Marzo', 'Abril',
         'Mayo', 'Junio', 'Julio', 'Agosto',
         'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
-    ],
-    monthNamesShort: [
+      ],
+      monthNamesShort: [
         'Ene', 'Feb', 'Mar', 'Abr',
         'May', 'Jun', 'Jul', 'Ago',
         'Sep', 'Oct', 'Nov', 'Dic'
-    ],
-    dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-    dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sab'],
-    today: 'Hoy'
+      ],
+      dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+      dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sab'],
+      today: 'Hoy'
+    };
+  } else if (locale === 'en') {
+    LocaleConfig.locales['en'] = {
+      monthNames: [
+        'January', 'February', 'March', 'April',
+        'May', 'June', 'July', 'August',
+        'September', 'October', 'November', 'December'
+      ],
+      monthNamesShort: [
+        'Jan', 'Feb', 'Mar', 'Apr',
+        'May', 'Jun', 'Jul', 'Aug',
+        'Sep', 'Oct', 'Nov', 'Dec'
+      ],
+      dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      today: 'Today'
+    };
+  }
+  LocaleConfig.defaultLocale = locale;
 };
 
-
-LocaleConfig.defaultLocale = 'es';
-
-export default LocaleConfig;
+export default configureCalendarLocale;

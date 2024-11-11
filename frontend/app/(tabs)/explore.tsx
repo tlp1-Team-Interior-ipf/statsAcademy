@@ -8,8 +8,11 @@ import { Stack } from 'expo-router';
 import { Text } from 'react-native';
 import  MyStagger  from '@/components/StaggerButtons'
 import { Video } from 'expo-av';
+import {useTranslation} from 'react-i18next';
 
 const Explore = () => {
+  const {t} = useTranslation();
+
   const { loading } = useAuth();
   const ImgChat = require('@/img/los elegiiiidooss/gausvector2.png')
   const ImgKanban = require('@/img/los elegiiiidooss/todoapp.png')
@@ -42,11 +45,11 @@ const Explore = () => {
           <View style={{zIndex: 1}}>
             <Navbar/>
           </View>
-          <Text style={{textAlign: 'center', fontSize: 35, color: '#ddd', top: -20}}>Bienvenido a tu inicio</Text>
+          <Text style={{textAlign: 'center', fontSize: 35, color: '#ddd', top: -20}}>{t('Welcome-home')}</Text>
             <View style={{gap: 10, marginVertical: 10}}>
-              <MyCard title={'Chat'} subtitle={'Chat para las clases interactivas'} image={null} window={'Chat'} NameLibrariIcon={"Entypo"} nameIcon={"chat"} sizeIcon={170} />
-              <MyCard title={'Organizador'} subtitle={'Organizador para gestionar actividades, objetivos, metas y otros eventos importantes'} image={null} window={'Kanban'} NameLibrariIcon={"FontAwesome5"} nameIcon={"tasks"} sizeIcon={170} />
-              <MyCard title={'Calendario'} subtitle={'Calendario para definir fechas importantes'} image={null} window={'Calendar'} NameLibrariIcon={"AntDesign"} nameIcon={"calendar"} sizeIcon={170} />
+              <MyCard title={t('Title-card-1')} subtitle={t('Card-1')} image={null} window={'Chat'} NameLibrariIcon={"Entypo"} nameIcon={"chat"} sizeIcon={170} />
+              <MyCard title={t('Title-card-2')} subtitle={t('Card-2')} image={null} window={'Kanban'} NameLibrariIcon={"FontAwesome5"} nameIcon={"tasks"} sizeIcon={170} />
+              <MyCard title={t('Title-card-3')} subtitle={t('Card-3')} image={null} window={'Calendar'} NameLibrariIcon={"AntDesign"} nameIcon={"calendar"} sizeIcon={170} />
             </View>
         </ScrollView>
       <MyStagger />

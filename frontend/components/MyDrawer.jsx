@@ -9,8 +9,11 @@ import { useImagePicker } from '@/hooks/useImagePicker';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { uploadCloudinary } from "./Upload.Cloudinary";
 import { Footer } from '@/components/Footer'
+import {useTranslation} from 'react-i18next';
 
 const MyDrawer = ({ slideAnim, mostrar }) => {
+  const {t} = useTranslation();
+
   const { isLoggedIn, user, updateUserProfile } = useContext(UserContext);
   const { clearAsyncStorage } = ActionButtons();
   const { pickImage } = useImagePicker();
@@ -76,10 +79,10 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
                 <>
                   <View style={{justifyContent: 'flex-start', flex: 10, top: 50, gap: 10}}>
                     <View style={{borderWidth: 2, borderRadius: 5, borderColor: '#ddd',  width: 250}}>
-                      <ButtonList content={'Iniciar sesión'} action={handleLogin}/>
+                      <ButtonList content={t('Drawer-login')} action={handleLogin}/>
                     </View>
                     <View style={{borderWidth: 2, borderRadius: 5, borderColor: '#ddd',  width: 250}}>
-                      <ButtonList content={'Registrarse'} action={handleRegister}/>
+                      <ButtonList content={t('Drawer-register')} action={handleRegister}/>
                     </View>
                   </View>
                 </>
@@ -96,26 +99,26 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
                             {user ? `${user.name || user.username}` : `Inicia sesión`}
                           </Text>
                               <Pressable android_ripple={{ color:'rgba(0, 255, 255, 0.2)', borderless: false, radius: 150}} onPress={handleChangeAvatar}>
-                                <Text style={{color: '#ddd', textAlign: 'center', margin: 5, fontSize: 15}}>Cambiar avatar </Text>
+                                <Text style={{color: '#ddd', textAlign: 'center', margin: 5, fontSize: 15}}>{t('Drawer-change-avatar')} </Text>
                               </Pressable>
         
                             <View>
-                              <Text style={{color: '#fff', paddingVertical: 5, fontSize: 17, fontWeight: 'bold'}}>Cuenta</Text>
+                              <Text style={{color: '#fff', paddingVertical: 5, fontSize: 17, fontWeight: 'bold'}}>{t('Drawer-title-1')}</Text>
                               <View style={{borderWidth: 2, borderRadius: 5, borderColor: '#ddd',  width: 250}}>
-                                <ButtonList direction={'right'} content={'Perfil de usuario'} action={handleProfile} />
-                                <ButtonList direction={'right'} content={'Mi cuenta'} action={() => router.push('/MyAccount')} />
-                                <ButtonList direction={'right'} content={'Notificaciones'} action={() => router.push('NotificationsComponent')} />
-                                <ButtonList direction={'right'} content={'Configuración'} />
-                                <ButtonList direction={'right'} content={'Idioma'} action={() => router.push('/Idioma')} />
+                                <ButtonList direction={'right'} content={t('Drawer-row-1')} action={handleProfile} />
+                                <ButtonList direction={'right'} content={t('Drawer-row-2')} action={() => router.push('/MyAccount')} />
+                                <ButtonList direction={'right'} content={t('Drawer-row-3')} action={() => router.push('NotificationsComponent')} />
+                                <ButtonList direction={'right'} content={t('Drawer-row-4')} />
+                                <ButtonList direction={'right'} content={t('Drawer-row-5')} action={() => router.push('/Idioma')} />
                               </View>
                             </View>
         
                             <View style={{marginVertical: 20}}>
-                              <Text style={{color: '#fff', paddingVertical: 5, fontSize: 17, fontWeight: 'bold'}}>Aplicación</Text>
+                              <Text style={{color: '#fff', paddingVertical: 5, fontSize: 17, fontWeight: 'bold'}}>{t('Drawer-title-2')}</Text>
                               <View style={{borderWidth: 2, borderRadius: 5, borderColor: '#ddd',  width: 250}}>
-                                <ButtonList direction={'right'} content={'Ayuda'} action={() => router.push('/Ayuda')} />
-                                <ButtonList direction={'right'} content={'Invitar amigos'} />
-                                <ButtonList direction={'right'} content={'Cerrar sesión'} action={handleLogout} />
+                                <ButtonList direction={'right'} content={t('Drawer-row-6')} action={() => router.push('/Ayuda')} />
+                                <ButtonList direction={'right'} content={t('Drawer-row-7')} />
+                                <ButtonList direction={'right'} content={t('Drawer-row-8')} action={handleLogout} />
                               </View>
                             </View>
                             <View style={{top: 100}}>

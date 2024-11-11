@@ -1,22 +1,26 @@
 import { StyleSheet, View, Text, Pressable, } from 'react-native';
 import { MyButton2 } from '@/components/Icons';
+import {useTranslation} from 'react-i18next';
 
 export const Footer = () => {
-    return(
+  const {t} = useTranslation();
+
+  return(
         <View style={stylesFooter.footer}>
             <View>
-              <Text style={{ color: '#fff', fontSize: 15 }}>Todos los derechos reservados © 2024</Text>
+              <Text style={{ color: '#fff', fontSize: 15 }}>{t('Footer-title')}</Text>
             </View>
             <View style={{ display: 'flex', flexDirection: 'column', paddingTop: 15, gap: 50 }}>
               
               <View style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <Pressable android_ripple={{ color:'rgba(0, 255, 255, 0.2)', borderless: false, radius: 110}}>
                   <Text style={{ color: '#fff', fontSize: 12, textAlign: 'center', marginBottom: 20}}>
-                    Términos y Condiciones
+                    {t('Footer-subtitle-1')}
                   </Text>
                 </Pressable>
               <Pressable android_ripple={{ color:'rgba(0, 255, 255, 0.2)', borderless: false, radius: 110}}>
-                <Text style={{ color: '#fff', fontSize: 12, textAlign: 'center', marginBottom: 10 }}>Política de Privacidad
+                <Text style={{ color: '#fff', fontSize: 12, textAlign: 'center', marginBottom: 10 }}>
+                {t('Footer-subtitle-2')}
                 </Text>
               </Pressable>
 
@@ -31,7 +35,7 @@ export const Footer = () => {
                     </View>
                   </View>
 
-                    <Text style={{ color: '#fff', fontSize: 15, textAlign: 'center' }}>CONTACTANOS</Text>
+                    <Text style={{ color: '#fff', fontSize: 15, textAlign: 'center' }}>{t('Footer-contact')}</Text>
                   <Pressable android_ripple={{ color:'rgba(0, 255, 255, 0.2)', borderless: false, radius: 110}}>
                     <Text style={{ color: '#fff', fontSize: 12, textAlign: 'center' }}>statsacademy@gmail.com</Text>
                   </Pressable>

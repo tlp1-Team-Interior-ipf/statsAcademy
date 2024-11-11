@@ -3,8 +3,11 @@ import { Text, View } from 'react-native';
 import { ButtonList } from '../../components/SocialButtons';
 import { router, Stack } from 'expo-router';
 import { AntDesign } from '@expo/vector-icons';
+import {useTranslation} from 'react-i18next';
 
 const Ayuda = () => {
+    const {t} = useTranslation();
+
     const [openQuestion, setOpenQuestion] = useState(null);
 
     const toggleQuestion = (index) => {
@@ -13,32 +16,32 @@ const Ayuda = () => {
 
     const questions = [
         {
-            question: '¿Qué son los logros?',
-            answer: 'Los logros son metas que puedes alcanzar dentro de la aplicación.',
+            question: t('Help-row-question-1'),
+            answer: t('Help-row-answer-1'),
         },
         {
-            question: '¿Qué es el recorrido del usuario?',
-            answer: 'El recorrido del usuario es el camino que sigue dentro de la app, desde que inicia hasta que termina las tareas.',
+            question: t('Help-row-question-2'),
+            answer: t('Help-row-answer-2')
         },
         {
-            question: '¿Qué pasa si elimino mi cuenta por accidente?',
-            answer: 'Si eliminas tu cuenta por accidente, puedes contactar con soporte para intentar recuperarla.',
+            question: t('Help-row-question-3'),
+            answer: t('Help-row-answer-3'),
         },
         {
-            question: '¿Cómo cambio mi nombre de usuario o email?',
-            answer: 'Puedes cambiar tu nombre de usuario o email desde la configuración de la cuenta.',
+            question: t('Help-row-question-4'),
+            answer: t('Help-row-answer-4'),
         },
         {
-            question: '¿Qué pasa si olvido mi contraseña?',
-            answer: 'Si olvidas tu contraseña, puedes restablecerla a través de la opción "Olvidé mi contraseña".',
+            question: t('Help-row-question-5'),
+            answer: t('Help-row-answer-5'),
         },
         {
-            question: '¿Puedo reiniciar el curso?',
-            answer: 'Sí, puedes reiniciar el curso desde la página de inicio.',
+            question: t('Help-row-question-6'),
+            answer: t('Help-row-answer-6'),
         },
         {
-            question: '¿Qué es Gauss?',
-            answer: 'Gauss es una herramienta de análisis de datos integrada en la aplicación.',
+            question: t('Help-row-question-7'),
+            answer: t('Help-row-answer-7'),
         },
     ];
 
@@ -46,7 +49,7 @@ const Ayuda = () => {
         <>
             <Stack.Screen
                 options={{
-                    title: 'Ayuda',
+                    title: t('Help'),
                     headerShown: true,
                     headerBackTitleVisible: true,
                     headerTintColor: '#fff',
@@ -73,7 +76,7 @@ const Ayuda = () => {
                         marginBottom: 20,
                     }}
                 >
-                    Preguntas frecuentes
+                    {t('Help-title')}
                 </Text>
                 {questions.map((item, index) => (
                     <View key={index} style={{ borderWidth: 2, borderRadius: 5, borderColor: '#ddd', margin: 10 }}>

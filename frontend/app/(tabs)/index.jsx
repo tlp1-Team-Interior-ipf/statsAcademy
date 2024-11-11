@@ -10,15 +10,9 @@ import { useFonts, Kufam_400Regular } from '@expo-google-fonts/kufam';
 import { UserContext } from '@/context/userContext';
 import * as SplashScreen from 'expo-splash-screen';
 import {Video} from 'expo-av';
+import {useTranslation} from 'react-i18next';
 
 const { width } = Dimensions.get('window');
-
-const data = [
-  { id: 1, image: require('@/img/background2.jpg'), text: 'Nos adaptamos a diferentes dispositivos para tu comodidad.', },
-  { id: 2, image: require('@/img/background1.jpg'), text: 'Aprende estadística de manera fácil y divertida.', },
-  { id: 3, image: require('@/img/img2.jpg'), text: 'Únete a la academia y alcanza tus metas.', },
-  
-];
 
 const tutorBanner = require('@/img/los elegiiiidooss/tutorbanner.png');
 const tutoriaLogo = require('@/img/tutorialogo.png');
@@ -33,11 +27,20 @@ SplashScreen.preventAutoHideAsync()
   .catch(console.warn);
 
 export default function HomeScreen() {
+  const {t} = useTranslation();
+
   const [isAppReady, setIsAppReady] = useState(false);
   const { isLoggedIn } = useContext(UserContext);
   let [fontsLoaded] = useFonts({
     Kufam_400Regular,
   });
+
+  const data = [
+    { id: 1, image: require('@/img/background2.jpg'), text: t('Carrousel-message-3'), },
+    { id: 2, image: require('@/img/background1.jpg'), text: t('Carrousel-message-1'), },
+    { id: 3, image: require('@/img/img2.jpg'), text: t('Carrousel-message-2'), },
+    
+  ];
 
   useEffect(() => {
     const prepareApp = async () => {
@@ -86,9 +89,9 @@ export default function HomeScreen() {
             <Navbar />
           </View>
           <Text style={{ fontSize: 50, textAlign: 'left', paddingLeft: 10, color: '#fff', fontFamily: 'Kufam_400Regular'  }}>Stats Academy</Text>
-          <Text style={{ fontSize: 30, textAlign: 'left', paddingLeft: 10, color: '#fff' }}>Aprendizaje en Estadística</Text>
+          <Text style={{ fontSize: 30, textAlign: 'left', paddingLeft: 10, color: '#fff' }}>{t('Title-Landing')}</Text>
           <Text style={{ fontSize: 22, textAlign: 'left', paddingLeft: 10, color: '#fff' }}>
-            Descubre la manera más efectiva de aprender Estadística con nuestra tutoria personalizada
+            {t('Subtitle-Landing')}
           </Text>
           <ButtonStart />
           <View>
@@ -125,35 +128,35 @@ export default function HomeScreen() {
           <View style={{ backgroundColor: '#04617c' }}>
             <View style={{ backgroundColor: '#5bc8ca', padding: 10, margin: 10, justifyContent: 'space-between',  borderRadius: 5, flexDirection: 'row', gap: 20}}>
               <View style={{flexDirection: 'column', right: 30}}>
-                <Text style={{ color: '#fff', fontSize: 30, width: 250, textAlign: 'center' }}>¡Prueba Gaus! Nuestro tutor inteligente</Text>
-                <Button onPress={() => {isLoggedIn ? router.push('/Chat') : router.push('/Login')}} title="Únete ahora" color={'#058b94'} buttonStyle={{margin: 'auto', marginVertical: 10, borderRadius: 5 }} />
+                <Text style={{ color: '#fff', fontSize: 30, width: 250, textAlign: 'center' }}>{t('Presentation-Gauss')}</Text>
+                <Button onPress={() => {isLoggedIn ? router.push('/Chat') : router.push('/Login')}} title={t('Button-start-gauss')} color={'#058b94'} buttonStyle={{margin: 'auto', marginVertical: 10, borderRadius: 5 }} />
               
               </View>
               <View style={{ flexDirection: 'column' }}>
                   <Image source={tutorBanner} style={{ width:160, height:180, position: 'absolute', top: -135, left: -80, zIndex: 10}} />
-                  <Image source={tutoriaLogo} style={{ width:80, height:60, zIndex: 10, top: 80, left: -50 }} />
+                  <Image source={tutoriaLogo} style={{ width:80, height:60, zIndex: 10, top: 60, left: -50 }} />
               </View>
             </View>
           </View>
               <View style={{ backgroundColor: '#0b246c', width: '100%', height: 320}}>
-                <Text style={{ textAlign: 'center', color: '#ddd', fontSize: 25, top: 25 }}>Tenemos las herramientas que necesitas</Text>
+                <Text style={{ textAlign: 'center', color: '#ddd', fontSize: 25, top: 25 }}>{t('Presentation-tools')}</Text>
                 <View style={{flexDirection: 'row', justifyContent: 'center', gap: 10, alignItems: 'center', top: 50}}>
                   <View style={{borderWidth: 1, borderColor: '#3366ff80', borderRadius: 2, backgroundColor: '#3366ff50', padding: 5}}>
                   <Image source={studentprofile} style={{ width:90, height:130, marginVertical: 10 }}/>
                     <View style={{backgroundColor: '#3366ff80', height: 40, justifyContent: 'center', paddingHorizontal: 10, position: 'absolute', top: 120}}>
-                      <Text style={{ textAlign: 'center', fontSize: 17, color: '#ddd', width: 80}}>Perfil de Alumno</Text>
+                      <Text style={{ textAlign: 'center', fontSize: 17, color: '#ddd', width: 80}}>{t('Tool-1')}</Text>
                     </View>
                   </View>
                   <View style={{borderWidth: 1, borderColor: '#3366ff80', borderRadius: 2, backgroundColor: '#3366ff50', padding: 5}}>
                   <Image source={anotadorSinFondo} style={{ width:90, height:130, marginVertical: 10 }}/>
                     <View style={{backgroundColor: '#3366ff80', height: 40, justifyContent: 'center', paddingHorizontal: 10, position: 'absolute', top: 120 }} > 
-                      <Text style={{ textAlign: 'center', fontSize: 17, color: '#ddd', width: 80}}>Anotador</Text>
+                      <Text style={{ textAlign: 'center', fontSize: 17, color: '#ddd', width: 80}}>{t('Tool-2')}</Text>
                     </View>
                   </View>
                   <View style={{borderWidth: 1, borderColor: '#3366ff80', borderRadius: 2, backgroundColor: '#3366ff50', padding: 5}}>
                     <Image source={calendarioSinFondo} style={{ width:90, height:150 }}/>
                     <View style={{backgroundColor: '#3366ff80', height: 40, justifyContent: 'center', paddingHorizontal: 10, position: 'absolute', top: 120}} >
-                      <Text style={{ textAlign: 'center', fontSize: 17, color: '#ddd', width: 80}}>Calendario</Text></View>  
+                      <Text style={{ textAlign: 'center', fontSize: 17, color: '#ddd', width: 80}}>{t('Tool-3')}</Text></View>  
                   </View>
                 </View>
               </View>
