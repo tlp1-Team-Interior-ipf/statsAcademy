@@ -1,19 +1,26 @@
 import React from 'react';
 import { CheckBox } from '@rneui/base';
+import {useTranslation} from 'react-i18next';
 
-export const Checkbox1 = ({ isChecked, setIsChecked }) => (
+export const Checkbox1 = ({ isChecked, setIsChecked }) => {
+  const {t} = useTranslation();
+  
+  return(
   <CheckBox
-    title="Términos y Condiciones"
+    title={t('Register-terms')}
     checked={isChecked}
     onPress={() => setIsChecked(!isChecked)}
   />
-);
+)};
 
-export const Checkbox2 = ({ isChecked, setIsChecked }) => (
+export const Checkbox2 = ({ isChecked, setIsChecked }) => {
+  const {t} = useTranslation();
+  
+  return(
   <CheckBox
     title="Recúerdame"
     checked={isChecked}
     onPress={() => setIsChecked(!isChecked)}
   />
-);
+)};
 
