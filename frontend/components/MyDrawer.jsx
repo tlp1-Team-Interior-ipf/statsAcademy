@@ -10,6 +10,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { uploadCloudinary } from "./Upload.Cloudinary";
 import { Footer } from '@/components/Footer'
 import {useTranslation} from 'react-i18next';
+import handleShare from '../hooks/useShareUrl'
 
 const MyDrawer = ({ slideAnim, mostrar }) => {
   const {t} = useTranslation();
@@ -117,7 +118,7 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
                               <Text style={{color: '#fff', paddingVertical: 5, fontSize: 17, fontWeight: 'bold'}}>{t('Drawer-title-2')}</Text>
                               <View style={{borderWidth: 2, borderRadius: 5, borderColor: '#ddd',  width: 250}}>
                                 <ButtonList direction={'right'} content={t('Drawer-row-6')} action={() => router.push('/Ayuda')} />
-                                <ButtonList direction={'right'} content={t('Drawer-row-7')} />
+                                <ButtonList direction={'right'} content={t('Drawer-row-7')} action={() => handleShare} />
                                 <ButtonList direction={'right'} content={t('Drawer-row-8')} action={handleLogout} />
                               </View>
                             </View>
