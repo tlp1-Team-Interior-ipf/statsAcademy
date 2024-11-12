@@ -65,8 +65,8 @@ const AnimatedCardContainer = ({ card }) => {
   const animationProps = useSpring({
     from: { opacity: 0, transform: 'translateY(50px)' },
     to: { opacity: 1, transform: 'translateY(0px)' },
-    config: { tension: 200, friction: 20 },
-    delay: 200,
+    config: { tension: 400, friction: 10 },
+    delay: 100,
   });
 
   return (
