@@ -25,7 +25,7 @@ export const useRegisterForm = () => {
     }
 
     try {
-      const response = await fetch('http://192.168.235.123:4000/users/', {
+      const response = await fetch('http://192.168.0.123:4000/auth/register/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -36,9 +36,12 @@ export const useRegisterForm = () => {
       });
 
       const data = await response.json();
+
+      console.log('ladata:', data)
+      console.log('laresponse:', response)
       
       if (response.ok) {
-        await AsyncStorage.setItem('userToken', data.token.token);
+        console.log("registrado exitosamente")
         setUserCreate('');
         setEmailCreate('');
         setPassCreate('');

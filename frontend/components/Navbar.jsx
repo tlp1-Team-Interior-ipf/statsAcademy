@@ -5,9 +5,10 @@ import { ButtonProfile } from './Icons';
 import { UserContext } from '@/context/userContext';
 import { ShowDrawer } from '@/hooks/showDrawer';
 import MyDrawer from '@/components/MyDrawer'
+import { Ionicons } from '@expo/vector-icons';
 
 const Navbar = () => {
-  const { isLoggedIn } = useContext(UserContext);
+  const { isLoggedIn, user } = useContext(UserContext);
   const { mostrar, slideAnim,  } = ShowDrawer();
 
   return (
@@ -18,9 +19,48 @@ const Navbar = () => {
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <Pressable style={{marginHorizontal: 10, paddingHorizontal: 10}}>
           {isLoggedIn ? 
-              (<ButtonProfile action={mostrar} />) 
-            : (<MyButton2 iconName={'user-circle-o'} iconSize={35} color={'#eee'} action={mostrar}/>)
+              (
+                <View>
+                  {user.profileImage ? (
+                    <Pressable 
+                      style={{ ustifyContent: 'center', alignItems: 'center'}}
+                      onPress={() => mostrar()}
+                    >
+                      <Image 
+                        source={{uri: user.profileImage}} 
+                        style={{width: 41, height: 41, borderWidth: 1, borderColor: '#ddd', borderRadius: 50}} 
+                      />
+                  
+                    </Pressable>
+                  ): <Pressable 
+                        style={{borderWidth: 1, borderRadius: 25, width: 40, height: 40, borderColor: '#ddd', justifyContent: 'center', alignItems: 'center'}}
+                        onPress={() => mostrar()}
+                      >
+                    <Ionicons
+                        name="person" 
+                        size={30} 
+                        color={'#ddd'}
+                      />
+                  </Pressable>
+                  }
+                </View>
+              )
+            : (
+            
+              <Pressable 
+                style={{borderWidth: 1, borderRadius: 25, width: 40, height: 40, borderColor: '#ddd', justifyContent: 'center', alignItems: 'center'}}
+                onPress={() => mostrar()}
+              >
+            <Ionicons
+                name="person" 
+                size={30} 
+                color={'#ddd'}
+              />
+          </Pressable>
+            )
           }
+
+          
         </Pressable>
 
         <MyDrawer mostrar={mostrar} slideAnim={slideAnim}/>

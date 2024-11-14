@@ -133,8 +133,8 @@ export default function HomeScreen() {
               
               </View>
               <View style={{ flexDirection: 'column' }}>
-                  <Image source={tutorBanner} style={{ width:160, height:180, position: 'absolute', top: -135, left: -80, zIndex: 10}} />
-                  <Image source={tutoriaLogo} style={{ width:80, height:60, zIndex: 10, top: 60, left: -50 }} />
+                  <Image source={tutorBanner} style={{ width:160, height:180, position: 'absolute', top: -135, left: -80}} />
+                  <Image source={tutoriaLogo} style={{ width:80, height:60, top: 60, left: -50 }} />
               </View>
             </View>
           </View>

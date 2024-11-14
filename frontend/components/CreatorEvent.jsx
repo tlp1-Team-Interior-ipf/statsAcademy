@@ -16,7 +16,7 @@ const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected, a
         try {
             const token = await AsyncStorage.getItem('userToken');
             console.log("token de usuario: ", token)
-            const response = await fetch("http://192.168.235.123:4000/calendarEvent/", {
+            const response = await fetch("http://192.168.0.123:4000/calendarEvent/", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

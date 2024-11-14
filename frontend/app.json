@@ -7,6 +7,7 @@
     "icon": "./assets/images/tutorialogo2.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
     "splash": {
       "image": "./assets/images/pantallacarga.png",
       "resizeMode": "contain",
@@ -19,7 +20,9 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/tutorialogo2.png",
         "backgroundColor": "#10132F",
-        "permissions": ["INTERNET"],
+        "permissions": [
+          "INTERNET"
+        ],
         "android.permissions": true
       },
       "package": "com.david137.statsAcademy"
@@ -31,7 +34,8 @@
     },
     "plugins": [
       "expo-router",
-      "expo-font"
+      "expo-font",
+      "expo-video"
     ],
     "experiments": {
       "typedRoutes": true

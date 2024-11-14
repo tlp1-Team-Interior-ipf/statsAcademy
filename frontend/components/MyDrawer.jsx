@@ -63,12 +63,12 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
 
     return(
       <Animated.View style={{
-        backgroundColor: '#114', 
+        backgroundColor: '#113', 
             width: 280, 
             height: 1150, 
             zIndex: 10, 
             position: 'absolute', 
-            top: 7, 
+            top: 4, 
             right: 0,
             transform: [{ translateX: slideAnim }],
             alignItems: 'flex-end',
@@ -80,11 +80,19 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
                 <>
                   <View style={{justifyContent: 'flex-start', flex: 10, top: 50, gap: 10}}>
                     <View style={{borderWidth: 2, borderRadius: 5, borderColor: '#ddd',  width: 250}}>
-                      <ButtonList content={t('Drawer-login')} action={handleLogin}/>
+                      <ButtonList direction={'right'} content={t('Drawer-login')} action={handleLogin}/>
                     </View>
                     <View style={{borderWidth: 2, borderRadius: 5, borderColor: '#ddd',  width: 250}}>
-                      <ButtonList content={t('Drawer-register')} action={handleRegister}/>
+                      <ButtonList direction={'right'} content={t('Drawer-register')} action={handleRegister}/>
                     </View>
+                    <View style={{borderWidth: 2, borderRadius: 5, borderColor: '#ddd',  width: 250}}>
+                      <ButtonList direction={'right'} content={t('Drawer-row-4')} />
+                    </View>
+                    <View style={{borderWidth: 2, borderRadius: 5, borderColor: '#ddd',  width: 250}}>
+                      <ButtonList direction={'right'} content={t('Drawer-row-5')} action={() => router.push('/Idioma')} />
+                    </View>
+
+
                   </View>
                 </>
                 ):  ( <>
@@ -118,7 +126,7 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
                               <Text style={{color: '#fff', paddingVertical: 5, fontSize: 17, fontWeight: 'bold'}}>{t('Drawer-title-2')}</Text>
                               <View style={{borderWidth: 2, borderRadius: 5, borderColor: '#ddd',  width: 250}}>
                                 <ButtonList direction={'right'} content={t('Drawer-row-6')} action={() => router.push('/Ayuda')} />
-                                <ButtonList direction={'right'} content={t('Drawer-row-7')} action={() => handleShare} />
+                                <ButtonList direction={'right'} content={t('Drawer-row-7')} action={() => handleShare()} />
                                 <ButtonList direction={'right'} content={t('Drawer-row-8')} action={handleLogout} />
                               </View>
                             </View>

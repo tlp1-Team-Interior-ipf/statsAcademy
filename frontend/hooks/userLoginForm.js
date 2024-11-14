@@ -12,10 +12,9 @@ const userLoginForm = () => {
     const { setIsLoggedIn, setUser } = useContext(UserContext);
     
     const loginUser = async () => {
-
         console.log(email, pass)
         try {
-            const response = await fetch('http://192.168.235.123:4000/users/login', {
+            const response = await fetch('http://192.168.0.123:4000/auth/login/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -25,16 +24,20 @@ const userLoginForm = () => {
                     password: pass,
                 }),
             });
-            
-            const data = await response.json();
-            console.log("Usuario logueado:", data);
+            console.log('laresponse:', response.ok)
+
+            console.log("Usuario logueado:");
             
             if (response.ok) {
-                
-                const token = data.token.token; 
-                const userId = data.userId;
-                const userName = data.name;
-                const userEmail = data.email;
+
+                const data = await response.json();
+                console.log("data:", data)
+
+                const token = data.data.token; 
+                const userId = data.data.id;
+                const userName = data.data.username;
+                const userEmail = data.data.email;
+                console.log("uy encontré un token: ", token)
                 console.log("uy encontré un nombre de usuario: ", userName)
                 console.log("uy encontré un identificador de usuario: ", userId)
                 console.log("uy encontré un email de usuario: ", userEmail)
@@ -68,10 +71,18 @@ const userLoginForm = () => {
 
                 router.push('explore');
             } else {
-                setErrorMessage(data.message || 'Contraseña o Email incorrecto');
+                if (response.status == 429) {
+                    setErrorMessage("Demasiados intentos")
+                    return
+                }
+                const responseData = await response.json()
+
+                console.log({responseData});
+                
+                setErrorMessage(responseData?.message || 'Contraseña o Email incorrecto');
             }
         } catch (error) {
-          setErrorMessage('No se pudo conectar con el servidor');
+            setErrorMessage('No se pudo conectar con el servidor');
         }
     };
 

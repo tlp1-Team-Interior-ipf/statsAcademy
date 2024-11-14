@@ -1,7 +1,6 @@
 import { router, Stack } from "expo-router"
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import  MyStagger  from '@/components/StaggerButtons';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import {useTranslation} from 'react-i18next';
 
@@ -39,7 +38,6 @@ const Kanban = () => {
                         </View>
                     </View>
                 </ScrollView>
-                <MyStagger />
             </View>
         </GestureHandlerRootView>
 

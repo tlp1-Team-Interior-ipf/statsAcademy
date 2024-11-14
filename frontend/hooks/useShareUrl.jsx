@@ -3,7 +3,7 @@ import { Share } from "react-native";
 const handleShare = async () => {
     try {
       const result = await Share.share({
-        message: 'Comparte Stats Academy con tus amigos! https://www.example.com',
+        message: '¡Comparte Stats Academy con tus amigos! https://www.example.com',
       });
 
       if (result.action === Share.sharedAction) {
