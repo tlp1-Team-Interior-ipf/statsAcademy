@@ -41,3 +41,23 @@ export const evaluateResponse = async (modelResponse) => {
         DatabaseError(error);
     }
 };
+
+
+export const generateQuestionsForTopic = async (topic) => {
+    try {
+        const response = await openai.chat.completions.create({
+            model: 'gpt-4o-mini',
+            messages: [
+                { role: 'system', content: `Genera 3 preguntas claras y específicas para evaluar el entendimiento de los estudiantes sobre el tema: ${topic}. Las preguntas deben estar relacionadas directamente con el tema.` },
+            ],
+            temperature: 0.5,
+        });
+
+        const questions = response.choices[0].message.content.split('\n').filter(q => q.trim() !== '');
+        if (!questions.length) throw new Error('No se pudieron generar preguntas.');
+
+        return questions;
+    } catch (error) {
+        DatabaseError(error);
+    };
+};

@@ -123,6 +123,17 @@ const relations = () => {
         foreignKey: 'userId',
         as: 'user',
     });
+
+    // relación de uno a muchos entre la tabla de User y la tabla de Calificaciones
+    UserModel.hasMany(Ratings, {
+        foreignKey: 'userId',
+        as: 'ratings',
+    });
+
+    Ratings.belongsTo(UserModel, {
+        foreignKey: 'userId',
+        as: 'user',
+    });
 };
 
 export default relations;
