@@ -14,13 +14,14 @@ const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected, a
 
     const handleSubmitEvent = async () => {
         try {
-            const token = await AsyncStorage.getItem('userToken');
-            console.log("token de usuario: ", token)
-            const response = await fetch("http://192.168.0.123:4000/calendarEvent/", {
+            const id = await AsyncStorage.getItem('userId');
+            console.log("id de usuario: ", id)
+            console.log("date de usuario: ", date)
+            console.log("event de usuario: ", descriptionEvent)
+            const response = await fetch(`http://192.168.0.247:3000/calendarEvent/${id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({ date: selected, event: descriptionEvent })
             });
@@ -31,9 +32,11 @@ const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected, a
             }
             
             const data = await response.json()
-            console.log(data.event);
-            
-            addEvent(data.event)
+            console.log(data);
+            console.log("datos", data)
+            console.log("datos2", data.data.event)
+            console.log("datos3", data.data)
+            addEvent(data.data.event)
             setDescriptionEvent('');
             setSelected(''); 
             setShowCreatorEvent(false);

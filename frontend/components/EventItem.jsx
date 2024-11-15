@@ -12,6 +12,7 @@ const formatDate = (dateString) => {
 };
 
 const EventItem = ({ event, handleEditEvent, setEvents }) => {
+    console.log('zzzzzzz:',event)
     const deleteEvent = useDeleteEvent(setEvents);
     return (
         <View style={{ height: 80, width: '90%', padding: 17, backgroundColor: '#226', borderRadius: 5, margin: 5, borderTopWidth: 6, borderColor: '#56a' }}>

@@ -25,7 +25,7 @@ export const useRegisterForm = () => {
     }
 
     try {
-      const response = await fetch('http://192.168.0.123:4000/auth/register/', {
+      const response = await fetch('http://192.168.0.247:3000/auth/register/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

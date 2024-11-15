@@ -6,18 +6,18 @@ const useFetchEvents = () => {
 
     const fetchEvents = useCallback(() => {
         const fn = async () => {
-            const token = await AsyncStorage.getItem('userToken');
-            const response = await fetch('http://192.168.0.123:4000/calendarEvent/', {
+            const id = await AsyncStorage.getItem('userId');
+            const response = await fetch(`http://192.168.0.247:3000/calendarEvent/${id}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
                 }
             });
 
             if (response.ok) {
                 const eventData = await response.json();
-                setEvents(eventData.length ? eventData : []);
+                console.log(eventData.data)
+                setEvents(eventData.data.length ? eventData.data : []);
             }
         
         }

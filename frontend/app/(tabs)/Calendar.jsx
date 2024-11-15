@@ -17,6 +17,8 @@ const Calendario = () => {
     const [showCreatorEvent, setShowCreatorEvent] = useState(false);
     const { events, setEvents } = useFetchEvents();
 
+    console.log('uuuuu:', events)
+
     const [calendarKey, setCalendarKey] = useState(0);
 
     useEffect(() => {
@@ -25,6 +27,7 @@ const Calendario = () => {
 
         setCalendarKey(prevKey => prevKey + 1);
       }, [i18n.language]);
+
  
     return (
         <>
