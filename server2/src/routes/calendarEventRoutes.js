@@ -8,8 +8,8 @@ import {
 
 const EventRouter = Router();
 
-EventRouter.get('/', getAllEventsController);
-EventRouter.post('/', createEventController);
+EventRouter.get('/:id', getAllEventsController);
+EventRouter.post('/:id', createEventController);
 EventRouter.put('/:id', updateEventController);
 EventRouter.delete('/:id', deleteEventController);
 

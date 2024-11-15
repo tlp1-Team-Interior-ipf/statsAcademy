@@ -8,6 +8,7 @@ import routes from '../routes/routes.js';
 import { createLogs } from '../utils/createLogs.js';
 import fileDirName  from "../utils/fileDirName.js";
 const { __dirname } = fileDirName(import.meta);
+import 'dotenv/config'
 
 const app = express();
 app.use(cors({
