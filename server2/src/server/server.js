@@ -12,7 +12,7 @@ import 'dotenv/config'
 
 const app = express();
 app.use(cors({
-    origin: 'http://localhost:8081', // Cambia esto si tu frontend está en otra dirección
+    origin: '*', // Cambia esto si tu frontend está en otra dirección
     methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE'], // Permite las solicitudes que necesites
     allowedHeaders: ['Content-Type', 'Authorization'], // Permite los headers que necesites
     credentials: true, // Si necesitas enviar cookies o autenticación
