@@ -8,8 +8,11 @@ import userLoginForm from '../../hooks/userLoginForm';
 import SubmitButton from '../../components/SubmitButton';
 import { SocialButtons2 } from '../../components/SocialButtons';
 import { Checkbox2 } from '../../components/CheckBoxs';
+import {useTranslation} from 'react-i18next';
 
  const Login = () => {
+  const {t} = useTranslation();
+
   const image1 = require('@/img/login.png')
   
   const { email, 
@@ -34,7 +37,7 @@ import { Checkbox2 } from '../../components/CheckBoxs';
               
               <Text style={{fontSize: 35, marginVertical: 20, textAlign: 'center'}}>Stats Academy</Text>
               <FormInput
-                placeholder="Email"
+                placeholder={t('Login-email')}
                 value={email}
                 setValue={setEmail}
                 validation={() => true}
@@ -43,7 +46,7 @@ import { Checkbox2 } from '../../components/CheckBoxs';
               />
 
               <FormInput
-                placeholder="Contraseña"
+                placeholder={t('Login-password')}
                 value={pass}
                 setValue={setPass}
                 validation={() => true}
@@ -53,8 +56,8 @@ import { Checkbox2 } from '../../components/CheckBoxs';
               />
               <SubmitButton handleSubmit={loginUser} errorMessage={errorMessage} titleButton={'LOGIN'} />
               <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Checkbox2 title={'Recúerdame'} isChecked={isChecked} setIsChecked={setIsChecked} />
-                <Text style={{color:'#00f'}} onPress={() => router.push("/RecuperarContrasenia")}>Olvidé mi contraseña</Text>
+                <Checkbox2 title={t('Login-check')} isChecked={isChecked} setIsChecked={setIsChecked} />
+                <Text style={{color:'#00f'}} onPress={() => router.push("/RecuperarContrasenia")}>{t('Login-help')}</Text>
               </View>
               
               <SocialButtons2 />

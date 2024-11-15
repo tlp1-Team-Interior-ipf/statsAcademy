@@ -9,8 +9,11 @@ import { SocialButtons } from '../../components/SocialButtons';
 import { Feather, MaterialIcons } from '@expo/vector-icons';
 import { useRegisterForm } from '../../hooks/userRegisterForm';
 import { validateEmail, validatePassword, validateUsername } from '../../components/validation';
+import {useTranslation} from 'react-i18next';
 
 const Register = () => {
+  const {t} = useTranslation();
+
   const {
     userCreate,
     setUserCreate,
@@ -34,7 +37,7 @@ const Register = () => {
           <Text style={{fontSize: 35, marginVertical: 20, textAlign: 'center'}}>Stats Academy</Text>
 
           <FormInput
-            placeholder="Usuario"
+            placeholder={t('Register-user')}
             value={userCreate}
             setValue={setUserCreate}
             validation={validateUsername}
@@ -44,7 +47,7 @@ const Register = () => {
           />
 
           <FormInput
-            placeholder="Email"
+            placeholder={t('Register-email')}
             value={emailCreate}
             setValue={setEmailCreate}
             validation={validateEmail}
@@ -54,7 +57,7 @@ const Register = () => {
           />
 
           <FormInput
-            placeholder="Contraseña"
+            placeholder={t('Register-password')}
             value={passCreate}
             setValue={setPassCreate}
             secureTextEntry

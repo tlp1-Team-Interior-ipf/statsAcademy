@@ -18,7 +18,7 @@ export const Checkbox2 = ({ isChecked, setIsChecked }) => {
   
   return(
   <CheckBox
-    title="Recúerdame"
+    title={t('Login-check')}
     checked={isChecked}
     onPress={() => setIsChecked(!isChecked)}
   />

@@ -115,8 +115,8 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
                                 <ButtonList direction={'right'} content={t('Drawer-row-1')} action={handleProfile} />
                                 <ButtonList direction={'right'} content={t('Drawer-row-2')} action={() => { mostrar(); router.push('/MyAccount'); }} />
                                 <ButtonList direction={'right'} content={t('Drawer-row-3')} action={() => { mostrar(); router.push('NotificationsComponent'); }} />
-                                <ButtonList direction={'right'} content={t('Drawer-row-4')} />
-                                <ButtonList direction={'right'} content={t('Drawer-row-5')} action={() => { mostrar(); router.push('/Idioma'); }} />
+                                <ButtonList direction={'right'} content={t('Drawer-row-4')} action={() => { mostrar(); router.push('/Setting');}} />
+                                {/* <ButtonList direction={'right'} content={t('Drawer-row-5')} action={() => { mostrar(); router.push('/Idioma'); }} /> */}
                               </View>
                             </View>
         

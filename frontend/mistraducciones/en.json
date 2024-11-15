@@ -67,7 +67,13 @@
   "Login-subtitle-1": "Or log in with a social network",
   "Login-subtitle-2": "Don’t have an account?",
   "Login-subtitle-3": "Sign up here!",
+  "Login-email": "Email",
+  "Login-password": "Password",
 
+
+  "Register-user": "Username",
+  "Register-email": "Email",
+  "Register-password": "Password",
   "Register-terms": "Terms and Conditions",
   "Register-subtitle-1": "Or sign up with a social network",
   "Register-subtitle-2": "Already have an account?", 

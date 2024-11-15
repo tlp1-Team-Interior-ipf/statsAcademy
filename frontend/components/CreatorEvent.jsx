@@ -48,7 +48,7 @@ const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected, a
                 const day = selectedDate.getDate();
                 const month = selectedDate.getMonth() + 1;
                 const year = selectedDate.getFullYear();
-                const formatted = `${day}/${month}/${year}`;
+                const formatted = `${year}/${month}/${day}`;
                 setSelected(formatted);
                 setShowDate(false);
             } else {

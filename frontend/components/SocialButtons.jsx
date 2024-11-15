@@ -6,38 +6,45 @@ import { NativeBaseProvider } from 'native-base'
 import { Button } from '@rneui/themed';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AntDesign } from '@expo/vector-icons';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
-export const SocialButtons = () => (
+export const SocialButtons = () => {
+
+  const {t} = useTranslation()
+  return(
   <>
-    <Text style={{ textAlign: 'center' }}>O regístrate con una red social</Text>
+    <Text style={{ textAlign: 'center' }}>{t('Register-subtitle-1')}</Text>
     
     <View style={{ flexDirection: 'row', marginVertical: 10, margin: 'auto', gap: 5 }}>
       <MyButton iconName="logo-facebook" iconSize={15} />
       <MyButton iconName="logo-google" iconSize={15} />
     </View>
-    <View style={{flexDirection: 'row', margin: 'auto'}}>
-      <Text>¿Ya tienes una cuenta? </Text>
-      <Text style={{color:'#00f'}} onPress={() => router.push("Login")}>¡Inicia sesión!</Text>
+    <View style={{flexDirection: 'row', margin: 'auto', gap: 5}}>
+      <Text>{t('Register-subtitle-2')}</Text>
+      <Text style={{color:'#00f'}} onPress={() => router.push("Login")}>{t('Register-subtitle-3')}</Text>
     </View>
   </>
-);
+)};
 
-export const SocialButtons2 = () => (
+export const SocialButtons2 = () => {
+  const {t} = useTranslation();
+
+  return(
+  
   <>
-    <Text style={{textAlign: 'center'}}>O logeate con una red social</Text>
+    <Text style={{textAlign: 'center'}}>{t('Login-subtitle-1')}</Text>
           
     <View style={{display:'flex', flexDirection:'row', gap: 5, margin: 'auto', marginVertical: 10}}>
       <MyButton iconName="logo-facebook" iconSize={15} />
       <MyButton iconName="logo-google" iconSize={15} />
     </View>
 
-    <View style={{flexDirection: 'row'}}>
-      <Text >¿No tienes una cuenta? </Text>
-      <Text style={{color:'#33f', textAlign: 'center'}} onPress={() => router.push("Register")}>¡Registrate aquí!</Text>
+    <View style={{flexDirection: 'row', gap: 5}}>
+      <Text >{t('Login-subtitle-2')}</Text>
+      <Text style={{color:'#33f', textAlign: 'center'}} onPress={() => router.push("Register")}>{t('Login-subtitle-3')}</Text>
     </View>
   </>
-)
+)}
 
 
 export const ButtonStart = () => {
