@@ -83,7 +83,7 @@ export default function HomeScreen() {
   return (
     <>
       <Stack.Screen options={{headerShown: false}} />
-      <View style={{backgroundColor: '#10132F'}}>
+      <View style={{backgroundColor: '#332288'}}>
         <ScrollView>
           <View style={{zIndex: 1}}>
             <Navbar />

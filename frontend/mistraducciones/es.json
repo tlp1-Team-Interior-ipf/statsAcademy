@@ -8,6 +8,7 @@
     "Help": "Ayuda",
     "My-Personal-goals": "Mis metas personales",
     "User-calendar": "Calendario de usuario",
+    "Configuration": "Configuración",
 
     "Write": "Escribir...",
 
@@ -112,6 +113,14 @@
     "My-Account-email": "Correo",
     "My-Account-password": "Contraseña",
     "My-Account-delete": "Eliminar cuenta",
+    "My-Account-cancel": "Cancelar",
+    "My-Account-confirm": "Eliminar definitivamente",
+    "My-Account-enter-email": "Ingrese su correo",
+    "My-Account-confirm-delete": "Confirme la eliminación de su cuenta",
+
+    "My-Account-email-mismatch": "Correo invalido",
+    "My-Account-delete-failed": "No fue posible eliminar la cuenta",
+    "My-Account-deleted": "Cuenta eliminada",
 
     "Notifications-void": "No hay notificaciones",
     
@@ -130,7 +139,16 @@
     "Help-row-answer-4": "Puedes cambiar tu nombre de usuario o email desde la configuración de la cuenta.",
     "Help-row-answer-5": "Si olvidas tu contraseña, puedes restablecerla a través de la opción 'Olvidé mi contraseña'.",
     "Help-row-answer-6": "Sí, puedes reiniciar el curso desde la página de inicio.",
-    "Help-row-answer-7": "Gauss es una herramienta de análisis de datos integrada en la aplicación."
+    "Help-row-answer-7": "Gauss es una herramienta de análisis de datos integrada en la aplicación.",
+
+    "Config-title": "Cambia los ajustes a tu preferencia",
+    "Config-subtitle-1": "Tema",
+    "Config-subtitle-2": "Idioma",
+    "Config-row-1": "Oscuro",
+    "Config-row-2": "Claro",
+    "Config-row-3": "Inglés",
+    "Config-row-4": "Español",
+    "Config-save": "Guardar"
 
 
 }

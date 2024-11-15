@@ -9,6 +9,7 @@
   "My-Personal-goals": "My Personal Goals",
   "User-calendar": "User calendar",
   "Write": "Write...",
+  "Configuration": "Configuration",
   
   "change-language": "Change language",
   "welcome": "Welcome to my app",
@@ -111,6 +112,14 @@
   "My-Account-email": "Email",
   "My-Account-password": "Password",
   "My-Account-delete": "Delete account",
+  "My-Account-cancel": "Cancel",
+  "My-Account-confirm": "Delete permanently",
+  "My-Account-enter-email": "Write your email",
+  "My-Account-confirm-delete": "Confirm delete your account",
+
+  "My-Account-email-mismatch":"Invalid email",
+  "My-Account-delete-failed": "Account no delete",
+  "My-Account-deleted": "Account deleted",
 
   "Notifications-void": "No notifications",
 
@@ -129,5 +138,15 @@
   "Help-row-answer-4": "You can change your username or email in the account settings.",
   "Help-row-answer-5": "If you forget your password, you can reset it using the 'Forgot my password' option.",
   "Help-row-answer-6": "Yes, you can restart the course from the home page.",
-  "Help-row-answer-7": "Gauss is a data analysis tool integrated into the app."
+  "Help-row-answer-7": "Gauss is a data analysis tool integrated into the app.",
+
+  "Config-title": "Change the settings to your preference",
+  "Config-subtitle-1": "Theme",
+  "Config-subtitle-2": "Language",
+  "Config-row-1": "Dark",
+  "Config-row-2": "Light",
+  "Config-row-3": "English",
+  "Config-row-4": "Spanish",
+  "Config-save": "Save"
+
 }

@@ -19,35 +19,35 @@ const MyCard = ({ title, subtitle, image, window, NameLibrariIcon, nameIcon, siz
 
   const IconComponent = iconLibraries[NameLibrariIcon];
 
-  // Función para manejar el presionado largo
+  // Cuando se mantiene presionado
   const handlePressIn = () => {
     setIsPressed(true);
-    // Animar la opacidad del backdrop
+    
     Animated.timing(opacity, {
-      toValue: 1,  // Mostrar el backdrop
+      toValue: 1,  // Mostrar backdrop
       duration: 300,
       useNativeDriver: true,
     }).start();
 
     Animated.timing(scale, {
-      toValue: 1.05,  // Aumentar el tamaño de la tarjeta un 5%
+      toValue: 1.05,  // Aumenta el tamaño de la tarjeta un 5%
       duration: 300,
       useNativeDriver: true,
     }).start();
   };
 
-  // Función para manejar cuando se suelta el toque
+  // Cuando se deja de presionar
   const handlePressOut = () => {
     setIsPressed(false);
-    // Animar la opacidad del backdrop para que desaparezca
+    
     Animated.timing(opacity, {
-      toValue: 0,  // Ocultar el backdrop
+      toValue: 0,  // Oculta el backdrop
       duration: 300,
       useNativeDriver: true,
     }).start();
 
     Animated.timing(scale, {
-      toValue: 1,  // Volver al tamaño original
+      toValue: 1,  // Para volver al tamaño original
       duration: 300,
       useNativeDriver: true,
     }).start();
@@ -75,7 +75,6 @@ const MyCard = ({ title, subtitle, image, window, NameLibrariIcon, nameIcon, siz
         </Animated.View>
       )}
 
-      {/* Imagen (si la necesitas en el fondo) */}
       {image && <Image source={{ uri: image }} style={styles.image} />}
     </Animated.View>
       </Pressable>
@@ -85,21 +84,21 @@ const MyCard = ({ title, subtitle, image, window, NameLibrariIcon, nameIcon, siz
 const styles = StyleSheet.create({
   container: {
     width: 300,
-    backgroundColor: '#111762',
+    backgroundColor: '#dddddd50',
     borderRadius: 5,
     padding: 10,
     alignItems: 'center',
     margin: 'auto',
     // Sombra para iOS
-    shadowColor: 'gray',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
+    // shadowColor: 'gray',
+    // shadowOffset: { width: 0, height: 4 },
+    // shadowOpacity: 0.1,
+    // shadowRadius: 8,
     // Sombra para Android
-    elevation: 4,
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'relative',
+    // elevation: 4,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // position: 'relative',
   },
   image: {
     width: 250,
@@ -118,7 +117,7 @@ const styles = StyleSheet.create({
   },
   backdrop: {
     ...StyleSheet.absoluteFillObject,  // Esto hace que el backdrop cubra toda la tarjeta
-    backgroundColor: 'rgba(0, 0, 0, 0.6)', // Fondo semitransparente
+    backgroundColor: 'rgba(9, 9, 9, 0.6)', // Fondo semitransparente
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,

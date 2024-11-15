@@ -7,15 +7,15 @@ const Notifications = () => {
   const {t} = useTranslation();
 
     return(
-        <View style={{ height: '100%', backgroundColor: '#10132F' }}>
+        <View style={{ height: '100%', backgroundColor: '#332288' }}>
             <Stack.Screen options={{
                 title: t('Notificacions'),
                 headerShown: true,
                 headerBackTitleVisible: true,
                 headerTintColor: '#fff',
-                headerStyle: { backgroundColor: '#10132F' },
+                headerStyle: { backgroundColor: '#332288' },
                 headerLeft: () => (
-                    <AntDesign name='arrowleft' onPress={() => router.push('explore')} size={22} color={'#ddd'} style={{ paddingLeft: 10 }} />
+                    <AntDesign name='arrowleft' onPress={() => router.back()} size={22} color={'#ddd'} style={{ paddingLeft: 10 }} />
                 ),
             }} />
             <ScrollView>

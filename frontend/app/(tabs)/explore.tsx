@@ -1,6 +1,5 @@
 import {  NativeBaseProvider } from 'native-base';
 import useAuth from '@/hooks/useAuth';
-import LoadingSpinner from '@/components/LoadingSpinner'
 import { ScrollView, View } from 'react-native';
 import MyCard from '@/components/Card'
 import Navbar from '@/components/Navbar'
@@ -14,15 +13,12 @@ const Explore = () => {
   const {t} = useTranslation();
 
   const { loading } = useAuth();
-  const ImgChat = require('@/img/los elegiiiidooss/gausvector2.png')
-  const ImgKanban = require('@/img/los elegiiiidooss/todoapp.png')
-  const ImgCalendario = require('@/img/los elegiiiidooss/tools.png')
   const loading2 = require('../../assets/images/loading4.mp4');
 
   if (loading) {
     return (
       <>
-      <View style={{backgroundColor: '#10132F', height: '100%'}}>
+      <View style={{backgroundColor: '#332288', height: '100%'}}>
         <Stack.Screen options={{headerShown: false}} />
         <Video 
           source={loading2} style={{width:250, height: 250}} rate={1.0} // Velocidad de reproducción
@@ -40,7 +36,7 @@ const Explore = () => {
   return (
     <NativeBaseProvider>
     <Stack.Screen options={{headerShown: false}} />
-      <View style={{backgroundColor: '#10132F', height: '100%'}}>
+      <View style={{backgroundColor: '#332288', height: '100%'}}>
         <ScrollView>
           <View style={{zIndex: 1}}>
             <Navbar/>

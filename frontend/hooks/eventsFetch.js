@@ -7,7 +7,7 @@ const useFetchEvents = () => {
     const fetchEvents = useCallback(() => {
         const fn = async () => {
             const id = await AsyncStorage.getItem('userId');
-            const response = await fetch(`http://192.168.0.247:3000/calendarEvent/${id}`, {
+            const response = await fetch(`http://192.168.0.123:3000/calendarEvent/${id}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

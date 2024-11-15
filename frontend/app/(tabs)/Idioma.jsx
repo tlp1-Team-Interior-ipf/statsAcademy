@@ -24,7 +24,7 @@ const Idioma = () => {
                     headerShown: true,
                     headerBackTitleVisible: true,
                     headerTintColor: '#fff',
-                    headerStyle: { backgroundColor: '#10132F' },
+                    headerStyle: { backgroundColor: '#332288' },
                     headerLeft: () => (
                         <AntDesign
                             name="arrowleft"
@@ -36,7 +36,7 @@ const Idioma = () => {
                     ),
                 }}
             />
-        <View style={{backgroundColor: '#10132F', height: '100%'}}>
+        <View style={{backgroundColor: '#332288', height: '100%'}}>
             <Text style={{color: '#ddd', textAlign: 'center', fontSize: 25}}>{t('change-language')}</Text>
             <Text style={{color: '#ddd', padding: 10, textAlign: 'center', justifyContent: 'center'}}>{t('welcome')}</Text>
             <FlatList

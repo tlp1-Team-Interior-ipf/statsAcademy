@@ -74,7 +74,7 @@ const styleCardProfile = StyleSheet.create({
     containerCardProfile: {
         height: 150, 
         width: 130, 
-        backgroundColor: '#111762',
+        backgroundColor: '#3333ff50',
         borderRadius: 5,
         padding: 10,
         alignItems: 'center'

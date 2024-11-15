@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Pressable, KeyboardAvoidingView } from 'react-native';
+import { View, Text, TextInput, Pressable, KeyboardAvoidingView, Modal } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DateTimePickerComponent from './DateTimePickerComponent';
@@ -18,7 +18,7 @@ const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected, a
             console.log("id de usuario: ", id)
             console.log("date de usuario: ", date)
             console.log("event de usuario: ", descriptionEvent)
-            const response = await fetch(`http://192.168.0.247:3000/calendarEvent/${id}`, {
+            const response = await fetch(`http://192.168.0.123:3000/calendarEvent/${id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -32,11 +32,7 @@ const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected, a
             }
             
             const data = await response.json()
-            console.log(data);
-            console.log("datos", data)
-            console.log("datos2", data.data.event)
-            console.log("datos3", data.data)
-            addEvent(data.data.event)
+            addEvent(data.data)
             setDescriptionEvent('');
             setSelected(''); 
             setShowCreatorEvent(false);
@@ -52,7 +48,7 @@ const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected, a
                 const day = selectedDate.getDate();
                 const month = selectedDate.getMonth() + 1;
                 const year = selectedDate.getFullYear();
-                const formatted = `${year}/${month}/${day}`;
+                const formatted = `${day}/${month}/${year}`;
                 setSelected(formatted);
                 setShowDate(false);
             } else {
@@ -62,25 +58,39 @@ const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected, a
         
         return (
             <KeyboardAvoidingView>
-            <View style={{ borderWidth: 1, borderRadius: 5, paddingHorizontal: 10, backgroundColor: '#64a', borderColor: '#ddd', position: 'absolute', alignItems: 'flex-end', justifyContent: 'center', width: 250, height: 220, zIndex: 20, top: -400, left: -130, gap: 10 }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 24 }}>
+            <Modal 
+                animationType='fade'
+                transparent
+                >
+                    <View 
+                    style={{
+                        backgroundColor: "#64d",
+                        padding: 20,
+                        borderRadius: 10,
+                        width: "90%",
+                        alignItems: "center",
+                        margin: 'auto'
+                    }}
+                    > 
+
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 60 }}>
                     <Text style={{ color: '#ddd', fontWeight: 'bold', fontSize: 17 }}>
                         {t('Modal-title')}
                     </Text>
-                    <Ionicons name='close' size={22} color={'#ddd'} onPress={() => {
+                    <Ionicons name='close' size={35} color={'#ddd'} onPress={() => {
                         setShowCreatorEvent(false);
                         setDescriptionEvent('');
                         setSelected('');
                     }} />
                 </View>
                     
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 65 }}>
-                    <Text style={{ color: '#ddd', fontSize: 17, borderBottomWidth: 1, borderColor: '#ddd', padding: 5 }}>
-                        {selected ? `${t('Event-date')} ${selected}` : `${t('Select-date')}`}
-                    </Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 55 }}>
                     <Pressable onPress={() => setShowDate(!showDate)} android_ripple={{ color: 'rgba(0, 255, 255, 0.2)', borderless: false, radius: 150 }}>
                         <Ionicons name='calendar' size={22} color={'#ddd'} />
                     </Pressable>
+                    <Text style={{ color: '#ddd', fontSize: 17, borderBottomWidth: 1, borderColor: '#ddd', padding: 5, width: 190, textAlign: 'center' }}>
+                        {selected ? `${t('Event-date')} ${selected}` : `${t('Select-date')}`}
+                    </Text>
                 </View>
 
                 { showDate && (
@@ -93,13 +103,14 @@ const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected, a
                     )
                 }
 
-                <TextInput placeholder={t('Input-event')} style={{ borderWidth: 1, borderRadius: 5, borderColor: '#ddd', padding: 10, color: '#ddd', width: '100%' }} placeholderTextColor={'#ddd'} value={descriptionEvent} onChangeText={text => setDescriptionEvent(text)} />
+                <TextInput placeholder={t('Input-event')} style={{ borderWidth: 1, borderRadius: 5, borderColor: '#ddd', padding: 10, color: '#ddd', width: '100%', marginVertical: 15 }} placeholderTextColor={'#ddd'} value={descriptionEvent} onChangeText={text => setDescriptionEvent(text)} />
                 <Pressable style={{ borderWidth: 1, borderRadius: 5, padding: 10, borderColor: '#ddd', width: '100%' }} onPress={handleSubmitEvent} android_ripple={{ color: 'rgba(0, 255, 255, 0.2)', borderless: false, radius: 150 }}>
                     <Text style={{ color: '#ddd', textAlign: 'center' }}>
                         {t('Button-save')}
                     </Text>
                 </Pressable>
-            </View>
+                    </View>
+            </Modal>
         </KeyboardAvoidingView>
     );
 };

@@ -25,7 +25,7 @@ export const useRegisterForm = () => {
     }
 
     try {
-      const response = await fetch('http://192.168.0.247:3000/auth/register/', {
+      const response = await fetch('http://192.168.0.123:3000/auth/register/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -37,18 +37,14 @@ export const useRegisterForm = () => {
 
       const data = await response.json();
 
-      console.log('ladata:', data)
-      console.log('laresponse:', response)
-      
-      if (response.ok) {
-        console.log("registrado exitosamente")
+      if (!response.ok) {
+        Alert.alert('Error de registro', data.error || 'Hubo un problema con el registro');
+      } 
+
         setUserCreate('');
         setEmailCreate('');
         setPassCreate('');
         router.push('Login');
-      } else {
-        Alert.alert('Error de registro', data.error || 'Hubo un problema con el registro');
-      }
     } catch (error) {
       Alert.alert('Error', 'No se pudo conectar con el servidor');
     }

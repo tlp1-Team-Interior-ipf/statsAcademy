@@ -9,12 +9,12 @@ const Kanban = () => {
 
     return(
         <GestureHandlerRootView style={{ flex: 1 }}>
-            <View style={{backgroundColor: '#10132F', height: '100%'}}>
+            <View style={{backgroundColor: '#332288', height: '100%'}}>
                 <Stack.Screen 
                     options={{ 
                         title: t('My-Personal-goals'), 
                         headerStyle: { 
-                            backgroundColor: '#10132F' 
+                            backgroundColor: '#332288' 
                         },
                         headerTintColor: '#ddd',
                         headerLeft: () => (
@@ -27,13 +27,13 @@ const Kanban = () => {
                 </Pressable>
                 <ScrollView horizontal={true}>
                     <View style={{ gap: 10, flexDirection: 'row', margin: 10}}>
-                        <View style={{ backgroundColor: '#336', width: 250, height: 650, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: '#666' }}>
+                        <View style={{ backgroundColor: '#337', width: 250, height: 650, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: '#666' }}>
                             <Text style={stylesKanban.textColumn}>{t('Column-1')}</Text>
                         </View>
-                        <View style={{ backgroundColor: '#336', width: 250, height: 650, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: '#666' }}>
+                        <View style={{ backgroundColor: '#337', width: 250, height: 650, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: '#666' }}>
                             <Text style={stylesKanban.textColumn}>{t('Column-2')}</Text>
                         </View>
-                        <View style={{ backgroundColor: '#336', width: 250, height: 650, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: '#666' }}>
+                        <View style={{ backgroundColor: '#337', width: 250, height: 650, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: '#666' }}>
                             <Text style={stylesKanban.textColumn}>{t('Column-3')}</Text>
                         </View>
                     </View>

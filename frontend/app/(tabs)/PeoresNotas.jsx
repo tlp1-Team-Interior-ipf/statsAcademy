@@ -9,12 +9,12 @@ const MejoresNotas = () => {
 
     return(
 
-        <View style={{ backgroundColor: '#10132F', alignItems: 'center', height: '100%' }}>
+        <View style={{ backgroundColor: '#332288', alignItems: 'center', height: '100%' }}>
             <Stack.Screen 
                 options={{ 
                     title: t('My-worst-notes'), 
                     headerStyle: { 
-                        backgroundColor: '#10132F' ,
+                        backgroundColor: '#332288' ,
                     },
                     headerTintColor: '#ddd',
                     headerLeft: () => (

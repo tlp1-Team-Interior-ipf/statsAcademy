@@ -11,6 +11,7 @@ import { uploadCloudinary } from "./Upload.Cloudinary";
 import { Footer } from '@/components/Footer'
 import {useTranslation} from 'react-i18next';
 import handleShare from '../hooks/useShareUrl'
+// import { ShowDrawer } from '@/hooks/showDrawer';
 
 const MyDrawer = ({ slideAnim, mostrar }) => {
   const {t} = useTranslation();
@@ -18,6 +19,7 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
   const { isLoggedIn, user, updateUserProfile } = useContext(UserContext);
   const { clearAsyncStorage } = ActionButtons();
   const { pickImage } = useImagePicker();
+  // const { mostrar } = ShowDrawer();
 
   const handleUpload = async (imageUri) => {
     const imageUrl = await uploadCloudinary(imageUri, user);
@@ -63,7 +65,7 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
 
     return(
       <Animated.View style={{
-        backgroundColor: '#113', 
+        backgroundColor: '#332288', 
             width: 280, 
             height: 1150, 
             zIndex: 10, 
@@ -86,13 +88,9 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
                       <ButtonList direction={'right'} content={t('Drawer-register')} action={handleRegister}/>
                     </View>
                     <View style={{borderWidth: 2, borderRadius: 5, borderColor: '#ddd',  width: 250}}>
-                      <ButtonList direction={'right'} content={t('Drawer-row-4')} />
+                      <ButtonList direction={'right'} content={t('Drawer-row-4')} action={() => router.push('/Setting')} />
                     </View>
-                    <View style={{borderWidth: 2, borderRadius: 5, borderColor: '#ddd',  width: 250}}>
-                      <ButtonList direction={'right'} content={t('Drawer-row-5')} action={() => router.push('/Idioma')} />
-                    </View>
-
-
+                    
                   </View>
                 </>
                 ):  ( <>
@@ -115,17 +113,17 @@ const MyDrawer = ({ slideAnim, mostrar }) => {
                               <Text style={{color: '#fff', paddingVertical: 5, fontSize: 17, fontWeight: 'bold'}}>{t('Drawer-title-1')}</Text>
                               <View style={{borderWidth: 2, borderRadius: 5, borderColor: '#ddd',  width: 250}}>
                                 <ButtonList direction={'right'} content={t('Drawer-row-1')} action={handleProfile} />
-                                <ButtonList direction={'right'} content={t('Drawer-row-2')} action={() => router.push('/MyAccount')} />
-                                <ButtonList direction={'right'} content={t('Drawer-row-3')} action={() => router.push('NotificationsComponent')} />
+                                <ButtonList direction={'right'} content={t('Drawer-row-2')} action={() => { mostrar(); router.push('/MyAccount'); }} />
+                                <ButtonList direction={'right'} content={t('Drawer-row-3')} action={() => { mostrar(); router.push('NotificationsComponent'); }} />
                                 <ButtonList direction={'right'} content={t('Drawer-row-4')} />
-                                <ButtonList direction={'right'} content={t('Drawer-row-5')} action={() => router.push('/Idioma')} />
+                                <ButtonList direction={'right'} content={t('Drawer-row-5')} action={() => { mostrar(); router.push('/Idioma'); }} />
                               </View>
                             </View>
         
                             <View style={{marginVertical: 20}}>
                               <Text style={{color: '#fff', paddingVertical: 5, fontSize: 17, fontWeight: 'bold'}}>{t('Drawer-title-2')}</Text>
                               <View style={{borderWidth: 2, borderRadius: 5, borderColor: '#ddd',  width: 250}}>
-                                <ButtonList direction={'right'} content={t('Drawer-row-6')} action={() => router.push('/Ayuda')} />
+                                <ButtonList direction={'right'} content={t('Drawer-row-6')} action={() => { mostrar(); router.push('/Ayuda'); }} />
                                 <ButtonList direction={'right'} content={t('Drawer-row-7')} action={() => handleShare()} />
                                 <ButtonList direction={'right'} content={t('Drawer-row-8')} action={handleLogout} />
                               </View>

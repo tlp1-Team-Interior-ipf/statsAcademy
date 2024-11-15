@@ -13,16 +13,16 @@ const userProfile = () => {
 
     return(
         <>
-            <View style={{height: '100%', backgroundColor: '#10132F', alignItems: 'center'}}>
+            <View style={{height: '100%', backgroundColor: '#332288', alignItems: 'center'}}>
             <Stack.Screen 
                     options={{ 
                         title: t('My-Profile'), 
                         headerStyle: { 
-                            backgroundColor: '#10132F' ,
+                            backgroundColor: '#332288' ,
                         },
                         headerTintColor: '#ddd',
                         headerLeft: () => (
-                            <AntDesign name="arrowleft" size={22} color={'#ddd'} onPress={() => router.push('/')} style={{ paddingLeft: 20 }} />
+                            <AntDesign name="arrowleft" size={22} color={'#ddd'} onPress={() => router.back()} style={{ paddingLeft: 20 }} />
                         )
                     }}
                 />

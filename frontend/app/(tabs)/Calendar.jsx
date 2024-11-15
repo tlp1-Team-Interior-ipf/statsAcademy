@@ -17,7 +17,7 @@ const Calendario = () => {
     const [showCreatorEvent, setShowCreatorEvent] = useState(false);
     const { events, setEvents } = useFetchEvents();
 
-    console.log('uuuuu:', events)
+    // console.log('uuuuu:', events)
 
     const [calendarKey, setCalendarKey] = useState(0);
 
@@ -36,12 +36,12 @@ const Calendario = () => {
                 headerShown: true,
                 headerBackTitleVisible: true,
                 headerTintColor: '#fff',
-                headerStyle: { backgroundColor: '#10132F' },
+                headerStyle: { backgroundColor: '#332288' },
                 headerLeft: () => (
                     <AntDesign name='arrowleft' onPress={() => router.push('explore')} size={22} color={'#ddd'} style={{ paddingLeft: 20 }} />
                 ),
             }} />
-            <View style={{ backgroundColor: '#10132F', height: '100%' }}>
+            <View style={{ backgroundColor: '#332288', height: '100%' }}>
                 <Calendar
                     key={calendarKey}
                     onDayPress={day => {
@@ -57,7 +57,7 @@ const Calendario = () => {
                         dayTextColor: '#fff',
                         monthTextColor: '#fff',
                         textSectionTitleColor: '#fff',
-                        calendarBackground: '#225',
+                        calendarBackground: '#339',
                     }}
                 />
                 <View style={{ alignItems: 'center' }}>
@@ -69,7 +69,7 @@ const Calendario = () => {
                     </Pressable>
                     <View style={{ height: 300, width: 310, top: 10, margin: 'auto', left: 10 }}>
                         {events.length === 0 ? (
-                            <View style={{ margin: 'auto', justifyContent: 'center', backgroundColor: '#10132F', height: 300, alignItems: 'center', left:-10 }}>
+                            <View style={{ margin: 'auto', justifyContent: 'center', backgroundColor: '#332288', height: 300, alignItems: 'center', left:-10 }}>
                                 <Text style={{ color: '#ddd' }}>{t('Not-event')}</Text>
                             </View>
                         ) : (

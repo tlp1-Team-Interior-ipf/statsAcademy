@@ -54,7 +54,7 @@ import { Checkbox2 } from '../../components/CheckBoxs';
               <SubmitButton handleSubmit={loginUser} errorMessage={errorMessage} titleButton={'LOGIN'} />
               <View style={{flexDirection: 'row', alignItems: 'center'}}>
                 <Checkbox2 title={'Recúerdame'} isChecked={isChecked} setIsChecked={setIsChecked} />
-                <Text style={{color:'#00f'}} onPress={() => router.push("Setting")}>Olvidé mi contraseña</Text>
+                <Text style={{color:'#00f'}} onPress={() => router.push("/RecuperarContrasenia")}>Olvidé mi contraseña</Text>
               </View>
               
               <SocialButtons2 />

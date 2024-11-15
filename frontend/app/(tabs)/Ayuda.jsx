@@ -53,7 +53,7 @@ const Ayuda = () => {
                     headerShown: true,
                     headerBackTitleVisible: true,
                     headerTintColor: '#fff',
-                    headerStyle: { backgroundColor: '#10132F' },
+                    headerStyle: { backgroundColor: '#332288' },
                     headerLeft: () => (
                         <AntDesign
                             name="arrowleft"
@@ -65,7 +65,7 @@ const Ayuda = () => {
                     ),
                 }}
             />
-            <View style={{ backgroundColor: '#10132F', height: '100%' }}>
+            <View style={{ backgroundColor: '#332288', height: '100%' }}>
                 <Text
                     style={{
                         color: '#ddd',
@@ -88,7 +88,7 @@ const Ayuda = () => {
                             response={item.answer}
                         />
                         {openQuestion === index && (
-                            <View style={{ padding: 10, backgroundColor: '#1a2336', marginTop: 5 }}>
+                            <View style={{ padding: 10, backgroundColor: '#3322ff60' }}>
                                 <Text style={{ color: '#ddd', fontSize: 14 }}>{item.answer}</Text>
                             </View>
                         )}

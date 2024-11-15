@@ -1,24 +1,27 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "@/context/userContext";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import { View, Pressable, Image, Text } from "react-native";
 import { Stack, router } from 'expo-router';
 import {useTranslation} from 'react-i18next';
+import DeleteAccountModal from "../../components/deleteAccountModal";
 
 const MyAccount = () => {
     const {t} = useTranslation();
 
-    const { user } = useContext(UserContext);
+    const { user, setIsLoggedIn } = useContext(UserContext);
+    
+    const [modalVisible, setModalVisible] = useState(false);
 
     return(
         <>
-            <View style={{ backgroundColor: '#10132F', height: '100%', alignItems: 'center' }}>
+            <View style={{ backgroundColor: '#332288', height: '100%', alignItems: 'center' }}>
             <Stack.Screen options={{
                 title: t('My-Account'),
                 headerShown: true,
                 headerBackTitleVisible: true,
                 headerTintColor: '#fff',
-                headerStyle: { backgroundColor: '#10132F' },
+                headerStyle: { backgroundColor: '#332288' },
                 headerLeft: () => (
                     <AntDesign name='arrowleft' onPress={() => router.back()} size={22} color={'#ddd'} style={{ paddingLeft: 20 }} />
                 ),
@@ -41,12 +44,21 @@ const MyAccount = () => {
                 <View style={{ borderWidth: 1, borderRadius:5, padding: 10, margin: 5, borderColor: '#ddd', width: '90%', height: '7%', justifyContent: 'center' }}>
                     <Text style={{color: '#ddd', fontSize: 17, left: 10}}>*********</Text>
                 </View>
-                <Pressable style={{ borderWidth: 2, borderRadius: 5, padding: 10, justifyContent: 'center', alignItems: 'center', borderColor: '#ddd', width: '90%', top: 20, backgroundColor: '#ffffff25' }} android_ripple={{ color:'rgba(0, 255, 255, 0.2)', borderless: false, radius: 160}}>
+                <Pressable
+                    onPress={() => setModalVisible(true)}
+                    style={{ borderWidth: 2, borderRadius: 5, padding: 10, justifyContent: 'center', alignItems: 'center', borderColor: '#ddd', width: '90%', top: 20, backgroundColor: '#ffffff25' }} android_ripple={{ color:'rgba(0, 255, 255, 0.2)', borderless: false, radius: 160}}>
                     <Text style={{ color: '#f00', fontWeight: 'bold', fontSize: 17 }}>
                     {t('My-Account-delete')}
                     </Text>
                 </Pressable>
             </View>
+
+            <DeleteAccountModal
+                user={user}
+                setIsLoggedIn={setIsLoggedIn}
+                visible={modalVisible}
+                onClose={() => setModalVisible(false)}
+            />
         </>
     )
 }

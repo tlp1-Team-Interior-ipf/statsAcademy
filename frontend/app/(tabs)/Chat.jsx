@@ -17,7 +17,7 @@ const Chat = () => {
             const id = await AsyncStorage.getItem('userId');
             if (!id) return;
     
-            const response = await fetch(`http://192.168.0.123:4000/history/${id}`, {
+            const response = await fetch(`http://192.168.0.123:3000/history/${id}`, {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
             });
@@ -61,7 +61,7 @@ const Chat = () => {
           const id = await AsyncStorage.getItem('userId');
           if (!id) return;
   
-          const response = await fetch(`http://192.168.0.123:4000/chat/${id}`, { 
+          const response = await fetch(`http://192.168.0.123:3000/chat/${id}`, { 
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ question: input}),
@@ -94,12 +94,12 @@ const Chat = () => {
   };
   
     return (
-        <View style={{ flex: 1, backgroundColor: '#10132F' }}>
+        <View style={{ flex: 1, backgroundColor: '#332288' }}>
             <Stack.Screen 
                 options={{ 
                     title: 'Tutor Gauss', 
                     headerShown: true,
-                    headerStyle: { backgroundColor: '#10132F' },
+                    headerStyle: { backgroundColor: '#332288' },
                     headerTintColor: '#ddd',
                     headerLeft: () => (
                         <AntDesign name="arrowleft" size={22} color={'#ddd'} onPress={() => router.push('explore')} style={{ paddingLeft: 20 }} />
@@ -112,8 +112,10 @@ const Chat = () => {
                         <Text
                             key={index}
                             style={{
-                                color: message.type === 'user' ? '#ddd' : '#fff',
-                                backgroundColor: message.type === 'user' ? '#333' : '#444',
+                                color: message.type === 'user' ? '#ddd' : '#ddd',
+                                backgroundColor: message.type === 'user' ? '#32c' : '#368',
+                                fontSize: 17,
+                                width: message.type === 'user' ? 300 : 300,
                                 padding: 10,
                                 borderRadius: 5,
                                 marginBottom: 10,
@@ -131,16 +133,17 @@ const Chat = () => {
                         borderWidth: 1,
                         borderRadius: 5,
                         padding: 10,
-                        backgroundColor: '#225',
+                        backgroundColor: '#332299',
                         borderColor: '#ddd',
                         color: '#ddd',
                         flex: 1,
                         marginRight: 10,
+                        height: 45
                     }}
                     value={input}
                     onChangeText={setInput}
                     placeholder={t('Write')}
-                    placeholderTextColor='#666'
+                    placeholderTextColor='#ddd'
                 />
                 <Ionicons
                     name='send'
