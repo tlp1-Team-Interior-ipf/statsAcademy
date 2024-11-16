@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "expo-cli": "^6.3.10",
+    "expo": "~48.0.21",
+    "expo-splash-screen": "~0.18.2",
+    "expo-status-bar": "~1.4.4",
+    "react": "18.2.0",
+    "react-native": "0.71.14"
+  },
+  "name": "statsAcademy",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "expo start --dev-client",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0"
+  }
+}

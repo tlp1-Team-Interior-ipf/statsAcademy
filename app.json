@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "name": "statsAcademy",
+    "slug": "statsacademy",
+    "version": "1.0.0",
+    "sdkVersion": "48.0.0",
+    "platforms": [],
+    "android": {
+      "package": "com.david137.statsacademy"
+    }
+  }
+}
