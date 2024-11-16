@@ -169,7 +169,7 @@ const DeleteAccountModal = ({ user, setIsLoggedIn, visible, onClose }) => {
     }
 
     try {
-      const response = await fetch(`http://192.168.0.123:3000/users/${id}`, {
+      const response = await fetch(`${EXPO_PUBLIC_HOST}/users/${id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       });

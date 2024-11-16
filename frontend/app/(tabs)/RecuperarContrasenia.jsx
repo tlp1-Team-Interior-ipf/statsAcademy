@@ -9,7 +9,7 @@ const RecuperarContrasenia = () => {
 
   const enviarCorreo = async () => {
     try {
-      const response = await fetch('http://192.168.0.123:3000/recuperacion/request-password-reset', {
+      const response = await fetch(`${EXPO_PUBLIC_HOST}/recuperacion/request-password-reset`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

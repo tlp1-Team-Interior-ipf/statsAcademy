@@ -5,7 +5,7 @@ const useDeleteEvent = (setEvents) => {
     const deleteEvent = useCallback(async (eventId) => {
         try {
             const token = await AsyncStorage.getItem('userToken');
-            const response = await fetch(`http://192.168.0.123:3000/calendarEvent/${eventId}`, {
+            const response = await fetch(`${EXPO_PUBLIC_HOST}/calendarEvent/${eventId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

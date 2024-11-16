@@ -17,7 +17,7 @@ const Chat = () => {
             const id = await AsyncStorage.getItem('userId');
             if (!id) return;
     
-            const response = await fetch(`http://192.168.0.123:3000/history/${id}`, {
+            const response = await fetch(`${EXPO_PUBLIC_HOST}/history/${id}`, {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
             });
@@ -61,7 +61,7 @@ const Chat = () => {
           const id = await AsyncStorage.getItem('userId');
           if (!id) return;
   
-          const response = await fetch(`http://192.168.0.123:3000/chat/${id}`, { 
+          const response = await fetch(`${EXPO_PUBLIC_HOST}/chat/${id}`, { 
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ question: input}),
