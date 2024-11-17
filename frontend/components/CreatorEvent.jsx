@@ -18,7 +18,7 @@ const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected, a
             console.log("id de usuario: ", id)
             console.log("date de usuario: ", date)
             console.log("event de usuario: ", descriptionEvent)
-            const response = await fetch(`${EXPO_PUBLIC_HOST}/calendarEvent/${id}`, {
+            const response = await fetch(`${process.env.EXPO_PUBLIC_HOST}/calendarEvent/${id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

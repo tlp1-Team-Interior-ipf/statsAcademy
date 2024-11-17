@@ -9,7 +9,7 @@ const RecuperarContrasenia = () => {
 
   const enviarCorreo = async () => {
     try {
-      const response = await fetch(`${EXPO_PUBLIC_HOST}/recuperacion/request-password-reset`, {
+      const response = await fetch(`${process.env.EXPO_PUBLIC_HOST}/recuperacion/request-password-reset`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

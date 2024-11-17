@@ -21,7 +21,7 @@ const loading2 = require('@/assets/images/loading3.gif');
 const anotadorSinFondo = require('@/img/los elegiiiidooss/anotadorSinFondo.png');
 const calendarioSinFondo = require('@/img/los elegiiiidooss/calendarioSinFondo.png');
 const studentprofile = require('@/img/los elegiiiidooss/studentprofile.png');
-
+import { Temas } from '@/utils/selectTheme'
 SplashScreen.preventAutoHideAsync()
   .then((result) => console.log(`SplashScreen.preventAutoHideAsync() succeeded: ${result}`))
   .catch(console.warn);
@@ -42,6 +42,8 @@ export default function HomeScreen() {
     
   ];
 
+  const { ButtonRadioTheme, ButtonRadioTheme2, selectBackgroundTheme, selectButtonRadioTheme, selectButtonRadioTheme2, selectTextTheme } = Temas();
+
   useEffect(() => {
     const prepareApp = async () => {
       try {
@@ -60,7 +62,7 @@ export default function HomeScreen() {
  
   if (!isAppReady || !fontsLoaded) {
     return (
-      <View style={{ backgroundColor: '#10132F', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
+      <View style={{ backgroundColor: '#332288', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
       <Stack.Screen options={{headerShown: false}} />
         
          {/* <Image source={loading2} style={{width:550, height: 550}} /> */}
@@ -77,13 +79,10 @@ export default function HomeScreen() {
 
   }
   
-  
-  
-  
   return (
     <>
       <Stack.Screen options={{headerShown: false}} />
-      <View style={{backgroundColor: '#332288'}}>
+      <View style={{backgroundColor: selectBackgroundTheme}}>
         <ScrollView>
           <View style={{zIndex: 1}}>
             <Navbar />
@@ -129,7 +128,7 @@ export default function HomeScreen() {
             <View style={{ backgroundColor: '#5bc8ca', padding: 10, margin: 10, justifyContent: 'space-between',  borderRadius: 5, flexDirection: 'row', gap: 20}}>
               <View style={{flexDirection: 'column', right: 30}}>
                 <Text style={{ color: '#fff', fontSize: 30, width: 250, textAlign: 'center' }}>{t('Presentation-Gauss')}</Text>
-                <Button onPress={() => {isLoggedIn ? router.push('/Chat') : router.push('/Login')}} title={t('Button-start-gauss')} color={'#058b94'} buttonStyle={{margin: 'auto', marginVertical: 10, borderRadius: 5 }} />
+                <Button onPress={() => {isLoggedIn ? router.push('/Chat') : router.push('/Login')}} title={t('Button-start-gauss')} color={'#058b94'} buttonStyle={{margin: 'auto', marginVertical: 10, borderRadius: 5, padding: 10 }} />
               
               </View>
               <View style={{ flexDirection: 'column' }}>

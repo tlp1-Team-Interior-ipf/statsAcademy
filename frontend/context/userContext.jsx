@@ -11,12 +11,16 @@ const UserProvider = ({ children }) => {
     profileImage: null,
   });
 
+  const [theme, setTheme] = useState('light')
+
   useEffect(() => {
     const checkLoginStatus = async () => {
       const value = await AsyncStorage.getItem('isLoggedIn');
       const username = await AsyncStorage.getItem('username');
       const email = await AsyncStorage.getItem('email');
       const profileImage = await AsyncStorage.getItem('profileImage')
+      const storedTheme = await AsyncStorage.getItem('theme') || 'dark';
+
       setUser({
         email: email,
         username: username,
@@ -24,10 +28,17 @@ const UserProvider = ({ children }) => {
       });
       
       setIsLoggedIn(value === 'true');
+      setTheme(storedTheme);
     };
     
     checkLoginStatus();
   }, []);
+
+  const toggleTheme = async () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    await AsyncStorage.setItem('theme', newTheme);
+  };
 
   const updateUserProfile = (newProfileImage) => {
     setUser((prevUser) => ({
@@ -43,10 +54,10 @@ const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ isLoggedIn, setIsLoggedIn, user, setUser, updateUserProfile }}>
-      {children}
+    <UserContext.Provider value={{ isLoggedIn, setIsLoggedIn, user, setUser, theme, toggleTheme, updateUserProfile }} >
+      { children }
     </UserContext.Provider>
-  );
+  )
 };
 
 export default UserProvider;

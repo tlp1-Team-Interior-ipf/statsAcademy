@@ -13,8 +13,10 @@ const userLoginForm = () => {
     
     const loginUser = async () => {
         console.log(email, pass)
+        console.log(process.env.EXPO_PUBLIC_HOST);
+        
         try {
-            const response = await fetch(`${EXPO_PUBLIC_HOST}/auth/login/`, {
+            const response = await fetch(`${process.env.EXPO_PUBLIC_HOST}/auth/login/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

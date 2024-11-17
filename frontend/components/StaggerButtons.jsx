@@ -47,10 +47,10 @@ const Example = () => {
           <IconButton mb="4" variant="solid" bg="#55a" colorScheme="indigo" borderRadius="full" icon={<Icon as={MaterialIcons} _dark={{
             color: "warmGray.50"
           }} size="6" name="invert-colors" color="warmGray.50" />} />
-          <IconButton mb="4" variant="solid" bg="#55a" colorScheme="indigo" borderRadius="full" icon={<Icon onPress={() => router.push('/(tabs)/RecuperaContraseña')} as={Ionicons} _dark={{
+          <IconButton mb="4" variant="solid" bg="#55a" colorScheme="indigo" borderRadius="full" icon={<Icon onPress={() => { onToggle(); router.push('/(tabs)/Setting') }} as={Ionicons} _dark={{
             color: "warmGray.50"
           }} size="6" name="settings-outline" color="warmGray.50" />} />
-          <IconButton mb="4" variant="solid" bg="#55a" colorScheme="indigo" borderRadius="full" icon={<Icon onPress={() => router.push('/')} as={MaterialIcons} size="6" name="home" _dark={{
+          <IconButton mb="4" variant="solid" bg="#55a" colorScheme="indigo" borderRadius="full" icon={<Icon onPress={() => { onToggle(); router.push('/') }} as={MaterialIcons} size="6" name="home" _dark={{
             color: "warmGray.50"
           }} color="warmGray.50" />} />
         </Stagger>

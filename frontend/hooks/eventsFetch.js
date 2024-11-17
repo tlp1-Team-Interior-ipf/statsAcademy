@@ -7,7 +7,7 @@ const useFetchEvents = () => {
     const fetchEvents = useCallback(() => {
         const fn = async () => {
             const id = await AsyncStorage.getItem('userId');
-            const response = await fetch(`${EXPO_PUBLIC_HOST}/calendarEvent/${id}`, {
+            const response = await fetch(`${process.env.EXPO_PUBLIC_HOST}/calendarEvent/${id}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

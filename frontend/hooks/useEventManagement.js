@@ -9,7 +9,7 @@ const useEventManagement = (initialEvents) => {
     const handleDeleteEvent = async (eventId) => {
         try {
             const token = await AsyncStorage.getItem('userToken');
-            const response = await fetch(`${EXPO_PUBLIC_HOST}/calendarEvent/${eventId}`, {
+            const response = await fetch(`${process.env.EXPO_PUBLIC_HOST}/calendarEvent/${eventId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ const useEventManagement = (initialEvents) => {
     const handleUpdateEvent = async () => {
         try {
             const token = await AsyncStorage.getItem('userToken');
-            const response = await fetch(`${EXPO_PUBLIC_HOST}/calendarEvent/${editingEvent.id}`, {
+            const response = await fetch(`${process.env.EXPO_PUBLIC_HOST}/calendarEvent/${editingEvent.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
