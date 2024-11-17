@@ -2,7 +2,7 @@ import { createEvent, deleteEvent, getAllEvents, updateEvent } from '../services
 import { responseHandler } from '../utils/responseHandler.js';
 
 
-export const createEventController = async (req, res) => {
+export const createEventController = async (req, res, next) => {
     try {
         const { id } = req.user;
         const { date, event } = req.body;
@@ -19,7 +19,7 @@ export const createEventController = async (req, res) => {
 };
 
 
-export const getAllEventsController = async (req, res) => {
+export const getAllEventsController = async (req, res, next) => {
     try {
         const { id } = req.user;
         const events = await getAllEvents(id);
@@ -33,7 +33,7 @@ export const getAllEventsController = async (req, res) => {
 };
 
 
-export const updateEventController = async (req, res) => {
+export const updateEventController = async (req, res, next) => {
     try {
         const { id } = req.params;
         const { date, event } = req.body;
@@ -52,7 +52,7 @@ export const updateEventController = async (req, res) => {
 };
 
 
-export const deleteEventController = async (req, res) => {
+export const deleteEventController = async (req, res, next) => {
     try {
         const { id } = req.params;
         const deletedEvent = await deleteEvent(id);

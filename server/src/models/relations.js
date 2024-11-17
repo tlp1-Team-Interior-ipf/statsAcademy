@@ -10,6 +10,7 @@ import { SubTopic } from "./SubTopic.js";
 import { Ratings } from "./Ratings.js";
 import { Progress } from "./Progress.js";
 import { EventModel } from "./event.js";
+import { Task } from "./tasks.js";
 
 const relations = () => {
     // relacion de uno a muchos con la tabla User y la tabla Chat
@@ -131,6 +132,18 @@ const relations = () => {
     });
 
     Ratings.belongsTo(UserModel, {
+        foreignKey: 'userId',
+        as: 'user',
+    });
+
+
+    // relacion de uno a muchos con la tabla User y la tabla de Tareas
+    UserModel.hasMany(Task, {
+        foreignKey: 'userId',
+        as: 'tasks',
+    });
+
+    Task.belongsTo(UserModel, {
         foreignKey: 'userId',
         as: 'user',
     });

@@ -1,7 +1,7 @@
 import { updateUserAvatar } from "../services/cloudinaryService.js";
 import { responseHandler } from '../utils/responseHandler.js';
 
-export const updateUserAvatarController = async (req, res) => {
+export const updateUserAvatarController = async (req, res, next) => {
     try {
         const { id } = req.params;
         let profileImage;
