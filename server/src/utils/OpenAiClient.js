@@ -1,6 +1,8 @@
 import Openai from 'openai';
 import { environments } from '../config/environments.js';
 import { DatabaseError } from './errorHandler.js';
+import { Ratings } from '../models/Ratings.js';
+import { updateTopicStatus } from '../helpers/TopicsHelpers.js';
 
 const openai = new Openai({
     apikey: environments.OPENAI_API_KEY,
@@ -60,4 +62,21 @@ export const generateQuestionsForTopic = async (topic) => {
     } catch (error) {
         DatabaseError(error);
     };
+};
+
+
+export const handleEvaluation = async (message, userId, nextTopic) => {
+    try {
+        const comprehensionLevel = await evaluateResponse(message);
+        await Ratings.create({ userId, topicId: nextTopic.id, note: comprehensionLevel });
+
+        if (comprehensionLevel >= 70) {
+            await updateTopicStatus(nextTopic.id, userId);
+            return '¡Excelente! Has demostrado un buen entendimiento del tema. Puedes continuar con el siguiente tema.';
+        } else {
+            return 'Tu respuesta no demuestra un buen entendimiento del tema. Por favor, intenta de nuevo.';
+        }
+    } catch (error) {
+        DatabaseError(error);
+    }
 };
