@@ -23,3 +23,15 @@ export const updateTopicStatus = async (topicId, userId) => {
         DatabaseError(error);
     };
 };
+
+
+export const getAllTopics = async () => {
+    try {
+        const topics = await Topic.findAll({
+            attributes: ['id', 'name'],
+        });
+        return topics;
+    } catch (error) {
+        DatabaseError(error);
+    };
+}

@@ -1,8 +1,7 @@
 import { Chat } from "../models/modelChat.js";
-import { Ratings } from "../models/Ratings.js";
 import { DatabaseError } from "../utils/errorHandler.js";
 import { getChatHistory } from "../helpers/ChatHistory.js";
-import { getNextTopic } from "../helpers/TopicsHelpers.js";
+import { getNextTopic, getAllTopics } from "../helpers/TopicsHelpers.js";
 import { fetchOpenAIResponse, generateQuestionsForTopic, handleEvaluation } from "../utils/OpenAiClient.js";
 
 
@@ -11,10 +10,11 @@ export const FetchModelResponse = async ( message, userId ) => {
     try {
         const chatHistory = await getChatHistory(userId);
         const nextTopic = await getNextTopic();
+        const topics = await getAllTopics();
 
         const systemMessage = {
             role: 'system',
-            content: `Eres un tutor especializado en estadística. Enseña el tema: ${nextTopic.name}. ${nextTopic.description}. Evalúa las respuestas solo si claramente hacen referencia a las preguntas de evaluación. Si el usuario no está respondiendo preguntas de evaluación, entonces continúa enseñando o resolviendo dudas sobre el tema.`
+            content: `Eres un tutor especializado en estadística, los temas que debes enseñar son estos: ${topics}, no enseñes algo que no sea alguno de esos temas. Enseña el tema: ${nextTopic.name}. ${nextTopic.description}. Evalúa las respuestas solo si claramente hacen referencia a las preguntas de evaluación. Si el usuario no está respondiendo preguntas de evaluación, entonces continúa enseñando o resolviendo dudas sobre el tema.`
         };
 
         // Si no hay historial de chat, se crea uno nuevo
