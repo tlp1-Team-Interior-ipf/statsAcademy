@@ -25,9 +25,12 @@ export const loginUser = async (email, password) => {
     try {
         const user = await findUserByEmail(email);
         const isPasswordValid = await comparePassword(password, user.password);
+        console.log(password, user.password);
+        
         if (!isPasswordValid) {
             throw new Error('Invalid Password');
         };
+
         const userObject = user.dataValues;
         const token = await generateToken({ id: user.id });
         return { ...userObject, token };

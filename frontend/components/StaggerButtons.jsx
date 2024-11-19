@@ -4,14 +4,20 @@ import { Ionicons, MaterialCommunityIcons, MaterialIcons } from "@expo/vector-ic
 import { router } from "expo-router";
 import { UserContext } from "@/context/userContext";
 import { useContext } from "react";
+import { ShowDrawer } from "@/hooks/showDrawer";
 
 const Example = () => {
+
+  const { theme, toggleTheme } = useContext(UserContext);
   
+  const { mostrar } = ShowDrawer();
+
   const {
     isOpen,
     onToggle
   } = useDisclose();
-  return <Center style={{position: 'absolute', left: 290, top: -320}}>
+
+  return <Center style={{position: 'absolute', left: 290, top: -245}}>
       <Box alignItems="center" minH="220">
         <Stagger visible={isOpen} initial={{
           opacity: 0,
@@ -27,9 +33,9 @@ const Example = () => {
             stagger: {
               offset: 30,
               reverse: true
+            }
           }
-        }
-      }} exit={{
+        }} exit={{
         translateY: 34,
         scale: 0.5,
         opacity: 0,
@@ -44,13 +50,13 @@ const Example = () => {
           <IconButton onPress={() => {onToggle(), router.push('/(tabs)/NotificationsComponent')}} mb="4" variant="solid" bg="#55a" colorScheme="indigo" borderRadius="full" icon={<Icon as={Ionicons} size="6" name="notifications" _dark={{
             color: "warmGray.50"
           }} color="warmGray.50" />} />
-          <IconButton mb="4" variant="solid" bg="#55a" colorScheme="indigo" borderRadius="full" icon={<Icon as={MaterialIcons} _dark={{
+          <IconButton onPress={() => toggleTheme(!theme)} mb="4" variant="solid" bg="#55a" colorScheme="indigo" borderRadius="full" icon={<Icon as={MaterialIcons} _dark={{
             color: "warmGray.50"
           }} size="6" name="invert-colors" color="warmGray.50" />} />
           <IconButton mb="4" variant="solid" bg="#55a" colorScheme="indigo" borderRadius="full" icon={<Icon onPress={() => { onToggle(); router.push('/(tabs)/Setting') }} as={Ionicons} _dark={{
             color: "warmGray.50"
           }} size="6" name="settings-outline" color="warmGray.50" />} />
-          <IconButton mb="4" variant="solid" bg="#55a" colorScheme="indigo" borderRadius="full" icon={<Icon onPress={() => { onToggle(); router.push('/') }} as={MaterialIcons} size="6" name="home" _dark={{
+          <IconButton mb="4" variant="solid" bg="#55a" colorScheme="indigo" borderRadius="full" icon={<Icon onPress={() => {  onToggle(); router.push('/') }} as={MaterialIcons} size="6" name="home" _dark={{
             color: "warmGray.50"
           }} color="warmGray.50" />} />
         </Stagger>

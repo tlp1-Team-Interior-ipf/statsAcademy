@@ -26,7 +26,7 @@ const userLoginForm = () => {
                     password: pass,
                 }),
             });
-            console.log('laresponse:', response.ok)
+            console.log('laresponse:', response.status)
 
             console.log("Usuario logueado:");
             
@@ -73,8 +73,10 @@ const userLoginForm = () => {
 
                 router.push('explore');
             } else {
+                console.log(response.status);
+                
                 if (response.status == 429) {
-                    setErrorMessage("Demasiados intentos")
+                    setErrorMessage("Demasiados intentos intente de nuevo en 2 minutos")
                     return
                 }
                 const responseData = await response.json()

@@ -3,18 +3,21 @@ import { ScrollView, Text, View } from "react-native"
 import { CardProfile } from "../../components/CardProfile";
 import { AntDesign } from "@expo/vector-icons";
 import {useTranslation} from 'react-i18next';
+import { Temas } from "../../utils/selectTheme";
 
 const MejoresNotas = () => {
     const {t} = useTranslation();
 
+    const { BackgroundTheme } = Temas();
+
     return(
 
-        <View style={{ backgroundColor: '#332288', alignItems: 'center', height: '100%' }}>
+        <View style={{ backgroundColor: BackgroundTheme, alignItems: 'center', height: '100%' }}>
             <Stack.Screen 
                 options={{ 
                     title: t('My-worst-notes'), 
                     headerStyle: { 
-                        backgroundColor: '#332288' ,
+                        backgroundColor: BackgroundTheme ,
                     },
                     headerTintColor: '#ddd',
                     headerLeft: () => (

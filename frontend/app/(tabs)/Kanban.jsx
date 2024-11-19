@@ -3,18 +3,21 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import {useTranslation} from 'react-i18next';
+import { Temas } from "../../utils/selectTheme";
 
 const Kanban = () => {
     const {t} = useTranslation();
 
+    const { BackgroundTheme, ColumnBackgroundTheme, BorderColumnTheme } = Temas();
+
     return(
         <GestureHandlerRootView style={{ flex: 1 }}>
-            <View style={{backgroundColor: '#332288', height: '100%'}}>
+            <View style={{backgroundColor: BackgroundTheme, height: '100%'}}>
                 <Stack.Screen 
                     options={{ 
                         title: t('My-Personal-goals'), 
                         headerStyle: { 
-                            backgroundColor: '#332288' 
+                            backgroundColor: BackgroundTheme 
                         },
                         headerTintColor: '#ddd',
                         headerLeft: () => (
@@ -27,13 +30,13 @@ const Kanban = () => {
                 </Pressable>
                 <ScrollView horizontal={true}>
                     <View style={{ gap: 10, flexDirection: 'row', margin: 10}}>
-                        <View style={{ backgroundColor: '#337', width: 250, height: 650, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: '#666' }}>
+                        <View style={{ backgroundColor: ColumnBackgroundTheme, width: 250, height: 650, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: BorderColumnTheme }}>
                             <Text style={stylesKanban.textColumn}>{t('Column-1')}</Text>
                         </View>
-                        <View style={{ backgroundColor: '#337', width: 250, height: 650, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: '#666' }}>
+                        <View style={{ backgroundColor: ColumnBackgroundTheme, width: 250, height: 650, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: BorderColumnTheme }}>
                             <Text style={stylesKanban.textColumn}>{t('Column-2')}</Text>
                         </View>
-                        <View style={{ backgroundColor: '#337', width: 250, height: 650, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: '#666' }}>
+                        <View style={{ backgroundColor: ColumnBackgroundTheme, width: 250, height: 650, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: BorderColumnTheme }}>
                             <Text style={stylesKanban.textColumn}>{t('Column-3')}</Text>
                         </View>
                     </View>

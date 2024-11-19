@@ -22,12 +22,11 @@ const Setting = () => {
   };
 
 const { 
-  ButtonRadioTheme, 
-  ButtonRadioTheme2, 
-  selectBackgroundTheme, 
-  selectButtonRadioTheme, 
-  selectButtonRadioTheme2, 
-  selectTextTheme 
+  BackgroundTheme,
+  ButtonSaveConfigTheme,
+  TextBackgroundTheme,
+  ButtonBackgroundRadioThemeOn,
+  ButtonBackgroundRadioThemeOff
 } = Temas();
 
   useEffect(() => {
@@ -41,21 +40,21 @@ const {
       title: t('Configuration'),
       headerShown: true,
       headerBackTitleVisible: true,
-      headerTintColor: selectTextTheme,
-      headerStyle: { backgroundColor: selectBackgroundTheme },
+      headerTintColor: TextBackgroundTheme,
+      headerStyle: { backgroundColor: BackgroundTheme },
       headerLeft: () => (
-          <AntDesign name='arrowleft' onPress={() => router.back()} size={22} color={theme === 'dark' ? '#ddd' : '#000'} style={{ paddingLeft: 10 }} />
+          <AntDesign name='arrowleft' onPress={() => router.back()} size={22} color={TextBackgroundTheme} style={{ paddingLeft: 10 }} />
       ),
     }} />
 
     <View style={
             { height: '100%', 
-              backgroundColor: selectBackgroundTheme, 
+              backgroundColor: BackgroundTheme, 
               paddingTop: 30}}
           >
       <Text style={
               { textAlign: 'center', 
-                color:selectTextTheme, 
+                color:TextBackgroundTheme, 
                 fontSize: 20, 
                 fontWeight: 'bold', 
                 top: -15}}>
@@ -64,7 +63,7 @@ const {
       <View style={{alignItems:'flex-start', top: 20, justifyContent: 'flex-start'}}>
 
         <Text style={
-                { color: selectTextTheme, 
+                { color: TextBackgroundTheme, 
                 fontSize: 17, 
                 fontWeight: 'bold', 
                 padding: 10}}>
@@ -75,7 +74,7 @@ const {
           <View style={
                   { borderWidth: 1, 
                     borderRadius: 5, 
-                    borderColor: selectTextTheme, 
+                    borderColor: TextBackgroundTheme, 
                     width: 350,
                   }}>
             <View 
@@ -84,12 +83,12 @@ const {
                   alignItems: 'center', 
                   padding: 10,
                   borderRadius: 10,
-                  borderColor: selectTextTheme,
+                  borderColor: TextBackgroundTheme,
                   height: 50
                 }}>
                 <View style={{ flexDirection: 'row', gap: 10 }}>
-                  <Feather name="moon" size={22} color={selectTextTheme} />
-                  <Text style={{color: selectTextTheme, fontSize: 16}}>
+                  <Feather name="moon" size={22} color={TextBackgroundTheme} />
+                  <Text style={{color: TextBackgroundTheme, fontSize: 16}}>
                     {t('Config-row-1')}
                   </Text>
                 </View>
@@ -97,7 +96,7 @@ const {
                   <View style={{
                     borderWidth: 1,
                     borderRadius: 25,
-                    borderColor: selectButtonRadioTheme,
+                    borderColor: '#ddd',
                     position: 'absolute',
                     left: 300
                   }}>
@@ -109,7 +108,7 @@ const {
                     height: 15,
                     width: 15,
                     margin: 2,
-                    backgroundColor: ButtonRadioTheme,
+                    backgroundColor: ButtonBackgroundRadioThemeOff,
                     borderRadius: 7.5,
                   }} />
                 </Pressable>
@@ -123,13 +122,13 @@ const {
                   alignItems: 'center', 
                   padding: 10,
                   borderTopWidth: 1,
-                  borderColor: selectTextTheme,
+                  borderColor: TextBackgroundTheme,
                   height: 50
 
                 }}>
                 <View style={{ flexDirection: 'row', gap: 10}}>
-                  <Feather name="sun" size={22} color={selectTextTheme} />
-                  <Text style={{color: selectTextTheme, fontSize: 16}}>
+                  <Feather name="sun" size={22} color={TextBackgroundTheme} />
+                  <Text style={{color: TextBackgroundTheme, fontSize: 16}}>
                     {t('Config-row-2')}
                   </Text>
                 </View>
@@ -137,7 +136,7 @@ const {
                 <View style={{
                     borderWidth: 1,
                     borderRadius: 25,
-                    borderColor: selectButtonRadioTheme,
+                    borderColor: '#ddd',
                     position: 'absolute',
                     left: 300
                   }}>
@@ -150,7 +149,7 @@ const {
                         width: 15,
                         borderRadius: 7.5,
                         margin: 2,
-                        backgroundColor: ButtonRadioTheme2,
+                        backgroundColor: ButtonBackgroundRadioThemeOn,
 
                       }} />
                     </Pressable>
@@ -162,7 +161,7 @@ const {
         </View>
 
         <Text style={
-              { color: selectTextTheme, 
+              { color: TextBackgroundTheme, 
                 fontSize: 17, 
                 fontWeight: 'bold', 
                 padding: 10, 
@@ -178,7 +177,7 @@ const {
                 style={
                   { borderWidth: 1, 
                     borderRadius: 5, 
-                    borderColor: selectTextTheme, 
+                    borderColor: TextBackgroundTheme, 
                     width: 349, 
                     marginVertical: 5, 
                     flexDirection: 'row', 
@@ -187,7 +186,7 @@ const {
                     alignItems: 'center'}}
                 >
                 <Text style={
-                      { color: selectTextTheme, 
+                      { color: TextBackgroundTheme, 
                         padding: 10, 
                         fontSize: 17, 
                         textAlign: 'center', 
@@ -205,7 +204,7 @@ const {
         <View style={{ margin: 'auto'}}>
           <Button
             buttonStyle={{ paddingHorizontal: 15, borderRadius: 5, width: 120, height: 35, margin: 10 }}
-            color={'#149'}
+            color={ButtonSaveConfigTheme}
             >
               <Text style={{
                       color: '#fff', 

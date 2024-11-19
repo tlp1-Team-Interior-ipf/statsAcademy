@@ -5,20 +5,23 @@ import { Image, Text, View, ScrollView } from "react-native"
 import { UserContext } from '../../context/userContext';
 import { CardProfile } from "../../components/CardProfile";
 import {useTranslation} from 'react-i18next';
+import { Temas } from "../../utils/selectTheme";
 
 const userProfile = () => {
     const {t} = useTranslation();
 
     const { user } = useContext(UserContext);
 
+    const { BackgroundTheme } = Temas();
+    
     return(
         <>
-            <View style={{height: '100%', backgroundColor: '#332288', alignItems: 'center'}}>
+            <View style={{height: '100%', backgroundColor: BackgroundTheme, alignItems: 'center'}}>
             <Stack.Screen 
                     options={{ 
                         title: t('My-Profile'), 
                         headerStyle: { 
-                            backgroundColor: '#332288' ,
+                            backgroundColor: BackgroundTheme,
                         },
                         headerTintColor: '#ddd',
                         headerLeft: () => (

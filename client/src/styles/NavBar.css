@@ -1,0 +1,98 @@
+/* Estilos para el navbar */
+.custom-navbar {
+  position: fixed; /* Mantiene el navbar fijo en la parte superior */
+  top: 0; /* Posiciona el navbar en la parte superior de la página */
+  width: 100%; /* Hace que el navbar ocupe todo el ancho de la ventana */
+  z-index: 1000; /* Asegura que el navbar esté por encima de otros elementos */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px; /* Ajusta el padding para hacer el navbar más delgado */
+  background-color: #10132F; /* Color de fondo del navbar */
+  color: white; /* Color del texto */
+  font-family: 'Krub', sans-serif; /* Fuente del navbar */
+  transition: background-color 0.3s ease, padding 0.3s ease; /* Transiciones para suavizar cambios */
+}
+
+/* Línea debajo del navbar */
+.custom-navbar-line {
+  height: 1px; /* Altura de la línea */
+  background-color: #284691; /* Color de la línea */
+  width: 100%; /* Ocupar todo el ancho del navbar */
+  position: absolute; /* Posiciona la línea en relación al navbar */
+  bottom: 0; /* Posiciona la línea en la parte inferior */
+  left: 0; /* Alinea a la izquierda */
+  transform: scaleY(0); /* Reduce la línea a cero, en lugar de desplazarla */
+  transform-origin: top; /* Define el origen de la transformación */
+  opacity: 0; /* Inicialmente invisible */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Suaviza la transición */
+}
+
+/* Mostrar línea cuando el navbar está desplazado */
+.custom-navbar.scrolled .custom-navbar-line {
+  transform: scaleY(1); /* Muestra la línea completamente */
+  opacity: 1; /* Hace visible la línea */
+}
+
+
+/* Estilos para la sección izquierda del navbar */
+.custom-navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.custom-navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.custom-navbar-logo-img {
+  width: 50px; /* Tamaño del logotipo */
+  margin-right: 10px;
+}
+
+.custom-navbar-brand {
+  font-family: 'Kufam', sans-serif;
+  font-size: 1.6em;
+  color: white;
+  cursor: pointer;
+}
+
+/* Estilos para la sección derecha del navbar */
+.custom-navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+/* Estilos para los botones del navbar */
+.custom-btn {
+  background-color: #b7f2d3; /* Color de fondo del botón */
+  color: black; /* Color del texto del botón */
+  border: none; /* Sin borde */
+  border-radius: 40px; /* Esquinas redondeadas */
+  padding: 5px 15px; /* Ajuste para que los botones sean más delgados */
+  font-family: 'Krub', sans-serif; /* Fuente del botón */
+  font-size: 1em; /* Opcional: reducir el tamaño de la fuente si es necesario */
+  margin-left: 10px; /* Espaciado entre botones */
+  cursor: pointer; /* Cursor de mano al pasar por encima */
+  transition: background-color 0.3s ease; /* Agrega transición */
+}
+
+.custom-btn:hover {
+  background-color: #3EA770; /* Color al pasar el cursor */
+}
+
+.custom-btn.login {
+  margin-right: 10px; /* Margen derecho específico para el botón de login */
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+  .custom-navbar-left,
+  .custom-navbar-right {
+    flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+  }
+  .custom-btn {
+    margin: 5px 0; /* Espaciado vertical entre botones */
+  }
+}

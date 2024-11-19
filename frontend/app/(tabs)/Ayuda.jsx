@@ -4,6 +4,7 @@ import { ButtonList } from '../../components/SocialButtons';
 import { router, Stack } from 'expo-router';
 import { AntDesign } from '@expo/vector-icons';
 import {useTranslation} from 'react-i18next';
+import { Temas } from '../../utils/selectTheme';
 
 const Ayuda = () => {
     const {t} = useTranslation();
@@ -13,6 +14,8 @@ const Ayuda = () => {
     const toggleQuestion = (index) => {
         setOpenQuestion(openQuestion === index ? null : index);
     };
+
+    const { BackgroundTheme } = Temas();
 
     const questions = [
         {
@@ -53,7 +56,7 @@ const Ayuda = () => {
                     headerShown: true,
                     headerBackTitleVisible: true,
                     headerTintColor: '#fff',
-                    headerStyle: { backgroundColor: '#332288' },
+                    headerStyle: { backgroundColor: BackgroundTheme },
                     headerLeft: () => (
                         <AntDesign
                             name="arrowleft"
@@ -65,7 +68,7 @@ const Ayuda = () => {
                     ),
                 }}
             />
-            <View style={{ backgroundColor: '#332288', height: '100%' }}>
+            <View style={{ backgroundColor: BackgroundTheme, height: '100%' }}>
                 <Text
                     style={{
                         color: '#ddd',

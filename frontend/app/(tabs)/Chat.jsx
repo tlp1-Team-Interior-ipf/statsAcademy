@@ -4,6 +4,7 @@ import { AntDesign, Ionicons } from '@expo/vector-icons';
 import { useRef, useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTranslation } from 'react-i18next';
+import { Temas } from '../../utils/selectTheme';
 
 const Chat = () => {
     const { t } = useTranslation();
@@ -11,6 +12,7 @@ const Chat = () => {
     const [messages, setMessages] = useState([]);
     const scrollViewRef = useRef(null);
 
+    const { BackgroundTheme, InputBackground, UserMessageTheme, BotMessageTheme } = Temas();
     useEffect(() => {
       const fetchChatHistory = async () => {
         try {
@@ -92,14 +94,16 @@ const Chat = () => {
           ]);
       }
   };
+
+  
   
     return (
-        <View style={{ flex: 1, backgroundColor: '#332288' }}>
+        <View style={{ flex: 1, backgroundColor: BackgroundTheme }}>
             <Stack.Screen 
                 options={{ 
                     title: 'Tutor Gauss', 
                     headerShown: true,
-                    headerStyle: { backgroundColor: '#332288' },
+                    headerStyle: { backgroundColor: BackgroundTheme },
                     headerTintColor: '#ddd',
                     headerLeft: () => (
                         <AntDesign name="arrowleft" size={22} color={'#ddd'} onPress={() => router.push('explore')} style={{ paddingLeft: 20 }} />
@@ -109,11 +113,12 @@ const Chat = () => {
             <ScrollView ref={scrollViewRef} style={{ flex: 1 }}>
                 <View style={{ padding: 10 }}>
                     {messages.map((message, index) => (
+                        
                         <Text
                             key={index}
                             style={{
-                                color: message.type === 'user' ? '#ddd' : '#ddd',
-                                backgroundColor: message.type === 'user' ? '#32c' : '#368',
+                                color: message.type === 'user' ? '#ddd' : '#ddd' ,
+                                backgroundColor: message.type === 'user' ? UserMessageTheme : BotMessageTheme ,
                                 fontSize: 17,
                                 width: message.type === 'user' ? 300 : 300,
                                 padding: 10,
@@ -133,7 +138,7 @@ const Chat = () => {
                         borderWidth: 1,
                         borderRadius: 5,
                         padding: 10,
-                        backgroundColor: '#332299',
+                        backgroundColor: InputBackground,
                         borderColor: '#ddd',
                         color: '#ddd',
                         flex: 1,

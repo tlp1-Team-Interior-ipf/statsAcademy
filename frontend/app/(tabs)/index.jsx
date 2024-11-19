@@ -42,7 +42,10 @@ export default function HomeScreen() {
     
   ];
 
-  const { ButtonRadioTheme, ButtonRadioTheme2, selectBackgroundTheme, selectButtonRadioTheme, selectButtonRadioTheme2, selectTextTheme } = Temas();
+  const { 
+    BackgroundTheme,
+    TextBackgroundTheme
+  } = Temas();
 
   useEffect(() => {
     const prepareApp = async () => {
@@ -82,14 +85,14 @@ export default function HomeScreen() {
   return (
     <>
       <Stack.Screen options={{headerShown: false}} />
-      <View style={{backgroundColor: selectBackgroundTheme}}>
+      <View style={{backgroundColor: BackgroundTheme}}>
         <ScrollView>
           <View style={{zIndex: 1}}>
             <Navbar />
           </View>
-          <Text style={{ fontSize: 50, textAlign: 'left', paddingLeft: 10, color: '#fff', fontFamily: 'Kufam_400Regular'  }}>Stats Academy</Text>
-          <Text style={{ fontSize: 30, textAlign: 'left', paddingLeft: 10, color: '#fff' }}>{t('Title-Landing')}</Text>
-          <Text style={{ fontSize: 22, textAlign: 'left', paddingLeft: 10, color: '#fff' }}>
+          <Text style={{ fontSize: 50, textAlign: 'left', paddingLeft: 10, color: TextBackgroundTheme, fontFamily: 'Kufam_400Regular'  }}>Stats Academy</Text>
+          <Text style={{ fontSize: 30, textAlign: 'left', paddingLeft: 10, color: TextBackgroundTheme }}>{t('Title-Landing')}</Text>
+          <Text style={{ fontSize: 22, textAlign: 'left', paddingLeft: 10, color: TextBackgroundTheme }}>
             {t('Subtitle-Landing')}
           </Text>
           <ButtonStart />

@@ -32,18 +32,24 @@
 
     "Presentation-tools": "Tenemos las herramientas que necesitas",
 
-    "Tool-1": "Perfil de Alumno",
+    "Tool-1": "Panel de control",
     "Tool-2": "Anotador", 
     "Tool-3": "Calendario",
 
-    "Welcome-home": "Bienvenido a tu inicio",
+    "Welcome-home": "Tus herramientas",
 
     "Title-card-1": "Chat",
     "Title-card-2": "Organizador",
     "Title-card-3": "Calendario",
+    "Title-card-4": "Panel de control",
+    "Title-card-5": "Biblioteca",
+    "Title-card-6": "Juego de Quiz",
     "Card-1": "Chat con clases interactivas",
     "Card-2": "Organizador para gestionar actividades, objetivos, metas y otros eventos importantes",
     "Card-3": "Calendario para definir eventos importantes",
+    "Card-4": "Seccion para visualizar el progreso del usuario en la aplicación",
+    "Card-5": "Esta es tu biblioteca donde encontraras libros de estadística",
+    "Card-6": "Juego de Quiz para aprender de manera divertida estadística",
 
     "Tool-kanban-button-add": "Añadir",
     "Column-1": "Por hacer",
@@ -85,7 +91,7 @@
     "Drawer-login": "Inicia sesion",
     "Drawer-register": "Registrate",
 
-    "Drawer-row-1": "Perfil de usuario",
+    "Drawer-row-1": "Panel de control",
     "Drawer-row-2": "Mi cuenta",
     "Drawer-row-3": "Notificaciones",
     "Drawer-row-4": "Configuración",

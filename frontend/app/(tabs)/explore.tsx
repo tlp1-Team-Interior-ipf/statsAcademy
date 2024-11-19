@@ -8,6 +8,7 @@ import { Text } from 'react-native';
 import  MyStagger  from '@/components/StaggerButtons'
 import { Video } from 'expo-av';
 import {useTranslation} from 'react-i18next';
+import { Temas } from '@/utils/selectTheme';
 
 const Explore = () => {
   const {t} = useTranslation();
@@ -33,22 +34,34 @@ const Explore = () => {
     )
   }
 
+  const { 
+    BackgroundTheme
+  } = Temas();
+
+
   return (
     <NativeBaseProvider>
     <Stack.Screen options={{headerShown: false}} />
-      <View style={{backgroundColor: '#332288', height: '100%'}}>
+      <View style={{backgroundColor: BackgroundTheme, height: 1000}}>
         <ScrollView>
           <View style={{zIndex: 1}}>
             <Navbar/>
           </View>
           <Text style={{textAlign: 'center', fontSize: 35, color: '#ddd', top: -20}}>{t('Welcome-home')}</Text>
-            <View style={{gap: 10, marginVertical: 10}}>
-              <MyCard title={t('Title-card-1')} subtitle={t('Card-1')} image={null} window={'Chat'} NameLibrariIcon={"Entypo"} nameIcon={"chat"} sizeIcon={170} />
-              <MyCard title={t('Title-card-2')} subtitle={t('Card-2')} image={null} window={'Kanban'} NameLibrariIcon={"FontAwesome5"} nameIcon={"tasks"} sizeIcon={170} />
-              <MyCard title={t('Title-card-3')} subtitle={t('Card-3')} image={null} window={'Calendar'} NameLibrariIcon={"AntDesign"} nameIcon={"calendar"} sizeIcon={170} />
+            <View style={{flexDirection: 'row', gap: 10}}>
+              <View style={{gap: 10, marginVertical: 10}}>
+                <MyCard title={t('Title-card-1')} subtitle={t('Card-1')} image={null} window={'Chat'} NameLibrariIcon={"Entypo"} nameIcon={"chat"} sizeIcon={130} />
+                <MyCard title={t('Title-card-2')} subtitle={t('Card-2')} image={null} window={'Kanban'} NameLibrariIcon={"FontAwesome5"} nameIcon={"tasks"} sizeIcon={130} />
+                <MyCard title={t('Title-card-5')} subtitle={t('Card-5')} image={null} window={'Library'} NameLibrariIcon={"MaterialCommunityIcons"} nameIcon={"bookshelf"} sizeIcon={130} />
+              </View>
+              <View style={{gap: 10, marginVertical: 10}}>
+                <MyCard title={t('Title-card-3')} subtitle={t('Card-3')} image={null} window={'Calendar'} NameLibrariIcon={"AntDesign"} nameIcon={"calendar"} sizeIcon={130} />
+                <MyCard title={t('Title-card-4')} subtitle={t('Card-4')} image={null} window={'userProfile'} NameLibrariIcon={"Ionicons"} nameIcon={"stats-chart"} sizeIcon={130} />
+                <MyCard title={t('Title-card-6')} subtitle={t('Card-6')} image={null} window={'QuizGame'} NameLibrariIcon={"MaterialCommunityIcons"} nameIcon={"gamepad-up"} sizeIcon={130} />
+              </View>
             </View>
-        </ScrollView>
       <MyStagger />
+        </ScrollView>
       </View>
     </NativeBaseProvider>
   );

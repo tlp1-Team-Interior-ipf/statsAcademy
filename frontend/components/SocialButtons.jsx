@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, Pressable } from 'react-native';
 import { MyButton } from '@/components/Icons';
 import { router } from 'expo-router';
@@ -7,6 +7,8 @@ import { Button } from '@rneui/themed';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AntDesign } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
+import { Temas } from '@/utils/selectTheme';
+import { UserContext } from '@/context/userContext';
 
 export const SocialButtons = () => {
 
@@ -60,16 +62,21 @@ export const ButtonStart = () => {
     }
   };
 
+  const { 
+    ButtonStartTheme
+  } = Temas();
+
   return(
     <>
       <NativeBaseProvider>
-        <Button
-          buttonStyle={{ paddingHorizontal: 15, borderRadius: 25, width: 120, height: 45, margin: 10 }}
-          onPress={checkLoginStatusAndRedirect}
-          color={'#149'}
-        >
-          <Text style={{color: '#fff', fontSize: 17}}>{t('Button-Start')}</Text>
-        </Button>
+          <Button
+            buttonStyle={{ paddingHorizontal: 15, borderRadius: 25, width: 120, height: 45, margin: 10}}
+            onPress={checkLoginStatusAndRedirect}
+            color={ButtonStartTheme}
+          >
+            <Text style={{color: '#fff', fontSize: 17}}>{t('Button-Start')}</Text>
+          </Button>
+
       </NativeBaseProvider>
     </>
   )

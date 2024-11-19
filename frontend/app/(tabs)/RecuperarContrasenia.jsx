@@ -3,9 +3,12 @@ import { Alert, Text, TextInput, View } from 'react-native';
 import { Button } from '@rneui/themed'
 import { router, Stack } from 'expo-router';
 import { AntDesign } from '@expo/vector-icons';
+import { Temas } from '../../utils/selectTheme';
 
 const RecuperarContrasenia = () => {
   const [email, setEmail] = useState('');
+
+  const { BackgroundTheme } = Temas();
 
   const enviarCorreo = async () => {
     try {
@@ -40,13 +43,13 @@ const RecuperarContrasenia = () => {
             headerShown: true,
             headerBackTitleVisible: true,
             headerTintColor: '#fff',
-            headerStyle: { backgroundColor: '#332288' },
+            headerStyle: { backgroundColor: BackgroundTheme },
             headerLeft: () => (
                 <AntDesign name='arrowleft' onPress={() => router.push('Login')} size={22} color={'#ddd'} style={{ paddingLeft: 10 }} />
             ),
         }} />
 
-    <View style={{height: '100%', backgroundColor: '#332288', paddingTop: 30, alignItems: 'center'}}>
+    <View style={{height: '100%', backgroundColor: BackgroundTheme, paddingTop: 30, alignItems: 'center'}}>
       <Text style={{textAlign: 'center', color: '#ddd', fontSize: 17, width: '90%'}}>Enviaremos un enlace a tu email para para que cambies tu contraseña</Text>
       <TextInput 
         placeholder='Email' 

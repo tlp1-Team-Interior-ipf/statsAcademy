@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DateTimePickerComponent from './DateTimePickerComponent';
 import {useTranslation} from 'react-i18next';
+import { Temas } from '../utils/selectTheme';
 
 const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected, addEvent }) => {
     const {t} = useTranslation();
@@ -12,12 +13,11 @@ const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected, a
     const [date, setDate] = useState(new Date());
     const [showDate, setShowDate] = useState(false);
 
+    const { ModalCreateEventTheme } = Temas();
+
     const handleSubmitEvent = async () => {
         try {
             const id = await AsyncStorage.getItem('userId');
-            console.log("id de usuario: ", id)
-            console.log("date de usuario: ", date)
-            console.log("event de usuario: ", descriptionEvent)
             const response = await fetch(`${process.env.EXPO_PUBLIC_HOST}/calendarEvent/${id}`, {
                 method: 'POST',
                 headers: {
@@ -64,7 +64,7 @@ const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected, a
                 >
                     <View 
                     style={{
-                        backgroundColor: "#64d",
+                        backgroundColor: ModalCreateEventTheme,
                         padding: 20,
                         borderRadius: 10,
                         width: "90%",
@@ -73,11 +73,11 @@ const CreatorEvent = ({ selected, setShowCreatorEvent, setEvents, setSelected, a
                     }}
                     > 
 
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 60 }}>
-                    <Text style={{ color: '#ddd', fontWeight: 'bold', fontSize: 17 }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 60, marginVertical: 10 }}>
+                    <Text style={{ color: '#ddd', fontWeight: 'bold', fontSize: 17, top: -15 }}>
                         {t('Modal-title')}
                     </Text>
-                    <Ionicons name='close' size={35} color={'#ddd'} onPress={() => {
+                    <Ionicons style={{top: -15}} name='close' size={35} color={'#ddd'} onPress={() => {
                         setShowCreatorEvent(false);
                         setDescriptionEvent('');
                         setSelected('');

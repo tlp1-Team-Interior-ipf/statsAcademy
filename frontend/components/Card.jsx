@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text, Pressable, Animated } from "react-native";
 import { router } from "expo-router";
-import { AntDesign, EvilIcons, MaterialCommunityIcons, MaterialIcons, FontAwesome5, Entypo } from '@expo/vector-icons';
+import { AntDesign, EvilIcons, MaterialCommunityIcons, MaterialIcons, FontAwesome5, Entypo, Ionicons } from '@expo/vector-icons';
 
 const iconLibraries = {
   EvilIcons: EvilIcons,
@@ -9,7 +9,8 @@ const iconLibraries = {
   FontAwesome5: FontAwesome5,
   MaterialIcons: MaterialIcons,
   AntDesign: AntDesign,
-  Entypo: Entypo
+  Entypo: Entypo,
+  Ionicons: Ionicons,
 };
 
 const MyCard = ({ title, subtitle, image, window, NameLibrariIcon, nameIcon, sizeIcon }) => {
@@ -60,45 +61,37 @@ const MyCard = ({ title, subtitle, image, window, NameLibrariIcon, nameIcon, siz
         onPressOut={handlePressOut} // Se ejecuta cuando el toque termina
         onPress={() => router.push(window)}
       >
-    <Animated.View style={[styles.container, {transform: [{scale: scale}]}]}>
-        {IconComponent ? (
-          <IconComponent name={nameIcon} size={sizeIcon} color={'#ddd'} />
-        ) : (
-          <Text>Icon not found</Text>
-        )}
+        <Animated.View style={[styles.container, {transform: [{scale: scale}]}]}>
+            {IconComponent ? (
+              <IconComponent name={nameIcon} size={sizeIcon} color={'#ddd'} />
+            ) : (
+              <Text>Icon not found</Text>
+            )}
 
-      {/* Backdrop animado */}
-      {isPressed && (
-        <Animated.View style={[styles.backdrop, { opacity }]}>
-          <Text style={styles.title}>{title}</Text>
-          <Text style={styles.subtitle}>{subtitle}</Text>
+          {/* Backdrop animado */}
+          {isPressed && (
+            <Animated.View style={[styles.backdrop, { opacity }]}>
+              <Text style={styles.title}>{title}</Text>
+              <Text style={styles.subtitle}>{subtitle}</Text>
+            </Animated.View>
+          )}
+
+          {image && <Image source={{ uri: image }} style={styles.image} />}
         </Animated.View>
-      )}
-
-      {image && <Image source={{ uri: image }} style={styles.image} />}
-    </Animated.View>
       </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    width: 300,
+    width: 170,
+    height: 180,
     backgroundColor: '#dddddd50',
     borderRadius: 5,
     padding: 10,
     alignItems: 'center',
-    margin: 'auto',
-    // Sombra para iOS
-    // shadowColor: 'gray',
-    // shadowOffset: { width: 0, height: 4 },
-    // shadowOpacity: 0.1,
-    // shadowRadius: 8,
-    // Sombra para Android
-    // elevation: 4,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // position: 'relative',
+    justifyContent: 'center',
+    left: 5,
   },
   image: {
     width: 250,

@@ -31,18 +31,25 @@
 
   "Presentation-tools": "We have the tools you need",
 
-  "Tool-1": "Student Profile",
+  "Tool-1": "Control panel",
   "Tool-2": "Note Taker", 
   "Tool-3": "Calendar",
 
-  "Welcome-home": "Welcome to your home page",
+  "Welcome-home": "Your Tools",
 
   "Title-card-1": "Chat",
   "Title-card-2": "Organizer",
   "Title-card-3": "Calendar",
+  "Title-card-4": "Control Panel",
+  "Title-card-5": "Library",
+  "Title-card-6": "Quiz Game",
   "Card-1": "Chat with interactive lessons",
   "Card-2": "Organizer to manage activities, goals, targets, and other important events",
   "Card-3": "Calendar to define important events",
+  "Card-4": "Section to visualize the user's progress in the application",
+  "Card-5": "This is your library where you will find books on statistics",
+  "Card-6": "Quiz game to learn statistics in a fun way",
+
 
   "Tool-kanban-button-add": "Add",
   "Column-1": "To do",
@@ -60,7 +67,7 @@
   "Button-save": "Save",
   "Button-acept": "Accept",
   "Button-cancel": "Cancel",
-  "Select-date": "Select the date",
+  "Select-date": " Select the date",
   
   "Login-check": "Remember me",
   "Login-help": "Forgot my password",
@@ -85,7 +92,7 @@
   "Drawer-login": "Login",
   "Drawer-register": "Register",
 
-  "Drawer-row-1": "User profile",
+  "Drawer-row-1": "Control panel",
   "Drawer-row-2": "My account",
   "Drawer-row-3": "Notifications",
   "Drawer-row-4": "Settings",

@@ -5,6 +5,7 @@ import { View, Pressable, Image, Text } from "react-native";
 import { Stack, router } from 'expo-router';
 import {useTranslation} from 'react-i18next';
 import DeleteAccountModal from "../../components/deleteAccountModal";
+import { Temas } from "../../utils/selectTheme";
 
 const MyAccount = () => {
     const {t} = useTranslation();
@@ -13,15 +14,17 @@ const MyAccount = () => {
     
     const [modalVisible, setModalVisible] = useState(false);
 
+    const { BackgroundTheme } = Temas();
+
     return(
         <>
-            <View style={{ backgroundColor: '#332288', height: '100%', alignItems: 'center' }}>
+            <View style={{ backgroundColor: BackgroundTheme, height: '100%', alignItems: 'center' }}>
             <Stack.Screen options={{
                 title: t('My-Account'),
                 headerShown: true,
                 headerBackTitleVisible: true,
                 headerTintColor: '#fff',
-                headerStyle: { backgroundColor: '#332288' },
+                headerStyle: { backgroundColor: BackgroundTheme },
                 headerLeft: () => (
                     <AntDesign name='arrowleft' onPress={() => router.back()} size={22} color={'#ddd'} style={{ paddingLeft: 20 }} />
                 ),

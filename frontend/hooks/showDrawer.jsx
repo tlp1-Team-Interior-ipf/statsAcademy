@@ -14,6 +14,7 @@ export const ShowDrawer = () => {
   }, [showDraw]);
   
   const mostrar = () => {
+    console.log("sadas");
     
     setShowDraw(!showDraw);
   };
