@@ -11,6 +11,7 @@ import { UserContext } from '@/context/userContext';
 import * as SplashScreen from 'expo-splash-screen';
 import {Video} from 'expo-av';
 import {useTranslation} from 'react-i18next';
+import * as Animatable from 'react-native-animatable';
 
 const { width } = Dimensions.get('window');
 
@@ -135,13 +136,19 @@ export default function HomeScreen() {
               
               </View>
               <View style={{ flexDirection: 'column' }}>
+                {/* <Animatable.Image 
+                  animation='bounce'
+                  iterationCount='infinite'
+                  style={{width: 100, height: 100}}
+                  source={tutorBanner}
+                /> */}
                   <Image source={tutorBanner} style={{ width:160, height:180, position: 'absolute', top: -135, left: -80}} />
                   <Image source={tutoriaLogo} style={{ width:80, height:60, top: 60, left: -50 }} />
               </View>
             </View>
           </View>
               <View style={{ backgroundColor: '#0b246c', width: '100%', height: 320}}>
-                <Text style={{ textAlign: 'center', color: '#ddd', fontSize: 25, top: 25 }}>{t('Presentation-tools')}</Text>
+                <Text style={{ textAlign: 'center', color: '#ddd', fontSize: 25, top: 25, elevation: 5 }}>{t('Presentation-tools')}</Text>
                 <View style={{flexDirection: 'row', justifyContent: 'center', gap: 10, alignItems: 'center', top: 50}}>
                   <View style={{borderWidth: 1, borderColor: '#3366ff80', borderRadius: 2, backgroundColor: '#3366ff50', padding: 5}}>
                   <Image source={studentprofile} style={{ width:90, height:130, marginVertical: 10 }}/>

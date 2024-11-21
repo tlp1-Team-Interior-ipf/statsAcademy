@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Alert, Modal, Pressable } from "react-native";
 import ProgressBar from "react-native-progress/Bar";
 // import Circle from "react-native-progress/Circle";
-import { Circle } from 'react-native-progress-circle'
+// import { Circle } from 'react-native-progress-circle'
 import { questions } from "../../utils/questions";
 import { Temas } from "../../utils/selectTheme";
 import { router, Stack } from "expo-router";
 import { AntDesign } from "@expo/vector-icons";
+import ComponentCircle from "../../components/CircleProgress";
 
 const QuizGame = () => {
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -32,6 +33,7 @@ const QuizGame = () => {
     setSelectedAnswer(answer);
     if (answer === currentQuestion.correctAnswer) {
       setScore(score + 1);
+      
     }
   };
 
@@ -39,7 +41,8 @@ const QuizGame = () => {
     if (questionIndex < questions.length - 1) {
       setQuestionIndex(questionIndex + 1);
       setSelectedAnswer(null);
-      setTimer(15);
+      setTimer(20);
+      
     } else {
       setModalResult(!modalResult);
       
@@ -150,20 +153,17 @@ const QuizGame = () => {
         transparent
       >
         <View style={{width: 200, height: 300, backgroundColor: '#349', justifyContent: 'center', alignItems: 'center', margin: 'auto' }}>
-          <Text style={{color: '#fff', textAlign: 'center'}}>
-            ¡El juego a terminado!
-          </Text>
-          <Circle
-            progress={score / questions.length}
-            size={100}
-            color={'#36f'}
-            thickness={8}
-            showText
-            formatText={() => `${score}/${questions.length}`}
-          />
-        <Pressable style={{backgroundColor: '#36f', borderRadius: 5, padding: 10,width: '90%',opacity: .8 }}>
-          <Text style={{color: '#fff', textAlign: 'center'}}>Compartir resultados</Text>
-        </Pressable>
+        <ComponentCircle correct={score} total={questions.length} />
+          <View style={{gap: 10}}>
+
+            <Text style={{color: '#fff', textAlign: 'center'}}>
+              ¡El juego a terminado!
+            </Text>
+            <Pressable style={{backgroundColor: '#36f', borderRadius: 5, padding: 10, width: '100%',opacity: .8 }}>
+              <Text style={{color: '#fff', textAlign: 'center'}}>Compartir resultados</Text>
+            </Pressable>
+          
+          </View>
         </View>
       </Modal>
     </View>

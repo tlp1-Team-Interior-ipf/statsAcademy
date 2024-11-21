@@ -38,7 +38,6 @@ const Explore = () => {
     BackgroundTheme
   } = Temas();
 
-
   return (
     <NativeBaseProvider>
     <Stack.Screen options={{headerShown: false}} />
