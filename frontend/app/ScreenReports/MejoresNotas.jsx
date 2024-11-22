@@ -5,7 +5,7 @@ import { AntDesign } from "@expo/vector-icons";
 import {useTranslation} from 'react-i18next';
 import { Temas } from "../../utils/selectTheme";
 
-const MejoresNotas = () => {
+export const MejoresNotas = () => {
     const {t} = useTranslation();
 
     const { BackgroundTheme } = Temas();
@@ -58,4 +58,4 @@ const MejoresNotas = () => {
     )
 }
 
-export default MejoresNotas;
+// export default MejoresNotas;

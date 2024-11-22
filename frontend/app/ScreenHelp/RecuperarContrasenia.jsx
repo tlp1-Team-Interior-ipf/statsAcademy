@@ -5,7 +5,7 @@ import { router, Stack } from 'expo-router';
 import { AntDesign } from '@expo/vector-icons';
 import { Temas } from '../../utils/selectTheme';
 
-const RecuperarContrasenia = () => {
+export const RecuperarContrasenia = () => {
   const [email, setEmail] = useState('');
 
   const { BackgroundTheme } = Temas();
@@ -74,4 +74,4 @@ const RecuperarContrasenia = () => {
   );
 };
 
-export default RecuperarContrasenia;
+// export default RecuperarContrasenia;

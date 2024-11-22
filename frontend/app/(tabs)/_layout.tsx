@@ -1,19 +1,45 @@
   import { Tabs } from 'expo-router';
   import React from 'react';
   import { TabBarIcon } from '@/components/navigation/TabBarIcon';
+  import { MaterialIcons } from '@expo/vector-icons';
+import { Temas } from '@/utils/selectTheme';
 
   export default function TabLayout() {
+
+    const { BackgroundTheme } = Temas();
 
     return (
         
           <Tabs
           screenOptions={{
-            tabBarStyle:{ backgroundColor:'#36f', borderTopColor: 'transparent', display: 'none'},
+            tabBarStyle:{ backgroundColor:BackgroundTheme, borderTopColor: 'transparent'},
             tabBarActiveTintColor: '#fff',
             tabBarInactiveTintColor: '#666',
           }}
-            >
-              
+          >
+
+              <Tabs.Screen
+            name="Reports"
+            options={{
+              title: 'Reportes',
+              tabBarLabelStyle: {color: '#ddd'},
+              tabBarIcon: ({ color, focused }) => (
+                <MaterialIcons name='bar-chart' size={25} color={'#fff'} />
+              ),
+            }}
+          /> 
+
+            <Tabs.Screen
+              name="QuizGame"
+              options={{
+                title: 'Quiz',
+                tabBarLabelStyle: { color: '#fff'} ,
+                tabBarIcon: ({ color, focused }) => (
+                  <MaterialIcons name='gamepad' size={30} color={'#fff'} />
+                ),
+              }}
+            /> 
+
             <Tabs.Screen
               name="index"
               options={{
@@ -23,25 +49,30 @@
                 ),
               }}
             />
-            {/* <Tabs.Screen
-              name="explore"
+
+            <Tabs.Screen
+              name="Calendar"
               options={{
-                title: 'explore',
+                title: 'Calendar',
+                tabBarLabelStyle: {color: '#ddd'},
                 tabBarIcon: ({ color, focused }) => (
-                  <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+                  <TabBarIcon name={focused ? 'calendar' : 'calendar-outline'} color={'#fff'} />
                 ),
               }}
-            />  */}
-            {/* <Tabs.Screen
-              name="Setting"
+            />
+            
+            <Tabs.Screen
+              name="Kanban"
               options={{
-                title: 'Setting',
+                title: 'Kanban',
+                tabBarLabelStyle: {color: '#ddd'},
                 tabBarIcon: ({ color, focused }) => (
-                  <TabBarIcon name={focused ? 'settings' : 'settings-outline'} color={color} />
+                  // <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+                  <MaterialIcons name='view-kanban' size={25} color={'#fff'} />
                 ),
               }}
-            />  */}
+            /> 
+
           </Tabs>
-          
     );
   }

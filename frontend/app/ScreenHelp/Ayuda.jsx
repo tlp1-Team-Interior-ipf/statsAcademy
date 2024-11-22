@@ -6,7 +6,7 @@ import { AntDesign } from '@expo/vector-icons';
 import {useTranslation} from 'react-i18next';
 import { Temas } from '../../utils/selectTheme';
 
-const Ayuda = () => {
+export const Ayuda = () => {
     const {t} = useTranslation();
 
     const [openQuestion, setOpenQuestion] = useState(null);
@@ -102,4 +102,4 @@ const Ayuda = () => {
     );
 };
 
-export default Ayuda;
+// export default Ayuda;

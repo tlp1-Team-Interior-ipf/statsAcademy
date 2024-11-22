@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTranslation } from 'react-i18next';
 import { Temas } from '../../utils/selectTheme';
 
-const Chat = () => {
+export const Chat = () => {
     const { t } = useTranslation();
     const [input, setInput] = useState('');
     const [messages, setMessages] = useState([]);
@@ -161,4 +161,4 @@ const Chat = () => {
     );
 };
 
-export default Chat;
+// export default Chat;

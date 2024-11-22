@@ -27,7 +27,7 @@ SplashScreen.preventAutoHideAsync()
   .then((result) => console.log(`SplashScreen.preventAutoHideAsync() succeeded: ${result}`))
   .catch(console.warn);
 
-export default function HomeScreen() {
+function HomeScreen() {
   const {t} = useTranslation();
 
   const [isAppReady, setIsAppReady] = useState(false);
@@ -174,4 +174,6 @@ export default function HomeScreen() {
       </View>
     </>
   );
-}
+} 
+
+// export default HomeScreen

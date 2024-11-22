@@ -72,4 +72,5 @@ const stylesKanban = StyleSheet.create({
         borderColor: '#ddd'
     }
 })
+
 export default Kanban

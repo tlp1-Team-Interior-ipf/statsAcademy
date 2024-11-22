@@ -7,7 +7,7 @@ import {useTranslation} from 'react-i18next';
 import DeleteAccountModal from "../../components/deleteAccountModal";
 import { Temas } from "../../utils/selectTheme";
 
-const MyAccount = () => {
+ const MyAccount = () => {
     const {t} = useTranslation();
 
     const { user, setIsLoggedIn } = useContext(UserContext);

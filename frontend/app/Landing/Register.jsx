@@ -11,7 +11,7 @@ import { useRegisterForm } from '../../hooks/userRegisterForm';
 import { validateEmail, validatePassword, validateUsername } from '../../components/validation';
 import {useTranslation} from 'react-i18next';
 
-const Register = () => {
+export const Register = () => {
   const {t} = useTranslation();
 
   const {
@@ -76,4 +76,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+// export default Register;

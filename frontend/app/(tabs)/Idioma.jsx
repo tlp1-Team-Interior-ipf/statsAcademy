@@ -6,7 +6,7 @@ import i18next, {languageResources} from '../../utils/i18next'
 import {useTranslation} from 'react-i18next';
 import languagesList from '../../languages/languagesList.json'
 
-const Idioma = () => {
+export const Idioma = () => {
 
     const [visible, setVisible] = useState(false);
     const {t} = useTranslation();
@@ -56,4 +56,4 @@ const Idioma = () => {
   );
 };
 
-export default Idioma;
+// export default Idioma;

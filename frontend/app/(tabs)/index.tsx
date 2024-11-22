@@ -1,6 +1,6 @@
 import {  NativeBaseProvider } from 'native-base';
 import useAuth from '@/hooks/useAuth';
-import { ScrollView, View } from 'react-native';
+import { Pressable, ScrollView, View } from 'react-native';
 import MyCard from '@/components/Card'
 import Navbar from '@/components/Navbar'
 import { Stack } from 'expo-router';
@@ -46,7 +46,8 @@ const Explore = () => {
           <View style={{zIndex: 1}}>
             <Navbar/>
           </View>
-          <Text style={{textAlign: 'center', fontSize: 35, color: '#ddd', top: -20}}>{t('Welcome-home')}</Text>
+          {/* <Text style={{textAlign: 'center', fontSize: 35, color: '#ddd', top: -20}}>{t('Welcome-home')}</Text>
+            
             <View style={{flexDirection: 'row', gap: 10}}>
               <View style={{gap: 10, marginVertical: 10}}>
                 <MyCard title={t('Title-card-1')} subtitle={t('Card-1')} image={null} window={'Chat'} NameLibrariIcon={"Entypo"} nameIcon={"chat"} sizeIcon={130} />
@@ -59,7 +60,25 @@ const Explore = () => {
                 <MyCard title={t('Title-card-6')} subtitle={t('Card-6')} image={null} window={'QuizGame'} NameLibrariIcon={"MaterialCommunityIcons"} nameIcon={"gamepad-up"} sizeIcon={130} />
               </View>
             </View>
-      <MyStagger />
+      <MyStagger /> */}
+      
+            <Pressable 
+              android_ripple={{ color:'rgba(0, 255, 255, 0.2)', borderless: false, radius: 170}}
+              style={{justifyContent:'center',  width: 100, height: 100, borderWidth: 1, borderColor: '#ddd', borderRadius: 5, position: 'absolute', top: 600, left: 200}}>
+                <Text style={{color: '#ddd', textAlign: 'center', fontSize: 25}}>Tema</Text>
+            </Pressable>
+
+            <Pressable 
+              android_ripple={{ color:'rgba(0, 255, 255, 0.2)', borderless: false, radius: 170}}
+              style={{justifyContent:'center',  width: 100, height: 100, borderWidth: 1, borderColor: '#ddd', borderRadius: 5, position: 'absolute', top: 400, left: 50}}>
+                <Text style={{color: '#ddd', textAlign: 'center', fontSize: 25}}>Tema</Text>
+            </Pressable>
+
+            <Pressable 
+              android_ripple={{ color:'rgba(0, 255, 255, 0.2)', borderless: false, radius: 170}}
+              style={{justifyContent:'center',  width: 100, height: 100, borderWidth: 1, borderColor: '#ddd', borderRadius: 5, position: 'absolute', top: 200, left: 200}}>
+                <Text style={{color: '#ddd', textAlign: 'center', fontSize: 25}}>Tema</Text>
+            </Pressable>
         </ScrollView>
       </View>
     </NativeBaseProvider>

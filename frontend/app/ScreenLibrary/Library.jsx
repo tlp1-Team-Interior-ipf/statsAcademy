@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { Temas } from "../../utils/selectTheme";
 import { bookImages } from "../../utils/books";
 
-const Library = () => {
+export const Library = () => {
     const { t } = useTranslation();
 
     const { BackgroundTheme, ColumnBackgroundTheme, BorderColumnTheme  } = Temas();
@@ -138,4 +138,4 @@ const stylesKanban = StyleSheet.create({
     }
 });
 
-export default Library;
+// export default Library;

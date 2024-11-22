@@ -4,12 +4,13 @@ import { Text, View, Switch, FlatList, Pressable } from 'react-native';
 import { Button } from '@rneui/themed';
 import { router, Stack } from 'expo-router';
 import { AntDesign, Feather } from '@expo/vector-icons';
-import i18next, {languageResources} from '../../utils/i18next';
+import i18next, { languageResources } from '../../utils/i18next';
 import { useTranslation } from 'react-i18next';
 import languagesList from '../../languages/languagesList.json';
 import { UserContext } from '../../context/userContext';
 import { Temas } from '../../utils/selectTheme';
-const Setting = () => {
+
+ const Setting = () => {
 
   const { theme, toggleTheme } = useContext(UserContext);
   const {t} = useTranslation();

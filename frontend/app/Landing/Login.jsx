@@ -10,7 +10,7 @@ import { SocialButtons2 } from '../../components/SocialButtons';
 import { Checkbox2 } from '../../components/CheckBoxs';
 import {useTranslation} from 'react-i18next';
 
- const Login = () => {
+export const Login = () => {
   const {t} = useTranslation();
 
   const image1 = require('@/img/login.png')
@@ -70,4 +70,4 @@ import {useTranslation} from 'react-i18next';
   );
 }
 
-export default Login
+// export default Login

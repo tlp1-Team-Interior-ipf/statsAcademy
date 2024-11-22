@@ -6,6 +6,8 @@ import { UserContext } from '@/context/userContext';
 import { ShowDrawer } from '@/hooks/showDrawer';
 import MyDrawer from '@/components/MyDrawer'
 import { Ionicons } from '@expo/vector-icons';
+import Zocial from '@expo/vector-icons/Zocial';
+import { router } from 'expo-router';
 
 const Navbar = () => {
   const { isLoggedIn, user } = useContext(UserContext);
@@ -13,9 +15,10 @@ const Navbar = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.item}>
+      {/* <View style={styles.item}>
         <Image source={require('@/img/tutorialogo.png')} style={styles.image} />
-      </View>
+      </View> */}
+
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <Pressable style={{marginHorizontal: 10, paddingHorizontal: 10}}>
           {isLoggedIn ? 
@@ -24,7 +27,7 @@ const Navbar = () => {
                   {user.profileImage ? (
                     <Pressable 
                       style={{ ustifyContent: 'center', alignItems: 'center'}}
-                      onPress={() => mostrar()}
+                      onPress={() => console.log("epico")}
                     >
                       <Image 
                         source={{uri: user.profileImage}} 
@@ -33,8 +36,9 @@ const Navbar = () => {
                   
                     </Pressable>
                   ): <Pressable 
+                        android_ripple={{ color:'rgba(0, 255, 255, 0.2)', borderless: false, radius: 170}}
                         style={{borderWidth: 1, borderRadius: 25, width: 40, height: 40, borderColor: '#ddd', justifyContent: 'center', alignItems: 'center'}}
-                        onPress={() => mostrar()}
+                        onPress={() => router.push('/ScreenAccount/MyAccount')}
                       >
                     <Ionicons
                         name="person" 
@@ -48,8 +52,9 @@ const Navbar = () => {
             : (
             
               <Pressable 
+                android_ripple={{ color:'rgba(0, 255, 255, 0.2)', borderless: false, radius: 170}}
                 style={{borderWidth: 1, borderRadius: 25, width: 40, height: 40, borderColor: '#ddd', justifyContent: 'center', alignItems: 'center'}}
-                onPress={() => mostrar()}
+                onPress={() => console.log("epico 3")}
               >
             <Ionicons
                 name="person" 
@@ -60,11 +65,24 @@ const Navbar = () => {
             )
           }
 
-          
+        </Pressable>
+        {/* <MyDrawer mostrar={mostrar} slideAnim={slideAnim}/> */}
+      </View>
+
+      <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', left: -20}}>
+        <Pressable 
+          android_ripple={{ color:'rgba(0, 255, 255, 0.2)', borderless: false, radius: 170}}
+          onPress={() => router.push('/ScreenNotification/NotificationsComponent')}>
+          <Zocial name='email' size={28} color={'#fff'} style={{left: -20}} />
         </Pressable>
 
-        <MyDrawer mostrar={mostrar} slideAnim={slideAnim}/>
+        <Pressable 
+          android_ripple={{ color:'rgba(0, 255, 255, 0.2)', borderless: false, radius: 170}}
+          onPress={() => router.push('/ScreeSettings/Setting')}>
+          <Ionicons name='settings-outline' size={28} color={'#fff'}  />
+        </Pressable>
       </View>
+
     </View>
   );
 
