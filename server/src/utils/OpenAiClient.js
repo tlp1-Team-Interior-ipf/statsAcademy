@@ -25,12 +25,12 @@ export const fetchOpenAIResponse = async (messages) => {
     }
 };
 
-export const evaluateResponse = async (modelResponse) => {
+export const evaluateResponse = async (modelResponse, topic) => {
     try {
         const evaluation = await openai.chat.completions.create({
             model: 'gpt-4o-mini',
             messages: [
-                { role: 'system', content: `Evalúa si el estudiante ha mostrado un buen entendimiento del tema en su respuesta: ${modelResponse}. La respuesta que brindes debe de ser numerica de un rango de 0 a 100, solo quiero esa respuesta, una nota numerica.` },
+                { role: 'system', content: `Evalúa si el estudiante ha mostrado un buen entendimiento del tema: ${topic} en su respuesta: ${modelResponse}. Evalúa en un rango de 0 a 100 las respuestas solo si claramente hacen referencia a las preguntas de evaluación, si no solo no hagas una devolución.` },
                 { role: 'assistant', content: modelResponse }
             ],
             temperature: 0.3,
@@ -38,7 +38,7 @@ export const evaluateResponse = async (modelResponse) => {
 
         const comprehensionLevel = evaluation.choices[0].message.content;
         const comprehension = parseInt(comprehensionLevel);
-        return comprehension;
+        return isNaN(comprehension) ? null : comprehension;
     } catch (error) {
         DatabaseError(error);
     }
@@ -67,9 +67,10 @@ export const generateQuestionsForTopic = async (topic) => {
 
 export const handleEvaluation = async (message, userId, nextTopic) => {
     try {
-        const comprehensionLevel = await evaluateResponse(message);
+        const comprehensionLevel = await evaluateResponse(message, nextTopic);
+        if ( isNaN(comprehensionLevel) ) console.log('No se pudo evaluar la respuesta');
         await Ratings.create({ userId, topicId: nextTopic.id, note: comprehensionLevel });
-
+        console.log(comprehensionLevel);
         if (comprehensionLevel >= 70) {
             await updateTopicStatus(nextTopic.id, userId);
             return '¡Excelente! Has demostrado un buen entendimiento del tema. Puedes continuar con el siguiente tema.';

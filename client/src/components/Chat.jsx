@@ -10,17 +10,6 @@ function Chat() {
   const { user } = useAuth();
   const id = user.data.id;
 
-  // Función para hacer scroll al final del contenedor de mensajes
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  // Cuando los mensajes cambien, hacemos scroll al final
-  useEffect(() => {
-    
-      scrollToBottom();
-
-  }, [messages]);
 
   // Obtenemos el historial del chat al cargar la página
   useEffect(() => {
@@ -50,6 +39,18 @@ function Chat() {
         fetchChatHistory();
       }
     }, [id]);
+
+    // Cuando los mensajes cambien, hacemos scroll al final
+    useEffect(() => {
+      
+      scrollToBottom();
+
+    }, [messages]);
+
+    // Función para hacer scroll al final del contenedor de mensajes
+    const scrollToBottom = () => {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
