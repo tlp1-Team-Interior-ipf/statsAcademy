@@ -13,10 +13,13 @@ export const FetchModelResponse = async ( message, userId ) => {
         const nextTopic = await getNextTopic();
         const topics = await getAllTopics();
 
+        // Formatea los temas en una lista legible
+        const formattedTopics = topics.map(topic => `${topic.id}. ${topic.name}`).join('\n');
+
         const systemMessage = {
             role: 'system',
             content: `
-                Eres un tutor especializado en estadística. Los temas que debes enseñar son estos: ${topics}. 
+                Eres un tutor especializado en estadística. Los temas que debes enseñar son estos: ${formattedTopics}. 
                 El tema actual es: ${nextTopic.name}. ${nextTopic.description}.
                 
                 Cuando el usuario esté listo, realiza preguntas para evaluar su comprensión del tema actual (${nextTopic.name}).
@@ -42,7 +45,7 @@ export const FetchModelResponse = async ( message, userId ) => {
         await Chat.create({ userId, message: message, sender: 'user' });
         await Chat.create({ userId, message: modelResponse, sender: 'assistant' });
 
-        const comprehensionLevel = await handleEvaluation(modelResponse, message, userId, nextTopic);
+        const comprehensionLevel = await handleEvaluation(message, userId, nextTopic);
         console.log(comprehensionLevel);
 
         return modelResponse;

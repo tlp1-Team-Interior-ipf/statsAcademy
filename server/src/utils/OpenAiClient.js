@@ -25,7 +25,7 @@ export const fetchOpenAIResponse = async (messages) => {
     }
 };
 
-export const evaluateResponse = async (modelResponse, message, topic) => {
+export const evaluateResponse = async (message, topic) => {
 
     try {
         const evaluation = await openai.chat.completions.create({
@@ -36,7 +36,6 @@ export const evaluateResponse = async (modelResponse, message, topic) => {
                     Eres un evaluador que califica respuestas de estudiantes. Evalúa si la siguiente respuesta muestra comprensión del tema "${topic}".
                     Responde solo con un número entre 0 y 100 (sin texto adicional). Si no puedes calificar, responde únicamente "NA".
                     No califiques si la respuesta no hace referencia directa a las preguntas de evaluación.
-                    Contexto del modelo: ${modelResponse}.
                     Respuesta del estudiante: ${message}.
                     ` 
                 },
@@ -77,9 +76,9 @@ export const generateQuestionsForTopic = async (topic) => {
 };
 
 
-export const handleEvaluation = async (modelResponse, message, userId, nextTopic) => {
+export const handleEvaluation = async (message, userId, nextTopic) => {
     try {
-        const comprehensionLevel = await evaluateResponse(modelResponse, message, nextTopic.name);
+        const comprehensionLevel = await evaluateResponse(message, nextTopic.name);
         console.log(comprehensionLevel);
             if (comprehensionLevel === null) {
                 return 'Tu respuesta no hace referencia a las preguntas de evaluación. Por favor, intenta de nuevo.';

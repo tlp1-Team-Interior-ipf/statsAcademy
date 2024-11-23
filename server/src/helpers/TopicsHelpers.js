@@ -29,6 +29,7 @@ export const getAllTopics = async () => {
     try {
         const topics = await Topic.findAll({
             attributes: ['id', 'name'],
+            order: [['id', 'ASC']],
         });
         return topics;
     } catch (error) {
