@@ -1,6 +1,7 @@
 import Navbar from "../components/NavBar";
 import ProgressView from "../components/ProgressView";
 import RatingsChart from "../components/RatingsView";
+import TimeTracker from "../components/TimeTracker";
 
 function ProgressPage() {
     return (
@@ -8,6 +9,7 @@ function ProgressPage() {
         <Navbar />
         <ProgressView />
         <RatingsChart />
+        <TimeTracker />
         </>
     );
 };

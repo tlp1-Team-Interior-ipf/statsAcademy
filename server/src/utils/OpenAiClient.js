@@ -25,18 +25,30 @@ export const fetchOpenAIResponse = async (messages) => {
     }
 };
 
-export const evaluateResponse = async (modelResponse, topic) => {
+export const evaluateResponse = async (modelResponse, message, topic) => {
+
     try {
         const evaluation = await openai.chat.completions.create({
             model: 'gpt-4o-mini',
             messages: [
-                { role: 'system', content: `Evalúa si el estudiante ha mostrado un buen entendimiento del tema: ${topic} en su respuesta: ${modelResponse}. Evalúa en un rango de 0 a 100 las respuestas solo si claramente hacen referencia a las preguntas de evaluación, si no solo no hagas una devolución.` },
-                { role: 'assistant', content: modelResponse }
+                { role: 'system', 
+                    content: `
+                    Eres un evaluador que califica respuestas de estudiantes. Evalúa si la siguiente respuesta muestra comprensión del tema "${topic}".
+                    Responde solo con un número entre 0 y 100 (sin texto adicional). Si no puedes calificar, responde únicamente "NA".
+                    No califiques si la respuesta no hace referencia directa a las preguntas de evaluación.
+                    Contexto del modelo: ${modelResponse}.
+                    Respuesta del estudiante: ${message}.
+                    ` 
+                },
+                { role: 'assistant', content: message }
             ],
             temperature: 0.3,
         });
 
         const comprehensionLevel = evaluation.choices[0].message.content;
+        if (comprehensionLevel === "NA") {
+            return null;
+        }
         const comprehension = parseInt(comprehensionLevel);
         return isNaN(comprehension) ? null : comprehension;
     } catch (error) {
@@ -65,18 +77,22 @@ export const generateQuestionsForTopic = async (topic) => {
 };
 
 
-export const handleEvaluation = async (message, userId, nextTopic) => {
+export const handleEvaluation = async (modelResponse, message, userId, nextTopic) => {
     try {
-        const comprehensionLevel = await evaluateResponse(message, nextTopic);
-        if ( isNaN(comprehensionLevel) ) console.log('No se pudo evaluar la respuesta');
-        await Ratings.create({ userId, topicId: nextTopic.id, note: comprehensionLevel });
+        const comprehensionLevel = await evaluateResponse(modelResponse, message, nextTopic.name);
         console.log(comprehensionLevel);
-        if (comprehensionLevel >= 70) {
-            await updateTopicStatus(nextTopic.id, userId);
-            return '¡Excelente! Has demostrado un buen entendimiento del tema. Puedes continuar con el siguiente tema.';
-        } else {
-            return 'Tu respuesta no demuestra un buen entendimiento del tema. Por favor, intenta de nuevo.';
-        }
+            if (comprehensionLevel === null) {
+                return 'Tu respuesta no hace referencia a las preguntas de evaluación. Por favor, intenta de nuevo.';
+            } else {
+                await Ratings.create({ userId, topicId: nextTopic.id, note: comprehensionLevel });
+                
+                if (comprehensionLevel >= 70) {
+                    await updateTopicStatus(nextTopic.id, userId);
+                    return '¡Excelente! Has demostrado un buen entendimiento del tema. Puedes continuar con el siguiente tema.';
+                } else {
+                    return 'Tu respuesta no demuestra un buen entendimiento del tema. Por favor, intenta de nuevo.';
+                }
+            }
     } catch (error) {
         DatabaseError(error);
     }
