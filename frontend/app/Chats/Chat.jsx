@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTranslation } from 'react-i18next';
 import { Temas } from '../../utils/selectTheme';
 
-export const Chat = () => {
+ const Chat = () => {
     const { t } = useTranslation();
     const [input, setInput] = useState('');
     const [messages, setMessages] = useState([]);
@@ -106,7 +106,7 @@ export const Chat = () => {
                     headerStyle: { backgroundColor: BackgroundTheme },
                     headerTintColor: '#ddd',
                     headerLeft: () => (
-                        <AntDesign name="arrowleft" size={22} color={'#ddd'} onPress={() => router.push('explore')} style={{ paddingLeft: 20 }} />
+                        <AntDesign name="arrowleft" size={22} color={'#ddd'} onPress={() => router.back()} style={{ paddingLeft: 20 }} />
                     )
                 }}
             />
@@ -161,4 +161,4 @@ export const Chat = () => {
     );
 };
 
-// export default Chat;
+export default Chat;

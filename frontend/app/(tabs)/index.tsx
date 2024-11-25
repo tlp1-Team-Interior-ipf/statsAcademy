@@ -3,7 +3,7 @@ import useAuth from '@/hooks/useAuth';
 import { Pressable, ScrollView, View } from 'react-native';
 import MyCard from '@/components/Card'
 import Navbar from '@/components/Navbar'
-import { Stack } from 'expo-router';
+import { router, Stack } from 'expo-router';
 import { Text } from 'react-native';
 import  MyStagger  from '@/components/StaggerButtons'
 import { Video } from 'expo-av';
@@ -64,7 +64,9 @@ const Explore = () => {
       
             <Pressable 
               android_ripple={{ color:'rgba(0, 255, 255, 0.2)', borderless: false, radius: 170}}
-              style={{justifyContent:'center',  width: 100, height: 100, borderWidth: 1, borderColor: '#ddd', borderRadius: 5, position: 'absolute', top: 600, left: 200}}>
+              style={{justifyContent:'center',  width: 100, height: 100, borderWidth: 1, borderColor: '#ddd', borderRadius: 5, position: 'absolute', top: 600, left: 200}}
+              onPress={() => router.push('/Chats/Chat')}
+              >
                 <Text style={{color: '#ddd', textAlign: 'center', fontSize: 25}}>Tema</Text>
             </Pressable>
 
