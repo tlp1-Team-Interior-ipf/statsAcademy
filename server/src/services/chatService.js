@@ -1,10 +1,8 @@
 import { Chat } from "../models/modelChat.js";
 import { DatabaseError } from "../utils/errorHandler.js";
 import { getChatHistory } from "../helpers/ChatHistory.js";
-import { getNextTopic, getAllTopics, updateTopicStatus } from "../helpers/TopicsHelpers.js";
-import { fetchOpenAIResponse, generateQuestionsForTopic, handleEvaluation } from "../utils/OpenAiClient.js";
-import { Ratings } from "../models/Ratings.js";
-
+import { getNextTopic, getAllTopics } from "../helpers/TopicsHelpers.js";
+import { fetchOpenAIResponse, handleEvaluation } from "../utils/OpenAiClient.js";
 
 // Función para interactuar con la API de OpenAI
 export const FetchModelResponse = async ( message, userId ) => {

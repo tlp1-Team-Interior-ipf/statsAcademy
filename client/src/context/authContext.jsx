@@ -12,7 +12,10 @@ export const AuthProvider = ({ children }) => {
         return token ? { ...token, isLogged: true } : { isLogged: false };
     });
 
-    const [activeTime, setActiveTime] = useState(0); // Tiempo total en segundos
+    const [activeTime, setActiveTime] = useState(() => {
+        const savedTime = localStorage.getItem('activeTime');
+        return savedTime ? parseInt(savedTime, 10) : 0;
+    }); // Tiempo total en segundos
     const [isActive, setIsActive] = useState(true); // Estado de actividad del usuario
     const intervalRef = useRef(null);
     const detectorRef = useRef(null);
@@ -25,7 +28,7 @@ export const AuthProvider = ({ children }) => {
         }
     }, [user]);
 
-    // Configurar detector de actividad
+    // Configura el detector de actividad
     useEffect(() => {
         detectorRef.current = createActivityDetector({
             timeToIdle: 10000, // Tiempo para detectar inactividad (10s)
@@ -40,11 +43,15 @@ export const AuthProvider = ({ children }) => {
         };
     }, []);
 
-    // Incrementar tiempo activo
+    // Incrementa el tiempo activo
     useEffect(() => {
         if (isActive) {
             intervalRef.current = setInterval(() => {
-                setActiveTime((prevTime) => prevTime + 1);
+                setActiveTime((prevTime) => {
+                    const newTime = prevTime + 1;
+                    localStorage.setItem('activeTime', newTime);
+                    return newTime;
+                });
             }, 1000);
         } else {
             clearInterval(intervalRef.current);

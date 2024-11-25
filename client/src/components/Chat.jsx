@@ -40,17 +40,6 @@ function Chat() {
       }
     }, [id]);
 
-    // Cuando los mensajes cambien, hacemos scroll al final
-    useEffect(() => {
-      
-      scrollToBottom();
-
-    }, [messages]);
-
-    // Función para hacer scroll al final del contenedor de mensajes
-    const scrollToBottom = () => {
-      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-    };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -96,6 +85,18 @@ function Chat() {
       handleSubmit(event);
     }
   };
+
+    // Función para hacer scroll al final del contenedor de mensajes
+    const scrollToBottom = () => {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    // Cuando los mensajes cambien, hacemos scroll al final
+    useEffect(() => {
+      
+      scrollToBottom();
+
+    }, [messages]);
 
   return (
     <div className="Chat">
