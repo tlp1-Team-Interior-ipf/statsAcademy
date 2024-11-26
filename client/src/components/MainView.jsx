@@ -29,32 +29,23 @@ const MainView = () => {
                     <Carousel.Item>
                         <img
                             className="d-block w-100"
-                            src="/img/tema1.png"
+                            src="/img/img1.png"
                             alt="Tema 1"
                         />
-                        <Carousel.Caption>
-                            <h5>Tema 1</h5>
-                        </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
                         <img
                             className="d-block w-100"
-                            src="/img/tema2.png"
+                            src="/img/img2.png"
                             alt="Tema 2"
                         />
-                        <Carousel.Caption>
-                            <h5>Tema 2</h5>
-                        </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
                         <img
                             className="d-block w-100"
-                            src="/img/tema3.png"
+                            src="/img/img3.png"
                             alt="Tema 3"
                         />
-                        <Carousel.Caption>
-                            <h5>Tema 3</h5>
-                        </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
             </div>

@@ -1,0 +1,53 @@
+/* Contenedor de la animación centrado */
+.loading-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centra el componente */
+    z-index: 9999; /* Asegura que esté encima de otros elementos */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Animación de las barras */
+  .logo {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    height: 150px;
+  }
+  
+  .bar {
+    width: 50px;
+    transform-origin: bottom;
+  }
+  
+  .bar1 {
+    background-color: #5ABF91;
+    height: 100px;
+    animation: stretch 1.5s infinite ease-in-out;
+  }
+  
+  .bar2 {
+    background-color: #298A91;
+    height: 120px;
+    animation: stretch 1.5s infinite ease-in-out 0.2s; /* Retraso de 0.2s */
+  }
+  
+  .bar3 {
+    background-color: #19397C;
+    height: 80px;
+    animation: stretch 1.5s infinite ease-in-out 0.4s; /* Retraso de 0.4s */
+  }
+  
+  /* Animación para alargar la parte superior de las barras */
+  @keyframes stretch {
+    0%, 100% {
+      transform: scaleY(1);
+    }
+    50% {
+      transform: scaleY(1.5); /* Alargar la barra */
+    }
+  }
+  

@@ -14,7 +14,7 @@ const ProgressView = () => {
 
     const fetchProgress = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/progreso/${id}`);
+        const response = await axios.get(`http://localhost:4000/progress/${id}`);
         if (response.data.success) {
           setProgress(response.data.data);
         } else {
@@ -29,7 +29,7 @@ const ProgressView = () => {
 
   return (
     <>
-    <h1 style={{marginTop: 80}}>Porgreso del alumno {username}</h1>
+    <h1 style={{marginTop: 80}}>Progreso del alumno {username}</h1>
     <div style={{ width: 200, margin: 'auto' }}>
       {progress !== null ? (
         <CircularProgressbar

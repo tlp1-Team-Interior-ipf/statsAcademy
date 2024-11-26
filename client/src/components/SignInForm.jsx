@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/SignInForm.css'; // Asegúrate de que este archivo CSS esté bien configurado
 import { useNavigate } from 'react-router-dom';
-import swal from 'sweetalert';
-
+import { useSnackbar } from 'notistack';
 
 const SignInForm = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,13 +25,9 @@ const SignInForm = () => {
       });
 
       if (response.ok) {
-        const data = await response.json();
-        swal({
-          title: "¡Registro exitoso!",
-          text: "Serás redirigido a la página de inicio de sesión.",
-          icon: "success",
-          timer: 2000,
-          buttons: false,
+        enqueueSnackbar('¡Registro exitoso! Serás redirigido a la página de inicio de sesión.', {
+          variant: 'success',
+          autoHideDuration: 2000,
         });
         setTimeout(() => {
           navigate('/login');
@@ -39,18 +35,14 @@ const SignInForm = () => {
       } else {
         const errorText = await response.text();
         console.error('Error al registrar el usuario:', errorText);
-        swal({
-          title: "Error",
-          text: "Hubo un problema al registrarse. Inténtalo de nuevo.",
-          icon: "error",
+        enqueueSnackbar('Hubo un problema al registrarse. Inténtalo de nuevo.', {
+          variant: 'error',
         });
       }
     } catch (error) {
-      console.log('Error al registrar el usuario:', error);
-      swal({
-        title: "Error",
-        text: "Error de conexión. Por favor verifica tu conexión a Internet.",
-        icon: "error",
+      console.error('Error al registrar el usuario:', error);
+      enqueueSnackbar('Error de conexión. Por favor verifica tu conexión a Internet.', {
+        variant: 'error',
       });
     }
   };

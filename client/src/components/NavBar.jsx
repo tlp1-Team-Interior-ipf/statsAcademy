@@ -1,18 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import swal from 'sweetalert';
+import { useSnackbar } from 'notistack'; // Importar notistack
 import { AuthContext } from '../context/authContext'; // Contexto de autenticación
 import '../styles/NavBar.css'; // Estilos CSS
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { user, logout } = useContext(AuthContext);
+  const { enqueueSnackbar } = useSnackbar(); // Hook de notistack
   const [isScrolled, setIsScrolled] = useState(false);
 
   // Manejar el scroll para mostrar la línea
   const handleScroll = () => {
     const scrollTop = window.scrollY;
-    setIsScrolled(scrollTop > 50); 
+    setIsScrolled(scrollTop > 50);
   };
 
   useEffect(() => {
@@ -25,17 +26,15 @@ const Navbar = () => {
   // Navegación para los botones
   const handleSignInClick = () => navigate('/signin');
   const handleLogInClick = () => navigate('/login');
-  const handleHomeClick = () => navigate('/');
+  const handleLandingClick = () => navigate('/');
   const handleProfileClick = () => navigate('/home/profile');
+  const handleHomeClick = () => navigate('/home');
 
   const handleLogOutClick = async () => {
     await logout();
-    swal({
-      title: "¡Cierre de sesión exitoso!",
-      text: "Serás redirigido a la página de inicio.",
-      icon: "success",
-      timer: 2000,
-      buttons: false,
+    enqueueSnackbar('¡Cierre de sesión exitoso!', {
+      variant: 'success', // Tipo de notificación
+      autoHideDuration: 2000, // Duración
     });
     setTimeout(() => navigate('/'), 2000);
   };
@@ -44,7 +43,7 @@ const Navbar = () => {
     <nav className={`custom-navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="custom-navbar-left">
         {/* Logo */}
-        <a href="#" className="custom-navbar-logo" onClick={handleHomeClick}>
+        <a href="#" className="custom-navbar-logo" onClick={handleLandingClick}>
           <img
             src="/img/tutorialogo.png" // URL o imagen local del logo
             alt="Stats Academy Logo"
@@ -64,6 +63,9 @@ const Navbar = () => {
             </button>
             <button className="custom-btn profile" onClick={handleProfileClick}>
               Mi perfil
+            </button>
+            <button className="custom-btn profile" onClick={handleHomeClick}>
+              Inicio
             </button>
           </>
         ) : (
