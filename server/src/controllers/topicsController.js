@@ -1,5 +1,6 @@
-import { createTopic } from "../services/topicsServices.js";
+import { createTopic, getTopics } from "../services/topicsServices.js";
 import { getAllTopics } from "../helpers/TopicsHelpers.js";
+import { responseHandler } from '../utils/responseHandler.js';
 
 
 export const createTopicController = async (req, res) => {
@@ -20,4 +21,14 @@ export const getAllTopicsController = async (req, res) => {
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
+};
+
+
+export const getTopicsController = async (req, res, next) => {
+    try {
+        const topics = await getTopics();
+        responseHandler(res, 200, topics);
+    } catch (error) {
+        next(error);
+    };
 };
