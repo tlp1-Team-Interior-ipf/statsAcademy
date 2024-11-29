@@ -21,10 +21,10 @@ const ReportsScreen = () => {
       <View style={{height: '100%', backgroundColor: BackgroundTheme, alignItems: 'center'}}>
         
         <View style={{ marginTop: 25, alignItems: 'center' }}>
-          <View style={{width: 100, height: 100, borderWidth: 1, borderColor: '#fff', borderRadius: 50, margin: 10, alignItems: 'center', justifyContent: 'center'}}>
+          <View style={{width: 100, height: 100,borderRadius: 50, margin: 10, alignItems: 'center', justifyContent: 'center'}}>
               {user.profileImage ? (
                   <Image source={{uri: user.profileImage}} style={{width: 100, height: 100, borderWidth: 1, borderColor: '#ddd', borderRadius: 50}} />
-              ): <Ionicons name="person" size={60} color={'#ddd'} />}
+              ): <Ionicons name="person" size={60} color={'#ddd'} style={{borderWidth: 1, borderRadius: 50, borderColor: '#fff', padding: 15}} />}
           </View>
 
           <Text style={{ color: '#fff', paddingVertical: 5, fontSize: 20, fontWeight: 'bold' }}>

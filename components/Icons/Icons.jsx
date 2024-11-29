@@ -57,6 +57,17 @@ export const IconRight = ({iconName, iconSize, iconColor}) => {
     )
 }
 
+export const SocialMedia = ({ iconName, iconSize }) => {
+  return (
+    <TouchableOpacity>
+      <View style={styles.buttonContainer}>
+        <Ionicons name={iconName} size={iconSize} color="white" />
+      </View>
+    </TouchableOpacity>
+  );
+};
+
+
 const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',

@@ -7,11 +7,16 @@ import { Temas } from '../../../utils/selectTheme';
 import i18next, { languageResources } from '../../../utils/i18next';
 import languagesList from '../../../languages/languagesList.json'
 import { ButtonLogout } from '../../../components/Buttons/ButtonsRedirects';
+import { IconRight } from '../../../components/Icons/Icons';
+import handleShare from '../../../hooks/shareUrl';
+import { useNavigation } from '@react-navigation/native';
 
 const ConfigScreen = () => {
   const {t} = useTranslation();
 
   const { theme, toggleTheme } = useContext(UserContext);
+
+  const navigation = useNavigation();
 
   const [activeLanguage, setActiveLanguage] = useState(i18next.language);
 
@@ -186,7 +191,59 @@ const ConfigScreen = () => {
             />
       </View>
 
-      <ButtonLogout />
+
+      <View style={{gap: 10}}>
+      <Pressable 
+        onPress={handleShare}
+        style={{alignItems: 'center', width: '100%'}}
+        android_ripple={{ color:'rgba(0, 255, 255, 0.2)', borderless: false, radius: 175}}>
+        <View style={
+          { borderWidth: 1, 
+            borderRadius: 5, 
+            borderColor: TextBackgroundTheme, 
+            width: 349, 
+            height: 50,
+            flexDirection: 'row', 
+            gap: 155, 
+            justifyContent: 'flex-start', 
+            alignItems: 'center',
+          }}
+        >
+          <Text style={{color: '#fff', fontSize: 18, left: 10}}>{t('Share')}</Text>
+          <View style={{position: 'absolute', left: 307}}>
+            <IconRight iconName={'right'} iconSize={22} iconColor={'#fff'} />
+          </View>
+        </View>
+      </Pressable>
+
+        <Pressable 
+          onPress={() => navigation.navigate('HelpScreen')}
+          style={{alignItems: 'center', width: '100%'}}
+          android_ripple={{ color:'rgba(0, 255, 255, 0.2)', borderless: false, radius: 175}}>
+          <View style={
+            { borderWidth: 1, 
+              borderRadius: 5, 
+              borderColor: TextBackgroundTheme, 
+              width: 349, 
+              height: 50,
+              flexDirection: 'row', 
+              gap: 275, 
+              justifyContent: 'flex-start', 
+              alignItems: 'center',
+            }}
+          >
+            <Text style={{color: '#fff', fontSize: 18, left: 10}}>{t('Help')}</Text>
+            <View style={{position: 'absolute', left: 306}}>
+              <IconRight iconName={'right'} iconSize={22} iconColor={'#fff'} />
+            </View>
+
+          </View>
+        </Pressable>
+      </View>
+
+      <View style={{marginVertical: 10}}>
+        <ButtonLogout />
+      </View>
 
     </View>
   );

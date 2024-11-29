@@ -14,10 +14,13 @@ import ConfigScreen from './screens/Private/SettingsScreen/SettingsScreen';
 import NotifyScreen from './screens/Private/NotifyScreen/NotifyScreen';
 import ChatScreen from './screens/Private/ChatScreen/ChatScreen';
 import LibraryScreen from './screens/Private/LibraryScreen/LibraryScreen';
+import HelpScreen from './screens/Private/HelpScreen/HelpScreen';
+import PasswordRecoveryScreen from './screens/Public/PasswordRecoveryScreen/PasswordRecoveryScreen';
 import TopNotesScreen from './screens/Private/TopNotesScreen/TopNotesScreen';
 import BadNotesScreen from './screens/Private/BadNotesScreen/BadNotesScreen';
 import OnboardingScreen from './screens/OnboardingScreen';
 import LoginScreen from './screens/Public/LoginScreen';
+import RegisterScreen from './screens/Private/RegisterScreen/RegisterScreen';
 import { MaterialIcons, Ionicons, FontAwesome } from 'react-native-vector-icons';
 import { Temas } from './utils/selectTheme';
 
@@ -155,14 +158,54 @@ const ModalStack = () => {
       }}
     />
 
+    <Stack.Screen
+      name="HelpScreen"
+      component={HelpScreen}
+      options={{
+        presentation: 'card',
+        headerShown: true,
+        title: 'Help Screen',
+        headerStyle: { backgroundColor: BackgroundTheme },
+        headerTintColor: TextBackgroundTheme
+      }}
+    />
+
+   
+
   </Stack.Navigator>
 )};
 
 const RoutesPublic = () => {
+  const { BackgroundTheme, TextBackgroundTheme } = Temas();
+
   console.log('Rendering RoutesPublic');
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Login" component={LoginScreen} options={{headerShown: false}} />
+      
+      <Stack.Screen
+      name="PasswordRecovery"
+      component={PasswordRecoveryScreen}
+      options={{
+        presentation: 'modal',
+        headerShown: true,
+        title: 'Password Recovery',
+        headerStyle: { backgroundColor: BackgroundTheme },
+        headerTintColor: TextBackgroundTheme
+      }}
+    />
+
+    <Stack.Screen
+      name="Register"
+      component={RegisterScreen}
+      options={{
+        presentation: 'card',
+        headerShown: false,
+        title: 'Register',
+        headerStyle: { backgroundColor: BackgroundTheme },
+        headerTintColor: TextBackgroundTheme
+      }}
+    />
     </Stack.Navigator>
   );
 };
