@@ -8,6 +8,7 @@ import { Temas } from '../../../utils/selectTheme';
 import { LibraryButton } from '../../../components/Buttons/LibraryButton/LibraryButton';
 import { Topics } from '../../../components/Topics/Topics';
 import { ThematicUnit } from '../../../components/ThematicUni/ThematicUnit';
+import { Topics2 } from '../../../components/Topics/Topics2';
 
 const HomeScreen = () => {
   const { isLoggedIn } = useContext(UserContext);
@@ -39,15 +40,15 @@ const HomeScreen = () => {
             <ThematicUnit ThematicUnit={'1'} />
 
             <Topics topicTop={140} topicLeft={100} />
-            <Topics topicTop={260} topicLeft={150} />
-            <Topics topicTop={380} topicLeft={190} />
-            <Topics topicTop={500} topicLeft={170} />
-            <Topics topicTop={620} topicLeft={100} />
-            <Topics topicTop={740} topicLeft={50} />
-            <Topics topicTop={860} topicLeft={70} />
-            <Topics topicTop={980} topicLeft={100} />
-            <Topics topicTop={1100} topicLeft={140} />
-            <Topics topicTop={1220} topicLeft={180} />
+            <Topics2 topicTop={260} topicLeft={150} />
+            <Topics2 topicTop={380} topicLeft={190} />
+            <Topics2 topicTop={500} topicLeft={170} />
+            <Topics2 topicTop={620} topicLeft={100} />
+            <Topics2 topicTop={740} topicLeft={50} />
+            <Topics2 topicTop={860} topicLeft={70} />
+            <Topics2 topicTop={980} topicLeft={100} />
+            <Topics2 topicTop={1100} topicLeft={140} />
+            <Topics2 topicTop={1220} topicLeft={180} />
             
             <View style={{top: 1260}}>
               <ThematicUnit ThematicUnit={'2'} />
