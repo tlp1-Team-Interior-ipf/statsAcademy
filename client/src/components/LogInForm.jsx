@@ -1,16 +1,16 @@
 import React, { useState, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/LogInForm.css'; 
+import '../styles/LogInForm.css'; // Asegúrate de que el archivo CSS esté bien configurado
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/authContext';
-import swal from 'sweetalert';
-
+import { useSnackbar } from 'notistack';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
+  const { enqueueSnackbar } = useSnackbar(); // Hook para mostrar notificaciones
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -18,22 +18,17 @@ const LoginForm = () => {
 
     try {
       await login(user);
-      swal({
-        title: "¡Inicio de sesión exitoso!",
-        text: "Serás redirigido a la página de inicio.",
-        icon: "success",
-        timer: 2000,
-        buttons: false,
+      enqueueSnackbar('¡Inicio de sesión exitoso!', {
+        variant: 'success',
+        autoHideDuration: 2000,
       });
       setTimeout(() => {
         navigate('/home');
       }, 2000);
     } catch (error) {
-      console.log('Error al ingresar', error);
-      swal({
-        title: "Error",
-        text: "Credenciales incorrectas. Intenta de nuevo.",
-        icon: "error",
+      console.error('Error al ingresar', error);
+      enqueueSnackbar('Credenciales incorrectas. Intenta de nuevo.', {
+        variant: 'error',
       });
     }
   };

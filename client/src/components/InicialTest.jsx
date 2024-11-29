@@ -16,7 +16,7 @@ const InitialTest = () => {
         const response = await fetch('/preguntas.json');
         const questionsData = await response.json();
         setQuestions(questionsData);
-        setSelectedQuestions(selectRandomQuestions(questionsData, 10));
+        setSelectedQuestions(selectRandomQuestions(questionsData, 5));
       } catch (error) {
         console.error('Error al cargar las preguntas:', error);
       }
@@ -36,22 +36,22 @@ const InitialTest = () => {
     const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
 
     try {
-      const response = await fetch("https://api.openai.com/v1/chat/completions", {
-        method: "POST",
+      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
           Authorization: `Bearer ${apiKey}`,
         },
         body: JSON.stringify({
-          model: "gpt-4-turbo",
+          model: 'gpt-4-turbo',
           messages: [
             {
-              role: "system",
+              role: 'system',
               content:
-                "Eres un asistente que evalúa respuestas a preguntas de estadística y determina si son correctas o incorrectas, en la respuesta limitate a responder solamente 'correcto' o 'incorrecto' comparando la respuestas del usuario en base a su similitud con 'correctAnswer'.",
+                "Eres un asistente que evalúa respuestas a preguntas de estadística. Analiza la similitud entre la respuesta del usuario y la respuesta correcta. Si la respuesta es parcialmente correcta o tiene errores menores, responde 'correcto', de lo contrario 'incorrecto'. Limítate a responder solo 'correcto' o 'incorrecto'.",
             },
             {
-              role: "user",
+              role: 'user',
               content: `Pregunta: ${correctAnswer}\nRespuesta del usuario: ${userAnswer}\nEvaluación:`,
             },
           ],
@@ -63,54 +63,86 @@ const InitialTest = () => {
         throw new Error('Error en la respuesta del API');
       }
 
-      const data = await response.json();
-      const evaluation = data.choices[0].message.content.trim();
-      setResult(`Resultado: ${evaluation}`);
 
-      // Incrementar puntuación si la respuesta es correcta
-      if (evaluation.toLowerCase() === "correcto") {
-        setScore(score + 1);
-      }
+    const data = await response.json();
+    const evaluation = data.choices[0].message.content.trim();
+    setResult(`Resultado: ${evaluation}`);
 
-      // Pasar a la siguiente pregunta o mostrar la nota final
-      if (currentQuestionIndex < selectedQuestions.length - 1) {
-        setCurrentQuestionIndex(currentQuestionIndex + 1);
-      } else {
-        setFinalNote(`Has terminado el cuestionario. Tu puntuación es: ${score + 1}/${selectedQuestions.length} (${Math.round(((score + 1) / selectedQuestions.length) * 100)}%)`);
-      }
-    } catch (error) {
-      console.error('Error al evaluar la respuesta:', error);
+    if (evaluation.toLowerCase() === 'correcto') {
+      setScore((prevScore) => prevScore + 1);
     }
+
+    if (currentQuestionIndex < selectedQuestions.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    } else {
+      const percentage = (score / selectedQuestions.length) * 100;
+      const level = calculateLevel(percentage);
+
+      setFinalNote(
+        `Has terminado el cuestionario. Tu puntuación es: ${score}/${selectedQuestions.length} (${Math.round(
+          percentage
+        )}%). Nivel: ${level}.`
+      );
+    }
+  } catch (error) {
+    console.error('Error al evaluar la respuesta:', error);
+  }
+};
+
+  const progressPercentage =
+    selectedQuestions.length > 0
+      ? ((currentQuestionIndex + 1) / selectedQuestions.length) * 100
+      : 0;
+
+  const getProgressBarColor = (percentage) => {
+    if (percentage <= 39) return '#0E2F84';
+    if (percentage <= 79) return '#0E7684';
+    return '#49BA81';
   };
 
   return (
-    <div className="initial-test-container">
-      <h1 className="initial-test-title">Evaluación Inicial</h1>
-      {currentQuestion && !finalNote ? (
-        <div>
-          <p id="question">{currentQuestion.contenido}</p>
-          <input
-            type="text"
-            className="initial-test-input"
-            placeholder="Escribe tu respuesta aquí"
-            value={userAnswer}
-            onChange={(e) => setUserAnswer(e.target.value)}
-          />
-          <button
-            className="initial-test-button"
-            onClick={() => {
-              evaluateAnswer(userAnswer, currentQuestion.correctAnswer);
-              setUserAnswer('');
+    <div className="evaluation-background">
+      <div className="evaluation-container">
+        <h1 className="initial-test-title">Evaluación Inicial</h1>
+        {currentQuestion && !finalNote ? (
+          <div>
+            <p id="question" className="initial-test-question">
+              <strong>
+                Pregunta {currentQuestionIndex + 1}: {currentQuestion.contenido}
+              </strong>
+            </p>
+            <input
+              type="text"
+              className="initial-test-input"
+              placeholder="Escribe tu respuesta aquí"
+              value={userAnswer}
+              onChange={(e) => setUserAnswer(e.target.value)}
+            />
+            <button
+              className="initial-test-button"
+              onClick={() => {
+                evaluateAnswer(userAnswer, currentQuestion.correctAnswer);
+                setUserAnswer('');
+              }}
+            >
+              Enviar Respuesta
+            </button>
+          </div>
+        ) : (
+          <p>{finalNote}</p>
+        )}
+        <div className="initial-test-score">{result}</div>
+        <div className="initial-test-score">Puntuación: {score}</div>
+        <div className="progress-bar-container">
+          <div
+            className="progress-bar"
+            style={{
+              width: `${progressPercentage}%`,
+              backgroundColor: getProgressBarColor(progressPercentage),
             }}
-          >
-            Enviar Respuesta
-          </button>
+          ></div>
         </div>
-      ) : (
-        <p>{finalNote}</p>
-      )}
-      <div className="initial-test-score">{result}</div>
-      <div className="initial-test-score">Puntuación: {score}</div>
+      </div>
     </div>
   );
 };

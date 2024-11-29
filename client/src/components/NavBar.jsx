@@ -1,18 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import swal from 'sweetalert';
+import { useSnackbar } from 'notistack'; // Importar notistack
 import { AuthContext } from '../context/authContext'; // Contexto de autenticación
 import '../styles/NavBar.css'; // Estilos CSS
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { user, logout } = useContext(AuthContext);
+  const { enqueueSnackbar } = useSnackbar(); // Hook de notistack
   const [isScrolled, setIsScrolled] = useState(false);
 
   // Manejar el scroll para mostrar la línea
   const handleScroll = () => {
     const scrollTop = window.scrollY;
-    setIsScrolled(scrollTop > 50); 
+    setIsScrolled(scrollTop > 50);
   };
 
   useEffect(() => {
@@ -31,12 +32,9 @@ const Navbar = () => {
 
   const handleLogOutClick = async () => {
     await logout();
-    swal({
-      title: "¡Cierre de sesión exitoso!",
-      text: "Serás redirigido a la página de inicio.",
-      icon: "success",
-      timer: 2000,
-      buttons: false,
+    enqueueSnackbar('¡Cierre de sesión exitoso!', {
+      variant: 'success', // Tipo de notificación
+      autoHideDuration: 2000, // Duración
     });
     setTimeout(() => navigate('/'), 2000);
   };

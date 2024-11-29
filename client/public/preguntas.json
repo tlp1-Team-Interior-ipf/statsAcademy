@@ -1,242 +1,82 @@
 [
-    {
-      "id": "Q001",
-      "contenido": "¿Qué diferencia hay entre una población y una muestra en el contexto de la estadística?",
-      "eje_tematico": "Conceptos básicos de estadística",
-      "aspecto": "conocimiento",
-      "grado_dificultad": 3,
-      "respuestaCorrecta": "La población incluye todos los elementos y la muestra es un subconjunto."
-    },
-    {
-      "id": "Q002",
-      "contenido": "Dado un conjunto de datos de usuarios de una aplicación, clasifica las variables en cualitativas y cuantitativas.",
-      "eje_tematico": "Conceptos básicos de estadística",
-      "aspecto": "desempeño",
-      "grado_dificultad": 5,
-      "respuestaCorrecta": "Las cualitativas son descriptivas (como género, color) y las cuantitativas son numéricas (como edad, ingresos)."
-    },
-    {
-      "id": "Q003",
-      "contenido": "Utiliza un software estadístico para extraer una muestra de una base de datos de usuarios de un sistema y presenta los resultados en una tabla de frecuencias con su respectivo gráfico.",
-      "eje_tematico": "Conceptos básicos de estadística",
-      "aspecto": "producción",
-      "grado_dificultad": 7,
-      "respuestaCorrecta": "Los resultados deben incluir la tabla de frecuencias y un gráfico que muestre la distribución."
-    },
-    {
-      "id": "Q004",
-      "contenido": "Define los tipos de gráficos estadísticos y menciona cuándo es adecuado usar cada uno.",
-      "eje_tematico": "Presentación de datos",
-      "aspecto": "conocimiento",
-      "grado_dificultad": 4,
-      "respuestaCorrecta": "Gráficos de barras (para comparar cantidades), gráficos de líneas (para mostrar tendencias), gráficos circulares (para mostrar proporciones)."
-    },
-    {
-      "id": "Q005",
-      "contenido": "Construye una tabla de frecuencias y un gráfico de barras para los datos obtenidos de una encuesta sobre hábitos tecnológicos.",
-      "eje_tematico": "Presentación de datos",
-      "aspecto": "desempeño",
-      "grado_dificultad": 5,
-      "respuestaCorrecta": "La tabla debe listar las frecuencias y el gráfico debe representar visualmente esas frecuencias."
-    },
-    {
-      "id": "Q006",
-      "contenido": "Usa un software estadístico para crear un gráfico de dispersión que relacione el tiempo de uso de dispositivos móviles y el nivel de productividad. Interpreta el gráfico y extrae conclusiones.",
-      "eje_tematico": "Presentación de datos",
-      "aspecto": "producción",
-      "grado_dificultad": 8,
-      "respuestaCorrecta": "El gráfico debe mostrar la relación y las conclusiones deben interpretarse en función de la tendencia observada."
-    },
-    {
-      "id": "Q007",
-      "contenido": "¿Qué son la media, la mediana y el modo, y cómo se calculan?",
-      "eje_tematico": "Estadística descriptiva",
-      "aspecto": "conocimiento",
-      "grado_dificultad": 3,
-      "respuestaCorrecta": "La media es el promedio, la mediana es el valor central y el modo es el valor que más se repite."
-    },
-    {
-      "id": "Q008",
-      "contenido": "Calcula la media y la mediana de un conjunto de datos sobre el tiempo de respuesta de una aplicación web.",
-      "eje_tematico": "Estadística descriptiva",
-      "aspecto": "desempeño",
-      "grado_dificultad": 5,
-      "respuestaCorrecta": "La media se calcula sumando todos los valores y dividiendo por la cantidad. La mediana se encuentra ordenando los datos y eligiendo el valor central."
-    },
-    {
-      "id": "Q009",
-      "contenido": "Con un software estadístico, analiza los datos de productividad de un equipo de desarrollo de software, incluyendo medidas de tendencia central y dispersión. Presenta un informe con gráficos y análisis.",
-      "eje_tematico": "Estadística descriptiva",
-      "aspecto": "producción",
-      "grado_dificultad": 8,
-      "respuestaCorrecta": "El informe debe incluir gráficos y análisis de la media, mediana, varianza y desviación estándar."
-    },
-    {
-      "id": "Q010",
-      "contenido": "¿Qué es la desviación estándar y cómo se interpreta?",
-      "eje_tematico": "Estadística descriptiva",
-      "aspecto": "conocimiento",
-      "grado_dificultad": 4,
-      "respuestaCorrecta": "Es una medida de dispersión que indica cuánto varían los datos respecto a la media."
-    },
-    {
-      "id": "Q011",
-      "contenido": "Calcula la desviación estándar de un conjunto de datos de rendimiento de un software y comenta los resultados.",
-      "eje_tematico": "Estadística descriptiva",
-      "aspecto": "desempeño",
-      "grado_dificultad": 6,
-      "respuestaCorrecta": "La desviación estándar se calcula mediante una fórmula que incluye la media, y el comentario debe referirse a qué tan dispersos están los datos."
-    },
-    {
-      "id": "Q012",
-      "contenido": "Utiliza un software estadístico para calcular la desviación estándar y el coeficiente de variación de una serie de datos financieros. Presenta un informe con gráficos y conclusiones.",
-      "eje_tematico": "Estadística descriptiva",
-      "aspecto": "producción",
-      "grado_dificultad": 9,
-      "respuestaCorrecta": "El informe debe incluir la desviación estándar, el coeficiente de variación y una interpretación de su relevancia."
-    },
-    {
-      "id": "Q013",
-      "contenido": "Explica los conceptos de probabilidad clásica, frecuencial y subjetiva.",
-      "eje_tematico": "Probabilidad",
-      "aspecto": "conocimiento",
-      "grado_dificultad": 5,
-      "respuestaCorrecta": "La probabilidad clásica se basa en el conteo de eventos, la frecuencial se basa en experimentos, y la subjetiva se basa en la opinión."
-    },
-    {
-      "id": "Q014",
-      "contenido": "Dado un conjunto de eventos relacionados con el rendimiento de un software, calcula las probabilidades asociadas a cada uno y determina si son independientes o dependientes.",
-      "eje_tematico": "Probabilidad",
-      "aspecto": "desempeño",
-      "grado_dificultad": 7,
-      "respuestaCorrecta": "Se deben aplicar fórmulas de probabilidad y evaluar la relación entre eventos."
-    },
-    {
-      "id": "Q015",
-      "contenido": "Usa un software estadístico para calcular la probabilidad conjunta de eventos relacionados con fallos en el sistema. Presenta un informe con las probabilidades y su impacto en la toma de decisiones.",
-      "eje_tematico": "Probabilidad",
-      "aspecto": "producción",
-      "grado_dificultad": 8,
-      "respuestaCorrecta": "El informe debe contener la probabilidad conjunta y recomendaciones basadas en los resultados."
-    },
-    {
-      "id": "Q016",
-      "contenido": "¿Qué es el muestreo y qué tipos de muestreo existen?",
-      "eje_tematico": "Inferencia estadística",
-      "aspecto": "conocimiento",
-      "grado_dificultad": 5,
-      "respuestaCorrecta": "El muestreo es el proceso de seleccionar un subconjunto y puede ser aleatorio, estratificado, sistemático, entre otros."
-    },
-    {
-      "id": "Q017",
-      "contenido": "Dado un conjunto de datos, selecciona una muestra adecuada usando un método de muestreo aleatorio y justifica tu elección.",
-      "eje_tematico": "Inferencia estadística",
-      "aspecto": "desempeño",
-      "grado_dificultad": 7,
-      "respuestaCorrecta": "La elección del método debe basarse en la representatividad y la justificación debe ser clara."
-    },
-    {
-      "id": "Q018",
-      "contenido": "Utiliza un software estadístico para seleccionar una muestra aleatoria de una base de datos y calcula un intervalo de confianza para una métrica de interés. Presenta un informe con los cálculos y conclusiones.",
-      "eje_tematico": "Inferencia estadística",
-      "aspecto": "producción",
-      "grado_dificultad": 8,
-      "respuestaCorrecta": "El informe debe incluir el intervalo de confianza y su interpretación en el contexto del estudio."
-    },
-    {
-      "id": "Q019",
-      "contenido": "¿Qué representa el coeficiente de correlación en un análisis de regresión?",
-      "eje_tematico": "Regresión y correlación",
-      "aspecto": "conocimiento",
-      "grado_dificultad": 4,
-      "respuestaCorrecta": "Representa la fuerza y dirección de la relación entre dos variables."
-    },
-    {
-      "id": "Q020",
-      "contenido": "Calcula la correlación entre dos variables de rendimiento y productividad en un equipo de trabajo.",
-      "eje_tematico": "Regresión y correlación",
-      "aspecto": "desempeño",
-      "grado_dificultad": 6,
-      "respuestaCorrecta": "El cálculo debe realizarse usando la fórmula de correlación y analizarse en contexto."
-    },
-    {
-      "id": "Q021",
-      "contenido": "¿Qué es un intervalo de confianza?",
-      "eje_tematico": "Inferencia estadística",
-      "aspecto": "conocimiento",
-      "grado_dificultad": 4,
-      "respuestaCorrecta": "Es un rango de valores dentro del cual es probable que se encuentre un parámetro de la población."
-    },
-    {
-      "id": "Q022",
-      "contenido": "Construye un intervalo de confianza del 95% para una muestra de datos sobre ingresos mensuales.",
-      "eje_tematico": "Inferencia estadística",
-      "aspecto": "desempeño",
-      "grado_dificultad": 7,
-      "respuestaCorrecta": "El intervalo debe calcularse correctamente y explicarse en el contexto del análisis."
-    },
-    {
-      "id": "Q023",
-      "contenido": "Explica la diferencia entre error muestral y error estándar.",
-      "eje_tematico": "Inferencia estadística",
-      "aspecto": "conocimiento",
-      "grado_dificultad": 5,
-      "respuestaCorrecta": "El error muestral se refiere a la diferencia entre la muestra y la población, mientras que el error estándar mide la variabilidad de las medias muestrales."
-    },
-    {
-      "id": "Q024",
-      "contenido": "Calcula el error estándar de una muestra sobre tiempos de espera en una cola de atención.",
-      "eje_tematico": "Inferencia estadística",
-      "aspecto": "desempeño",
-      "grado_dificultad": 6,
-      "respuestaCorrecta": "El cálculo debe realizarse con la fórmula correcta y su interpretación debe ser apropiada."
-    },
-    {
-      "id": "Q025",
-      "contenido": "¿Qué es una hipótesis nula en un test estadístico?",
-      "eje_tematico": "Inferencia estadística",
-      "aspecto": "conocimiento",
-      "grado_dificultad": 4,
-      "respuestaCorrecta": "Es la afirmación que se pone a prueba y usualmente propone que no hay efecto o diferencia."
-    },
-    {
-      "id": "Q026",
-      "contenido": "Realiza un test de hipótesis para evaluar si el promedio de ventas diarias es mayor a 100 unidades.",
-      "eje_tematico": "Inferencia estadística",
-      "aspecto": "desempeño",
-      "grado_dificultad": 7,
-      "respuestaCorrecta": "El test debe incluir la formulación de hipótesis, cálculo del estadístico y la conclusión basada en los resultados."
-    },
-    {
-      "id": "Q027",
-      "contenido": "¿Cómo se interpreta el valor p en un test estadístico?",
-      "eje_tematico": "Inferencia estadística",
-      "aspecto": "conocimiento",
-      "grado_dificultad": 4,
-      "respuestaCorrecta": "El valor p indica la probabilidad de obtener los resultados observados si la hipótesis nula es cierta."
-    },
-    {
-      "id": "Q028",
-      "contenido": "Explica la diferencia entre regresión lineal simple y regresión múltiple.",
-      "eje_tematico": "Regresión y correlación",
-      "aspecto": "conocimiento",
-      "grado_dificultad": 5,
-      "respuestaCorrecta": "La regresión lineal simple usa una variable predictora, mientras que la múltiple utiliza varias."
-    },
-    {
-      "id": "Q029",
-      "contenido": "Calcula una regresión lineal simple entre las variables de tiempo de estudio y calificaciones en un grupo de estudiantes.",
-      "eje_tematico": "Regresión y correlación",
-      "aspecto": "desempeño",
-      "grado_dificultad": 6,
-      "respuestaCorrecta": "El cálculo debe incluir la ecuación de la recta y una interpretación del coeficiente de regresión."
-    },
-    {
-      "id": "Q030",
-      "contenido": "Utiliza un software para realizar una regresión múltiple y analiza la relación entre el nivel de ingresos, horas de trabajo y nivel educativo.",
-      "eje_tematico": "Regresión y correlación",
-      "aspecto": "producción",
-      "grado_dificultad": 8,
-      "respuestaCorrecta": "El análisis debe incluir la interpretación de los coeficientes de cada variable predictora."
-    }
-  ]
+  {
+    "id": "Q001",
+    "contenido": "¿Qué diferencia hay entre población y muestra?",
+    "eje_tematico": "Conceptos básicos de estadística",
+    "aspecto": "conocimiento",
+    "grado_dificultad": 3,
+    "respuestaCorrecta": "La población incluye a todos los elementos, mientras que la muestra es un subconjunto representativo."
+  },
+  {
+    "id": "Q002",
+    "contenido": "¿Qué son variables cualitativas y cuantitativas?",
+    "eje_tematico": "Tipos de datos",
+    "aspecto": "conocimiento",
+    "grado_dificultad": 3,
+    "respuestaCorrecta": "Las cualitativas describen cualidades y las cuantitativas representan valores numéricos."
+  },
+  {
+    "id": "Q003",
+    "contenido": "¿Cuándo usar un gráfico de barras?",
+    "eje_tematico": "Representación gráfica",
+    "aspecto": "conocimiento",
+    "grado_dificultad": 3,
+    "respuestaCorrecta": "Para comparar categorías o grupos."
+  },
+  {
+    "id": "Q004",
+    "contenido": "¿Qué es la media?",
+    "eje_tematico": "Medidas de tendencia central",
+    "aspecto": "conocimiento",
+    "grado_dificultad": 3,
+    "respuestaCorrecta": "Es el promedio de un conjunto de datos."
+  },
+  {
+    "id": "Q005",
+    "contenido": "¿Qué es la mediana?",
+    "eje_tematico": "Medidas de tendencia central",
+    "aspecto": "conocimiento",
+    "grado_dificultad": 3,
+    "respuestaCorrecta": "Es el valor central en un conjunto de datos ordenados."
+  },
+  {
+    "id": "Q006",
+    "contenido": "¿Qué es el modo?",
+    "eje_tematico": "Medidas de tendencia central",
+    "aspecto": "conocimiento",
+    "grado_dificultad": 3,
+    "respuestaCorrecta": "Es el valor que más se repite en un conjunto de datos."
+  },
+  {
+    "id": "Q007",
+    "contenido": "¿Qué representa la desviación estándar?",
+    "eje_tematico": "Variabilidad",
+    "aspecto": "conocimiento",
+    "grado_dificultad": 4,
+    "respuestaCorrecta": "Mide cuánto varían los datos respecto a la media."
+  },
+  {
+    "id": "Q008",
+    "contenido": "¿Cómo se calcula el promedio?",
+    "eje_tematico": "Cálculos básicos",
+    "aspecto": "conocimiento",
+    "grado_dificultad": 3,
+    "respuestaCorrecta": "Sumando todos los valores y dividiendo entre la cantidad de datos."
+  },
+  {
+    "id": "Q009",
+    "contenido": "¿Qué muestra un gráfico de dispersión?",
+    "eje_tematico": "Representación gráfica",
+    "aspecto": "conocimiento",
+    "grado_dificultad": 4,
+    "respuestaCorrecta": "La relación entre dos variables."
+  },
+  {
+    "id": "Q010",
+    "contenido": "¿Qué mide la varianza?",
+    "eje_tematico": "Variabilidad",
+    "aspecto": "conocimiento",
+    "grado_dificultad": 4,
+    "respuestaCorrecta": "La dispersión de los datos respecto a la media."
+  }
+]
