@@ -90,6 +90,12 @@ const InitialTest = () => {
       ? ((currentQuestionIndex + 1) / selectedQuestions.length) * 100
       : 0;
 
+  const getProgressBarColor = (percentage) => {
+    if (percentage <= 39) return '#0E2F84';
+    if (percentage <= 79) return '#0E7684';
+    return '#49BA81';
+  };
+
   return (
     <div className="evaluation-background">
       <div className="evaluation-container">
@@ -126,7 +132,10 @@ const InitialTest = () => {
         <div className="progress-bar-container">
           <div
             className="progress-bar"
-            style={{ width: `${progressPercentage}%` }}
+            style={{
+              width: `${progressPercentage}%`,
+              backgroundColor: getProgressBarColor(progressPercentage),
+            }}
           ></div>
         </div>
       </div>
