@@ -24,9 +24,76 @@ import LoginScreen from './screens/Public/LoginScreen';
 import RegisterScreen from './screens/Public/RegisterScreen/RegisterScreen';
 import { MaterialIcons, Ionicons, FontAwesome } from 'react-native-vector-icons';
 import { Temas } from './utils/selectTheme';
+import { Text } from 'react-native';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+
+const commonHeaderOptions = (background, text) => ({
+  headerStyle: { backgroundColor: background },
+  headerTintColor: text,
+});
+
+const commonTabOptions = (background) => ({
+  tabBarStyle: { backgroundColor: background },
+  tabBarActiveTintColor: '#fff',
+  tabBarInactiveTintColor: '#99f',
+});
+
+
+// const MyTabs = () => {
+//   const { BackgroundTheme, TextBackgroundTheme } = Temas();
+
+//   return (
+//     <Tab.Navigator
+//       screenOptions={({ route }) => ({
+//         tabBarIcon: ({ focused, color, size }) => {
+//           let iconName;
+
+//           if (route.name === 'Home') {
+//             iconName = focused ? 'home' : 'home-outline';
+//             return <Ionicons name={iconName} size={30} color={color} />;
+//           } else if (route.name === 'Calendar') {
+//             iconName = focused ? 'calendar' : 'calendar';
+//             return <FontAwesome name={iconName} size={28} color={color} />;
+//           } else if (route.name === 'Kanban') {
+//             iconName = focused ? 'view-kanban' : 'view-kanban';
+//             return <MaterialIcons name={iconName} size={30} color={color} />;
+//           } else if (route.name === 'Reports') {
+//             iconName = focused ? 'stats-chart' : 'stats-chart';
+//             return <Ionicons name={iconName} size={30} color={color} />;
+//           } else if (route.name === 'QuizGame') {
+//             iconName = focused ? 'games' : 'games';
+//             return <MaterialIcons name={iconName} size={30} color={color} />;
+//           }
+
+//         },
+//         tabBarActiveTintColor: '#fff',
+//         tabBarInactiveTintColor: '#99f',
+//         tabBarStyle: {backgroundColor: BackgroundTheme }
+//       })}
+//       >
+//       <Tab.Screen name="Home" component={HomeScreen} 
+//         options={{
+//           headerShown: false, 
+//           headerStyle: { backgroundColor: BackgroundTheme }, 
+//           headerTintColor: TextBackgroundTheme}} 
+//       />
+//       <Tab.Screen name="Reports" component={ReportsScreen} options={{headerShown: false}} />
+//       <Tab.Screen name="Calendar" component={CalendarScreen} options={{headerShown: false}} />
+//       <Tab.Screen name="Kanban" component={KanbanScreen} options={{headerShown: false}} />
+//       <Tab.Screen name="QuizGame" component={QuizGameScreen} options={{headerShown: false}} />
+//     </Tab.Navigator>
+//   );
+// };
+
+const ICONS = {
+  Home: { focused: 'home', unfocused: 'home-outline', lib: Ionicons },
+  Calendar: { focused: 'calendar', unfocused: 'calendar', lib: FontAwesome },
+  Kanban: { focused: 'view-kanban', unfocused: 'view-kanban', lib: MaterialIcons },
+  Reports: { focused: 'stats-chart', unfocused: 'stats-chart', lib: Ionicons },
+  QuizGame: { focused: 'games', unfocused: 'games', lib: MaterialIcons },
+};
 
 const MyTabs = () => {
   const { BackgroundTheme, TextBackgroundTheme } = Temas();
@@ -34,45 +101,28 @@ const MyTabs = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
-
-          if (route.name === 'Home') {
-            iconName = focused ? 'home' : 'home-outline';
-            return <Ionicons name={iconName} size={30} color={color} />;
-          } else if (route.name === 'Calendar') {
-            iconName = focused ? 'calendar' : 'calendar';
-            return <FontAwesome name={iconName} size={28} color={color} />;
-          } else if (route.name === 'Kanban') {
-            iconName = focused ? 'view-kanban' : 'view-kanban';
-            return <MaterialIcons name={iconName} size={30} color={color} />;
-          } else if (route.name === 'Reports') {
-            iconName = focused ? 'stats-chart' : 'stats-chart';
-            return <Ionicons name={iconName} size={30} color={color} />;
-          } else if (route.name === 'QuizGame') {
-            iconName = focused ? 'games' : 'games';
-            return <MaterialIcons name={iconName} size={30} color={color} />;
-          }
-
+        ...commonTabOptions(BackgroundTheme),
+        tabBarIcon: ({ focused, color }) => {
+          const { focused: iconName, lib: IconLib } = ICONS[route.name];
+          return <IconLib name={iconName} size={30} color={color} />;
         },
-        tabBarActiveTintColor: '#fff',
-        tabBarInactiveTintColor: '#99f',
-        tabBarStyle: {backgroundColor: BackgroundTheme }
       })}
-      >
+    >
+      {/* Define las pantallas aquí */}
       <Tab.Screen name="Home" component={HomeScreen} 
-        options={{
-          headerShown: false, 
-          headerStyle: { backgroundColor: BackgroundTheme }, 
-          headerTintColor: TextBackgroundTheme}} 
-      />
-      <Tab.Screen name="Reports" component={ReportsScreen} options={{headerShown: false}} />
-      <Tab.Screen name="Calendar" component={CalendarScreen} options={{headerShown: false}} />
-      <Tab.Screen name="Kanban" component={KanbanScreen} options={{headerShown: false}} />
-      <Tab.Screen name="QuizGame" component={QuizGameScreen} options={{headerShown: false}} />
+         options={{
+           headerShown: false, 
+           headerStyle: { backgroundColor: BackgroundTheme }, 
+           headerTintColor: TextBackgroundTheme}} 
+       />
+       <Tab.Screen name="Reports" component={ReportsScreen} options={{headerShown: false}} />
+       <Tab.Screen name="Calendar" component={CalendarScreen} options={{headerShown: false}} />
+       <Tab.Screen name="Kanban" component={KanbanScreen} options={{headerShown: false}} />
+       <Tab.Screen name="QuizGame" component={QuizGameScreen} options={{headerShown: false}} />
     </Tab.Navigator>
   );
 };
+
 
 const ModalStack = () => {
   const { BackgroundTheme, TextBackgroundTheme } = Temas();
@@ -245,62 +295,89 @@ const RoutesPrivate = () => {
   );
 };
 
+// const Routes = () => {
+//   const { isLoggedIn } = useContext(UserContext);
+//   const [isOnboardingCompleted, setIsOnboardingCompleted] = useState(false);
+
+//   useEffect(() => {
+//     const checkOnboardingStatus = async () => {
+//       const onboardingStatus = await AsyncStorage.getItem('isOnboardingCompleted');
+//       console.log('Onboarding Status:', onboardingStatus);
+//       setIsOnboardingCompleted(onboardingStatus === 'true');
+//     };
+//     checkOnboardingStatus();
+//   }, []);
+
+//   if (!isOnboardingCompleted) {
+//     return (
+//       <NavigationContainer>
+//         <Stack.Navigator>
+//           <Stack.Screen
+//             options={{ headerShown: false }}
+//             name="Onboarding"
+//             component={OnboardingScreen}
+//           />
+//           <Stack.Screen 
+//             name="Login" 
+//             component={LoginScreen} 
+//             options={{
+//               presentation: 'card',
+//               title: 'Login',
+//               headerShown: false
+//             }} 
+//           />
+
+//           <Stack.Screen
+//                 name="Register"
+//                 component={RegisterScreen}
+//                 options={{
+//                   presentation: 'card',
+//                   headerShown: false,
+//                   title: 'Register',
+//                   // headerStyle: { backgroundColor: BackgroundTheme },
+//                   // headerTintColor: TextBackgroundTheme
+//                 }}
+//               />
+//           {/* <Stack.Screen name="Login" component={LoginScreen} options={{headerShown:false}} /> */}
+//           {/* <Stack.Screen name="Register" component={RegisterScreen} options={{headerShown:false}} /> */}
+//         </Stack.Navigator>
+//       </NavigationContainer>
+//     );
+//   }
+
+//   return (
+//     <NavigationContainer>
+//       {isLoggedIn ? <ModalStack /> : <RoutesPublic />}
+//     </NavigationContainer>
+//   );
+// };
+
 const Routes = () => {
   const { isLoggedIn } = useContext(UserContext);
-  const [isOnboardingCompleted, setIsOnboardingCompleted] = useState(false);
+  const [isOnboardingCompleted, setIsOnboardingCompleted] = useState(null);
 
   useEffect(() => {
-    const checkOnboardingStatus = async () => {
-      const onboardingStatus = await AsyncStorage.getItem('isOnboardingCompleted');
-      console.log('Onboarding Status:', onboardingStatus);
-      setIsOnboardingCompleted(onboardingStatus === 'true');
-    };
-    checkOnboardingStatus();
+    (async () => {
+      const status = await AsyncStorage.getItem('isOnboardingCompleted');
+      setIsOnboardingCompleted(status === 'true');
+    })();
   }, []);
 
-  if (!isOnboardingCompleted) {
-    return (
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            options={{ headerShown: false }}
-            name="Onboarding"
-            component={OnboardingScreen}
-          />
-          <Stack.Screen 
-            name="Login" 
-            component={LoginScreen} 
-            options={{
-              presentation: 'card',
-              title: 'Login',
-              headerShown: false
-            }} 
-          />
-
-          <Stack.Screen
-                name="Register"
-                component={RegisterScreen}
-                options={{
-                  presentation: 'card',
-                  headerShown: false,
-                  title: 'Register',
-                  // headerStyle: { backgroundColor: BackgroundTheme },
-                  // headerTintColor: TextBackgroundTheme
-                }}
-              />
-          {/* <Stack.Screen name="Login" component={LoginScreen} options={{headerShown:false}} /> */}
-          {/* <Stack.Screen name="Register" component={RegisterScreen} options={{headerShown:false}} /> */}
-        </Stack.Navigator>
-      </NavigationContainer>
-    );
+  if (isOnboardingCompleted === null) {
+    return <Text>Loading...</Text>; // Puedes crear un componente de carga.
   }
 
   return (
     <NavigationContainer>
-      {isLoggedIn ? <ModalStack /> : <RoutesPublic />}
+      {isLoggedIn ? (isOnboardingCompleted ? <ModalStack /> : <RoutesPublic />) : <RoutesPublic />}
     </NavigationContainer>
   );
 };
+
+// const defaultUserContext = {
+//   isLoggedIn: false,
+// };
+
 
 export default function App() {
   return (

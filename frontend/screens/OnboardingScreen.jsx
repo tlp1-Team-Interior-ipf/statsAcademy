@@ -8,10 +8,10 @@ const OnboardingScreen = () => {
   const navigation = useNavigation();
 
   const completeOnboarding = async () => {
-    const asyncstorage = await AsyncStorage.setItem('isODnboardingCompleted', 'true');
-    console.log("asyncstorage: ", asyncstorage);
+    const asyncstorage = await AsyncStorage.setItem('isOnboardingCompleted', 'true');
+    console.log("asyncstorage: ", asyncstorage)
     
-    navigation.replace('Login');
+    navigation.replace('Login')
   };
 
   return (
