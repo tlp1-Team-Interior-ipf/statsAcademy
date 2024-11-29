@@ -48,7 +48,7 @@ const InitialTest = () => {
             {
               role: 'system',
               content:
-                "Eres un asistente que evalúa respuestas a preguntas de estadística y determina si son correctas o incorrectas, en la respuesta limitate a responder solamente 'correcto' o 'incorrecto' comparando la respuestas del usuario en base a su similitud con 'correctAnswer'.",
+                "Eres un asistente que evalúa respuestas a preguntas de estadística. Analiza la similitud entre la respuesta del usuario y la respuesta correcta. Si la respuesta es parcialmente correcta o tiene errores menores, responde 'correcto', de lo contrario 'incorrecto'. Limítate a responder solo 'correcto' o 'incorrecto'.",
             },
             {
               role: 'user',
@@ -63,28 +63,31 @@ const InitialTest = () => {
         throw new Error('Error en la respuesta del API');
       }
 
-      const data = await response.json();
-      const evaluation = data.choices[0].message.content.trim();
-      setResult(`Resultado: ${evaluation}`);
 
-      if (evaluation.toLowerCase() === 'correcto') {
-        setScore(score + 1);
-      }
+    const data = await response.json();
+    const evaluation = data.choices[0].message.content.trim();
+    setResult(`Resultado: ${evaluation}`);
 
-      if (currentQuestionIndex < selectedQuestions.length - 1) {
-        setCurrentQuestionIndex(currentQuestionIndex + 1);
-      } else {
-        setFinalNote(
-  `Has terminado el cuestionario. Tu puntuación es: ${score}/${selectedQuestions.length} (${Math.round(
-    (score / selectedQuestions.length) * 100
-  )}%)`
-);
-
-      }
-    } catch (error) {
-      console.error('Error al evaluar la respuesta:', error);
+    if (evaluation.toLowerCase() === 'correcto') {
+      setScore((prevScore) => prevScore + 1);
     }
-  };
+
+    if (currentQuestionIndex < selectedQuestions.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    } else {
+      const percentage = (score / selectedQuestions.length) * 100;
+      const level = calculateLevel(percentage);
+
+      setFinalNote(
+        `Has terminado el cuestionario. Tu puntuación es: ${score}/${selectedQuestions.length} (${Math.round(
+          percentage
+        )}%). Nivel: ${level}.`
+      );
+    }
+  } catch (error) {
+    console.error('Error al evaluar la respuesta:', error);
+  }
+};
 
   const progressPercentage =
     selectedQuestions.length > 0
