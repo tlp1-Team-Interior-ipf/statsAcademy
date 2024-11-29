@@ -16,7 +16,7 @@ const InitialTest = () => {
         const response = await fetch('/preguntas.json');
         const questionsData = await response.json();
         setQuestions(questionsData);
-        setSelectedQuestions(selectRandomQuestions(questionsData, 10));
+        setSelectedQuestions(selectRandomQuestions(questionsData, 5));
       } catch (error) {
         console.error('Error al cargar las preguntas:', error);
       }
@@ -75,10 +75,11 @@ const InitialTest = () => {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
       } else {
         setFinalNote(
-          `Has terminado el cuestionario. Tu puntuación es: ${score + 1}/${selectedQuestions.length} (${Math.round(
-            ((score + 1) / selectedQuestions.length) * 100
-          )}%)`
-        );
+  `Has terminado el cuestionario. Tu puntuación es: ${score}/${selectedQuestions.length} (${Math.round(
+    (score / selectedQuestions.length) * 100
+  )}%)`
+);
+
       }
     } catch (error) {
       console.error('Error al evaluar la respuesta:', error);
