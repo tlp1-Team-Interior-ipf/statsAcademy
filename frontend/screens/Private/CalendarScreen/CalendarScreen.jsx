@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { View, Text, Pressable, ScrollView } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { Temas } from '../../../utils/selectTheme';
-import useFetchEvents from '../../../hooks/useFetchEvents';
+import useFetchEvents from '../../../hooks/GetEvents/useFetchEvents';
 import configureCalendarLocale from '../../../utils/CalendarLocaleConfig';
 import CreatorEvents from '../../../components/Modals/CreatorEventModal/CreatorEvents';
 import EventItem from '../../../components/Lists/EventItem/EventItem';

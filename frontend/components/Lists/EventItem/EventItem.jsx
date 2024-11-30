@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import useDeleteEvent from '../../../hooks/useDeleteEvent'
+import useDeleteEvent from '../../../hooks/DeleteEvent/useDeleteEvent';
 
 const formatDate = (dateString) => {
     const date = new Date(dateString);

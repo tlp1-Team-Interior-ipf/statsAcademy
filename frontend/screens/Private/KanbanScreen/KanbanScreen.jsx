@@ -3,7 +3,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import {useTranslation} from 'react-i18next';
 import { Temas } from "../../../utils/selectTheme";
 import CreatorTask from "../../../components/Modals/CreatorTaskModal/CreatorTaskModal";
-import useFetchTasks from "../../../hooks/useFetchTasks";
+import useFetchTasks from "../../../hooks/GetTasks/useFetchTasks";
 import { useState } from "react";
 import TaskItem from "../../../components/Lists/TaskItem/TaskItem";
 
@@ -49,7 +49,7 @@ const KanbanScreen = () => {
                             </View>
                         ) : (
                             <ScrollView>
-                                {tasks.map(task => <TaskItem key={task.id} task={task} handleEditTasks={null} setTasks={setTasks} />)}
+                                {tasks.map(task => task.status === 'in progress' ? <TaskItem key={task.id} task={task} handleEditTasks={null} setTasks={setTasks} /> : null)}
                             </ScrollView>
                         )}
                         </View>
@@ -62,7 +62,7 @@ const KanbanScreen = () => {
                             </View>
                         ) : (
                             <ScrollView>
-                                {tasks.map(task => <TaskItem key={task.id} task={task} handleEditTasks={null} setTasks={setTasks} />)}
+                                {tasks.map(task => task.status === 'completed' ? <TaskItem key={task.id} task={task} handleEditTasks={null} setTasks={setTasks} /> : null)}
                             </ScrollView>
                         )}
                         </View>
@@ -74,7 +74,6 @@ const KanbanScreen = () => {
                         selected={selected}
                         setSelected={setSelected}
                         setShowCreatorTask={setShowCreatorTask}
-                        // setTitleTask={setTasks}
                         addTask={(newTask) => {
                             setTasks( prev => [
                             ...prev, newTask

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Pressable } from 'react-native';
-import { AntDesign, Entypo, FontAwesome6, Ionicons } from '@expo/vector-icons';
-// import useDeleteEvent from '../../../hooks/useDeleteEvent'
+import { Entypo } from '@expo/vector-icons';
 import { OpenOptionModal } from '../../Modals/ThreeOptionsModal/ModalOptions';
 
 const formatDate = (dateString) => {
@@ -19,7 +18,6 @@ const TaskItem = ({ task, handleEditTasks, setTasks }) => {
     const [modalPosition, setModalPosition] = useState({ x: 0, y: 0 });
 
     const showModalOptions = (task) => {
-        // setOpenModal(true);
         task.target.measure((fx, fy, width, height, px, py) => {
             setModalPosition({ x: px, y: py + height });
         });
@@ -36,7 +34,6 @@ const TaskItem = ({ task, handleEditTasks, setTasks }) => {
     const closeModal = () => {
         setOpenModal(false);
     };
-    // const deleteEvent = useDeleteEvent(setEvents);
     return (
         <View style={{ height: 110, width: '100%', padding: 17, backgroundColor: '#22a', borderRadius: 5, margin: 'auto', borderTopWidth: 6, borderColor: '#56a', marginTop: 10 }}>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -57,14 +54,14 @@ const TaskItem = ({ task, handleEditTasks, setTasks }) => {
                 </View>
                 <View style={{gap: 15, justifyContent: 'center', top: 10}}>
                     <Pressable onPress={() => handleEditEvent(task)} style={{position: 'absolute', top: -40, left: -165}}>
-                        <Entypo name="pin" size={22} color="#fff" />
+                        <Entypo name="pin" size={22} color="#0fa" />
                     </Pressable>
                     <Pressable onPress={showModalOptions} style={{top: 10, left: 0}}>
                         <Entypo name="dots-three-vertical" size={20} color="#fff" />
                     </Pressable>
                 </View>
             </View>
-            <OpenOptionModal visible={openModal} handleCancelModal={closeModal} position={modalPosition} />
+            <OpenOptionModal visible={openModal} handleCancelModal={closeModal} position={modalPosition} task={task} setTasks={setTasks} />
         </View>
     );
 };
