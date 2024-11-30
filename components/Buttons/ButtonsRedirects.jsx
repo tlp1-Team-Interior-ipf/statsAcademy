@@ -13,6 +13,9 @@ export const ButtonLogout = () => {
 
   const handleLogout = async () => {
     setIsLoggedIn(false);
+    // await AsyncStorage.clear();
+    console.log("vaciado");
+    
     await AsyncStorage.setItem('isLoggedIn', 'false');
   };
   

@@ -65,7 +65,7 @@ const userLoginForm = () => {
                 await AsyncStorage.setItem('email', userEmail.toString()); // guardo el email del usuario
 
 
-                // setUser(userData);
+                setUser(userData);
 
                 setEmail('');
                 setPass('');
