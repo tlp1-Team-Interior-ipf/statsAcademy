@@ -61,6 +61,9 @@
     "Column-1": "Por hacer",
     "Column-2": "En proceso",
     "Column-3": "Finalizado",
+    "Not-task-pending": "No hay metas personales pendientes",
+    "Not-task-process": "No hay metas personales en proceso",
+    "Not-task-finish": "No hay metas personales finalizadas",
 
     "Tool-calendar-subtitle": "Eventos importantes",
     "Button-add": "Añadir evento importante",

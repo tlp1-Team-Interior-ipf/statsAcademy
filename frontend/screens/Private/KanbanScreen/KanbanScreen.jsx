@@ -25,12 +25,27 @@ const KanbanScreen = () => {
                     <Text style={stylesKanban.textButtonAdd}>{t('Tool-kanban-button-add')}</Text>
                 </Pressable>
                 <ScrollView horizontal={true}>
+
                     <View style={{ gap: 10, flexDirection: 'row', margin: 10}}>
+
                         <View style={{ backgroundColor: ColumnBackgroundTheme, width: 250, height: 650, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: BorderColumnTheme }}>
                             <Text style={stylesKanban.textColumn}>{t('Column-1')}</Text>
                             {tasks.length === 0 ? (
                             <View style={{ margin: 'auto', justifyContent: 'center', backgroundColor: BackgroundTheme, width: 230, height: 500, alignItems: 'center', left:-10 }}>
-                                <Text style={{ color: '#ddd' }}>{t('Not-event')}</Text>
+                                <Text style={{ color: '#ddd' }}>{t('Not-task-pending')}</Text>
+                            </View>
+                        ) : (
+                            <ScrollView>
+                                {tasks.map(task => task.status === 'pending' ? <TaskItem key={task.id} task={task} handleEditTasks={null} setTasks={setTasks} /> : null)}
+                            </ScrollView>
+                        )}
+                        </View>
+
+                        <View style={{ backgroundColor: ColumnBackgroundTheme, width: 250, height: 650, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: BorderColumnTheme }}>
+                            <Text style={stylesKanban.textColumn}>{t('Column-2')}</Text>
+                            {tasks.length === 0 ? (
+                            <View style={{ margin: 'auto', justifyContent: 'center', backgroundColor: BackgroundTheme, width: 230, height: 500, alignItems: 'center', left:-10 }}>
+                                <Text style={{ color: '#ddd' }}>{t('Not-task-process')}</Text>
                             </View>
                         ) : (
                             <ScrollView>
@@ -38,12 +53,20 @@ const KanbanScreen = () => {
                             </ScrollView>
                         )}
                         </View>
-                        <View style={{ backgroundColor: ColumnBackgroundTheme, width: 250, height: 650, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: BorderColumnTheme }}>
-                            <Text style={stylesKanban.textColumn}>{t('Column-2')}</Text>
-                        </View>
+
                         <View style={{ backgroundColor: ColumnBackgroundTheme, width: 250, height: 650, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: BorderColumnTheme }}>
                             <Text style={stylesKanban.textColumn}>{t('Column-3')}</Text>
+                            {tasks.length === 0 ? (
+                            <View style={{ margin: 'auto', justifyContent: 'center', backgroundColor: BackgroundTheme, width: 230, height: 500, alignItems: 'center', left:-10 }}>
+                                <Text style={{ color: '#ddd' }}>{t('Not-task-finish')}</Text>
+                            </View>
+                        ) : (
+                            <ScrollView>
+                                {tasks.map(task => <TaskItem key={task.id} task={task} handleEditTasks={null} setTasks={setTasks} />)}
+                            </ScrollView>
+                        )}
                         </View>
+
                     </View>
                 </ScrollView>
                 {showCreatorTask && (

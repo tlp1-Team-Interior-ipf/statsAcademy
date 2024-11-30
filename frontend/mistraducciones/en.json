@@ -62,6 +62,9 @@
   "Column-1": "To do",
   "Column-2": "In Progress",
   "Column-3": "Completed",
+  "Not-task-pending": "No outstanding personal goals",
+  "Not-task-process": "No personal goals in process",
+  "Not-task-finish": "No personal goals completed",
 
   "Tool-calendar-subtitle": "Important events",
   "Button-add": "Add important event",

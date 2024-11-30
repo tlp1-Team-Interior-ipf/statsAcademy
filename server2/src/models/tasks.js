@@ -33,5 +33,3 @@ export const Task = sequelize.define('tasks', {
     tableName: 'tasks',
 },
 );
-
-Task.sync({force: true})
