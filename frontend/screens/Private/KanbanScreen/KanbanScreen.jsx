@@ -21,6 +21,7 @@ const KanbanScreen = () => {
         <GestureHandlerRootView style={{ flex: 1 }}>
             <View style={{backgroundColor: BackgroundTheme, height: '100%'}}>
               <View style={{ top: 20 }}>
+                <Text style={stylesKanban.titleKanban}>Metas personales</Text>
                 <Pressable onPress={() => setShowCreatorTask(true)} style={stylesKanban.buttonAdd} android_ripple={{ color:'rgba(0, 255, 255, 0.2)', borderless: false, radius: 250}}>
                     <Text style={stylesKanban.textButtonAdd}>{t('Tool-kanban-button-add')}</Text>
                 </Pressable>
@@ -111,6 +112,13 @@ const stylesKanban = StyleSheet.create({
         borderBottomWidth: 1,
         paddingBottom: 10,
         borderColor: '#ddd'
+    },
+
+    titleKanban: {
+        textAlign: 'center',
+        fontSize: 25,
+        color: '#fff',
+        marginBottom: 10
     }
 })
 export default KanbanScreen

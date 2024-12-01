@@ -11,6 +11,8 @@ export const OpenOptionModal = ({ visible, handleCancelModal, position, task, se
     const deleteTask = useDeleteTask(setTasks);
     const [showEditModal, setShowEditModal] = useState(false);
     const updateStatus = updateStatusTask(setTasks); 
+    console.log('lbjhb:', task);
+    
 
     return (
         <>
@@ -22,22 +24,39 @@ export const OpenOptionModal = ({ visible, handleCancelModal, position, task, se
                             { position: 'absolute', top: position.y, left: position.x }
                         ]}
                     >
+                        {task.status === 'pending'
+
+                        ? <Pressable onPress={() => {
+                            updateStatus(
+                                task.id,
+                                task.title,
+                                task.description,
+                                task.date,
+                                'in progress'
+                            );
+                            handleCancelModal();
+                        }} style={{backgroundColor: '#eee', padding: 5}}>
+                        <Text style={styles.TextModalChat}>Iniciar</Text>
+                    </Pressable> : 
+                    
+                    task.status === 'in progress' ? 
                         <Pressable onPress={() => {
-                                // Llama a updateStatus con cada propiedad individual
-                                updateStatus(
-                                    task.id,
-                                    task.title,
-                                    task.description,
-                                    task.date,
-                                    'in progress' // Nuevo estado
-                                );
-                                handleCancelModal();
-                            }} style={{backgroundColor: '#eee', padding: 5}}>
-                            <Text style={styles.TextModalChat}>En proceso</Text>
-                        </Pressable>
+                            updateStatus(
+                                task.id,
+                                task.title,
+                                task.description,
+                                task.date,
+                                'completed'
+                            );
+                            handleCancelModal();
+                        }} style={{backgroundColor: '#eee', padding: 5}}>
+                        <Text style={styles.TextModalChat}>Completar</Text>
+                    </Pressable> : null }
+
+                        { task.status === 'pending' ?
                         <Pressable onPress={() => {setShowEditModal(true); handleCancelModal()}} style={{backgroundColor: '#eee', padding: 5}}>
                             <Text style={styles.TextModalChat}>Editar</Text>
-                        </Pressable>
+                        </Pressable> : null }
                     </View>
                 </Pressable>
             </Modal>

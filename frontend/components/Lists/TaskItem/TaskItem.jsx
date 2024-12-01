@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Pressable } from 'react-native';
-import { Entypo, MaterialIcons } from '@expo/vector-icons';
+import { Entypo, Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { OpenOptionModal } from '../../Modals/ThreeOptionsModal/ModalOptions';
 
 const formatDate = (dateString) => {
@@ -31,7 +31,11 @@ const TaskItem = ({ task, handleEditTasks, setTasks }) => {
             )
         else if(task.status === 'in progress')
             return(
-                <MaterialIcons name='access-time-filled' size={23} color={'#7d2'} style={{position: 'absolute', left: 155}} />
+                <MaterialIcons name='access-time-filled' size={23} color={'#2af'} style={{position: 'absolute', left: 155}} />
+            )
+        else if(task.status === 'completed')
+            return(
+                <Ionicons name='checkmark-circle' size={23} color={'#2f0'} style={{position: 'absolute', left: 155}} />
             )
     }
 
@@ -57,12 +61,12 @@ const TaskItem = ({ task, handleEditTasks, setTasks }) => {
 
                 </View>
                 <View style={{justifyContent: 'center', top: 10}}>
-                    <Pressable onPress={() => handleEditEvent(task)}>
+                    <Pressable>
                         <Entypo name="pin" size={22} color="#0fa" style={{ left: -165, top: -55 }} />
                     </Pressable>
                     <Pressable onPress={showModalOptions} style={{position: 'absolute', top: 40, left: 0}}>
-                        {task.status === 'pending' ? <Entypo name="dots-three-vertical" size={20} color="#fff" /> : null }
-                        
+                        { task.status === 'pending' ? (<Entypo name="dots-three-vertical" size={20} color="#fff" />) : 
+                        task.status === 'in progress' ? (<Entypo name="dots-three-vertical" size={20} color="#fff" />) : null }
                     </Pressable>
                 </View>
             </View>
