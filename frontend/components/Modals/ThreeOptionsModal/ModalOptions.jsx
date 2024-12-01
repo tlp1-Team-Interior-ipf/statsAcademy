@@ -3,12 +3,14 @@ import { useTranslation } from "react-i18next";
 import useDeleteTask from '../../../hooks/UpdateTask/useUpdateTask';
 import EditTaskModal from "../EditTaskModal/EditTaskModal";
 import { useState } from "react";
+import updateStatusTask from "../../../hooks/UpdateTask/updateStatusTask";
 
 export const OpenOptionModal = ({ visible, handleCancelModal, position, task, setTasks }) => {
     const { t } = useTranslation();
 
     const deleteTask = useDeleteTask(setTasks);
     const [showEditModal, setShowEditModal] = useState(false);
+    const updateStatus = updateStatusTask(setTasks); 
 
     return (
         <>
@@ -20,7 +22,17 @@ export const OpenOptionModal = ({ visible, handleCancelModal, position, task, se
                             { position: 'absolute', top: position.y, left: position.x }
                         ]}
                     >
-                        <Pressable onPress={() => deleteTask(task.id)} style={{backgroundColor: '#eee', padding: 5}}>
+                        <Pressable onPress={() => {
+                                // Llama a updateStatus con cada propiedad individual
+                                updateStatus(
+                                    task.id,
+                                    task.title,
+                                    task.description,
+                                    task.date,
+                                    'in progress' // Nuevo estado
+                                );
+                                handleCancelModal();
+                            }} style={{backgroundColor: '#eee', padding: 5}}>
                             <Text style={styles.TextModalChat}>En proceso</Text>
                         </Pressable>
                         <Pressable onPress={() => {setShowEditModal(true); handleCancelModal()}} style={{backgroundColor: '#eee', padding: 5}}>
@@ -47,7 +59,9 @@ const styles = StyleSheet.create({
     },
     modalContent: {
         backgroundColor: "#ffffff",
-        borderRadius: 5,
+        borderBottomRightRadius: 5,
+        borderTopRightRadius: 5,
+        borderBottomLeftRadius: 5,
         padding: 5,
         gap: 5
     },
