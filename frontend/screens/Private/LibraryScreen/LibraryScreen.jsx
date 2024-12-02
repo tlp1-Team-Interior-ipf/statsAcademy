@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, View, Image, Linking } from "react-native";
+import { FlatList, StyleSheet, Text, View, Image, Linking, ScrollView } from "react-native";
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useTranslation } from 'react-i18next';
 import { bookImages } from '../../../utils/booksInfo'
@@ -14,14 +14,17 @@ const LibraryScreen = () => {
     const renderItem = ({ item }) => (
         <View style={[stylesKanban.card, {backgroundColor: ColumnBackgroundTheme, borderColor: BorderColumnTheme}]}>
             <Image source={item.image} style={stylesKanban.image} />
-            <Text style={stylesKanban.title}>{item.title}</Text>
-            <Text style={stylesKanban.description}>{item.description}</Text>
-            <Text style={stylesKanban.details}>
-                {t('Library-book-author')}: {item.author}{"\n"}
-                {t('Library-book-pages')}: {item.pages}{"\n"}
-                {t('Library-book-language')}: {item.language}
-            </Text>
-            <Text style={stylesKanban.link} onPress={() => Linking.openURL(item.link)}>{t('Library-book-link')}</Text>
+            <ScrollView>
+                <Text style={stylesKanban.title}>{item.title}</Text>
+                <Text style={stylesKanban.description}>{item.description}</Text>
+                <Text style={stylesKanban.details}>
+                    {t('Library-book-author')}: {item.author}{"\n"}
+                    {t('Library-book-pages')}: {item.pages}{"\n"}
+                    {t('lanzamiento')}: {item.lanzamiento}{"\n"}
+                    {t('Library-book-language')}: {item.language}
+                </Text>
+                <Text style={stylesKanban.link} onPress={() => Linking.openURL(item.link)}>{t('Library-book-link')}</Text>
+            </ScrollView>
         </View>
     );
 
@@ -91,8 +94,9 @@ const stylesKanban = StyleSheet.create({
     },
 
     image: {
-        width: 207,
-        height: 299
+        width: 210,
+        height: 299,
+        marginBottom: 10
     },
 
     title: {
@@ -111,7 +115,8 @@ const stylesKanban = StyleSheet.create({
         fontSize: 14,
         color: '#aaa',
         marginBottom: 10,
-        textAlign: 'center'
+        textAlign: 'center',
+        height: 60
     },
     link: {
         fontSize: 14,
