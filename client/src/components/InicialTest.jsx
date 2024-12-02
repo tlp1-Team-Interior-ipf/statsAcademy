@@ -30,6 +30,16 @@ const InitialTest = () => {
     return shuffled.slice(0, numberOfQuestions);
   };
 
+  const calculateLevel = (percentage) => {
+    if (percentage >= 80) {
+      return 'Avanzado';
+    } else if (percentage >= 50) {
+      return 'Intermedio';
+    } else {
+      return 'Básico';
+    }
+  };
+
   const currentQuestion = selectedQuestions[currentQuestionIndex];
 
   const evaluateAnswer = async (userAnswer, correctAnswer) => {
@@ -63,31 +73,30 @@ const InitialTest = () => {
         throw new Error('Error en la respuesta del API');
       }
 
+      const data = await response.json();
+      const evaluation = data.choices[0].message.content.trim();
+      setResult(`Resultado: ${evaluation}`);
 
-    const data = await response.json();
-    const evaluation = data.choices[0].message.content.trim();
-    setResult(`Resultado: ${evaluation}`);
+      if (evaluation.toLowerCase() === 'correcto') {
+        setScore((prevScore) => prevScore + 1);
+      }
 
-    if (evaluation.toLowerCase() === 'correcto') {
-      setScore((prevScore) => prevScore + 1);
+      if (currentQuestionIndex < selectedQuestions.length - 1) {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+      } else {
+        const percentage = ((score + 1) / selectedQuestions.length) * 100;
+        const level = calculateLevel(percentage);
+
+        setFinalNote(
+          `Has terminado el cuestionario. Tu puntuación es: ${score + 1}/${selectedQuestions.length} (${Math.round(
+            percentage
+          )}%). Nivel: ${level}.`
+        );
+      }
+    } catch (error) {
+      console.error('Error al evaluar la respuesta:', error);
     }
-
-    if (currentQuestionIndex < selectedQuestions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-    } else {
-      const percentage = (score / selectedQuestions.length) * 100;
-      const level = calculateLevel(percentage);
-
-      setFinalNote(
-        `Has terminado el cuestionario. Tu puntuación es: ${score}/${selectedQuestions.length} (${Math.round(
-          percentage
-        )}%). Nivel: ${level}.`
-      );
-    }
-  } catch (error) {
-    console.error('Error al evaluar la respuesta:', error);
-  }
-};
+  };
 
   const progressPercentage =
     selectedQuestions.length > 0
