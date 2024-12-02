@@ -14,7 +14,7 @@ const formatDate = (dateString) => {
 const EventItem = ({ event, handleEditEvent, setEvents }) => {
     const deleteEvent = useDeleteEvent(setEvents);
     return (
-        <View style={{ height: 80, width: '90%', padding: 17, backgroundColor: '#22a', borderRadius: 5, margin: 5, borderTopWidth: 6, borderColor: '#56a' }}>
+        <View style={{ height: 100, width: '90%', padding: 17, backgroundColor: '#22a', borderRadius: 5, margin: 5, borderTopWidth: 6, borderColor: '#56a' }}>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <View style={{gap: 5, width: '80%'}}>
                     <Text style={{ color: "#fff", fontWeight: 'bold' }}>Fecha: {formatDate(event.date)}</Text>

@@ -1,27 +1,6 @@
-// import React from 'react';
-// import { View, Text } from 'react-native';
-// import { Temas } from '../../../utils/selectTheme';
-
-// const ChatScreen = () => {
-//   const { BackgroundTheme, TextBackgroundTheme } = Temas();
-
-//   return (
-//     <View style={
-//       { height: '100%', 
-//         backgroundColor: BackgroundTheme, 
-//         paddingTop: 30
-//       }}>
-//       <Text style={{color: TextBackgroundTheme}}>Welcome to Chat Screen!</Text>
-//     </View>
-//   );
-// };
-
-// export default ChatScreen;
-
-
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ScrollView, TextInput, View, Text } from 'react-native';
-import { AntDesign, Ionicons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { useRef, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Temas } from '../../../utils/selectTheme';

@@ -13,6 +13,7 @@ import AccountScreen from './screens/Private/AccountScreen/AccountScreen';
 import ConfigScreen from './screens/Private/SettingsScreen/SettingsScreen';
 import NotifyScreen from './screens/Private/NotifyScreen/NotifyScreen';
 import ChatScreen from './screens/Private/ChatScreen/ChatScreen';
+import ChatClearScreen from './screens/Private/ChatScreen/ChatClearScreen';
 import LibraryScreen from './screens/Private/LibraryScreen/LibraryScreen';
 import TopNotesScreen from './screens/Private/TopNotesScreen/TopNotesScreen';
 import BadNotesScreen from './screens/Private/BadNotesScreen/BadNotesScreen';
@@ -110,6 +111,18 @@ const ModalStack = () => {
     <Stack.Screen
       name="Chat"
       component={ChatScreen}
+      options={{
+        presentation: 'card',
+        headerShown: true,
+        title: 'Tutor Gauss',
+        headerStyle: { backgroundColor: BackgroundTheme },
+        headerTintColor: TextBackgroundTheme
+      }}
+    />
+
+    <Stack.Screen
+      name="ChatClear"
+      component={ChatClearScreen}
       options={{
         presentation: 'card',
         headerShown: true,

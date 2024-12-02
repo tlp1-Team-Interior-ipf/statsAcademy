@@ -29,10 +29,10 @@ const KanbanScreen = () => {
 
                     <View style={{ gap: 10, flexDirection: 'row', margin: 10}}>
 
-                        <View style={{ backgroundColor: ColumnBackgroundTheme, width: 250, height: 650, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: BorderColumnTheme }}>
+                        <View style={{ backgroundColor: ColumnBackgroundTheme, width: 250, height: 615, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: BorderColumnTheme }}>
                             <Text style={stylesKanban.textColumn}>{t('Column-1')}</Text>
                             {tasks.length === 0 ? (
-                            <View style={{ margin: 'auto', justifyContent: 'center', backgroundColor: BackgroundTheme, width: 230, height: 500, alignItems: 'center', left:-10 }}>
+                            <View style={{ margin: 'auto', justifyContent: 'center', backgroundColor: ColumnBackgroundTheme, width: 230, height: 500, alignItems: 'center', left:-10 }}>
                                 <Text style={{ color: '#ddd' }}>{t('Not-task-pending')}</Text>
                             </View>
                         ) : (
@@ -42,10 +42,10 @@ const KanbanScreen = () => {
                         )}
                         </View>
 
-                        <View style={{ backgroundColor: ColumnBackgroundTheme, width: 250, height: 650, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: BorderColumnTheme }}>
+                        <View style={{ backgroundColor: ColumnBackgroundTheme, width: 250, height: 615, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: BorderColumnTheme }}>
                             <Text style={stylesKanban.textColumn}>{t('Column-2')}</Text>
                             {tasks.length === 0 ? (
-                            <View style={{ margin: 'auto', justifyContent: 'center', backgroundColor: BackgroundTheme, width: 230, height: 500, alignItems: 'center', left:-10 }}>
+                            <View style={{ margin: 'auto', justifyContent: 'center', backgroundColor: ColumnBackgroundTheme, width: 230, height: 500, alignItems: 'center', left:-10 }}>
                                 <Text style={{ color: '#ddd' }}>{t('Not-task-process')}</Text>
                             </View>
                         ) : (
@@ -55,10 +55,10 @@ const KanbanScreen = () => {
                         )}
                         </View>
 
-                        <View style={{ backgroundColor: ColumnBackgroundTheme, width: 250, height: 650, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: BorderColumnTheme }}>
+                        <View style={{ backgroundColor: ColumnBackgroundTheme, width: 250, height: 615, padding: 20, borderRadius: 5, borderWidth: 1, borderColor: BorderColumnTheme }}>
                             <Text style={stylesKanban.textColumn}>{t('Column-3')}</Text>
                             {tasks.length === 0 ? (
-                            <View style={{ margin: 'auto', justifyContent: 'center', backgroundColor: BackgroundTheme, width: 230, height: 500, alignItems: 'center', left:-10 }}>
+                            <View style={{ margin: 'auto', justifyContent: 'center', backgroundColor: ColumnBackgroundTheme, width: 230, height: 500, alignItems: 'center', left:-10 }}>
                                 <Text style={{ color: '#ddd' }}>{t('Not-task-finish')}</Text>
                             </View>
                         ) : (

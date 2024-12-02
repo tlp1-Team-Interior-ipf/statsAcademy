@@ -2,18 +2,17 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { View, ScrollView } from 'react-native';
 import React, {useContext, useEffect} from 'react';
 import { UserContext } from '../../../context/userContext';
-import { useNavigation } from '@react-navigation/native';
 import Navbar from '../../../components/Navbar/Navbar';
 import { Temas } from '../../../utils/selectTheme';
 import { LibraryButton } from '../../../components/Buttons/LibraryButton/LibraryButton';
 import { Topics } from '../../../components/Topics/Topics';
+import { Topics2 } from '../../../components/Topics/Topics2';
 import { ThematicUnit } from '../../../components/ThematicUni/ThematicUnit';
 
 const HomeScreen = () => {
   const { isLoggedIn } = useContext(UserContext);
-  const navigation = useNavigation();
 
-  const { BackgroundTheme, TextBackgroundTheme } = Temas();
+  const { BackgroundTheme } = Temas();
 
   useEffect(() => {
     const verify = async () => {
@@ -23,7 +22,6 @@ const HomeScreen = () => {
     verify();
   }, [isLoggedIn])
 
-  
 
   return (
     <>
@@ -31,30 +29,38 @@ const HomeScreen = () => {
 
       <ScrollView>
         <View style={
-          { height: 1550, 
+          { height: 2200, 
             backgroundColor: BackgroundTheme, 
             paddingTop: 30
           }}>
           
-            <ThematicUnit ThematicUnit={'1'} />
+            <ThematicUnit ThematicUnit={'1 Conceptos básicos de a estadística'} />
 
             <Topics topicTop={140} topicLeft={100} />
-            <Topics topicTop={260} topicLeft={150} />
-            <Topics topicTop={380} topicLeft={190} />
-            <Topics topicTop={500} topicLeft={170} />
-            <Topics topicTop={620} topicLeft={100} />
-            <Topics topicTop={740} topicLeft={50} />
-            <Topics topicTop={860} topicLeft={70} />
-            <Topics topicTop={980} topicLeft={100} />
-            <Topics topicTop={1100} topicLeft={140} />
-            <Topics topicTop={1220} topicLeft={180} />
-            
-            <View style={{top: 1260}}>
-              <ThematicUnit ThematicUnit={'2'} />
+            <Topics2 topicTop={260} topicLeft={150} />
+            <Topics2 topicTop={380} topicLeft={190} />
+            <Topics2 topicTop={500} topicLeft={170} />
+            <Topics2 topicTop={620} topicLeft={100} />
+
+            <View style={{top: 640}}>
+              <ThematicUnit ThematicUnit={'2 Presentación de datos'} />
             </View>
 
-            <Topics topicTop={1413} topicLeft={140} />
+            <Topics2 topicTop={833} topicLeft={50} />
+            <Topics2 topicTop={950} topicLeft={70} />
+            <Topics2 topicTop={1068} topicLeft={100} />
+            <Topics2 topicTop={1186} topicLeft={140} />
+            <Topics2 topicTop={1305} topicLeft={180} />
 
+            <View style={{top: 1260}}>
+              <ThematicUnit ThematicUnit={'2 Presentación de datos'} />
+            </View>            
+
+            <Topics2 topicTop={1520} topicLeft={140} />
+            <Topics2 topicTop={1640} topicLeft={70} />
+            <Topics2 topicTop={1765} topicLeft={110} />
+            <Topics2 topicTop={1890} topicLeft={170} />
+            <Topics2 topicTop={2015} topicLeft={140} />
 
         </View>
       </ScrollView>
