@@ -4,7 +4,7 @@ import relations from "../models/relations.js";
 export const connectDB = async () => {
     relations();
     try {
-        await sequelize.sync();
+        await sequelize.sync({ alter: true });
         console.log("Connected to the database");
 
     } catch (err) {

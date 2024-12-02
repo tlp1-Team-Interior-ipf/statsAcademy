@@ -6,13 +6,23 @@ import { environments } from '../config/environments.js';
 import { connectDB } from '../database/connection.js';
 import routes from '../routes/routes.js';
 import { createLogs } from '../utils/createLogs.js';
-import fileDirName  from "../utils/fileDirName.js";
+import fileDirName from "../utils/fileDirName.js";
+
 const { __dirname } = fileDirName(import.meta);
 
 const app = express();
-app.use(cors());
+
+// Configuración de CORS para permitir solicitudes desde todos los orígenes
+app.use(cors({
+    origin: '*',  // Permite solicitudes de todos los orígenes
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Métodos permitidos
+    allowedHeaders: ['Content-Type', 'Authorization'],  // Encabezados permitidos
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Logger
 app.use(morgan('combined', {
     stream: {
         write: (message) => {
@@ -20,7 +30,9 @@ app.use(morgan('combined', {
             createLogs(message, logPath, 'http');
         }
     }
-}))
+}));
+
+// Rutas de la API
 app.use(routes);
 
 const PORT = environments.PORT;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/InitialTest.css';
 
 const InitialTest = () => {
@@ -9,6 +10,7 @@ const InitialTest = () => {
   const [score, setScore] = useState(0);
   const [result, setResult] = useState('');
   const [finalNote, setFinalNote] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loadQuestions = async () => {
@@ -31,13 +33,9 @@ const InitialTest = () => {
   };
 
   const calculateLevel = (percentage) => {
-    if (percentage >= 80) {
-      return 'Avanzado';
-    } else if (percentage >= 50) {
-      return 'Intermedio';
-    } else {
-      return 'Básico';
-    }
+    if (percentage < 40) return 1; // Básico
+    if (percentage < 80) return 2; // Intermedio
+    return 3; // Avanzado
   };
 
   const currentQuestion = selectedQuestions[currentQuestionIndex];
@@ -84,11 +82,11 @@ const InitialTest = () => {
       if (currentQuestionIndex < selectedQuestions.length - 1) {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
       } else {
-        const percentage = ((score + 1) / selectedQuestions.length) * 100;
+        const percentage = (score / selectedQuestions.length) * 100;
         const level = calculateLevel(percentage);
 
         setFinalNote(
-          `Has terminado el cuestionario. Tu puntuación es: ${score + 1}/${selectedQuestions.length} (${Math.round(
+          `Has terminado el cuestionario. Tu puntuación es: ${score}/${selectedQuestions.length} (${Math.round(
             percentage
           )}%). Nivel: ${level}.`
         );
@@ -97,6 +95,76 @@ const InitialTest = () => {
       console.error('Error al evaluar la respuesta:', error);
     }
   };
+
+  const handleRetry = () => {
+    setQuestions([]);
+    setSelectedQuestions([]);
+    setCurrentQuestionIndex(0);
+    setUserAnswer('');
+    setScore(0);
+    setResult('');
+    setFinalNote(null);
+
+    // Recargar las preguntas
+    const loadQuestions = async () => {
+      try {
+        const response = await fetch('/preguntas.json');
+        const questionsData = await response.json();
+        setQuestions(questionsData);
+        setSelectedQuestions(selectRandomQuestions(questionsData, 5));
+      } catch (error) {
+        console.error('Error al cargar las preguntas:', error);
+      }
+    };
+
+    loadQuestions();
+  };
+
+  const handleFinish = async () => {
+    if (!finalNote) {
+      alert('Completa la evaluación antes de finalizar.');
+      return;
+    }
+
+    const percentage = (score / selectedQuestions.length) * 100;
+    const level = calculateLevel(percentage);
+    
+    const userData = JSON.parse(localStorage.getItem('userData')); // Asegúrate de que se obtiene el objeto completo
+    console.log('userData:', userData); // Verifica el contenido de userData
+
+    // Verificar la estructura del objeto almacenado
+    const userId = userData?.data?.id; // Obtener el userId dentro de 'data'
+    console.log('userId:', userId); // Verifica que el userId se obtiene correctamente
+
+    if (!userId) {
+      alert('No se encontró el ID del usuario. Por favor, inicia sesión.');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:4000/inicial-test', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          nota: score,
+          nivel: level,
+          userId, // Enviar el userId junto con la nota y el nivel
+        }),
+      });
+
+      if (response.ok) {
+        alert('Resultados guardados correctamente.');
+        navigate('/home');
+      } else {
+        throw new Error('Error al guardar los resultados.');
+      }
+    } catch (error) {
+      console.error('Error al finalizar la evaluación:', error);
+    }
+};
+
 
   const progressPercentage =
     selectedQuestions.length > 0
@@ -151,6 +219,16 @@ const InitialTest = () => {
             }}
           ></div>
         </div>
+        {finalNote && (
+          <div className="button-container">
+            <button className="retry-button" onClick={handleRetry}>
+              Reintentar
+            </button>
+            <button className="finish-button" onClick={handleFinish}>
+              Finalizar Evaluación
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
