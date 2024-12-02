@@ -13,7 +13,7 @@ export const EvaInicialModel = sequelize.define('EvaInicial', {
         allowNull: false,
     },
     nivel: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
 },
