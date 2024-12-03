@@ -31,7 +31,7 @@ const DeleteAccountModal = ({ user, setIsLoggedIn, visible, onClose }) => {
       setEmailInput("");
       setIsLoggedIn(false);
       onClose();
-      navigation.replace('Login')
+      // navigation.replace('Login')
     } catch (error) {
       Alert.alert(t("Error"), error.message);
     }
