@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   icon: {
     position: 'absolute',
     left: 10,
-    top: 12, 
+    top: 3, 
   },
   input: {
     height: 50,
@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingLeft: 40,
     paddingRight: 10,
+    marginTop: -10
   },
   errorContainer: {
     minHeight: 20,

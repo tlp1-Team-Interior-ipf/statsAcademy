@@ -65,6 +65,34 @@ export const ButtonLogin = ({handleLogin, errorMessage}) => {
   );
 }
 
+export const ButtonRegister = ({handleRegister, errorMessage}) => {
+  return (
+    <>
+      <View>
+        <Button 
+          title='REGISTER' 
+          titleStyle={{color: '#36f'}}
+          buttonStyle={{
+              borderWidth: 2,
+              backgroundColor: 'transparent',
+              borderColor: '#36f',
+              width: 100,
+              borderRadius: 5,
+              margin: 'auto',
+          }}
+          onPress={handleRegister} />
+        </View>
+
+        {errorMessage && (
+          <View style={{ alignItems: 'center', flexDirection: 'row'}}>
+            <MaterialIcons name="error" size={24} color="red" />
+            <Text style={{ color: 'red', marginLeft: 5 }}>{errorMessage}</Text>
+          </View>
+        )}
+    </>
+);
+}
+
 export const ButtonDeleteAccount = () => {
 
   const clearOnBoarding = async () => {

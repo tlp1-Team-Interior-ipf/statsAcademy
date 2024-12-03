@@ -19,6 +19,8 @@ import TopNotesScreen from './screens/Private/TopNotesScreen/TopNotesScreen';
 import BadNotesScreen from './screens/Private/BadNotesScreen/BadNotesScreen';
 import OnboardingScreen from './screens/OnboardingScreen';
 import LoginScreen from './screens/Public/LoginScreen';
+import RegisterScreen from './screens/Public/RegisterScreen';
+import RecoveryPasswordScreen from './screens/Private/RecoveryPasswordScreen/RecoveryPassword';
 import { MaterialIcons, Ionicons, FontAwesome } from 'react-native-vector-icons';
 import { Temas } from './utils/selectTheme';
 
@@ -172,10 +174,14 @@ const ModalStack = () => {
 )};
 
 const RoutesPublic = () => {
+  const { BackgroundTheme, TextBackgroundTheme } = Temas();
+
   console.log('Rendering RoutesPublic');
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Login" component={LoginScreen} options={{headerShown: false, presentation: 'card'}} />
+      <Stack.Screen name="Register" component={RegisterScreen} options={{headerShown: false, presentation: 'card'}} />
+      <Stack.Screen name="RecoveryPassword" component={RecoveryPasswordScreen} options={{ presentation: 'card', headerStyle: { backgroundColor: BackgroundTheme }, headerTintColor: TextBackgroundTheme}}/>
     </Stack.Navigator>
   );
 };
@@ -196,6 +202,8 @@ const RoutesPrivate = () => {
 const Routes = () => {
   const { isLoggedIn } = useContext(UserContext);
   const [isOnboardingCompleted, setIsOnboardingCompleted] = useState(false);
+  const { BackgroundTheme, TextBackgroundTheme } = Temas();
+
 
   useEffect(() => {
     const checkOnboardingStatus = async () => {
@@ -207,6 +215,7 @@ const Routes = () => {
   }, []);
 
   if (!isOnboardingCompleted) {
+    
     return (
       <NavigationContainer>
         <Stack.Navigator>
@@ -215,7 +224,9 @@ const Routes = () => {
             name="Onboarding"
             component={OnboardingScreen}
           />
-          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false, presentation: 'card'}} />
+          <Stack.Screen name="Register" component={RegisterScreen} options={{headerShown: false, presentation: 'card'}} />
+          <Stack.Screen name="RecoveryPassword" component={RecoveryPasswordScreen} options={{ presentation: 'card', headerStyle: { backgroundColor: BackgroundTheme }, headerTintColor: TextBackgroundTheme}} />
         </Stack.Navigator>
       </NavigationContainer>
     );
