@@ -1,127 +1,105 @@
 import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
 import { useAuth } from '../hooks/ContextHook';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from 'react-markdown'; // Importar ReactMarkdown
 import '../styles/Chat.css';
 
-function Chat() {
-  const [question, setQuestion] = useState('');
-  const [messages, setMessages] = useState([{ type: 'bot', text: '¡Bienvenido! ¿En qué puedo ayudarte hoy?' }]);
-  const messagesEndRef = useRef(null);
-  const { user } = useAuth();
-  const id = user.data.id;
+const Chat = () => {
+    const [messages, setMessages] = useState([]);
+    const [input, setInput] = useState('');
+    const [loading, setLoading] = useState(false);
+    const { user } = useAuth();
+    const messagesEndRef = useRef(null); // Ref para el scroll automático
+    const id = user.data.id;
 
-  // Función para hacer scroll al final del contenedor de mensajes
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  // Cuando los mensajes cambien, hacemos scroll al final
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
-
-  // Obtenemos el historial del chat al cargar la página
-  useEffect(() => {
-    const fetchChatHistory = async () => {
-      try {
-        const response = await fetch(`http://localhost:4000/chat/history/${id}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-        if (response.ok) {
-          const result = await response.json();
-          const formattedMessages = result.data.map((msg) => ({
-            type: msg.sender === 'user' ? 'user' : 'bot',
-            text: msg.message,
-          }));
-          setMessages(formattedMessages);
-        } else {
-          throw new Error('Error al recuperar el historial del chat');
-        }
-      } catch (error) {
-        console.error('Error al obtener el historial del chat:', error);
-      }
+    // Desplazarse automáticamente al último mensaje
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
-      if (id) {
-        fetchChatHistory();
-      }
-    }, [id]);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    if (question.trim() === '' || !id) return;
+    useEffect(() => {
+        if (user.isLogged) {
+            const fetchChatHistory = async () => {
+                try {
+                    const response = await axios.get(`http://localhost:4000/chat/history/${id}`);
+                    setMessages(response.data.data);
+                } catch (error) {
+                    console.error('Error fetching chat history:', error);
+                }
+            };
+            fetchChatHistory();
+        }
+    }, [user]);
 
-    setMessages([...messages, { type: 'user', text: question }]);
-    setQuestion('');
+    useEffect(() => {
+        scrollToBottom(); // Ejecutar scroll cada vez que cambien los mensajes
+    }, [messages]);
 
+    const handleSendMessage = async () => {
+        if (!input.trim()) return;
+        setLoading(true);
 
-    try {
-      const response = await fetch(`http://localhost:4000/chat/${id}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ question }),
-      });
+        try {
+            const response = await axios.post(`http://localhost:4000/chat/${id}`, {
+                question: input,
+            });
 
+            setMessages((prev) => [
+                ...prev,
+                { sender: 'user', message: input },
+                { sender: 'assistant', message: response.data.data },
+            ]);
+            setInput('');
+        } catch (error) {
+            console.error('Error sending message:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
-    const data = await response.json();
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            handleSendMessage();
+        }
+    };
 
-    if (response.ok) {
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          { type: 'bot', text: data.response },
-        ]);
-        
-      } else {
-        throw new Error('Error en la respuesta');
-      };
-    
-  } catch (error) {
-    console.error('Error en la petición:', error);
-    setMessages([...messages, { type: 'bot', text: 'Ocurrió un error' }]);
-  };
-};
-
-  const handleKeyDown = (event) => {
-    if (event.key === 'Enter' || event.keyCode === 13) {
-      handleSubmit(event);
+    if (!user.isLogged) {
+        return <p>Por favor, inicia sesión para acceder al chat.</p>;
     }
-  };
 
-  return (
-    <div className="Chat">
-      <header className="Chat-header">
-        <h1>Bienvenido al Tutor Inteligente</h1>
+    return (
         <div className="chat-container">
-          {messages.map((message, index) => (
-            <div key={index} className={`message ${message.type}`}>
-              {message.type === 'bot' ? (
-                <ReactMarkdown>{message.text}</ReactMarkdown>
-              ) : (
-                message.text
-              )}
+            <div className="chat-header">
+                <h2>Gauss Tutor Inteligente</h2>
             </div>
-          ))}
-          {/* Div invisible para mantener el scroll al final */}
-          <div ref={messagesEndRef} />
+            <div className="chat-messages">
+                {messages.map((msg, index) => (
+                    <div
+                        key={index}
+                        className={`message ${msg.sender === 'user' ? 'user' : 'assistant'}`}
+                    >
+                        {msg.sender === 'assistant' ? (
+                            <ReactMarkdown>{msg.message}</ReactMarkdown> // Renderizar Markdown
+                        ) : (
+                            <p>{msg.message}</p>
+                        )}
+                    </div>
+                ))}
+                {loading && <div className="loading">Escribiendo...</div>}
+                <div ref={messagesEndRef} /> {/* Referencia para el scroll automático */}
+            </div>
+            <div className="chat-input">
+                <input
+                    type="text"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                    placeholder="Pregúntale a Gauss..."
+                />
+                <button onClick={handleSendMessage}>Enviar</button>
+            </div>
         </div>
-        <form className="input-form" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            value={question}
-            onChange={(e) => setQuestion(e.target.value)}
-            onKeyUpCapture={handleKeyDown}
-            placeholder="Escribe aquí"
-            required
-          />
-          <button type="submit">Enviar</button>
-        </form>
-      </header>
-    </div>
-  );
-}
+    );
+};
 
 export default Chat;
