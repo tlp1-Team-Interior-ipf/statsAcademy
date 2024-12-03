@@ -41,14 +41,11 @@ const InitialTest = () => {
     return 3; // Avanzado
   };
 
-  const evaluateAnswer = async (userAnswer, question, allQuestions) => {
-    if (!question || typeof question.contenido !== 'string' || !question.respuestaCorrecta) {
-      console.error('Pregunta inválida:', question);
-      return 'Error: Pregunta inválida';
-    }
-  
+  const currentQuestion = selectedQuestions[currentQuestionIndex];
+
+  const evaluateAnswer = async (userAnswer, correctAnswer) => {
     const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
-  
+
     try {
       const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
@@ -61,37 +58,38 @@ const InitialTest = () => {
           messages: [
             {
               role: 'system',
-              content: 
-                "Eres un asistente que evalúa respuestas a preguntas de estadística. Analiza la similitud entre la respuesta del usuario y la respuesta correcta. Responde solo 'correcto' o 'incorrecto'.",
+              content:
+                "Eres un asistente que evalúa respuestas a preguntas de estadística. Analiza la similitud entre la respuesta del usuario y la respuesta correcta. Si la respuesta es parcialmente correcta o tiene errores menores, responde 'correcto', de lo contrario 'incorrecto'. Limítate a responder solo 'correcto' o 'incorrecto'.",
             },
             {
               role: 'user',
-              content: `Pregunta: ${question.contenido}\nRespuesta del usuario: ${userAnswer}\nRespuesta correcta: ${question.respuestaCorrecta}\nEvaluación:`,
+              content: `Pregunta: ${correctAnswer}\nRespuesta del usuario: ${userAnswer}\nEvaluación:`,
             },
           ],
           max_tokens: 10,
         }),
       });
-  
-      if (!response.ok) throw new Error('Error en la respuesta del API');
-  
+
+      if (!response.ok) {
+        throw new Error('Error en la respuesta del API');
+      }
+
       const data = await response.json();
       const evaluation = data.choices[0].message.content.trim();
-  
       setResult(`Resultado: ${evaluation}`);
-  
+
       if (evaluation.toLowerCase() === 'correcto') {
         setScore((prevScore) => prevScore + 1);
       }
-  
-      if (currentQuestionIndex < allQuestions.length - 1) {
-        setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+
+      if (currentQuestionIndex < selectedQuestions.length - 1) {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
       } else {
-        const percentage = (score / allQuestions.length) * 100;
+        const percentage = (score / selectedQuestions.length) * 100;
         const level = calculateLevel(percentage);
-  
+
         setFinalNote(
-          `Has terminado el cuestionario. Tu puntuación es: ${score}/${allQuestions.length} (${Math.round(
+          `Has terminado el cuestionario. Tu puntuación es: ${score}/${selectedQuestions.length} (${Math.round(
             percentage
           )}%). Nivel: ${level}.`
         );
@@ -100,7 +98,6 @@ const InitialTest = () => {
       console.error('Error al evaluar la respuesta:', error);
     }
   };
-  
 
   const handleRetry = () => {
     setQuestions([]);
@@ -172,8 +169,6 @@ const InitialTest = () => {
     return '#49BA81';
   };
 
-  const currentQuestion = selectedQuestions[currentQuestionIndex];
-
   return (
     <div className="evaluation-background">
       <div className="evaluation-container">
@@ -194,8 +189,8 @@ const InitialTest = () => {
             />
             <button
               className="initial-test-button"
-              onClick={async () => {
-                await evaluateAnswer(userAnswer, currentQuestion, selectedQuestions);
+              onClick={() => {
+                evaluateAnswer(userAnswer, currentQuestion.correctAnswer);
                 setUserAnswer('');
               }}
             >
@@ -229,6 +224,6 @@ const InitialTest = () => {
       </div>
     </div>
   );
-}
+};
 
 export default InitialTest;
