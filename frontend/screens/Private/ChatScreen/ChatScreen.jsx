@@ -92,7 +92,7 @@ const ChatScreen = () => {
                             updatedMessages[updatedMessages.length - 1].text = currentText;
                             return updatedMessages;
                         });
-                    }, index * 50); // Tiempo entre cada letra (50ms por defecto)
+                    }, index * 15); // Tiempo entre cada letra (50ms por defecto)
                 });
             } else {
                 console.error('Error al enviar mensaje:', response.statusText);
@@ -146,7 +146,7 @@ const ChatScreen = () => {
                     }}
                     value={input}
                     onChangeText={setInput}
-                    placeholder={t('Escribe tu mensaje...')}
+                    placeholder={t('Write')}
                     placeholderTextColor="#aaa"
                 />
                 <Ionicons name="send" size={24} color="#ddd" onPress={handleSendMessage} />
@@ -156,3 +156,4 @@ const ChatScreen = () => {
 };
 
 export default ChatScreen;
+
