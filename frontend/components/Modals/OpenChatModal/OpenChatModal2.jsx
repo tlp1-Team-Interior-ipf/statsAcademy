@@ -12,7 +12,7 @@ export const OpenChatModal2 = ({visible, handleCancelModalChat}) => {
                 <View style={StylesModalChat.containerModal}>
                     <View style={StylesModalChat.SubContainerModalChat}>
                         <View style={StylesModalChat.InfoModalChat}>
-                            <Text style={StylesModalChat.TextModalChat}>{t('Chat-Modal')} Funciones</Text>
+                            <Text style={StylesModalChat.TextModalChat}>{t('Chat-Modal')} Población y muestra</Text>
                         </View>
                         <View style={StylesModalChat.ContainerButtonModalChat}>
                             <InitChatClear onClose={handleCancelModalChat} />

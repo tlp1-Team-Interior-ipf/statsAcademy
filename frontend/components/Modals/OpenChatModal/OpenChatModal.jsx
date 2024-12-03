@@ -12,7 +12,7 @@ export const OpenChatModal = ({visible, handleCancelModalChat}) => {
                 <View style={StylesModalChat.containerModal}>
                     <View style={StylesModalChat.SubContainerModalChat}>
                         <View style={StylesModalChat.InfoModalChat}>
-                            <Text style={StylesModalChat.TextModalChat}>{t('Chat-Modal')} Funciones</Text>
+                            <Text style={StylesModalChat.TextModalChat}>{t('Chat-Modal')} Etapas del método estadístico</Text>
                         </View>
                         <View style={StylesModalChat.ContainerButtonModalChat}>
                             <InitClassButton onClose={handleCancelModalChat} />

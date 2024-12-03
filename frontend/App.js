@@ -21,6 +21,7 @@ import OnboardingScreen from './screens/OnboardingScreen';
 import LoginScreen from './screens/Public/LoginScreen';
 import RegisterScreen from './screens/Public/RegisterScreen';
 import RecoveryPasswordScreen from './screens/Private/RecoveryPasswordScreen/RecoveryPassword';
+import UserJourneyScreen from './screens/Private/UserJourneyScreen/UserJourneyScreen';
 import { MaterialIcons, Ionicons, FontAwesome } from 'react-native-vector-icons';
 import { Temas } from './utils/selectTheme';
 
@@ -165,6 +166,18 @@ const ModalStack = () => {
         presentation: 'card',
         headerShown: true,
         title: 'Bad Notes',
+        headerStyle: { backgroundColor: BackgroundTheme },
+        headerTintColor: TextBackgroundTheme
+      }}
+    />
+
+    <Stack.Screen
+      name="UserJourney"
+      component={UserJourneyScreen}
+      options={{
+        presentation: 'card',
+        headerShown: true,
+        title: 'User Journey',
         headerStyle: { backgroundColor: BackgroundTheme },
         headerTintColor: TextBackgroundTheme
       }}

@@ -11,7 +11,7 @@ const iconLibraries = {
     AntDesign: AntDesign
 };
 
-export const ProfileCard = ({nameIcon, textCardProfile, NameLibrariIcon, sizeIcon, sizeText, sizePaddingText, showCounter, onPressEnabled, onPress}) => {
+export const ProfileCard = ({nameIcon, textCardProfile, NameLibrariIcon, sizeIcon, sizeText, sizePaddingText, showCounter, onPressEnabled, onPress, counterValue}) => {
     const { user } = useContext(UserContext);
     const IconComponent = iconLibraries[NameLibrariIcon];
 
@@ -30,7 +30,7 @@ export const ProfileCard = ({nameIcon, textCardProfile, NameLibrariIcon, sizeIco
 
             {showCounter && (
                 <Text style={styleCardProfile.counterText}>
-                    1
+                    {counterValue ?? "00:00:00"}
                 </Text>
             )}
         </View>

@@ -82,7 +82,7 @@ const relations = () => {
     });
 
     // relacion uno a uno entre la tabla de Temas y la tabla de Calificaciones
-    Topic.hasOne(Ratings, {
+    Topic.hasMany(Ratings, {
         foreignKey: 'topicId',
         as: 'ratings',
     });
