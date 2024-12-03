@@ -34,7 +34,7 @@ const HomeScreen = () => {
             paddingTop: 30
           }}>
           
-            <ThematicUnit ThematicUnit={'1 Conceptos básicos de a estadística'} />
+            <ThematicUnit ThematicUnit={'1 Conceptos básicos de estadística'} />
 
             <Topics topicTop={140} topicLeft={100} />
             <Topics2 topicTop={260} topicLeft={150} />
