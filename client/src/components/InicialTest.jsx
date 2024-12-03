@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../hooks/ContextHook';
 import '../styles/InitialTest.css';
 
 const InitialTest = () => {
@@ -11,6 +12,8 @@ const InitialTest = () => {
   const [result, setResult] = useState('');
   const [finalNote, setFinalNote] = useState(null);
   const navigate = useNavigate();
+  const { user } = useAuth();
+  const userId = user.data.id;
 
   useEffect(() => {
     const loadQuestions = async () => {
@@ -129,17 +132,6 @@ const InitialTest = () => {
     const percentage = (score / selectedQuestions.length) * 100;
     const level = calculateLevel(percentage);
     
-    const userData = JSON.parse(localStorage.getItem('userData')); // Asegúrate de que se obtiene el objeto completo
-    console.log('userData:', userData); // Verifica el contenido de userData
-
-    // Verificar la estructura del objeto almacenado
-    const userId = userData?.data?.id; // Obtener el userId dentro de 'data'
-    console.log('userId:', userId); // Verifica que el userId se obtiene correctamente
-
-    if (!userId) {
-      alert('No se encontró el ID del usuario. Por favor, inicia sesión.');
-      return;
-    }
 
     try {
       const response = await fetch('http://localhost:4000/inicial-test', {
