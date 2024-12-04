@@ -42,7 +42,7 @@ const TutorBanner = () => {
       <animated.img
         src="/img/tutorbanner.png" // Cambia esta ruta por la ruta correcta de tu imagen
         alt="Imagen Tutor"
-        className="tutor-image"
+        className="gauss-image"
         style={tutorImageAnimation} // Mantén el estilo de animación
         ref={imageRef}
       />

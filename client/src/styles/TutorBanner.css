@@ -42,7 +42,7 @@ h2 {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-.tutor-image {
+.gauss-image {
     position: absolute;
     left: 60%; /* Posiciona la imagen a la derecha */
     transform: translateX(-50%) translateY(-20%);
