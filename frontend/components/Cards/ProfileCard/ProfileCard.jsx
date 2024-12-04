@@ -2,6 +2,7 @@ import { EvilIcons, MaterialCommunityIcons, FontAwesome5, MaterialIcons, AntDesi
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useContext } from "react";
 import { UserContext } from "../../../context/userContext";
+import { Temas } from "../../../utils/selectTheme";
 
 const iconLibraries = {
     EvilIcons: EvilIcons,
@@ -12,12 +13,13 @@ const iconLibraries = {
 };
 
 export const ProfileCard = ({nameIcon, textCardProfile, NameLibrariIcon, sizeIcon, sizeText, sizePaddingText, showCounter, onPressEnabled, onPress, counterValue}) => {
+    const { ThemeCard, ThemeSubCard } = Temas();
     const { user } = useContext(UserContext);
     const IconComponent = iconLibraries[NameLibrariIcon];
 
     const CardContent = () => (
-        <View style={styleCardProfile.containerCardProfile}>
-            <View style={styleCardProfile.subContainerCardProfile}>
+        <View style={[styleCardProfile.containerCardProfile, { backgroundColor: ThemeCard }]}>
+            <View style={[styleCardProfile.subContainerCardProfile, { backgroundColor: ThemeSubCard }]}>
             {IconComponent ? (
                     <IconComponent name={nameIcon} size={sizeIcon} color={'#ddd'} />
                 ) : (
@@ -51,7 +53,7 @@ const styleCardProfile = StyleSheet.create({
     containerCardProfile: {
         height: 150, 
         width: 130, 
-        backgroundColor: '#3333ff50',
+        // backgroundColor: '#3333ff50',
         borderRadius: 5,
         padding: 10,
         alignItems: 'center'
@@ -60,7 +62,7 @@ const styleCardProfile = StyleSheet.create({
     subContainerCardProfile: {
         height: 55, 
         width: 120, 
-        backgroundColor: '#4d55b3',
+        // backgroundColor: '#4d55b3',
         borderRadius: 5,
         padding: 10,
         alignItems: 'center',

@@ -2,13 +2,13 @@ import { StyleSheet, Text, View } from "react-native"
 import { useTranslation } from "react-i18next"
 import { Temas } from "../../utils/selectTheme";
 
-export const ThematicUnit = ({ThematicUnit}) => {
+export const ThematicUnit1 = ({ThematicUnit}) => {
     const { t } = useTranslation();
-    const { contentUnitsTheme, ButtonShadowChatTheme } = Temas();
+    const { ButtonShadowChatTheme, contentUnitsTheme1 } = Temas();
 
     return(
         <View style={[ThematicUniStyles.shadowContainer, { backgroundColor: ButtonShadowChatTheme }]}>
-            <View style={[ThematicUniStyles.containerThematic, { backgroundColor: contentUnitsTheme }]}>
+            <View style={[ThematicUniStyles.containerThematic, { backgroundColor: contentUnitsTheme1 }]}>
                 <Text style={ThematicUniStyles.contentThematic}>
                     {t('Thematic-Unit')} - {ThematicUnit}
                 </Text>

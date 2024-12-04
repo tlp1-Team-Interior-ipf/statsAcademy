@@ -1,7 +1,7 @@
-import { Ionicons } from "@expo/vector-icons";
+import { AntDesign, EvilIcons, FontAwesome5, Ionicons, MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useState, useEffect, useContext, useRef } from "react";
-import { Image, Text, View, ScrollView, TouchableWithoutFeedback, Alert } from "react-native"
+import { Image, Text, View, ScrollView, TouchableWithoutFeedback, Alert, Pressable } from "react-native"
 import IdleTimerManager from "react-native-idle-timer";
 import { UserContext } from "../../../context/userContext";
 import { ProfileCard } from "../../../components/Cards/ProfileCard/ProfileCard";
@@ -10,6 +10,7 @@ import { Temas } from "../../../utils/selectTheme";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import useIdleTimer from "../../../utils/useIdletTimer";
 import useCompletedTopics from "../../../hooks/TopicsCompleteds/useTopicsCompleted";
+import MyCircleProgress2 from "../../../components/Progress/CircleProgress/CircleProgress2";
 
 const ReportsScreen = () => {
   const {t} = useTranslation();
@@ -24,7 +25,7 @@ const ReportsScreen = () => {
   });
 
   
-  const { BackgroundTheme } = Temas();
+  const { BackgroundTheme, profileBorderTheme, TextBackgroundTheme } = Temas();
   
   const navigation = useNavigation();
   
@@ -63,32 +64,87 @@ const ReportsScreen = () => {
     <>
       <TouchableWithoutFeedback onPress={resetIdleTimer}>
         <View style={{height: '100%', backgroundColor: BackgroundTheme, alignItems: 'center'}}>
-          
-          <View style={{ marginTop: 25, alignItems: 'center' }}>
-            <View style={{width: 100, height: 100, borderWidth: 1, borderColor: '#fff', borderRadius: 50, margin: 10, alignItems: 'center', justifyContent: 'center'}}>
-                {user.profileImage ? (
-                    <Image source={{uri: user.profileImage}} style={{width: 100, height: 100, borderWidth: 1, borderColor: '#ddd', borderRadius: 50}} />
-                ): <Ionicons name="person" size={60} color={'#ddd'} />}
-            </View>
-
-            <Text style={{ color: '#fff', paddingVertical: 5, fontSize: 20, fontWeight: 'bold' }}>
-              {user.name ? `${user.name}` : `${user.username}`}
-            </Text>
-
-            <ScrollView style={{top: 20}}>
-              <View style={{ flexDirection: 'row', gap: 20, marginVertical: 10 }}>
-                <ProfileCard NameLibrariIcon={'EvilIcons'} nameIcon={'check'} sizeIcon={40} textCardProfile={t('Profile-card-1')} sizeText={22} showCounter={true} counterValue={completedTopics.toString()} onPressEnabled={false} onPress={() => navigation.navigate('userProfile')}/>
-                <ProfileCard NameLibrariIcon={'MaterialCommunityIcons'} nameIcon={'timer-sand-complete'} sizeIcon={30} textCardProfile={t('Profile-card-2')} sizeText={22} showCounter={true} counterValue={formatTime(elapsedTime)} onPressEnabled={false} onPress={() => navigation.navigate('userProfile')}/>
+          <View style={{backgroundColor: '#3366ff50' }}>
+            <View style={{ marginTop: 55, alignItems: 'center' }}>
+              <View style={{width: 150, height: 150, borderWidth: 1, borderColor: '#fff', borderRadius: 150, margin: 10, alignItems: 'center', justifyContent: 'center'}}>
+                  {user.profileImage ? (
+                      <Image source={{uri: user.profileImage}} style={{width: 100, height: 100, borderWidth: 1, borderColor: '#ddd', borderRadius: 50}} />
+                  ): <Ionicons name="person" size={60} color={'#fff'} />}
               </View>
 
-              <View style={{ flexDirection: 'row', gap: 20, marginVertical: 10 }}>
-                <ProfileCard NameLibrariIcon={'FontAwesome5'} nameIcon={'medal'} sizeIcon={30} textCardProfile={t('Profile-card-3')} sizeText={25} sizePaddingText={10} showCounter={false} onPressEnabled={false} onPress={() => navigation.navigate('userProfile')}/>
-                <ProfileCard NameLibrariIcon={'MaterialCommunityIcons'} nameIcon={'notebook-check'} sizeIcon={30} textCardProfile={t('Profile-card-4')} sizeText={23} sizePaddingText={10} showCounter={false} onPressEnabled={true} onPress={() => navigation.navigate('TopNotes')}/>
-              </View>
+              <Text style={{ color: '#fff', paddingVertical: 5, fontSize: 20, fontWeight: 'bold' }}>
+                {user.name ? `${user.name}` : `${user.username}`}
+              </Text>
+          </View>
 
-              <View style={{ flexDirection: 'row', gap: 20, marginVertical: 10 }}>
-                <ProfileCard NameLibrariIcon={'MaterialIcons'} nameIcon={'timeline'} sizeIcon={40} textCardProfile={t('Profile-card-5')} sizeText={22} sizePaddingText={10} showCounter={false}  onPressEnabled={true} onPress={() => navigation.navigate('UserJourney')}/>
-                <ProfileCard NameLibrariIcon={'MaterialCommunityIcons'} nameIcon={'notebook-minus'} sizeIcon={30} textCardProfile={t('Profile-card-6')} sizeText={23} sizePaddingText={10} showCounter={false} onPressEnabled={true} onPress={() => navigation.navigate('BadNotes')}/>
+            <ScrollView style={{top: 18, width: 360}}>
+              <View>
+                <Text style={{color: "#fff", fontSize: 25, fontWeight: 'bold', margin: 10}}>Reportes</Text>
+
+                {/* <View style={{flexDirection: 'row', height: 60, backgroundColor: '#fff', alignItems: 'center'}}>
+                  <View style={{flexDirection: 'row', alignItems: 'center', left: 10, gap: 0}}>
+                    <EvilIcons name="check" size={45} color={"#36f"} />
+                    <Text style={{fontSize: 20}}>{t('Profile-card-1')}</Text>
+                  </View>
+                  <Text style={{fontSize: 25, left: 140}}>{completedTopics.toString()}</Text>
+                </View>
+
+                <View style={{flexDirection: 'row', height: 60, backgroundColor: '#fff', alignItems: 'center'}}>
+                  <View style={{flexDirection: 'row', alignItems: 'center', left: 10, gap: 5}}>
+                    <MaterialCommunityIcons name="timer-sand-complete" size={40} color={"#36f"} />
+                    <Text style={{fontSize: 20}}>{t('Profile-card-2')}</Text>
+                  </View>
+                  <Text style={{fontSize: 22, left: 72}}>{formatTime(elapsedTime)}</Text>
+                </View> */}
+              
+                <View style={{flexDirection: 'column', height: 150, backgroundColor: '#ffffff50', alignItems: 'center', paddingLeft: 20, margin: 10, borderRadius: 20, }}>
+                  <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <View style={{top:60, left: -25}}>
+                      <MyCircleProgress2 porcentaje={completedTopics} heightCircle={100} widthCircle={100} />
+                    </View>
+                    <Text style={{fontSize: 52, left: 5, color: '#fff', top: 10}}>{formatTime(elapsedTime)}</Text>
+                  </View>
+
+                  <View style={{flexDirection: 'row', alignItems: 'center', gap: 20, top: 10}}>
+                    <Text style={{fontSize: 25, left: -8, color: '#fff'}}>Progress</Text>
+                    <Text style={{fontSize: 25, left: 0, color: '#fff'}}>Time in application</Text>
+                  </View>
+                </View>
+                <View>
+
+                  <Pressable onPress={() => navigation.navigate('Achievements')} style={{flexDirection: 'row', height: 60, backgroundColor: '#fff', alignItems: 'center', borderTopLeftRadius: 10, borderTopRightRadius: 10}}>
+                    <View style={{flexDirection: 'row', alignItems: 'center', left: 10, gap: 10}}>
+                      <FontAwesome5 name="medal" size={35} color={"#36f"} />
+                      <Text style={{fontSize: 20}}>{t('Profile-card-3')}</Text>
+                    </View>
+                    <AntDesign name="right" size={22} color={"#000"} style={{left: 160}} />
+                  </Pressable>
+
+                  <Pressable onPress={() => navigation.navigate('TopNotes')} style={{flexDirection: 'row', gap: 20, height: 60, backgroundColor: '#fff', alignItems: 'center'}}>
+                    <View style={{flexDirection: 'row', alignItems: 'center', left: 10, gap: 10}}>
+                      <MaterialCommunityIcons name="notebook-check" size={35} color={"#36f"} />
+                      <Text style={{fontSize: 20}}>{t('Profile-card-4')}</Text>
+                    </View>
+                    <AntDesign name="right" size={22} color={"#000"} style={{left: 166}} />
+                  </Pressable>
+
+                  <Pressable onPress={() => navigation.navigate('BadNotes')} style={{flexDirection: 'row', gap: 20, height: 60, backgroundColor: '#fff', alignItems: 'center'}}>
+                    <View style={{flexDirection: 'row', alignItems: 'center', left: 10, gap: 10}}>
+                      <MaterialCommunityIcons name="notebook-minus" size={35} color={"#36f"} />
+                      <Text style={{fontSize: 20}}>{t('Profile-card-6')}</Text>
+                    </View>
+                    <AntDesign name="right" size={22} color={"#000"} style={{left: 156}} />
+                  </Pressable>
+
+                  <Pressable onPress={() => navigation.navigate('UserJourney')} style={{flexDirection: 'row', gap: 20, height: 60, backgroundColor: '#fff', alignItems: 'center'}}>
+                    <View style={{flexDirection: 'row', alignItems: 'center', left: 10, gap: 10}}>
+                      <MaterialIcons name="timeline" size={40} color={"#36f"} />
+                      <Text style={{fontSize: 20}}>{t('Profile-card-5')}</Text>
+                    </View>
+                    <AntDesign name="right" size={22} color={"#000"} style={{left: 148}} />
+                  </Pressable>
+
+                </View>
               </View>
             </ScrollView>
           </View>

@@ -1,15 +1,16 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { OpenChatModal } from "../Modals/OpenChatModal/OpenChatModal";
+// import { OpenChatModal } from "../Modals/OpenChatModal/OpenChatModal";
+import { OpenChatModal2 } from "../Modals/OpenChatModal/OpenChatModal2";
 import { useState } from "react";
 import { Entypo } from 'react-native-vector-icons'
 import { Temas } from "../../utils/selectTheme";
 
-export const Topics = ({ topicTop, topicLeft }) => {
-  const { buttonChatTheme, ButtonShadowChatTheme } = Temas();
+export const Topics3 = ({ topicTop, topicLeft }) => {
+  const { buttonChatTheme, ButtonShadowChatTheme, ButtonChatTheme2 } = Temas();
   const [showChatModal, setShowChatModal] = useState(false);
 
   const handleChatModal = () => {
-    console.log("chat");
+    console.log("chat2");
     setShowChatModal(true);
   };
 
@@ -27,7 +28,7 @@ export const Topics = ({ topicTop, topicLeft }) => {
           pressed && TopicsStyle.PressedStyle, // Estilo adicional cuando está presionado
         ]}
       >
-        <View style={[TopicsStyle.ButtonTopic, { backgroundColor: buttonChatTheme }]}>
+        <View style={[TopicsStyle.ButtonTopic, { backgroundColor: ButtonChatTheme2 }]}>
           <View style={TopicsStyle.TopicsContent}>
             <View style={TopicsStyle.buttonEffect}>
                 <Entypo name="controller-play" size={45} color={'#ddd'} style={{position: 'absolute', left: 15, top: 12}} />
@@ -36,7 +37,7 @@ export const Topics = ({ topicTop, topicLeft }) => {
           </View>
         </View>
       </Pressable>
-      <OpenChatModal
+      <OpenChatModal2
         visible={showChatModal}
         handleCancelModalChat={closeChatModal}
       />

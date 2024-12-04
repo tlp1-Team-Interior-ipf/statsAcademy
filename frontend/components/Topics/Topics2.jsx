@@ -3,8 +3,10 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import { OpenChatModal2 } from "../Modals/OpenChatModal/OpenChatModal2";
 import { useState } from "react";
 import { Entypo } from 'react-native-vector-icons'
+import { Temas } from "../../utils/selectTheme";
 
 export const Topics2 = ({ topicTop, topicLeft }) => {
+  const { ButtonChatTheme1, ButtonShadowChatTheme } = Temas();
   const [showChatModal, setShowChatModal] = useState(false);
 
   const handleChatModal = () => {
@@ -21,12 +23,12 @@ export const Topics2 = ({ topicTop, topicLeft }) => {
       <Pressable
         onPress={handleChatModal}
         style={({ pressed }) => [
-          TopicsStyle.TopicsContainer,
+          [TopicsStyle.TopicsContainer, { backgroundColor: ButtonShadowChatTheme }],
           { top: topicTop, left: topicLeft },
           pressed && TopicsStyle.PressedStyle, // Estilo adicional cuando está presionado
         ]}
       >
-        <View style={TopicsStyle.ButtonTopic}>
+        <View style={[TopicsStyle.ButtonTopic, { backgroundColor: ButtonChatTheme1 }]}>
           <View style={TopicsStyle.TopicsContent}>
             <View style={TopicsStyle.buttonEffect}>
                 <Entypo name="controller-play" size={45} color={'#ddd'} style={{position: 'absolute', left: 15, top: 12}} />
@@ -51,7 +53,7 @@ const TopicsStyle = StyleSheet.create({
       borderBottomWidth: 0,
       borderRadius: 20,
       borderColor: "#ddd",
-      backgroundColor: "#ffffff40",
+      // backgroundColor: "#ffffff40",
       justifyContent: "center",
       position: "absolute",
       width: 88,
@@ -74,7 +76,7 @@ const TopicsStyle = StyleSheet.create({
   
     ButtonTopic: {
       justifyContent: "center",
-      backgroundColor: "#3366ff50",
+      // backgroundColor: "#3366ff50",
       borderRadius: 15,
       height: 75,
       width: 80,

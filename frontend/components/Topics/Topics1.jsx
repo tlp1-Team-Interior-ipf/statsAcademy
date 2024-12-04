@@ -1,15 +1,15 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { OpenChatModal } from "../Modals/OpenChatModal/OpenChatModal";
+import { OpenChatModal2 } from "../Modals/OpenChatModal/OpenChatModal2";
 import { useState } from "react";
 import { Entypo } from 'react-native-vector-icons'
 import { Temas } from "../../utils/selectTheme";
 
-export const Topics = ({ topicTop, topicLeft }) => {
+export const Topics1 = ({ topicTop, topicLeft }) => {
   const { buttonChatTheme, ButtonShadowChatTheme } = Temas();
   const [showChatModal, setShowChatModal] = useState(false);
 
   const handleChatModal = () => {
-    console.log("chat");
+    console.log("chat2");
     setShowChatModal(true);
   };
 
@@ -36,7 +36,7 @@ export const Topics = ({ topicTop, topicLeft }) => {
           </View>
         </View>
       </Pressable>
-      <OpenChatModal
+      <OpenChatModal2
         visible={showChatModal}
         handleCancelModalChat={closeChatModal}
       />

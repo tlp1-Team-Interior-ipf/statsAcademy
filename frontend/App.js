@@ -22,6 +22,7 @@ import LoginScreen from './screens/Public/LoginScreen';
 import RegisterScreen from './screens/Public/RegisterScreen';
 import RecoveryPasswordScreen from './screens/Private/RecoveryPasswordScreen/RecoveryPassword';
 import UserJourneyScreen from './screens/Private/UserJourneyScreen/UserJourneyScreen';
+import AchievementsScreen from './screens/Private/AchievementsScreen/AchievementsScreen';
 import { MaterialIcons, Ionicons, FontAwesome } from 'react-native-vector-icons';
 import { Temas } from './utils/selectTheme';
 
@@ -29,7 +30,7 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const MyTabs = () => {
-  const { BackgroundTheme, TextBackgroundTheme } = Temas();
+  const { BackgroundTheme, TextBackgroundTheme, IconstTabTheme, TabTheme } = Temas();
 
   return (
     <Tab.Navigator
@@ -37,27 +38,53 @@ const MyTabs = () => {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
 
+        //   if (route.name === 'Home') {
+        //     iconName = focused ? 'home' : 'home-outline';
+        //     return <Ionicons name={iconName} size={30} color={IconstTabTheme} />;
+        //   } else if (route.name === 'Calendar') {
+        //     iconName = focused ? 'calendar' : 'calendar';
+        //     return <FontAwesome name={iconName} size={28} color={IconstTabTheme} />;
+        //   } else if (route.name === 'Kanban') {
+        //     iconName = focused ? 'view-kanban' : 'view-kanban';
+        //     return <MaterialIcons name={iconName} size={30} color={IconstTabTheme} />;
+        //   } else if (route.name === 'Reports') {
+        //     iconName = focused ? 'stats-chart' : 'stats-chart';
+        //     return <Ionicons name={iconName} size={30} color={IconstTabTheme} />;
+        //   } else if (route.name === 'QuizGame') {
+        //     iconName = focused ? 'games' : 'games';
+        //     return <MaterialIcons name={iconName} size={30} color={IconstTabTheme} />;
+        //   }
+
+        // },
+
+        const isReports = route.name === 'Reports';
+        // Cambia el color de todos los íconos a azul si estás en "Reports"
+        const iconColor = isReports ? '#0000FF' : IconstTabTheme;
+
           if (route.name === 'Home') {
             iconName = focused ? 'home' : 'home-outline';
-            return <Ionicons name={iconName} size={30} color={color} />;
+            return <Ionicons name={iconName} size={30} color={iconColor} />;
           } else if (route.name === 'Calendar') {
             iconName = focused ? 'calendar' : 'calendar';
-            return <FontAwesome name={iconName} size={28} color={color} />;
+            return <FontAwesome name={iconName} size={28} color={iconColor} />;
           } else if (route.name === 'Kanban') {
             iconName = focused ? 'view-kanban' : 'view-kanban';
-            return <MaterialIcons name={iconName} size={30} color={color} />;
+            return <MaterialIcons name={iconName} size={30} color={iconColor} />;
           } else if (route.name === 'Reports') {
             iconName = focused ? 'stats-chart' : 'stats-chart';
-            return <Ionicons name={iconName} size={30} color={color} />;
+            return <Ionicons name={iconName} size={30} color={iconColor} />;
           } else if (route.name === 'QuizGame') {
             iconName = focused ? 'games' : 'games';
-            return <MaterialIcons name={iconName} size={30} color={color} />;
+            return <MaterialIcons name={iconName} size={30} color={iconColor} />;
           }
-
         },
-        tabBarActiveTintColor: '#fff',
-        tabBarInactiveTintColor: '#99f',
-        tabBarStyle: {backgroundColor: BackgroundTheme }
+        // tabBarActiveTintColor: '#fff',
+        // tabBarInactiveTintColor: IconstTabTheme,
+        tabBarActiveTintColor: '#0000FF', // Texto azul en la pestaña activa cuando estás en Reports
+        tabBarInactiveTintColor: route.name === 'Reports' ? '#0000FF' : IconstTabTheme, 
+        tabBarStyle: {
+          backgroundColor: route.name === 'Reports' ? '#fff' : TabTheme, // Blanco para "Reports", tema predeterminado para otras
+        },
       })}
       >
       <Tab.Screen name="Home" component={HomeScreen} options={{headerShown: false, headerStyle: { backgroundColor: BackgroundTheme },
@@ -178,6 +205,18 @@ const ModalStack = () => {
         presentation: 'card',
         headerShown: true,
         title: 'User Journey',
+        headerStyle: { backgroundColor: BackgroundTheme },
+        headerTintColor: TextBackgroundTheme
+      }}
+    />
+
+    <Stack.Screen
+      name="Achievements"
+      component={AchievementsScreen}
+      options={{
+        presentation: 'card',
+        headerShown: true,
+        title: 'Achievements',
         headerStyle: { backgroundColor: BackgroundTheme },
         headerTintColor: TextBackgroundTheme
       }}

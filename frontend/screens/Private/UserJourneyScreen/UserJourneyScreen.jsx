@@ -5,7 +5,7 @@ import { Temas } from "../../../utils/selectTheme";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const UserJourneyScreen = () => {
-  const { BackgroundTheme } = Temas();
+  const { BackgroundTheme, TextBackgroundTheme } = Temas();
   const [percentage, setPercentage] = useState(0); // Estado para el porcentaje
   const fetchInterval = 5000; // Intervalo de actualización (5 segundos)
 
@@ -81,7 +81,7 @@ const UserJourneyScreen = () => {
   return (
     <ScrollView>
       <View style={[styles.container, { backgroundColor: BackgroundTheme }]}>
-        <Text style={styles.percentageText}>Has completado un {percentage.toFixed(2)}% de todos los temas</Text>
+        <Text style={[styles.percentageText, {color: TextBackgroundTheme}]}>Has completado un {percentage.toFixed(2)}% de todos los temas</Text>
         <View style={{right: 20}}>
             <Svg height={2000} width={lineLength * 3}>
             {/* Líneas grises */}
@@ -140,7 +140,6 @@ const styles = StyleSheet.create({
   },
   percentageText: {
     fontSize: 30,
-    color: "#da0",
     marginTop: -20,
     textAlign: "center",
     paddingBottom: 20,

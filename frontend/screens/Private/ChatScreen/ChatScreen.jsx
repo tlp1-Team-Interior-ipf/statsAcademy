@@ -126,13 +126,13 @@ const ChatScreen = () => {
                             maxWidth: '80%',
                         }}
                     >
-                        <Text style={{ color: '#ddd' }}>{message.text}</Text>
+                        <Text style={{ color: '#eee' }}>{message.text}</Text>
                     </View>
                 ))}
 
                 </View>
             </ScrollView>
-            <View style={{ flexDirection: 'row', alignItems: 'center', padding: 10 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', padding: 10, gap: 7 }}>
                 <TextInput
                     style={{
                         flex: 1,

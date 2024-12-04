@@ -1,7 +1,7 @@
 import { StyleSheet, View , Text} from "react-native"
 import Svg, { Circle } from 'react-native-svg'
 
-const MyCircleProgress = ({correct, total}) => {
+const MyCircleProgress = ({correct, total, heightCircle, widthCircle}) => {
 
     const radius = 45; // Radio del círculo
     const strokeWidth = 10; // Ancho del borde
@@ -12,7 +12,7 @@ const MyCircleProgress = ({correct, total}) => {
     
     return (
         <>
-            <View style={stylesCircle.containerCircle}>
+            <View style={[stylesCircle.containerCircle, { height: heightCircle, width: widthCircle}]}>
 
                 <Svg height={100} width={100}>
 
@@ -20,7 +20,7 @@ const MyCircleProgress = ({correct, total}) => {
                         cx={50}
                         cy={50}
                         r={radius}
-                        stroke={'#999'}
+                        stroke={'#ffffff80'}
                         strokeWidth={strokeWidth}
                         fill='none'
                     />
@@ -34,7 +34,7 @@ const MyCircleProgress = ({correct, total}) => {
                         fill={'none'}
                         strokeDasharray={`${progress}, ${circumference}`}
                         strokeLinecap="round"
-                        rotation={75}
+                        rotation={245}
                         origin={'50, 50'}
                     />
 
@@ -51,8 +51,8 @@ const MyCircleProgress = ({correct, total}) => {
 const stylesCircle = StyleSheet.create({
 
     containerCircle: {
-        width: 100,
-        height: 100,
+        // width: 100,
+        // height: 100,
         zIndex: 1,
         top: -50,
         justifyContent: 'center',
@@ -63,7 +63,7 @@ const stylesCircle = StyleSheet.create({
         width: 100,
         height: 100,
         borderRadius: 50,
-        backgroundColor: "#99999950", // Fondo gris
+        backgroundColor: "red", // Fondo gris
         left: 30,
         top: 30
     },
@@ -79,7 +79,7 @@ const stylesCircle = StyleSheet.create({
     textBarProgress: {
         position: 'absolute', 
         fontSize: 25, 
-        color: '#ddd'
+        color: '#fff'
     }
 })
 

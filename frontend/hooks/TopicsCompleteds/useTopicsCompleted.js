@@ -1,37 +1,3 @@
-// import { useState, useEffect } from "react";
-
-// const useCompletedTopics = (userId) => {
-//   const [completedTopics, setCompletedTopics] = useState(0);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(null);
-
-//   useEffect(() => {
-//     if (!userId) return; // No hacemos nada si no hay un userId
-
-//     const fetchCompletedTopics = async () => {
-//       try {
-//         setLoading(true); // Inicia el estado de carga
-//         const response = await fetch(`${process.env.EXPO_PUBLIC_HOST}/topic/completed/${userId}`);
-//         if (!response.ok) {
-//           throw new Error(`HTTP error! status: ${response.status}`);
-//         }
-//         const data = await response.json();
-//         setCompletedTopics(data.completedCount || 0);
-//       } catch (error) {
-//         setError(error.message);
-//       } finally {
-//         setLoading(false); // Finaliza el estado de carga
-//       }
-//     };
-
-//     fetchCompletedTopics();
-//   }, [userId]);
-
-//   return { completedTopics, loading, error };
-// };
-
-// export default useCompletedTopics;
-
 import { useState, useEffect } from "react";
 
 const useCompletedTopics = (userId) => {
