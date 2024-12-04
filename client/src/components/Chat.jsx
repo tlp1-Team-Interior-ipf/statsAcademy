@@ -68,7 +68,7 @@ const Chat = () => {
 
     return (
         <div className="main-container">
-            <div className="sidebar">
+            <div className="side-container">
                 <div className="topic-container">
                     <p>Unidad actual: Unidad 1</p>
                     <h3>Conceptos básicos de la Estadística</h3>
