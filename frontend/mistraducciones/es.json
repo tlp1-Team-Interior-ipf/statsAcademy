@@ -11,6 +11,12 @@
     "Configuration": "Configuración",
     "Library": "Libreria",
     "Thematic-Unit": "Unidad temática",
+    "Settings": "Configuración",
+    "Achievements": "Logros",
+    "UserJourney": "Recorrido del usuario",
+    "Reports": "Reportes",
+
+    "Share": "Invitar amigos",
     
     "Button-Cancel": "Cancelar",
     "Button-Init-Class": "Iniciar clase",
@@ -111,10 +117,8 @@
     "Drawer-row-1": "Panel de control",
     "Drawer-row-2": "Mi cuenta",
     "Drawer-row-3": "Notificaciones",
-    "Drawer-row-4": "Configuración",
     "Drawer-row-5": "idioma",
     "Drawer-row-6": "Ayuda",
-    "Drawer-row-7": "Invitar amigos",
     "Drawer-row-8": "Cerrar sesión",
 
     "Footer-title": "Todos los derechos recervados © 2024",
@@ -169,9 +173,36 @@
     "Help-row-answer-6": "Sí, puedes reiniciar el curso desde la página de inicio.",
     "Help-row-answer-7": "Gauss es una herramienta de análisis de datos integrada en la aplicación.",
 
+    "JourneyMapText-1": "Has completado un",
+    "JourneyMapText-2": "de todos los temas",
+
+    "Progress": "Progreso",
+    "TimeInApplication": "Tiempo dedicado",
+
+    "TextAchievements": "Desbloquea logros a medida que progresas",
+
+    "Achievement-1": "Primeros pasos",
+    "Achievement-2": "Constancia",
+    "Achievement-3": "Superación",
+    "Achievement-4": "Explorador",
+    "Achievement-5": "Maestro",
+    "Achievement-6": "Comprometido",
+    "Achievement-7": "100% Completado",
+    "Achievement-8": "Perfeccionista",
+
+    "DescAchievement-1": "Completa tu primera lección",
+    "DescAchievement-2": "Ingresa a la app por 5 días seguidos",
+    "DescAchievement-3": "Mejora una calificación",
+    "DescAchievement-4": "Estudia 5 temas diferentes",
+    "DescAchievement-5": "Obtén el puntaje máximo en un cuestionario",
+    "DescAchievement-6": "Estudiar durante 30 minutos",
+    "DescAchievement-7": "Terminar todos los modulos disponibles",
+    "DescAchievement-8": "Obtener más de 90 puntos en cada tema",
+
     "Config-title": "Cambia los ajustes a tu preferencia",
     "Config-subtitle-1": "Tema",
     "Config-subtitle-2": "Idioma",
+    "Config-subtitle-3": "Otros",
     "Config-row-1": "Oscuro",
     "Config-row-2": "Claro",
     "Config-row-3": "Inglés",

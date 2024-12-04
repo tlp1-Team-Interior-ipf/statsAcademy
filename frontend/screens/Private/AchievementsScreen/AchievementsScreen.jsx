@@ -2,28 +2,30 @@ import React, { useState } from "react";
 import { ScrollView, Text, View, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Temas } from "../../../utils/selectTheme";
+import { useTranslation } from "react-i18next";
 
 const AchievementsScreen = () => {
-  // Lista de logros
+  const { t } = useTranslation();
+  
   const [achievements, setAchievements] = useState([
-    { id: 1, title: "Primeros pasos", description: "Completa tu primera lección", unlocked: true },
-    { id: 2, title: "Constancia", description: "Ingresa a la app por 5 días seguidos", unlocked: false },
-    { id: 3, title: "Superación", description: "Mejora una calificación", unlocked: true },
-    { id: 4, title: "Explorador", description: "Estudia 5 temas diferentes", unlocked: false },
-    { id: 5, title: "Maestro", description: "Obtén el puntaje máximo en un cuestionario", unlocked: true },
-    { id: 6, title: "Comprometido", description: "Estudiar durante 30 minutos", unlocked: true },
-    { id: 7, title: "100% Completado", description: "Terminar todos los modulos disponibles", unlocked: false },
-    { id: 8, title: "Perfeccionista", description: "Obtener más de 90 puntos en cada tema", unlocked: false },
+    { id: 1, title: t('Achievement-1'), description: t('DescAchievement-1'), unlocked: true },
+    { id: 2, title: t('Achievement-2'), description: t('DescAchievement-2'), unlocked: false },
+    { id: 3, title: t('Achievement-3'), description: t('DescAchievement-3'), unlocked: true },
+    { id: 4, title: t('Achievement-4'), description: t('DescAchievement-4'), unlocked: false },
+    { id: 5, title: t('Achievement-5'), description: t('DescAchievement-5'), unlocked: true },
+    { id: 6, title: t('Achievement-6'), description: t('DescAchievement-6'), unlocked: true },
+    { id: 7, title: t('Achievement-7'), description: t('DescAchievement-7'), unlocked: false },
+    { id: 8, title: t('Achievement-8'), description: t('DescAchievement-8'), unlocked: false },
   ]);
 
-  const { BackgroundTheme, TextBackgroundTheme } = Temas();
+  const { BackgroundTheme, TextBackgroundTheme, TextAndLineTheme } = Temas();
 
   return (
     <View style={{ flex: 1, backgroundColor: BackgroundTheme, padding: 20 }}>
       {/* Título */}
       <View style={{ marginBottom: 20, alignItems: "center" }}>
-        <Text style={{ fontSize: 24, fontWeight: "bold", color: TextBackgroundTheme }}>Logros</Text>
-        <Text style={{ fontSize: 16, color: TextBackgroundTheme }}>Desbloquea logros a medida que progresas</Text>
+        {/* <Text style={{ fontSize: 24, fontWeight: "bold", color: TextBackgroundTheme }}>Logros</Text> */}
+        <Text style={{ fontSize: 20, color: TextAndLineTheme, textAlign: 'center' }}>{t('TextAchievements')}</Text>
       </View>
 
       <ScrollView contentContainerStyle={{ paddingBottom: 20 }}>

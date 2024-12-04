@@ -3,9 +3,11 @@ import { StyleSheet, View, Text, ScrollView } from "react-native";
 import Svg, { Circle, Line } from "react-native-svg";
 import { Temas } from "../../../utils/selectTheme";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useTranslation } from "react-i18next";
 
 const UserJourneyScreen = () => {
-  const { BackgroundTheme, TextBackgroundTheme } = Temas();
+  const { t } = useTranslation();
+  const { BackgroundTheme, TextBackgroundTheme, TextAndLineTheme } = Temas();
   const [percentage, setPercentage] = useState(0); // Estado para el porcentaje
   const fetchInterval = 5000; // Intervalo de actualización (5 segundos)
 
@@ -81,7 +83,7 @@ const UserJourneyScreen = () => {
   return (
     <ScrollView>
       <View style={[styles.container, { backgroundColor: BackgroundTheme }]}>
-        <Text style={[styles.percentageText, {color: TextBackgroundTheme}]}>Has completado un {percentage.toFixed(2)}% de todos los temas</Text>
+        <Text style={[styles.percentageText, {color: TextAndLineTheme}]}>{t('JourneyMapText-1')} {percentage.toFixed(2)}% {t('JourneyMapText-2')}</Text>
         <View style={{right: 20}}>
             <Svg height={2000} width={lineLength * 3}>
             {/* Líneas grises */}
@@ -143,7 +145,8 @@ const styles = StyleSheet.create({
     marginTop: -20,
     textAlign: "center",
     paddingBottom: 20,
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
+    fontWeight: 'bold'
   },
 });
 

@@ -79,7 +79,7 @@ const ReportsScreen = () => {
 
             <ScrollView style={{top: 18, width: 360}}>
               <View>
-                <Text style={{color: "#fff", fontSize: 25, fontWeight: 'bold', margin: 10}}>Reportes</Text>
+                <Text style={{color: "#fff", fontSize: 25, fontWeight: 'bold', margin: 10}}>{t('Reports')}</Text>
 
                 {/* <View style={{flexDirection: 'row', height: 60, backgroundColor: '#fff', alignItems: 'center'}}>
                   <View style={{flexDirection: 'row', alignItems: 'center', left: 10, gap: 0}}>
@@ -106,8 +106,8 @@ const ReportsScreen = () => {
                   </View>
 
                   <View style={{flexDirection: 'row', alignItems: 'center', gap: 20, top: 10}}>
-                    <Text style={{fontSize: 25, left: -8, color: '#fff'}}>Progress</Text>
-                    <Text style={{fontSize: 25, left: 0, color: '#fff'}}>Time in application</Text>
+                    <Text style={{fontSize: 25, left: -8, color: '#fff'}}>{t('Progress')}</Text>
+                    <Text style={{fontSize: 25, left: 0, color: '#fff'}}>{t('TimeInApplication')}</Text>
                   </View>
                 </View>
                 <View>
@@ -117,7 +117,7 @@ const ReportsScreen = () => {
                       <FontAwesome5 name="medal" size={35} color={"#36f"} />
                       <Text style={{fontSize: 20}}>{t('Profile-card-3')}</Text>
                     </View>
-                    <AntDesign name="right" size={22} color={"#000"} style={{left: 160}} />
+                    <AntDesign name="right" size={22} color={"#000"} style={{left: 317, position: 'absolute'}} />
                   </Pressable>
 
                   <Pressable onPress={() => navigation.navigate('TopNotes')} style={{flexDirection: 'row', gap: 20, height: 60, backgroundColor: '#fff', alignItems: 'center'}}>
@@ -125,7 +125,7 @@ const ReportsScreen = () => {
                       <MaterialCommunityIcons name="notebook-check" size={35} color={"#36f"} />
                       <Text style={{fontSize: 20}}>{t('Profile-card-4')}</Text>
                     </View>
-                    <AntDesign name="right" size={22} color={"#000"} style={{left: 166}} />
+                    <AntDesign name="right" size={22} color={"#000"} style={{left: 316, position: 'absolute'}} />
                   </Pressable>
 
                   <Pressable onPress={() => navigation.navigate('BadNotes')} style={{flexDirection: 'row', gap: 20, height: 60, backgroundColor: '#fff', alignItems: 'center'}}>
@@ -133,7 +133,7 @@ const ReportsScreen = () => {
                       <MaterialCommunityIcons name="notebook-minus" size={35} color={"#36f"} />
                       <Text style={{fontSize: 20}}>{t('Profile-card-6')}</Text>
                     </View>
-                    <AntDesign name="right" size={22} color={"#000"} style={{left: 156}} />
+                    <AntDesign name="right" size={22} color={"#000"} style={{left: 315, position: 'absolute'}} />
                   </Pressable>
 
                   <Pressable onPress={() => navigation.navigate('UserJourney')} style={{flexDirection: 'row', gap: 20, height: 60, backgroundColor: '#fff', alignItems: 'center'}}>
@@ -141,7 +141,7 @@ const ReportsScreen = () => {
                       <MaterialIcons name="timeline" size={40} color={"#36f"} />
                       <Text style={{fontSize: 20}}>{t('Profile-card-5')}</Text>
                     </View>
-                    <AntDesign name="right" size={22} color={"#000"} style={{left: 148}} />
+                    <AntDesign name="right" size={22} color={"#000"} style={{left: 314, position: 'absolute'}} />
                   </Pressable>
 
                 </View>

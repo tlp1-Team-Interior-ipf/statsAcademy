@@ -30,7 +30,7 @@ const CalendarScreen = () => {
     <View style={
       { height: '100%', 
         backgroundColor: BackgroundTheme, 
-        paddingTop: 30
+        paddingTop: 0
       }}>
         
         <View style={{ backgroundColor: BackgroundTheme, height: '100%' }}>

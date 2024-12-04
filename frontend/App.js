@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useContext, useEffect, useState } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigationState } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { UserContext, UserProvider } from './context/userContext';
@@ -23,14 +23,16 @@ import RegisterScreen from './screens/Public/RegisterScreen';
 import RecoveryPasswordScreen from './screens/Private/RecoveryPasswordScreen/RecoveryPassword';
 import UserJourneyScreen from './screens/Private/UserJourneyScreen/UserJourneyScreen';
 import AchievementsScreen from './screens/Private/AchievementsScreen/AchievementsScreen';
+import HelpScreen from './screens/Private/HelpScreen/HelpScreen';
 import { MaterialIcons, Ionicons, FontAwesome } from 'react-native-vector-icons';
 import { Temas } from './utils/selectTheme';
+import { useTranslation } from 'react-i18next';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const MyTabs = () => {
-  const { BackgroundTheme, TextBackgroundTheme, IconstTabTheme, TabTheme } = Temas();
+  const { BackgroundTheme, TextBackgroundTheme, IconstTabTheme, TabTheme, ColorTextTab, isDarkTheme } = Temas();
 
   return (
     <Tab.Navigator
@@ -38,29 +40,15 @@ const MyTabs = () => {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
 
-        //   if (route.name === 'Home') {
-        //     iconName = focused ? 'home' : 'home-outline';
-        //     return <Ionicons name={iconName} size={30} color={IconstTabTheme} />;
-        //   } else if (route.name === 'Calendar') {
-        //     iconName = focused ? 'calendar' : 'calendar';
-        //     return <FontAwesome name={iconName} size={28} color={IconstTabTheme} />;
-        //   } else if (route.name === 'Kanban') {
-        //     iconName = focused ? 'view-kanban' : 'view-kanban';
-        //     return <MaterialIcons name={iconName} size={30} color={IconstTabTheme} />;
-        //   } else if (route.name === 'Reports') {
-        //     iconName = focused ? 'stats-chart' : 'stats-chart';
-        //     return <Ionicons name={iconName} size={30} color={IconstTabTheme} />;
-        //   } else if (route.name === 'QuizGame') {
-        //     iconName = focused ? 'games' : 'games';
-        //     return <MaterialIcons name={iconName} size={30} color={IconstTabTheme} />;
-        //   }
-
-        // },
-
-        const isReports = route.name === 'Reports';
-        // Cambia el color de todos los íconos a azul si estás en "Reports"
-        const iconColor = isReports ? '#0000FF' : IconstTabTheme;
-
+          const currentRouteIndex = useNavigationState((state) => state.index); // Obtiene el índice actual del Tab activo
+          const currentRouteName = useNavigationState(
+            (state) => state.routes[currentRouteIndex]?.name
+          ); // Nombre de la ruta activa
+          
+          // Cambia todos los íconos a azul si estás en "Reports"
+          const isReportsActive = currentRouteName === 'Reports';
+          const iconColor = isReportsActive ? '#0000FF' : IconstTabTheme;
+          
           if (route.name === 'Home') {
             iconName = focused ? 'home' : 'home-outline';
             return <Ionicons name={iconName} size={30} color={iconColor} />;
@@ -78,10 +66,10 @@ const MyTabs = () => {
             return <MaterialIcons name={iconName} size={30} color={iconColor} />;
           }
         },
-        // tabBarActiveTintColor: '#fff',
-        // tabBarInactiveTintColor: IconstTabTheme,
-        tabBarActiveTintColor: '#0000FF', // Texto azul en la pestaña activa cuando estás en Reports
-        tabBarInactiveTintColor: route.name === 'Reports' ? '#0000FF' : IconstTabTheme, 
+        
+        
+        tabBarActiveTintColor: '#222', // Texto azul en la pestaña activa cuando estás en Reports
+        tabBarInactiveTintColor: route.name === 'Reports' ? '#0000FF' : '#666', 
         tabBarStyle: {
           backgroundColor: route.name === 'Reports' ? '#fff' : TabTheme, // Blanco para "Reports", tema predeterminado para otras
         },
@@ -98,7 +86,9 @@ const MyTabs = () => {
 };
 
 const ModalStack = () => {
-  const { BackgroundTheme, TextBackgroundTheme } = Temas();
+  const { BackgroundTheme, TextBackgroundTheme, TextNavBarTheme } = Temas();
+
+  const { t } = useTranslation();
   
   return (
   <Stack.Navigator>
@@ -112,7 +102,7 @@ const ModalStack = () => {
         headerShown: true,
         title: 'Account',
         headerStyle: { backgroundColor: BackgroundTheme },
-        headerTintColor: TextBackgroundTheme
+        headerTintColor: TextNavBarTheme
       }}
     />
     <Stack.Screen
@@ -121,9 +111,9 @@ const ModalStack = () => {
       options={{
         presentation: 'modal',
         headerShown: true,
-        title: 'Settings',
+        title: t('Settings'),
         headerStyle: { backgroundColor: BackgroundTheme },
-        headerTintColor: TextBackgroundTheme
+        headerTintColor: TextNavBarTheme,
       }}
     />
     <Stack.Screen
@@ -134,7 +124,7 @@ const ModalStack = () => {
         headerShown: true,
         title: 'Notifications',
         headerStyle: { backgroundColor: BackgroundTheme },
-        headerTintColor: TextBackgroundTheme
+        headerTintColor: TextNavBarTheme
       }}
     />
 
@@ -146,7 +136,7 @@ const ModalStack = () => {
         headerShown: true,
         title: 'Tutor Gauss',
         headerStyle: { backgroundColor: BackgroundTheme },
-        headerTintColor: TextBackgroundTheme
+        headerTintColor: TextNavBarTheme
       }}
     />
 
@@ -158,7 +148,7 @@ const ModalStack = () => {
         headerShown: true,
         title: 'Tutor Gauss',
         headerStyle: { backgroundColor: BackgroundTheme },
-        headerTintColor: TextBackgroundTheme
+        headerTintColor: TextNavBarTheme
       }}
     />
 
@@ -170,7 +160,7 @@ const ModalStack = () => {
         headerShown: true,
         title: 'Library',
         headerStyle: { backgroundColor: BackgroundTheme },
-        headerTintColor: TextBackgroundTheme
+        headerTintColor: TextNavBarTheme
       }}
     />
 
@@ -182,7 +172,7 @@ const ModalStack = () => {
         headerShown: true,
         title: 'Top Notes',
         headerStyle: { backgroundColor: BackgroundTheme },
-        headerTintColor: TextBackgroundTheme
+        headerTintColor: TextNavBarTheme
       }}
     />
 
@@ -194,7 +184,7 @@ const ModalStack = () => {
         headerShown: true,
         title: 'Bad Notes',
         headerStyle: { backgroundColor: BackgroundTheme },
-        headerTintColor: TextBackgroundTheme
+        headerTintColor: TextNavBarTheme
       }}
     />
 
@@ -204,9 +194,9 @@ const ModalStack = () => {
       options={{
         presentation: 'card',
         headerShown: true,
-        title: 'User Journey',
+        title: t('UserJourney'),
         headerStyle: { backgroundColor: BackgroundTheme },
-        headerTintColor: TextBackgroundTheme
+        headerTintColor: TextNavBarTheme
       }}
     />
 
@@ -216,9 +206,21 @@ const ModalStack = () => {
       options={{
         presentation: 'card',
         headerShown: true,
-        title: 'Achievements',
+        title: t('Achievements'),
         headerStyle: { backgroundColor: BackgroundTheme },
-        headerTintColor: TextBackgroundTheme
+        headerTintColor: TextNavBarTheme
+      }}
+    />
+
+    <Stack.Screen
+      name="Help"
+      component={HelpScreen}
+      options={{
+        presentation: 'card',
+        headerShown: true,
+        title: t('Help'),
+        headerStyle: { backgroundColor: BackgroundTheme },
+        headerTintColor: TextNavBarTheme
       }}
     />
 

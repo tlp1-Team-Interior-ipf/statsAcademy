@@ -26,7 +26,7 @@ export const ButtonLogout = () => {
         titleStyle={{color: '#f00'}}
         buttonStyle={{
             borderWidth: 2,
-            backgroundColor: 'transparent',
+            backgroundColor: '#faa',
             borderColor: '#f00',
             width: 100,
             borderRadius: 5,
@@ -120,14 +120,14 @@ export const ButtonDeleteAccount = () => {
 export const ButtonAccount = () => {
   const { user } = useContext(UserContext);
   const navigation = useNavigation();
-  const { IconstHomeTheme } = Temas();
+  const { NavbarIconTheme } = Temas();
 
   return(
     <>
       <Pressable onPress={() => {navigation.navigate('Account'), console.log(user);
       }}>
         {user.profileImage ? <Image source={{uri: user.profileImage}} style={{width: 35, height: 35, borderRadius: 50}} />
-      : <IconProfile iconName={'person'} iconSize={30} iconColor={IconstHomeTheme} />  
+      : <IconProfile iconName={'person'} iconSize={30} iconColor={NavbarIconTheme} />  
       }
       </Pressable>
     </>
@@ -136,12 +136,12 @@ export const ButtonAccount = () => {
 
 export const ButtonNotify = () => {
   const navigation = useNavigation();
-  const { IconstHomeTheme } = Temas();
+  const { NavbarIconTheme } = Temas();
 
   return(
     <>
       <Pressable onPress={() => navigation.navigate('Notify')}>
-        <IconEmail iconName={'email'} iconSize={30} iconColor={IconstHomeTheme} />
+        <IconEmail iconName={'email'} iconSize={30} iconColor={NavbarIconTheme} />
       </Pressable>
     </>
   )
@@ -149,12 +149,12 @@ export const ButtonNotify = () => {
 
 export const ButtonSettings = () => {
   const navigation = useNavigation();
-  const { IconstHomeTheme } = Temas();
+  const { NavbarIconTheme } = Temas();
 
   return(
     <>
       <Pressable onPress={() => navigation.navigate('Settings')}>
-        <IconSettings iconName={'settings-sharp'} iconSize={30} iconColor={IconstHomeTheme} />
+        <IconSettings iconName={'settings-sharp'} iconSize={30} iconColor={NavbarIconTheme} />
       </Pressable>
     </>
   )

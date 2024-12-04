@@ -1,4 +1,4 @@
-import { Feather } from '@expo/vector-icons';
+import { AntDesign, Feather } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 import React, { useContext, useEffect, useState } from 'react';
 import { View, Text, FlatList, Switch, Pressable } from 'react-native';
@@ -7,6 +7,8 @@ import { Temas } from '../../../utils/selectTheme';
 import i18next, { languageResources } from '../../../utils/i18next';
 import languagesList from '../../../languages/languagesList.json'
 import { ButtonLogout } from '../../../components/Buttons/ButtonsRedirects';
+import { useNavigation } from '@react-navigation/native';
+import handleShare from '../../../hooks/ShareFriends/useShareUrl';
 
 const ConfigScreen = () => {
   const {t} = useTranslation();
@@ -15,6 +17,8 @@ const ConfigScreen = () => {
 
   const [activeLanguage, setActiveLanguage] = useState(i18next.language);
 
+  const navigation = useNavigation();
+
   const changeLng = lng => {
     i18next.changeLanguage(lng);
     setActiveLanguage(lng);
@@ -22,10 +26,9 @@ const ConfigScreen = () => {
 
   const { 
     BackgroundTheme,
-    ButtonSaveConfigTheme,
-    TextBackgroundTheme,
     ButtonBackgroundRadioThemeOn,
-    ButtonBackgroundRadioThemeOff
+    ButtonBackgroundRadioThemeOff,
+    TextAndLineTheme,
   } = Temas();
   
   useEffect(() => {
@@ -41,7 +44,7 @@ const ConfigScreen = () => {
 
       <Text style={
         { textAlign: 'center', 
-          color:TextBackgroundTheme, 
+          color:TextAndLineTheme, 
           fontSize: 20, 
           fontWeight: 'bold', 
           top: -15}}>
@@ -49,7 +52,7 @@ const ConfigScreen = () => {
       </Text>
 
       <Text style={
-        { color: TextBackgroundTheme, 
+        { color: TextAndLineTheme, 
         fontSize: 17, 
         fontWeight: 'bold', 
         padding: 10}}>
@@ -59,9 +62,12 @@ const ConfigScreen = () => {
       <View style={{alignItems: 'center', width: '100%'}}>
         <View style={
           { 
-            borderWidth: 1, 
+            borderWidth: 1,
+            borderBottomWidth: 2.7,
+            borderLeftWidth: 2,
+            backgroundColor: '#3366ff60',
             borderRadius: 5, 
-            borderColor: TextBackgroundTheme, 
+            borderColor: TextAndLineTheme, 
             width: 350,
           }}>
           <View 
@@ -70,18 +76,20 @@ const ConfigScreen = () => {
                 alignItems: 'center', 
                 padding: 10,
                 borderRadius: 10,
-                borderColor: TextBackgroundTheme,
+                borderColor: TextAndLineTheme,
                 height: 50
               }}>
               <View style={{ flexDirection: 'row', gap: 10 }}>
-                <Feather name="moon" size={22} color={TextBackgroundTheme} />
-                <Text style={{color: TextBackgroundTheme, fontSize: 16}}>
+                <Feather name="moon" size={22} color={TextAndLineTheme} />
+                <Text style={{color: TextAndLineTheme, fontSize: 21}}>
                   {t('Config-row-1')}
                 </Text>
               </View>
 
                 <View style={{
                   borderWidth: 1,
+                  borderBottomWidth: 2.7,
+                  borderLeftWidth: 2,
                   borderRadius: 25,
                   borderColor: '#ddd',
                   position: 'absolute',
@@ -109,19 +117,21 @@ const ConfigScreen = () => {
                 alignItems: 'center', 
                 padding: 10,
                 borderTopWidth: 1,
-                borderColor: TextBackgroundTheme,
+                borderColor: TextAndLineTheme,
                 height: 50
 
               }}>
               <View style={{ flexDirection: 'row', gap: 10}}>
-                <Feather name="sun" size={22} color={TextBackgroundTheme} />
-                <Text style={{color: TextBackgroundTheme, fontSize: 16}}>
+                <Feather name="sun" size={22} color={TextAndLineTheme} />
+                <Text style={{color: TextAndLineTheme, fontSize: 20}}>
                   {t('Config-row-2')}
                 </Text>
               </View>
 
               <View style={{
                   borderWidth: 1,
+                  borderBottomWidth: 2.7,
+                  borderLeftWidth: 2,
                   borderRadius: 25,
                   borderColor: '#ddd',
                   position: 'absolute',
@@ -145,7 +155,7 @@ const ConfigScreen = () => {
       </View>
 
       <Text style={
-        { color: TextBackgroundTheme, 
+        { color: TextAndLineTheme, 
           fontSize: 17, 
           fontWeight: 'bold', 
           padding: 10, 
@@ -159,9 +169,12 @@ const ConfigScreen = () => {
             renderItem={({item}) => (
             <View
                 style={
-                  { borderWidth: 1, 
+                  { borderWidth: 1,
+                    borderBottomWidth: 2.7,
+                    borderLeftWidth: 2,
+                    backgroundColor: '#3366ff60',
                     borderRadius: 5, 
-                    borderColor: TextBackgroundTheme, 
+                    borderColor: TextAndLineTheme, 
                     width: 349, 
                     marginVertical: 5, 
                     flexDirection: 'row', 
@@ -170,21 +183,79 @@ const ConfigScreen = () => {
                     alignItems: 'center'}}
                 >
                 <Text style={
-                      { color: TextBackgroundTheme, 
+                      { color: TextAndLineTheme, 
                         padding: 10, 
-                        fontSize: 17, 
+                        fontSize: 20, 
                         textAlign: 'center', 
                         justifyContent: 'center'}}>
                 {languagesList[item].nativeName}
                 </Text>
                 <Switch 
                   value={activeLanguage === item}
-                  onValueChange={() => changeLng(item)} 
+                  onValueChange={() => changeLng(item)}
+                  style={{right: 20}}
                 />
             </View>
             )}
             />
       </View>
+
+      <Text style={
+        { color: TextAndLineTheme, 
+          fontSize: 17, 
+          fontWeight: 'bold', 
+          padding: 10, 
+          top: 10,
+          marginTop: -10
+          }}>
+          {t('Config-subtitle-3')}
+      </Text>
+
+      <Pressable
+        onPress={() => navigation.navigate('Help')}
+        style={
+          { borderWidth: 1,
+            borderBottomWidth: 2.7,
+            borderLeftWidth: 2,
+            backgroundColor: '#3366ff60',
+            borderRadius: 5, 
+            borderColor: TextAndLineTheme, 
+            width: 349, 
+            marginVertical: 5, 
+            flexDirection: 'row', 
+            gap: 220, 
+            justifyContent: 'flex-start', 
+            alignItems: 'center',
+            margin: 5,
+            padding: 12
+          }}
+        >
+          <Text style={{color: TextAndLineTheme, fontSize: 20}}>{t('Help')}</Text>
+          <AntDesign name='right' size={22} color={TextAndLineTheme} style={{position: 'absolute', left: 300}} />
+      </Pressable>
+
+      <Pressable
+        onPress={() => handleShare()}
+        style={
+          { borderWidth: 1, 
+            borderBottomWidth: 2.7,
+            borderLeftWidth: 2,
+            backgroundColor: '#3366ff60',
+            borderRadius: 5, 
+            borderColor: TextAndLineTheme, 
+            width: 349, 
+            marginVertical: 5, 
+            flexDirection: 'row', 
+            gap: 220, 
+            justifyContent: 'flex-start', 
+            alignItems: 'center',
+            margin: 5,
+            padding: 12
+          }}
+        >
+          <Text style={{color: TextAndLineTheme, fontSize: 20}}>{t('Share')}</Text>
+          <AntDesign name='right' size={22} color={TextAndLineTheme} style={{position: 'absolute', left: 300}} />
+      </Pressable>
 
       <ButtonLogout />
 

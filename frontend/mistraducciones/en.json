@@ -11,6 +11,12 @@
   "Configuration": "Configuration",
   "Library": "Library",
   "Thematic-Unit": "Thematic unit",
+  "Settings": "Settings",
+  "Achievements": "Achievements",
+  "UserJourney": "User Journey",
+  "Reports": "Reports",
+
+  "Share": "Share friends",
   
   "Button-Cancel": "Cancel",
   "Button-Init-Class": "Init class",
@@ -116,7 +122,6 @@
   "Drawer-row-4": "Settings",
   "Drawer-row-5": "Language",
   "Drawer-row-6": "Help",
-  "Drawer-row-7": "Invite friends",
   "Drawer-row-8": "Log out",
 
   "Footer-title": "All rights reserved © 2024",
@@ -171,9 +176,37 @@
   "Help-row-answer-6": "Yes, you can restart the course from the home page.",
   "Help-row-answer-7": "Gauss is a data analysis tool integrated into the app.",
 
+  "JourneyMapText-1": "You have completed a",
+  "JourneyMapText-2": "of all topics",
+
+  "Progress": "Progress",
+
+  "TimeInApplication": "Time in application",
+
+  "TextAchievements": "Unlock achievements as you progress",
+
+  "Achievement-1": "First steps",
+  "Achievement-2": "Constancy",
+  "Achievement-3": "Overcoming",
+  "Achievement-4": "Explorer",
+  "Achievement-5": "Master",
+  "Achievement-6": "Committed",
+  "Achievement-7": "100% Completed",
+  "Achievement-8": "Perfectionist",
+
+  "DescAchievement-1": "Complete your first lesson",
+  "DescAchievement-2": "Log into the app for 5 days in a row",
+  "DescAchievement-3": "Improve a grade",
+  "DescAchievement-4": "Study 5 different topics",
+  "DescAchievement-5": "Get the top score on a quiz",
+  "DescAchievement-6": "Study for 30 minutes",
+  "DescAchievement-7": "Finish all available modules",
+  "DescAchievement-8": "Obtain more than 90 points in each topic",
+
   "Config-title": "Change the settings to your preference",
   "Config-subtitle-1": "Theme",
   "Config-subtitle-2": "Language",
+  "Config-subtitle-3": "Others",
   "Config-row-1": "Dark",
   "Config-row-2": "Light",
   "Config-row-3": "English",
