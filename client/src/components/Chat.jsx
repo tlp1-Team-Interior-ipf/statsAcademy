@@ -12,7 +12,6 @@ const Chat = () => {
     const messagesEndRef = useRef(null); // Ref para el scroll automático
     const id = user.data.id;
 
-    // Desplazarse automáticamente al último mensaje
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
@@ -68,35 +67,46 @@ const Chat = () => {
     }
 
     return (
-        <div className="chat-container">
-            <div className="chat-header">
-                <h2>Gauss Tutor Inteligente</h2>
+        <div className="main-container">
+            <div className="sidebar">
+                <div className="topic-container">
+                    <p>Unidad actual: Unidad 1</p>
+                    <h3>Conceptos básicos de la Estadística</h3>
+                </div>
+                <div className="tutor-container">
+                    <img src="/img/tutorpose.png" alt="Tutor Gauss" className="tutor-image" />
+                </div>
             </div>
-            <div className="chat-messages">
-                {messages.map((msg, index) => (
-                    <div
-                        key={index}
-                        className={`message ${msg.sender === 'user' ? 'user' : 'assistant'}`}
-                    >
-                        {msg.sender === 'assistant' ? (
-                            <ReactMarkdown>{msg.message}</ReactMarkdown> // Renderizar Markdown
-                        ) : (
-                            <p>{msg.message}</p>
-                        )}
-                    </div>
-                ))}
-                {loading && <div className="loading">Escribiendo...</div>}
-                <div ref={messagesEndRef} /> {/* Referencia para el scroll automático */}
-            </div>
-            <div className="chat-input">
-                <input
-                    type="text"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    onKeyDown={handleKeyDown}
-                    placeholder="Pregúntale a Gauss..."
-                />
-                <button onClick={handleSendMessage}>Enviar</button>
+            <div className="chat-container">
+                <div className="chat-header">
+                    <h2>Gauss Tutor Inteligente</h2>
+                </div>
+                <div className="chat-messages">
+                    {messages.map((msg, index) => (
+                        <div
+                            key={index}
+                            className={`message ${msg.sender === 'user' ? 'user' : 'assistant'}`}
+                        >
+                            {msg.sender === 'assistant' ? (
+                                <ReactMarkdown>{msg.message}</ReactMarkdown> // Renderizar Markdown
+                            ) : (
+                                <p>{msg.message}</p>
+                            )}
+                        </div>
+                    ))}
+                    {loading && <div className="loading">Escribiendo...</div>}
+                    <div ref={messagesEndRef} /> {/* Referencia para el scroll automático */}
+                </div>
+                <div className="chat-input">
+                    <input
+                        type="text"
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        onKeyDown={handleKeyDown}
+                        placeholder="Pregúntale a Gauss..."
+                    />
+                    <button onClick={handleSendMessage}>Enviar</button>
+                </div>
             </div>
         </div>
     );
