@@ -67,6 +67,9 @@
 }
 
 .tutor-image {
+    width: 100%; /* Hace que la imagen ocupe el 100% del contenedor */
+    max-width: 300px; /* Limita el tamaño máximo de la imagen (puedes ajustar este valor) */
+    height: auto; /* Mantiene la proporción de la imagen */
     margin-bottom: 10px; /* Espaciado debajo de la imagen */
     transform: translateX(-50%) translateY(5%);
     position: relative;
