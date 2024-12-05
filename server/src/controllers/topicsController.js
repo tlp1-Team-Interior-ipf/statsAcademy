@@ -1,6 +1,7 @@
 import { createTopic, getTopics } from "../services/topicsServices.js";
-import { getAllTopics } from "../helpers/TopicsHelpers.js";
+import { getAllTopics, getNextTopic } from "../helpers/TopicsHelpers.js";
 import { responseHandler } from '../utils/responseHandler.js';
+import { emitTopicChange } from "../server/server.js";
 
 
 export const createTopicController = async (req, res) => {
@@ -31,4 +32,14 @@ export const getTopicsController = async (req, res, next) => {
     } catch (error) {
         next(error);
     };
+};
+
+export const getNextTopicController = async (req, res, next) => {
+    try {
+        const topic = await getNextTopic();
+        emitTopicChange(topic);
+        responseHandler(res, 200, topic);
+    } catch (error) {
+        next(error);
+    }
 };

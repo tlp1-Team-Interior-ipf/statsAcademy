@@ -96,3 +96,21 @@
     margin: 5px 0; /* Espaciado vertical entre botones */
   }
 }
+
+/* Botón para abrir/cerrar el sidebar */
+.sidebar-toggle-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.sidebar-toggle-btn:hover {
+  color: #3ea770;
+}
+
+.sidebar-toggle-btn:active {
+  transform: scale(0.95); /* Pequeña animación al presionar */
+}

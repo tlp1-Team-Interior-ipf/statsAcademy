@@ -1,93 +1,214 @@
-/* General container */
-.chat-container {
+/* Main container */
+.main-container {
     display: flex;
-    flex-direction: column;
-    height: calc(100vh - 60px); /* Ajustar según la altura del navbar */
-    width: 100%; /* Ocupa todo el ancho del viewport */
-    border: 1px solid #e0e0e0;
-    box-shadow: 0 4px 6px #0000001a;
-    background-color: #f9f9f9;
+    height: calc(100vh - 60px); /* Resta la altura del navbar */
+    width: 100%;
+    margin-top: 60px; /* Asegura que el chat comience después del navbar */
 }
 
-/* Header */
-.chat-header {
-    padding: 10px;
-    background-color: #007bff;
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #0E7684;
     color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar */
+.side-container {
+    width: 35%;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-right: 1px solid #e0e0e0;
+}
+
+/* Topic container */
+.topic-container {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    font-family: 'Kufam', sans-serif;
+}
+
+.topic-container p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.topic-container h3 {
+    font-size: 20px;
+    color: #0E7684;
+}
+
+/* Tutor container */
+.tutor-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.tutor-image {
+    width: 100%; /* Hace que la imagen ocupe el 100% del contenedor */
+    max-width: 300px; /* Limita el tamaño máximo de la imagen (puedes ajustar este valor) */
+    height: auto; /* Mantiene la proporción de la imagen */
+    margin-bottom: 10px; /* Espaciado debajo de la imagen */
+    position: relative;
+}
+
+/* Chat container */
+.chat-container {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    font-family: 'Kufam', sans-serif;
+    margin-right: 20px;
+}
+
+/* Chat header */
+.chat-header {
+    background-color: #0E7684;
+    color: #fff;
+    padding: 15px;
     text-align: center;
     font-size: 18px;
+    font-weight: bold;
+    font-family: 'Kufam', sans-serif;
 }
 
-/* Messages area */
+/* Chat messages */
 .chat-messages {
-    flex: 1;
-    padding: 15px;
-    overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
     background-color: #ffffff;
-    border-top: 1px solid #e0e0e0;
-    border-bottom: 1px solid #e0e0e0;
 }
 
-/* User and Assistant messages */
+/* Estilo general de los globos de mensaje */
 .message {
-    max-width: 80%;
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 14px;
-    line-height: 1.4;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border-radius: 20px;
+    max-width: 60%;
+    font-size: 18px;
+    word-wrap: break-word;
+    position: relative;
+    text-align: justify;
+    animation: fadeIn 0.2s ease-out; /* Animación de aparición */
 }
 
+/* Ajuste de alineación y color para mensajes de usuario */
 .message.user {
+    background-color: #0E7684;
     align-self: flex-end;
-    background-color: #007bff;
+    border-bottom-right-radius: 0;
     color: white;
 }
 
+/* Triángulo decorativo para el usuario */
+.message.user::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: -10px;
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-bottom-color: #0E7684; /* Make the triangle point upwards */
+    border-top: none; /* Remove the top border */
+}
+
+/* Ajuste de alineación y color para mensajes del bot */
 .message.assistant {
+    background-color: #E5E5EA;
     align-self: flex-start;
-    background-color: #f1f1f1;
+    border-bottom-left-radius: 0;
     color: #333333;
 }
 
+/* Triángulo decorativo para el bot */
+.message.assistant::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-bottom-color: #E5E5EA; /* Make the triangle point upwards */
+    border-top: none; /* Remove the top border */
+}
 /* Loading indicator */
 .loading {
-    font-size: 12px;
-    color: gray;
+    text-align: center;
     font-style: italic;
-    align-self: flex-start;
+    color: #888888;
 }
 
-/* Input area */
+/* Chat input */
 .chat-input {
     display: flex;
     padding: 10px;
-    background-color: #ffffff;
+    background-color: #f4f4f4;
     border-top: 1px solid #e0e0e0;
 }
 
 .chat-input input {
     flex: 1;
     padding: 10px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 14px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
 .chat-input button {
     margin-left: 10px;
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #0E7684;
     color: white;
     border: none;
-    border-radius: 8px;
-    font-size: 14px;
+    border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 .chat-input button:hover {
-    background-color: #0056b3;
+    background-color: #095C6A;
+}
+
+/* Animación fade-in para los mensajes */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

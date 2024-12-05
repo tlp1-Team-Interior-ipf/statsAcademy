@@ -1,18 +1,30 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useAuth } from '../hooks/ContextHook';
-import ReactMarkdown from 'react-markdown'; // Importar ReactMarkdown
+import { io } from 'socket.io-client';
+import ReactMarkdown from 'react-markdown';
 import '../styles/Chat.css';
 
 const Chat = () => {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
     const [loading, setLoading] = useState(false);
+    const [currentTopic, setCurrentTopic] = useState(null);
     const { user } = useAuth();
-    const messagesEndRef = useRef(null); // Ref para el scroll automático
+    const messagesEndRef = useRef(null);
     const id = user.data.id;
 
-    // Desplazarse automáticamente al último mensaje
+    useEffect(() => {
+        const socket = io('http://localhost:4000');
+
+        socket.on('topicChange', (topic) => {
+            console.log('Topic received:', topic);
+            setCurrentTopic(topic);
+        });
+
+        return () => socket.disconnect();
+    }, []);
+
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
@@ -27,7 +39,16 @@ const Chat = () => {
                     console.error('Error fetching chat history:', error);
                 }
             };
+            const fetchCurrentTopic = async () => {
+                try {
+                    const response = await axios.get(`http://localhost:4000/topic/current`);
+                    setCurrentTopic(response.data.data);
+                } catch (error) {
+                    console.error('Error fetching current topic:', error);
+                }
+            };
             fetchChatHistory();
+            fetchCurrentTopic();
         }
     }, [user]);
 
@@ -68,35 +89,52 @@ const Chat = () => {
     }
 
     return (
-        <div className="chat-container">
-            <div className="chat-header">
-                <h2>Chat Tutor</h2>
+        <div className="main-container">
+            <div className="side-container">
+                <div className="topic-container">
+                    <p>Unidad actual: Unidad 1</p>
+                    <h3>Conceptos básicos de la Estadística</h3>
+                    {currentTopic && ( 
+                        <div className="current-topic">
+                            <p>Tema actual:</p>
+                            <h3>{currentTopic.name}</h3>
+                        </div>
+                    )}
+                </div>
+                <div className="tutor-container">
+                    <img src="/img/tutorpose.png" alt="Tutor Gauss" className="tutor-image" />
+                </div>
             </div>
-            <div className="chat-messages">
-                {messages.map((msg, index) => (
-                    <div
-                        key={index}
-                        className={`message ${msg.sender === 'user' ? 'user' : 'assistant'}`}
-                    >
-                        {msg.sender === 'assistant' ? (
-                            <ReactMarkdown>{msg.message}</ReactMarkdown> // Renderizar Markdown
-                        ) : (
-                            <p>{msg.message}</p>
-                        )}
-                    </div>
-                ))}
-                {loading && <div className="loading">Escribiendo...</div>}
-                <div ref={messagesEndRef} /> {/* Referencia para el scroll automático */}
-            </div>
-            <div className="chat-input">
-                <input
-                    type="text"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    onKeyDown={handleKeyDown}
-                    placeholder="Escribe tu mensaje..."
-                />
-                <button onClick={handleSendMessage}>Enviar</button>
+            <div className="chat-container">
+                <div className="chat-header">
+                    <h2>Gauss Tutor Inteligente</h2>
+                </div>
+                <div className="chat-messages">
+                    {messages.map((msg, index) => (
+                        <div
+                            key={index}
+                            className={`message ${msg.sender === 'user' ? 'user' : 'assistant'}`}
+                        >
+                            {msg.sender === 'assistant' ? (
+                                <ReactMarkdown>{msg.message}</ReactMarkdown> // Renderizar Markdown
+                            ) : (
+                                <p>{msg.message}</p>
+                            )}
+                        </div>
+                    ))}
+                    {loading && <div className="loading">Escribiendo...</div>}
+                    <div ref={messagesEndRef} />
+                </div>
+                <div className="chat-input">
+                    <input
+                        type="text"
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        onKeyDown={handleKeyDown}
+                        placeholder="Pregúntale a Gauss..."
+                    />
+                    <button onClick={handleSendMessage}>Enviar</button>
+                </div>
             </div>
         </div>
     );
