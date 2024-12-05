@@ -36,10 +36,10 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
         <a onClick={() => handleNavigation('/home/chat')} title="Tutor Gauss">
           <img src="/icons/tutorsb.png" alt="Tutor Gauss" />
         </a>
-        <a onClick={() => handleNavigation('/evaluation')} title="Evaluatorio">
+        <a onClick={() => handleNavigation('/home/evaluation')} title="Evaluatorio">
           <img src="/icons/evaluatoriosb.png" alt="Evaluatorio" />
         </a>
-        <a onClick={() => handleNavigation('/profile')} title="Perfil">
+        <a onClick={() => handleNavigation('/home/profile')} title="Perfil">
           <img src="/icons/perfilsb.png" alt="Perfil" />
         </a>
         <a onClick={() => handleLogOutClick()} title="Cerrar Sesión">

@@ -1,60 +1,59 @@
 /* Contenedor del Sidebar */
 .sidebar-container {
-    position: fixed;
-    top: 0;
-    left: -200px; /* Fuera de la pantalla por defecto */
-    height: 100%;
-    width: 200px; /* Ancho cuando está abierto */
-    background-color: #10132F;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    z-index: 1000;
-    transition: transform 0.3s ease;
-    overflow-x: hidden; /* Ocultar contenido excedente */
-  }
-  
-  .sidebar-container.open {
-    transform: translateX(200px); /* Mover a la pantalla */
-    left: 0;
-  }
-  
-  /* Botón para cerrar el Sidebar */
-  .sidebar-toggle {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    margin: 15px 0;
-    cursor: pointer;
-  }
-  
-  /* Contenedor de los enlaces */
-  .sidebar-links {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .sidebar-links a {
-    margin: 15px 0;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .sidebar-links img {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-    transition: transform 0.2s ease, filter 0.2s ease;
-  }
-  
-  .sidebar-links img:hover {
-    transform: scale(1.1);
-    filter: brightness(1.2);
-  }
-  
+  position: fixed;
+  top: 0;
+  left: -200px; /* Fuera de la pantalla por defecto */
+  height: 100%;
+  width: 200px; /* Ancho cuando está abierto */
+  background-color: #10132F;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+  overflow-x: hidden; /* Ocultar contenido excedente */
+}
+
+.sidebar-container.open {
+  transform: translateX(0px); /* Mover a la pantalla */
+  left: 0;
+}
+
+/* Botón para cerrar el Sidebar */
+.sidebar-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  margin: 15px 0;
+  cursor: pointer;
+}
+
+/* Contenedor de los enlaces */
+.sidebar-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.sidebar-links a {
+  margin: 15px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-links img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.sidebar-links img:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
