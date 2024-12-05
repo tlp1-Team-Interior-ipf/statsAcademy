@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useAuth } from '../hooks/ContextHook';
-import { io } from 'socket.io-client';
 import ReactMarkdown from 'react-markdown';
 import '../styles/Chat.css';
 
@@ -9,21 +8,10 @@ const Chat = () => {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
     const [loading, setLoading] = useState(false);
-    const [currentTopic, setCurrentTopic] = useState(null);
     const { user } = useAuth();
     const messagesEndRef = useRef(null);
     const id = user.data.id;
 
-    useEffect(() => {
-        const socket = io('http://localhost:4000');
-
-        socket.on('topicChange', (topic) => {
-            console.log('Topic received:', topic);
-            setCurrentTopic(topic);
-        });
-
-        return () => socket.disconnect();
-    }, []);
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -39,16 +27,7 @@ const Chat = () => {
                     console.error('Error fetching chat history:', error);
                 }
             };
-            const fetchCurrentTopic = async () => {
-                try {
-                    const response = await axios.get(`http://localhost:4000/topic/current`);
-                    setCurrentTopic(response.data.data);
-                } catch (error) {
-                    console.error('Error fetching current topic:', error);
-                }
-            };
             fetchChatHistory();
-            fetchCurrentTopic();
         }
     }, [user]);
 
@@ -94,12 +73,6 @@ const Chat = () => {
                 <div className="topic-container">
                     <p>Unidad actual: Unidad 1</p>
                     <h3>Conceptos básicos de la Estadística</h3>
-                    {currentTopic && ( 
-                        <div className="current-topic">
-                            <p>Tema actual:</p>
-                            <h3>{currentTopic.name}</h3>
-                        </div>
-                    )}
                 </div>
                 <div className="tutor-container">
                     <img src="/img/tutorpose.png" alt="Tutor Gauss" className="tutor-image" />
