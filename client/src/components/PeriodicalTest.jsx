@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/ContextHook';
 import '../styles/InitialTest.css';
 
-const InitialTest = () => {
+const PeriodicalTest = () => {
   const [questions, setQuestions] = useState([]);
   const [selectedQuestions, setSelectedQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -126,6 +126,12 @@ const InitialTest = () => {
     loadQuestions();
   };
 
+
+const redirectToHome = () => {
+  navigate('/home');
+};
+
+
   const handleFinish = async () => {
     if (!finalNote) {
       alert('Completa la evaluación antes de finalizar.');
@@ -136,28 +142,28 @@ const InitialTest = () => {
     const level = calculateLevel(percentage);
     
 
-    try {
-      const response = await fetch('http://localhost:4000/inicial-test', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          note: score,
-          level: level,
-          userId, // Enviar el userId junto con la nota y el nivel
-        }),
-      });
+    // try {
+    //   const response = await fetch('http://localhost:4000/inicial-test', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //       nota: score,
+    //       nivel: level,
+    //       userId, // Enviar el userId junto con la nota y el nivel
+    //     }),
+    //   });
 
-      if (response.ok) {
-        alert('Resultados guardados correctamente.');
-        navigate('/home');
-      } else {
-        throw new Error('Error al guardar los resultados.');
-      }
-    } catch (error) {
-      console.error('Error al finalizar la evaluación:', error);
-    }
+    //   if (response.ok) {
+    //     alert('Resultados guardados correctamente.');
+    //     navigate('/home');
+    //   } else {
+    //     throw new Error('Error al guardar los resultados.');
+    //   }
+    // } catch (error) {
+    //   console.error('Error al finalizar la evaluación:', error);
+    // }
 };
 
 
@@ -177,7 +183,7 @@ const InitialTest = () => {
   return (
     <div className="evaluation-background">
       <div className="evaluation-container">
-        <h1 className="initial-test-title">Evaluación Inicial</h1>
+        <h1 className="initial-test-title">Evaluación Periodica</h1>
         {currentQuestion && !finalNote ? (
           <div>
             <p id="question" className="initial-test-question">
@@ -221,7 +227,7 @@ const InitialTest = () => {
     <button className="initial-test-button retry-button" onClick={handleRetry}>
       Reintentar
     </button>
-    <button className="initial-test-button finish-button" onClick={handleFinish}>
+    <button className="initial-test-button finish-button" onClick={redirectToHome}>
       Finalizar Evaluación
     </button>
   </div>
@@ -231,4 +237,4 @@ const InitialTest = () => {
   );
 }
 
-export default InitialTest;
+export default PeriodicalTest;
