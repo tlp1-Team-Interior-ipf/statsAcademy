@@ -11,12 +11,21 @@ const { __dirname } = fileDirName(import.meta);
 import 'dotenv/config'
 
 const app = express();
-app.use(cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE'], // Permite las solicitudes que necesites
-    allowedHeaders: ['Content-Type', 'Authorization'], // Permite los headers que necesites
-    credentials: true, // Si necesitas enviar cookies o autenticación
-}));
+
+const corsOptions = {
+    origin: ['https://key-fair-glowworm.ngrok-free.app', 'https://leafy-donut-9fbb4f.netlify.app/'],
+    methods: ['OPTIONS', 'POST'],
+    allowedHeaders: ['Content-Type'],
+};
+
+app.use(cors(corsOptions));
+// app.options('*', cors())
+app.options('*', (req, res) => {
+    res.header('Access-Control-Allow-Origin', req.headers.origin);
+    res.header('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.sendStatus(204);
+});
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('combined', {

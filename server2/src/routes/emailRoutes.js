@@ -19,9 +19,9 @@ emailRoutes.post('/request-password-reset', async (req, res) => {
     try {
         const recoveryToken = jwt.sign({ email }, process.env.SECRET_KEY, { expiresIn: '1h' });
 
-        const isProduction = process.env.NODE_ENV === 'development'; // 'production' para cuando se despliega 'development' cuando es local
+        const isProduction = process.env.NODE_ENV === 'production'; // 'production' para cuando se despliega 'development' cuando es local
 
-        const sitio = isProduction ? 'https://tu-sitio.com' : 'http://localhost:5173/changepass'
+        const sitio = isProduction ? 'https://leafy-donut-9fbb4f.netlify.app/' : 'http://localhost:5173/changepass'
 
         const recoveryLink = `${sitio}?token=${recoveryToken}`;
 
