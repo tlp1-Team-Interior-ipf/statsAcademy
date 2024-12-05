@@ -23,14 +23,15 @@ export const ButtonLogout = () => {
     <View>
       <Button 
         title='LOGOUT' 
-        titleStyle={{color: '#f00'}}
+        titleStyle={{color: '#f00', fontWeight: 'bold'}}
         buttonStyle={{
-            borderWidth: 2,
+            borderWidth: 2.2,
             backgroundColor: '#faa',
             borderColor: '#f00',
-            width: 100,
+            width: '100%',
             borderRadius: 5,
             margin: 'auto',
+            height:50
         }}
         onPress={handleLogout} />
       </View>

@@ -23,7 +23,7 @@
         {/* Chat Button */} const buttonChatTheme = theme === 'dark' ? '#49bb80' : '#49bb80';
         {/* Chat Button1 */} const ButtonChatTheme1 = theme === 'dark' ? '#0f7685' : '#0f7685';
         {/* Chat Button2 */} const ButtonChatTheme2 = theme === 'dark' ? '#0f2f85' : '#0f2f85';
-        {/* Chat Button shadow */} const ButtonShadowChatTheme = theme === 'dark' ? '#ffffff40' : '#99999940';
+        {/* Chat Button shadow */} const ButtonShadowChatTheme = theme === 'dark' ? '#ffffff40' : '#dddddd40';
 
 
         // Button radio
@@ -55,7 +55,7 @@
         const IconstHomeTheme = theme === 'dark' ? "#fff" : '#49bb80';
 
         {/* Color icons tab*/}
-        const IconstTabTheme = theme === 'dark' ? "#fff" : '#3399ff80';
+        const IconstTabTheme = theme === 'dark' ? "#fff" : '#fff';
 
         {/* Color tab*/}
         const TabTheme = theme === 'dark' ? "#332288" : '#aabbff';
@@ -69,14 +69,19 @@
 
 
         // Reports
-        {/* Tarjeta */} const ThemeCard = theme === 'dark' ? "#909920" : '#909920';
+        {/* Tarjeta */} const ThemeCard = theme === 'dark' ? "#6644ff" : '#3366ff';
         {/* Sub Tarjeta */} const ThemeSubCard = theme === 'dark' ? "#40bb8050" : '#40bb8050';
+        {/* Sub Tarjeta 2 */} const ThemeSubCard2 = theme === 'dark' ? "#332288" : '#5484FF';
 
         // Profile
         const profileBorderTheme = theme === 'dark' ? '#fff' : '#999';
 
         // My Account
-        const inputAccount = theme === 'dark' ? '#334488' : '#3366ff70'
+        const inputAccount = theme === 'dark' ? '#fff' : '#fff';
+
+        // Settings
+        const subContainer = theme === 'dark' ? '#6464FF' : '#fff';
+        const lineTextLightBlueWrite = theme === 'dark' ? '#fff' : '#3366ff80';
 
         return {
             isDarkTheme,
@@ -110,7 +115,10 @@
             NavbarIconTheme,
             TextAndLineTheme,
             TextNavBarTheme,
-            inputAccount
+            inputAccount,
+            subContainer,
+            lineTextLightBlueWrite,
+            ThemeSubCard2,
             
         }
     }

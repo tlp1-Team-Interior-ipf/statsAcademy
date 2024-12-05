@@ -1,10 +1,8 @@
-import { AntDesign, EvilIcons, FontAwesome5, Ionicons, MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+import { AntDesign, FontAwesome5, Ionicons, MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { useState, useEffect, useContext, useRef } from "react";
-import { Image, Text, View, ScrollView, TouchableWithoutFeedback, Alert, Pressable } from "react-native"
-import IdleTimerManager from "react-native-idle-timer";
+import { useState, useEffect, useContext } from "react";
+import { Image, Text, View, ScrollView, TouchableWithoutFeedback, Pressable } from "react-native"
 import { UserContext } from "../../../context/userContext";
-import { ProfileCard } from "../../../components/Cards/ProfileCard/ProfileCard";
 import {useTranslation} from 'react-i18next';
 import { Temas } from "../../../utils/selectTheme";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -20,16 +18,14 @@ const ReportsScreen = () => {
   const [userId, setUserId] = useState(null);
   const [isUserIdReady, setIsUserIdReady] = useState(false);
 
-  const { resetIdleTimer, elapsedTime, formatTime } = useIdleTimer(() => {
-    Alert.alert(t("Inactividad detectada"), t("¿Estás ahí?"));
-  });
+  const { elapsedTime, formatTime, resetIdleTimer } = useIdleTimer();
 
   
-  const { BackgroundTheme, profileBorderTheme, TextBackgroundTheme } = Temas();
+  const { BackgroundTheme } = Temas();
   
   const navigation = useNavigation();
   
-  const { completedTopics, error, loading } = useCompletedTopics(userId);
+  const { completedTopics, loading } = useCompletedTopics(userId);
 
   useEffect(() => {
     const fetchUserId = async () => {
@@ -66,7 +62,7 @@ const ReportsScreen = () => {
         <View style={{height: '100%', backgroundColor: BackgroundTheme, alignItems: 'center'}}>
           <View style={{backgroundColor: '#3366ff50' }}>
             <View style={{ marginTop: 55, alignItems: 'center' }}>
-              <View style={{width: 150, height: 150, borderWidth: 1, borderLeftWidth: 2, borderBottomWidth: 2, borderColor: '#fff', borderRadius: 150, margin: 10, alignItems: 'center', justifyContent: 'center'}}>
+              <View style={{backgroundColor: '#33aaff40', width: 150, height: 150, borderWidth: 1, borderLeftWidth: 2, borderBottomWidth: 2, borderColor: '#fff', borderRadius: 150, margin: 10, alignItems: 'center', justifyContent: 'center'}}>
                   {user.profileImage ? (
                       <Image source={{uri: user.profileImage}} style={{width: 147, height: 147, borderColor: '#ddd', borderRadius: 100}} />
                   ): <Ionicons name="person" size={60} color={'#fff'} />}

@@ -158,7 +158,7 @@ const StyleAccount = StyleSheet.create({
   },
 
   contentSubTitle: {
-    color: '#fff', 
+    color: '#555', 
     fontSize: 17, 
     left: 10,
     fontWeight: 'bold'

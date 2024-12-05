@@ -32,7 +32,7 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const MyTabs = () => {
-  const { BackgroundTheme, TextBackgroundTheme, IconstTabTheme, TabTheme, ColorTextTab, isDarkTheme } = Temas();
+  const { BackgroundTheme, TextBackgroundTheme, IconstTabTheme, TabTheme, ThemeSubCard2 } = Temas();
 
   return (
     <Tab.Navigator
@@ -68,10 +68,10 @@ const MyTabs = () => {
         },
         
         
-        tabBarActiveTintColor: '#222', // Texto azul en la pestaña activa cuando estás en Reports
-        tabBarInactiveTintColor: route.name === 'Reports' ? '#0000FF' : '#666', 
+        tabBarActiveTintColor: route.name === 'Reports' ? '#0af' : '#fff', // Texto gris en la pestaña activa cuando estás en Reports
+        tabBarInactiveTintColor: route.name === 'Reports' ? '#0000FF' : '#ccc', 
         tabBarStyle: {
-          backgroundColor: route.name === 'Reports' ? '#fff' : TabTheme, // Blanco para "Reports", tema predeterminado para otras
+          backgroundColor: route.name === 'Reports' ? '#fff' : route.name === 'Calendar' ? ThemeSubCard2 : TabTheme, // Blanco para "Reports", tema predeterminado para otras
         },
       })}
       >
