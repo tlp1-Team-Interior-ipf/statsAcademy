@@ -34,7 +34,7 @@ function Exams() {
       description: "Pon a prueba tus conocimientos hasta el momento.",
       imageSrc: "/img/periodictest.webp",
       altText: "Evaluación Periódica",
-      route: "/home/periodictest",
+      route: "/home/periodicaltest",
     },
   ];
 

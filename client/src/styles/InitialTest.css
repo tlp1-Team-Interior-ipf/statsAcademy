@@ -100,3 +100,37 @@
   border-radius: 4px;
   transition: width 0.4s ease-in-out;
 }
+.initial-test-button,
+.retry-button,
+.finish-button {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #0E7684;
+  /* Modern blue-green */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.initial-test-button:hover,
+.retry-button:hover,
+.finish-button:hover {
+  background-color: #49BA81;
+  /* Lighter green for hover effect */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.initial-test-button:active,
+.retry-button:active,
+.finish-button:active {
+  background-color: #0E2F84;
+  /* Deep blue for active state */
+  transform: scale(0.98);
+}
