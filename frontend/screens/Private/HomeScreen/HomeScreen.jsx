@@ -13,8 +13,10 @@ import { Topics1 } from '../../../components/Topics/Topics1';
 import { ThematicUnit2 } from '../../../components/ThematicUni/ThematicUnit2';
 import { ThematicUnit1 } from '../../../components/ThematicUni/ThematicUnit1';
 import BackgroundPoints from '../../../components/Bcakground/Background';
+import { useTranslation } from 'react-i18next';
 
 const HomeScreen = () => {
+  const { t } = useTranslation();
   const { BackgroundTheme } = Temas();
   const { isLoggedIn } = useContext(UserContext);
 
@@ -37,7 +39,7 @@ const HomeScreen = () => {
             paddingTop: 30
           }}>
             <BackgroundPoints positionBackground={5} />
-            <ThematicUnit ThematicUnit={'1 Conceptos básicos de estadística'} />
+            <ThematicUnit ThematicUnit={t('Units-1')} />
 
             <Topics topicTop={140} topicLeft={100} />
             <Topics1 topicTop={260} topicLeft={150} />
@@ -48,7 +50,7 @@ const HomeScreen = () => {
             <BackgroundPoints positionBackground={760} />
 
             <View style={{top: 617}}>
-              <ThematicUnit1 ThematicUnit={'2 Presentación de datos'} />
+              <ThematicUnit1 ThematicUnit={t('Units-1')} />
             </View>
 
             <Topics2 topicTop={833} topicLeft={50} />
@@ -60,7 +62,7 @@ const HomeScreen = () => {
             <BackgroundPoints positionBackground={1605} />
 
             <View style={{top: 1220}}>
-              <ThematicUnit2 ThematicUnit={'2 Estadística descriptiva'} />
+              <ThematicUnit2 ThematicUnit={t('Units-3')} />
             </View>            
 
             <Topics3 topicTop={1520} topicLeft={140} />
