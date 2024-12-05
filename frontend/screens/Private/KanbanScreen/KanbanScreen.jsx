@@ -21,7 +21,7 @@ const KanbanScreen = () => {
         <GestureHandlerRootView style={{ flex: 1 }}>
             <View style={{backgroundColor: BackgroundTheme, height: '100%'}}>
               <View style={{ top: 20 }}>
-                <Text style={stylesKanban.titleKanban}>Metas personales</Text>
+                <Text style={stylesKanban.titleKanban}>{t('My-personal-goals')}</Text>
                 <Pressable onPress={() => setShowCreatorTask(true)} style={stylesKanban.buttonAdd} android_ripple={{ color:'rgba(0, 255, 255, 0.2)', borderless: false, radius: 250}}>
                     <Text style={stylesKanban.textButtonAdd}>{t('Tool-kanban-button-add')}</Text>
                 </Pressable>
@@ -33,7 +33,7 @@ const KanbanScreen = () => {
                             <Text style={stylesKanban.textColumn}>{t('Column-1')}</Text>
                             {tasks.length === 0 ? (
                             <View style={{ margin: 'auto', justifyContent: 'center', backgroundColor: ColumnBackgroundTheme, width: 230, height: 500, alignItems: 'center', left:-10 }}>
-                                <Text style={{ color: '#ddd' }}>{t('Not-task-pending')}</Text>
+                                <Text style={{ color: '#fff' }}>{t('Not-task-pending')}</Text>
                             </View>
                         ) : (
                             <ScrollView>
@@ -46,7 +46,7 @@ const KanbanScreen = () => {
                             <Text style={stylesKanban.textColumn}>{t('Column-2')}</Text>
                             {tasks.length === 0 ? (
                             <View style={{ margin: 'auto', justifyContent: 'center', backgroundColor: ColumnBackgroundTheme, width: 230, height: 500, alignItems: 'center', left:-10 }}>
-                                <Text style={{ color: '#ddd' }}>{t('Not-task-process')}</Text>
+                                <Text style={{ color: '#fff' }}>{t('Not-task-process')}</Text>
                             </View>
                         ) : (
                             <ScrollView>
@@ -59,7 +59,7 @@ const KanbanScreen = () => {
                             <Text style={stylesKanban.textColumn}>{t('Column-3')}</Text>
                             {tasks.length === 0 ? (
                             <View style={{ margin: 'auto', justifyContent: 'center', backgroundColor: ColumnBackgroundTheme, width: 230, height: 500, alignItems: 'center', left:-10 }}>
-                                <Text style={{ color: '#ddd' }}>{t('Not-task-finish')}</Text>
+                                <Text style={{ color: '#fff' }}>{t('Not-task-finish')}</Text>
                             </View>
                         ) : (
                             <ScrollView>
@@ -92,26 +92,29 @@ const KanbanScreen = () => {
 const stylesKanban = StyleSheet.create({
     buttonAdd: {
         borderWidth: 1, 
+        borderLeftWidth: 2,
+        borderBottomWidth: 2,
+        backgroundColor: '#ffffff30',
         borderRadius: 5, 
         padding: 10, 
         alignItems: 'center', 
-        borderColor: '#ddd', 
+        borderColor: '#fff', 
         margin: 'auto', 
-        width: '90%',
+        width: '94%',
     },
 
     textButtonAdd: {
-        color: '#ddd',
+        color: '#fff',
         fontSize: 19
     },
     
     textColumn: {
-        color: '#ddd',
+        color: '#fff',
         fontSize: 20,
         textAlign: 'center',
         borderBottomWidth: 1,
         paddingBottom: 10,
-        borderColor: '#ddd'
+        borderColor: '#fff'
     },
 
     titleKanban: {

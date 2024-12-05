@@ -77,7 +77,7 @@ const CreatorTask = ({ selected, setShowCreatorTask, setSelected, addTask }) => 
 
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 60, marginVertical: 10 }}>
                     <Text style={{ color: '#ddd', fontWeight: 'bold', fontSize: 17, top: -15 }}>
-                        {t('Modal-title')}
+                        {t('Modal-title-task')}
                     </Text>
                     <Ionicons style={{top: -15}} name='close' size={35} color={'#ddd'} onPress={() => {
                         setShowCreatorTask(false);
@@ -104,8 +104,8 @@ const CreatorTask = ({ selected, setShowCreatorTask, setSelected, addTask }) => 
                     )
                 }
 
-                <TextInput placeholder={t('Input-event')} style={{ borderWidth: 1, borderRadius: 5, borderColor: '#ddd', padding: 10, color: '#ddd', width: '100%', marginVertical: 15 }} placeholderTextColor={'#ddd'} value={titleTask} onChangeText={text => setTitleTask(text)} />
-                <TextInput placeholder={'Description'} style={{ borderWidth: 1, borderRadius: 5, borderColor: '#ddd', padding: 10, color: '#ddd', width: '100%', marginBottom: 15 }} placeholderTextColor={'#ddd'} value={descriptionTask} onChangeText={text => setDescriptionTask(text)} />
+                <TextInput placeholder={t('Input-goal')} style={{ borderWidth: 1, borderRadius: 5, borderColor: '#ddd', padding: 10, color: '#ddd', width: '100%', marginVertical: 15 }} placeholderTextColor={'#ddd'} value={titleTask} onChangeText={text => setTitleTask(text)} />
+                <TextInput placeholder={t('Description-modal')} style={{ borderWidth: 1, borderRadius: 5, borderColor: '#ddd', padding: 10, color: '#ddd', width: '100%', marginBottom: 15 }} placeholderTextColor={'#ddd'} value={descriptionTask} onChangeText={text => setDescriptionTask(text)} />
                 <Pressable style={{ borderWidth: 1, borderRadius: 5, padding: 10, borderColor: '#ddd', width: '100%' }} onPress={handleSubmitTask} android_ripple={{ color: 'rgba(0, 255, 255, 0.2)', borderless: false, radius: 150 }}>
                     <Text style={{ color: '#ddd', textAlign: 'center' }}>
                         {t('Button-save')}

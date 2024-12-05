@@ -15,8 +15,10 @@
   "Achievements": "Achievements",
   "UserJourney": "User Journey",
   "Reports": "Reports",
+  "My-personal-goals": "My personal goals",
 
   "Share": "Share friends",
+  "Description-modal": "Description",
   
   "Button-Cancel": "Cancel",
   "Button-Init-Class": "Init class",
@@ -84,6 +86,9 @@
   "Button-acept": "Accept",
   "Button-cancel": "Cancel",
   "Select-date": " Select the date",
+
+  "Modal-title-task": "Create your important goal",
+  "Input-goal": "Write your important goal",
 
   "Library-title": "Find the Statistics books you want",
   "Library-book-title": "",
@@ -202,6 +207,14 @@
   "DescAchievement-6": "Study for 30 minutes",
   "DescAchievement-7": "Finish all available modules",
   "DescAchievement-8": "Obtain more than 90 points in each topic",
+
+  "QuizGame": "",
+  "QuizGameTitle": "Ranking semanal de mejores jugadores en Quiz",
+  "GameOver": "Game over!",
+  "ShareResults:": "Share results",
+  "Next": "Siguiente",
+  "PlayQuiz": "Jugar al Quiz",
+  "Points": "Points",
 
   "Config-title": "Change the settings to your preference",
   "Config-subtitle-1": "Theme",

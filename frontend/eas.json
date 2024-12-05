@@ -1,0 +1,35 @@
+{
+  "cli": {
+    "version": ">= 13.4.2",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_HOST": "key-fair-glowworm.ngrok-free.app"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+
+      "android": {
+      "buildType": "apk",
+      "env": {
+        "EXPO_PUBLIC_HOST": "key-fair-glowworm.ngrok-free.app"
+      }
+    }
+    },
+
+    "production": {
+      "autoIncrement": true,
+      "env": {
+        "EXPO_PUBLIC_HOST": "key-fair-glowworm.ngrok-free.app"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

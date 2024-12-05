@@ -14,7 +14,11 @@ export const LibraryButton = () => {
 
 const LibraryStyle = StyleSheet.create({
     containerBook: {
-        backgroundColor: '#66666640',
+        backgroundColor: '#cccccc40',
+        borderLeftWidth: 2,
+        borderBottomWidth: 3,
+        borderWidth: 1,
+        borderColor: '#ccc',
         position: 'absolute',
         top: 650,
         left: 280,

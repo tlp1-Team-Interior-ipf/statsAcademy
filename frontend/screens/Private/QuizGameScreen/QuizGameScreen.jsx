@@ -4,8 +4,11 @@ import ProgressBar from "react-native-progress/Bar";
 import { questions } from '../../../utils/questions'
 import { Temas } from "../../../utils/selectTheme";
 import MyCircleProgress from "../../../components/Progress/CircleProgress/CircleProgress";
+import { useTranslation } from "react-i18next";
 
 const QuizGameScreen = () => {
+  const {t} = useTranslation();
+
   const [questionIndex, setQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [timer, setTimer] = useState(0);
@@ -110,7 +113,7 @@ const QuizGameScreen = () => {
 
       {!gameStarted ? (
         <View>
-          <Text style={styles.textRanking}>Ranking de mejores jugadores en Quiz</Text>
+          <Text style={styles.textRanking}>{t('QuizGameTitle')}</Text>
           <View >
           <ScrollView 
             style={styles.containerRanking} 
@@ -119,14 +122,16 @@ const QuizGameScreen = () => {
             {ranking.map((player, index) => (
               <View key={index} style={styles.rankingItem}>
                 <Text style={styles.rankingText}>
-                  {player.position}. {player.name} - {player.score} puntos
+                  {player.position}. {player.name}   
                 </Text>
+
+                <Text style={{color: '#fff', right: 60}}>{player.score} {t('Points')}</Text>
               </View>
             ))}
             </ScrollView>
           </View>
           <Pressable style={styles.startButton} onPress={startGame}>
-            <Text style={styles.startButtonText}>Jugar al Quiz</Text>
+            <Text style={styles.startButtonText}>{t('PlayQuiz')}</Text>
           </Pressable>
         </View>
       ) : (
@@ -164,7 +169,7 @@ const QuizGameScreen = () => {
 
           {selectedAnswer && (
             <TouchableOpacity style={styles.nextButton} onPress={handleNextQuestion}>
-              <Text style={styles.nextButtonText}>Siguiente</Text>
+              <Text style={styles.nextButtonText}>{t('Next')}</Text>
             </TouchableOpacity>
           )}
         </>
@@ -182,10 +187,10 @@ const QuizGameScreen = () => {
           <View style={{gap: 10}}>
 
             <Text style={{color: '#fff', textAlign: 'center'}}>
-              ¡El juego a terminado!
+              {t('GameOver')}
             </Text>
             <Pressable style={{backgroundColor: '#36f', borderRadius: 5, padding: 10, width: '100%',opacity: .8 }}>
-              <Text style={{color: '#fff', textAlign: 'center'}}>Compartir resultados</Text>
+              <Text style={{color: '#fff', textAlign: 'center'}}>{t('ShareResults')}</Text>
             </Pressable>
           
           </View>
@@ -272,25 +277,6 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 18,
   },
-  // containerRanking: {
-  //   borderWidth: 2, 
-  //   borderRadius: 5, 
-  //   borderColor: '#fff', 
-  //   padding: 10, 
-  //   width: '100%', 
-  //   height: '82%', 
-  //   top: 10,
-  // },
-  // textRanking: {
-  //   textAlign: 'center',
-  //   color: '#fff',
-  //   fontSize: 25,
-  // },
-  // userRanking: {
-  //   backgroundColor: '#ffffff40',
-  //   width: '100%',
-  //   height: 50,
-  // }
 
   containerRanking: {
     borderWidth: 2,
@@ -309,6 +295,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff20",
     marginBottom: 5,
     borderRadius: 5,
+    flexDirection: 'row'
   },
   rankingText: {
     color: "#fff",

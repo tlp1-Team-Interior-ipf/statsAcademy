@@ -101,19 +101,19 @@ const stylesKanban = StyleSheet.create({
 
     title: {
         fontSize: 25,
-        color: '#ddd',
+        color: '#fff',
         marginVertical: 10,
         textAlign: 'center'
     },
     description: {
         fontSize: 16,
-        color: '#ccc',
+        color: '#fff',
         marginBottom: 10,
         textAlign: 'center'
     },
     details: {
         fontSize: 14,
-        color: '#aaa',
+        color: '#fff',
         marginBottom: 10,
         textAlign: 'center',
         height: 60

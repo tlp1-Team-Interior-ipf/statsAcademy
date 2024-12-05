@@ -15,8 +15,10 @@
     "Achievements": "Logros",
     "UserJourney": "Recorrido del usuario",
     "Reports": "Reportes",
+    "My-personal-goals": "Mis metas personales",
 
     "Share": "Invitar amigos",
+    "Description-modal": "Descripción",
     
     "Button-Cancel": "Cancelar",
     "Button-Init-Class": "Iniciar clase",
@@ -83,6 +85,9 @@
     "Button-acept": "Aceptar",
     "Button-cancel": "Cancelar",
     "Select-date": "Seleccione la fecha",
+
+    "Modal-title-task": "Crea tu meta importante",
+    "Input-goal": "Escribe tu meta importante",
 
     "Library-title": "Encontrá los libros de Estadística que quieras",
     "Library-book-title": "",
@@ -198,6 +203,14 @@
     "DescAchievement-6": "Estudiar durante 30 minutos",
     "DescAchievement-7": "Terminar todos los modulos disponibles",
     "DescAchievement-8": "Obtener más de 90 puntos en cada tema",
+
+    "QuizGame": "",
+    "QuizGameTitle": "Ranking semanal de los mejores jugadores en Quiz",
+    "GameOver": "¡Juego terminado!",
+    "ShareResults:": "Compartir Resultados",
+    "Next": "Siguiente",
+    "PlayQuiz": "Jugar al Quiz",
+    "Points": "Puntos",
 
     "Config-title": "Cambia los ajustes a tu preferencia",
     "Config-subtitle-1": "Tema",

@@ -68,8 +68,8 @@ const MyTabs = () => {
         },
         
         
-        tabBarActiveTintColor: route.name === 'Reports' ? '#0af' : '#fff', // Texto gris en la pestaña activa cuando estás en Reports
-        tabBarInactiveTintColor: route.name === 'Reports' ? '#0000FF' : '#ccc', 
+        tabBarActiveTintColor: route.name === 'Reports' ? '#0af' : '#0ff', // Texto gris en la pestaña activa cuando estás en Reports
+        tabBarInactiveTintColor: route.name === 'Reports' ? '#0000FF' : '#fff', 
         tabBarStyle: {
           backgroundColor: route.name === 'Reports' ? '#fff' : route.name === 'Calendar' ? ThemeSubCard2 : TabTheme, // Blanco para "Reports", tema predeterminado para otras
         },

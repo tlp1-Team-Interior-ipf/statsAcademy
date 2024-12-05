@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Pressable } from 'react-native';
 import { Entypo, Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { OpenOptionModal } from '../../Modals/ThreeOptionsModal/ModalOptions';
+import { Temas } from '../../../utils/selectTheme';
 
 const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -14,6 +15,7 @@ const formatDate = (dateString) => {
 
 
 const TaskItem = ({ task, handleEditTasks, setTasks }) => {
+    const { ItemBackground, itemBorder, IconBackground } = Temas();
     const [openModal, setOpenModal] = useState(false)
     const [modalPosition, setModalPosition] = useState({ x: 0, y: 0 });
 
@@ -31,7 +33,7 @@ const TaskItem = ({ task, handleEditTasks, setTasks }) => {
             )
         else if(task.status === 'in progress')
             return(
-                <MaterialIcons name='access-time-filled' size={23} color={'#2af'} style={{position: 'absolute', left: 155}} />
+                <MaterialIcons name='access-time-filled' size={23} color={IconBackground} style={{position: 'absolute', left: 155}} />
             )
         else if(task.status === 'completed')
             return(
@@ -42,8 +44,9 @@ const TaskItem = ({ task, handleEditTasks, setTasks }) => {
     const closeModal = () => {
         setOpenModal(false);
     };
+
     return (
-        <View style={{ height: 110, width: '100%', padding: 17, backgroundColor: '#22a', borderRadius: 5, margin: 'auto', borderTopWidth: 6, borderColor: '#56a', marginTop: 10 }}>
+        <View style={{ height: 110, width: '100%', padding: 17, backgroundColor: ItemBackground, borderRadius: 5, margin: 'auto', borderTopWidth: 6, borderColor: itemBorder, marginTop: 10 }}>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <View style={{gap: 5, width: '80%'}}>
                     <View style={{gap: 15, flexDirection: 'row', alignItems: 'center', top: -10}}>

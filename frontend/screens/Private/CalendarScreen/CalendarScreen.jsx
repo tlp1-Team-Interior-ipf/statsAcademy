@@ -50,19 +50,21 @@ const CalendarScreen = () => {
                         monthTextColor: '#fff',
                         textSectionTitleColor: '#fff',
                         calendarBackground: 'transparent',
+                        todayTextColor: '#3cf',
+                        todayBackgroundColor: '#ffffff30'
                     }}
                 />
                 <View style={{ alignItems: 'center' }}>
                     <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 22, textAlign: 'center', margin: 10 }}>
                         {t('Tool-calendar-subtitle')}
                     </Text>
-                    <Pressable style={{ borderWidth: 1, borderRadius: 5, padding: 10, borderColor: '#ddd', margin: 'auto', width: '50%', alignItems: 'center' }} onPress={() => setShowCreatorEvent(true)} android_ripple={{ color: 'rgba(0, 255, 255, 0.2)', borderless: false, radius: 150 }}>
-                        <Text style={{ color: '#ddd' }}>{t('Button-add')}</Text>
+                    <Pressable style={{ borderWidth: 1, borderRadius: 5, padding: 10, borderColor: '#ddd', margin: 'auto', width: '75%', alignItems: 'center', borderLeftWidth: 2, borderBottomWidth: 2, backgroundColor: '#ffffff30', }} onPress={() => setShowCreatorEvent(true)} android_ripple={{ color: 'rgba(0, 255, 255, 0.2)', borderless: false, radius: 150 }}>
+                        <Text style={{ color: '#fff' }}>{t('Button-add')}</Text>
                     </Pressable>
                     <View style={{ height: 300, width: 310, top: 10, margin: 'auto', left: 10 }}>
                         {events.length === 0 ? (
                             <View style={{ margin: 'auto', justifyContent: 'center', backgroundColor: BackgroundTheme, height: 300, alignItems: 'center', left:-10 }}>
-                                <Text style={{ color: '#ddd' }}>{t('Not-event')}</Text>
+                                <Text style={{ color: '#fff' }}>{t('Not-event')}</Text>
                             </View>
                         ) : (
                             <ScrollView>

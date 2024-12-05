@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, Text } from 'react-native';
 import React, {useContext, useEffect} from 'react';
 import { UserContext } from '../../../context/userContext';
 import Navbar from '../../../components/Navbar/Navbar';
@@ -12,6 +12,7 @@ import { Topics3 } from '../../../components/Topics/Topics3';
 import { Topics1 } from '../../../components/Topics/Topics1';
 import { ThematicUnit2 } from '../../../components/ThematicUni/ThematicUnit2';
 import { ThematicUnit1 } from '../../../components/ThematicUni/ThematicUnit1';
+import BackgroundPoints from '../../../components/Bcakground/Background';
 
 const HomeScreen = () => {
   const { BackgroundTheme } = Temas();
@@ -35,7 +36,7 @@ const HomeScreen = () => {
             backgroundColor: BackgroundTheme, 
             paddingTop: 30
           }}>
-          
+            <BackgroundPoints positionBackground={5} />
             <ThematicUnit ThematicUnit={'1 Conceptos básicos de estadística'} />
 
             <Topics topicTop={140} topicLeft={100} />
@@ -43,6 +44,8 @@ const HomeScreen = () => {
             <Topics1 topicTop={380} topicLeft={190} />
             <Topics1 topicTop={500} topicLeft={170} />
             <Topics1 topicTop={620} topicLeft={100} />
+
+            <BackgroundPoints positionBackground={760} />
 
             <View style={{top: 617}}>
               <ThematicUnit1 ThematicUnit={'2 Presentación de datos'} />
@@ -53,6 +56,8 @@ const HomeScreen = () => {
             <Topics2 topicTop={1068} topicLeft={100} />
             <Topics2 topicTop={1186} topicLeft={140} />
             <Topics2 topicTop={1305} topicLeft={180} />
+
+            <BackgroundPoints positionBackground={1605} />
 
             <View style={{top: 1220}}>
               <ThematicUnit2 ThematicUnit={'2 Estadística descriptiva'} />

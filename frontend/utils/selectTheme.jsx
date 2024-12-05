@@ -32,10 +32,13 @@
 
         // Calendar
         {/* Backgroundd */} const CalendarBackgroundTheme = theme === 'dark' ? '#339' : '#3af';
+        const ItemBackground = theme === 'dark' ? '#22a' : '#2299ff';
+        const itemBorder = theme === 'dark' ? '#56a' : '#5566ff';
 
         // Kanban
         {/* Columns Background */} const ColumnBackgroundTheme = theme === 'dark' ? '#337' : '#ffffff20';
-        {/* Columns Background */} const BorderColumnTheme = theme === 'dark' ? '#666' : '#ddd';
+        {/* Columns Background */} const BorderColumnTheme = theme === 'dark' ? '#666' : '#fff';
+        const IconBackground = theme === 'dark' ? '#2af' : '#2cf'
 
         // Chat
         {/* Input Background */} const InputBackground = theme === 'dark' ? '#332299' : 'ffffff20';
@@ -83,6 +86,7 @@
         const subContainer = theme === 'dark' ? '#6464FF' : '#fff';
         const lineTextLightBlueWrite = theme === 'dark' ? '#fff' : '#3366ff80';
 
+
         return {
             isDarkTheme,
             ButtonStartTheme,
@@ -119,6 +123,9 @@
             subContainer,
             lineTextLightBlueWrite,
             ThemeSubCard2,
+            ItemBackground,
+            itemBorder,
+            IconBackground
             
         }
     }

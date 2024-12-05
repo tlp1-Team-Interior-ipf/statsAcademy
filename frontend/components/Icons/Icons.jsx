@@ -1,4 +1,4 @@
-import { FontAwesome } from '@expo/vector-icons';
+import { Feather, FontAwesome, Fontisto } from '@expo/vector-icons';
 import React, {useContext} from 'react';
 import { View, TouchableOpacity, StyleSheet, Pressable, Image } from 'react-native';
 import { Ionicons, MaterialCommunityIcons, AntDesign } from 'react-native-vector-icons';
@@ -55,6 +55,12 @@ export const IconRight = ({iconName, iconSize, iconColor}) => {
     return(
         <AntDesign name={iconName} size={iconSize} color={iconColor} />
     )
+}
+
+export const IconBell = ({iconSize, iconColor}) => {
+  return(
+      <Fontisto name={'bell-alt'} size={iconSize} color={iconColor} />
+  )
 }
 
 const styles = StyleSheet.create({
