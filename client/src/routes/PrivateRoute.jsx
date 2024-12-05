@@ -5,6 +5,6 @@ import { AuthContext } from "../context/authContext";
 export const PrivateRoute = ({ children }) => {
     const { user } = useContext(AuthContext);
 
-    console.log("User in PrivateRoute:", user);
+    
     return user.isLogged === true ? children : <Navigate to="/login" />;
 };

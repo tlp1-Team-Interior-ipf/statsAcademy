@@ -1,35 +1,49 @@
-import React from 'react';
-import { Carousel } from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import React, { useEffect, useState } from 'react';
+import { Carousel } from 'react-bootstrap';
 import '../styles/MainView.css';
 
 const MainView = () => {
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        // Retrasa la aparición para asegurarse de que la animación se ejecute correctamente
+        setTimeout(() => {
+            setIsVisible(true);
+        }, 100); // Puedes ajustar el tiempo de retraso si es necesario
+    }, []);
+
     return (
         <div className="main-view-container">
-            {/* Contenedor del texto y botón */}
-            <div className="text-section">
+            <div className={`text-section text-section-move-down fade-in ${isVisible ? 'visible' : ''}`}>
+                <h1>Stats Academy</h1>
+                <br />
                 <h2>Aprendizaje en Estadística</h2>
                 <p>
                     Descubre la manera más efectiva de aprender Estadística con nuestras tutorías personalizadas.
                 </p>
-                <button className="cta-button">Comienza ahora</button>
+                <button className="start-button">Comienza ahora</button>
             </div>
 
-            {/* Contenedor del carrusel */}
-            <div className="carousel-section">
-                <Carousel autoPlay infiniteLoop showThumbs={false}>
-                    <div>
-                        <img src="https://via.placeholder.com/600x400" alt="Imagen 1" />
-                        <p className="legend">Tema 1</p>
-                    </div>
-                    <div>
-                        <img src="https://via.placeholder.com/600x400" alt="Imagen 2" />
-                        <p className="legend">Tema 2</p>
-                    </div>
-                    <div>
-                        <img src="https://via.placeholder.com/600x400" alt="Imagen 3" />
-                        <p className="legend">Tema 3</p>
-                    </div>
+            <div className={`carousel-section carousel-section-move-down fade-in ${isVisible ? 'visible' : ''}`}>
+                <Carousel controls={true} indicators={true}>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src="/img/img1.png"
+                        />
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src="/img/img2.png"
+                        />
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100"
+                            src="/img/img3.png"
+                        />
+                    </Carousel.Item>
                 </Carousel>
             </div>
         </div>

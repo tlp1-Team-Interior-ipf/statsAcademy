@@ -1,0 +1,136 @@
+/* Estilos generales */
+.initial-test-body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  box-sizing: border-box;
+  height: 100vh; /* Asegura que el body ocupe toda la altura del viewport */
+}
+
+.evaluation-background {
+  background-image: url('../assets/backgroundtest.png'); /* Ruta de la imagen */
+  background-size: cover;  /* Asegura que la imagen cubra todo el área */
+  background-position: center;  /* Centra la imagen */
+  background-attachment: fixed; /* Hace que la imagen no se mueva al hacer scroll */
+  height: 100vh; /* Asegura que la sección de fondo ocupe toda la altura del viewport */
+  width: 100%; /* Asegura que ocupe todo el ancho */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0; /* Elimina el padding existente para evitar márgenes indeseados */
+}
+
+.evaluation-container {
+  background: rgba(255, 255, 255, 0.8); /* Fondo semitransparente para mejorar la legibilidad */
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+}
+
+.initial-test-title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Pregunta */
+.initial-test-question {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* Input y botón */
+.initial-test-input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Botón de enviar respuesta */
+.initial-test-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #28a745;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover del botón */
+.initial-test-button:hover {
+  background-color: #3ea770;
+  transform: scale(1.02);
+}
+
+/* Al presionar el botón */
+.initial-test-button:active {
+  background-color: #b7f2d3;
+  transform: scale(1);
+}
+
+/* Puntuación y Resultado */
+.initial-test-score {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #555;
+}
+
+/* Barra de progreso */
+.progress-bar-container {
+  background-color: #ddd;
+  border-radius: 4px;
+  height: 10px;
+  margin-top: 20px;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #0E7684;
+  border-radius: 4px;
+  transition: width 0.4s ease-in-out;
+}
+.initial-test-button,
+.retry-button,
+.finish-button {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #0E7684;
+  /* Modern blue-green */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.initial-test-button:hover,
+.retry-button:hover,
+.finish-button:hover {
+  background-color: #49BA81;
+  /* Lighter green for hover effect */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.initial-test-button:active,
+.retry-button:active,
+.finish-button:active {
+  background-color: #0E2F84;
+  /* Deep blue for active state */
+  transform: scale(0.98);
+}

@@ -1,10 +1,24 @@
 import { Router } from 'express';
-import userRouter from './user.routes.js';
-import modelRouter from './model.Routes.js';
+import authRouter from './authRoutes.js';
+import userRouter from './userRoutes.js';
+import topicRouter from './topicRoutes.js';
+import progressRouter from './progressRoutes.js';
+import chatRouter from './chatRoutes.js';
+import EventRouter from './calendarEventRoutes.js';
+import taskRouter from './taskRoutes.js';
+import ratingsRouter from './ratingsRoutes.js';
+import inicialTestRoutes from './inicialTestRoutes.js';
 
-const router = Router();
+const routes = Router();
 
-router.use('/users', userRouter);
-router.use(modelRouter);
+routes.use('/auth', authRouter);
+routes.use('/users', userRouter);
+routes.use('/topic', topicRouter);
+routes.use('/progress', progressRouter);
+routes.use('/chat', chatRouter);
+routes.use('/calendarEvent', EventRouter);
+routes.use('/task', taskRouter);
+routes.use('/ratings', ratingsRouter);
+routes.use('/', inicialTestRoutes);
 
-export { router };
+export default routes;

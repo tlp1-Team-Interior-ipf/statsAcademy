@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
-import './SignInForm.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/SignInForm.css'; // Asegúrate de que este archivo CSS esté bien configurado
 import { useNavigate } from 'react-router-dom';
-import swal from 'sweetalert';
+import { useSnackbar } from 'notistack';
 
 const SignInForm = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const user = { username, email, password };
 
     try {
-      const response = await fetch('http://localhost:3000/users', {
+      const response = await fetch('http://localhost:4000/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -23,22 +25,25 @@ const SignInForm = () => {
       });
 
       if (response.ok) {
-        const data = await response.json();
-        swal({
-          title: "¡Registro exitoso!",
-          text: "Serás redirigido a la página de inicio de sesión.",
-          icon: "success",
-          timer: 2000,
-          buttons: false,
+        enqueueSnackbar('¡Registro exitoso! Serás redirigido a la página de inicio de sesión.', {
+          variant: 'success',
+          autoHideDuration: 2000,
         });
         setTimeout(() => {
           navigate('/login');
         }, 2000);
       } else {
-        console.error('Error al registrar el usuario', response.statusText);
+        const errorText = await response.text();
+        console.error('Error al registrar el usuario:', errorText);
+        enqueueSnackbar('Hubo un problema al registrarse. Inténtalo de nuevo.', {
+          variant: 'error',
+        });
       }
     } catch (error) {
-      console.log('Error al registrar el usuario', error);
+      console.error('Error al registrar el usuario:', error);
+      enqueueSnackbar('Error de conexión. Por favor verifica tu conexión a Internet.', {
+        variant: 'error',
+      });
     }
   };
 
@@ -64,6 +69,7 @@ const SignInForm = () => {
                   placeholder="Usuario"
                   value={username}
                   onChange={e => setUsername(e.target.value)}
+                  required
                 />
               </div>
               <label className="form-label" htmlFor="emailInput">Correo electrónico</label>
@@ -75,6 +81,7 @@ const SignInForm = () => {
                   placeholder="Email"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
+                  required
                 />
               </div>
               <label className="form-label" htmlFor="passwordInput">Contraseña</label>
@@ -86,11 +93,12 @@ const SignInForm = () => {
                   placeholder="Contraseña"
                   value={password}
                   onChange={e => setPassword(e.target.value)}
+                  required
                 />
               </div>
               <div className="d-flex justify-content-around align-items-center mb-4">
                 <div className="form-check">
-                  <input className="form-check-input" type="checkbox" value="" id="rememberMeCheck" />
+                  <input className="form-check-input" type="checkbox" id="rememberMeCheck" />
                   <label className="form-check-label" htmlFor="rememberMeCheck"> Recuérdame </label>
                 </div>
                 <div>
@@ -100,8 +108,7 @@ const SignInForm = () => {
                 </div>
               </div>
               <button type="submit" className="btn btn-primary btn-lg btn-block">Registrarme</button>
-              <div className="divider d-flex align-items-center my-4">
-              </div>
+              <div className="divider d-flex align-items-center my-4"></div>
             </form>
           </div>
         </div>

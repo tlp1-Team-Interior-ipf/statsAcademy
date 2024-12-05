@@ -1,0 +1,118 @@
+.container2 {
+    background-color: rgb(8, 49, 10);
+    width: 1100px;
+    height: 610px;
+    margin: 10px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 5px solid #31241d;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    overflow-y: auto;
+  }
+  
+  .container2 > div {
+    padding: 20px;
+    border-right: 1px solid #fff;
+    border-left: 1px solid #fff;
+    position: relative;
+  }
+  
+  .task-card2, .task-detail-card2 {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #181818;
+    border-radius: 5px;
+    color: #ffffff;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: transform 1s ease, width 1s ease, height 1s ease, top 1s ease, left 1s ease, opacity 0.5s ease;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  label > input {
+    border: none;
+    border: 1px solid #696969;
+    border-radius: 5px;
+    background-color: #232323;
+    padding: 5px;
+    color: #fff;
+  }
+
+  label > input:focus {
+    outline: none;
+  }
+
+  label > textarea {
+    border: none;
+    border: 1px solid #696969;
+    background-color: #232323;
+    border-radius: 5px;
+    padding: 15px;
+    color: #fff;
+  }
+
+  label > textarea:focus {
+    outline: none;
+  }
+
+  .task-card2.show2, .task-detail-card2.show2 {
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 400px;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+  
+  .task{
+    margin: 5px 0;
+    padding: 10px 0;
+    background-color: #555;
+    cursor: pointer;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+  
+  .task.new{
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  
+  .task.new-entered {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .task.move {
+    transition: transform 1s ease, opacity 0.5s ease;
+  }
+  
+  .task.move-entered {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  .drag-handle {
+    cursor: grab;
+    padding: 4px;
+    margin-right: 8px;
+  }
+
+  .button-todo{
+    border-radius: 5px;
+    border: 1px solid #fff;
+    background-color: transparent;
+    color: #ffffff;
+    padding: 5px;
+  }

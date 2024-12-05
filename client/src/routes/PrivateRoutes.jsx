@@ -2,8 +2,17 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import ChatPage from "../pages/ChatPage";
 import NotFoundPage from "../pages/NotFoundPage";
-import ProfilePage from "../pages/ProfilePage";
+import ProfilePage from "../pages/ProgressPage";
+import ToolsPage from "../pages/ToolsPage";
+import CalendarPage from "../pages/CalendarPage";
+import TodoAppPage from "../pages/TodoAppPage";
+import ProgressPage from "../pages/ProgressPage";
+import EvaluationPage from "../pages/EvaluatoryPage";
+import InitialTestPage from "../pages/InitialTestPage";
+import PeriodicalTestPage from '../pages/PeriodicalTestPage';
 import { PrivateRoute } from './PrivateRoute';
+
+
 
 export const PrivateRoutes = () => (
   <Routes>
@@ -23,11 +32,67 @@ export const PrivateRoutes = () => (
         </PrivateRoute>
       }
     />
+    <Route
+      path="/calendar"
+      element={
+        <PrivateRoute>
+          <CalendarPage />
+        </PrivateRoute>
+      }
+    />
+    <Route
+      path="/todoapp"
+      element={
+        <PrivateRoute>
+          <TodoAppPage />
+        </PrivateRoute>
+      }
+    />
+    <Route
+      path="/tools"
+      element={
+        <PrivateRoute>
+          <ToolsPage />
+        </PrivateRoute>
+      }
+    />
         <Route
       path="/profile"
       element={
         <PrivateRoute>
           <ProfilePage />
+        </PrivateRoute>
+      }
+    />
+        <Route
+      path="/progress"
+      element={
+        <PrivateRoute>
+          <ProgressPage />
+        </PrivateRoute>
+      }
+    />
+    <Route
+      path="/evaluation"
+      element={
+        <PrivateRoute>
+          <EvaluationPage />
+        </PrivateRoute>
+      }
+    />
+    <Route
+      path="/initialtest"
+      element={
+        <PrivateRoute>
+          <InitialTestPage />
+        </PrivateRoute>
+      }
+    />
+    <Route
+      path="/periodicaltest"
+      element={
+        <PrivateRoute>
+          <PeriodicalTestPage />
         </PrivateRoute>
       }
     />
