@@ -66,9 +66,9 @@ const ReportsScreen = () => {
         <View style={{height: '100%', backgroundColor: BackgroundTheme, alignItems: 'center'}}>
           <View style={{backgroundColor: '#3366ff50' }}>
             <View style={{ marginTop: 55, alignItems: 'center' }}>
-              <View style={{width: 150, height: 150, borderWidth: 1, borderColor: '#fff', borderRadius: 150, margin: 10, alignItems: 'center', justifyContent: 'center'}}>
+              <View style={{width: 150, height: 150, borderWidth: 1, borderLeftWidth: 2, borderBottomWidth: 2, borderColor: '#fff', borderRadius: 150, margin: 10, alignItems: 'center', justifyContent: 'center'}}>
                   {user.profileImage ? (
-                      <Image source={{uri: user.profileImage}} style={{width: 100, height: 100, borderWidth: 1, borderColor: '#ddd', borderRadius: 50}} />
+                      <Image source={{uri: user.profileImage}} style={{width: 147, height: 147, borderColor: '#ddd', borderRadius: 100}} />
                   ): <Ionicons name="person" size={60} color={'#fff'} />}
               </View>
 
@@ -80,6 +80,8 @@ const ReportsScreen = () => {
             <ScrollView style={{top: 18, width: 360}}>
               <View>
                 <Text style={{color: "#fff", fontSize: 25, fontWeight: 'bold', margin: 10}}>{t('Reports')}</Text>
+
+                {/* Esto de aqui es otra version de este componente*/}
 
                 {/* <View style={{flexDirection: 'row', height: 60, backgroundColor: '#fff', alignItems: 'center'}}>
                   <View style={{flexDirection: 'row', alignItems: 'center', left: 10, gap: 0}}>

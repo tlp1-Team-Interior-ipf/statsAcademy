@@ -86,7 +86,7 @@ const MyTabs = () => {
 };
 
 const ModalStack = () => {
-  const { BackgroundTheme, TextBackgroundTheme, TextNavBarTheme } = Temas();
+  const { BackgroundTheme, TextNavBarTheme } = Temas();
 
   const { t } = useTranslation();
   
@@ -100,7 +100,7 @@ const ModalStack = () => {
       options={{
         presentation: 'modal',
         headerShown: true,
-        title: 'Account',
+        title: t('My-Account'),
         headerStyle: { backgroundColor: BackgroundTheme },
         headerTintColor: TextNavBarTheme
       }}
@@ -122,7 +122,7 @@ const ModalStack = () => {
       options={{
         presentation: 'modal',
         headerShown: true,
-        title: 'Notifications',
+        title: t('Notifications'),
         headerStyle: { backgroundColor: BackgroundTheme },
         headerTintColor: TextNavBarTheme
       }}
@@ -158,7 +158,7 @@ const ModalStack = () => {
       options={{
         presentation: 'modal',
         headerShown: true,
-        title: 'Library',
+        title: t('Library'),
         headerStyle: { backgroundColor: BackgroundTheme },
         headerTintColor: TextNavBarTheme
       }}
@@ -170,7 +170,7 @@ const ModalStack = () => {
       options={{
         presentation: 'card',
         headerShown: true,
-        title: 'Top Notes',
+        title: t('Top-notes'),
         headerStyle: { backgroundColor: BackgroundTheme },
         headerTintColor: TextNavBarTheme
       }}
@@ -182,7 +182,7 @@ const ModalStack = () => {
       options={{
         presentation: 'card',
         headerShown: true,
-        title: 'Bad Notes',
+        title: t('Bad-notes'),
         headerStyle: { backgroundColor: BackgroundTheme },
         headerTintColor: TextNavBarTheme
       }}

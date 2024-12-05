@@ -17,7 +17,7 @@
         
         {/* Start */} const ButtonStartTheme = theme === 'light' ? '#36f' : '#149';
         {/* Save Config */} const ButtonSaveConfigTheme = theme === 'light' ? '#36f' : '#149';
-        {/* Background */} const BackgroundTheme = theme === 'dark' ? '#332288' : '#3366ff50';
+        {/* Background */} const BackgroundTheme = theme === 'dark' ? '#332288' : '#3366ff80';
         {/* Text background */} const TextBackgroundTheme = theme === 'dark' ? '#fff' : '#000';
         
         {/* Chat Button */} const buttonChatTheme = theme === 'dark' ? '#49bb80' : '#49bb80';
@@ -75,7 +75,8 @@
         // Profile
         const profileBorderTheme = theme === 'dark' ? '#fff' : '#999';
 
-
+        // My Account
+        const inputAccount = theme === 'dark' ? '#334488' : '#3366ff70'
 
         return {
             isDarkTheme,
@@ -108,7 +109,8 @@
             ColorTextTab,
             NavbarIconTheme,
             TextAndLineTheme,
-            TextNavBarTheme
+            TextNavBarTheme,
+            inputAccount
             
         }
     }
