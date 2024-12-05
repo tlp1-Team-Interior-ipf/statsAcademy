@@ -168,6 +168,8 @@
     text-align: center;
     font-style: italic;
     color: #888888;
+    display: flex;
+    justify-content: start;
 }
 
 /* Chat input */

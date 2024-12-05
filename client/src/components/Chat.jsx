@@ -37,6 +37,9 @@ const Chat = () => {
 
     const handleSendMessage = async () => {
         if (!input.trim()) return;
+        const userMessage = { sender: 'user', message: input };
+        setMessages((prev) => [...prev, userMessage]);
+        setInput('');
         setLoading(true);
 
         try {
@@ -44,12 +47,12 @@ const Chat = () => {
                 question: input,
             });
 
-            setMessages((prev) => [
-                ...prev,
-                { sender: 'user', message: input },
-                { sender: 'assistant', message: response.data.data },
-            ]);
-            setInput('');
+            const assistantMessage = {
+                sender: 'assistant',
+                message: response.data.data,
+            };
+
+            setMessages((prev) => [...prev, assistantMessage]);
         } catch (error) {
             console.error('Error sending message:', error);
         } finally {
