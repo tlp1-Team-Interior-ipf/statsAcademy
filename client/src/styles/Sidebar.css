@@ -18,6 +18,7 @@
 .sidebar-container.open {
   transform: translateX(0px); /* Mover a la pantalla */
   left: 0;
+  transition: transform 0.9s ease-in;
 }
 
 /* Botón para cerrar el Sidebar */
@@ -56,4 +57,10 @@
 .sidebar-links img:hover {
   transform: scale(1.1);
   filter: brightness(1.2);
+}
+
+.h4-text {
+  color: white;
+  font-size: 1.2rem;
+  margin-left: 10px;
 }

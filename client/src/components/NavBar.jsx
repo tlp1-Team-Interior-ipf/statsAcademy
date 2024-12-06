@@ -52,10 +52,6 @@ const Navbar = () => {
     <>
       <nav className={`custom-navbar ${isScrolled ? 'scrolled' : ''}`}>
         <div className="custom-navbar-left">
-          {/* Botón del Sidebar */}
-          <button className="sidebar-toggle-btn" onClick={openSidebar}>
-            ☰ {/* Solo abre el sidebar */}
-          </button>
 
           {/* Logo */}
           <a href="#" className="custom-navbar-logo" onClick={handleLandingClick}>
@@ -77,11 +73,16 @@ const Navbar = () => {
                 Cerrar Sesión
               </button>
               <button className="custom-btn profile" onClick={handleProfileClick}>
-                Mi perfil
+                Reportes del Alumno
               </button>
               <button className="custom-btn profile" onClick={handleHomeClick}>
                 Inicio
               </button>
+              <div className="custom-navbar-left">
+              <button className="sidebar-toggle-btn" onClick={openSidebar}>
+               ☰ {/* Solo abre el sidebar */}
+              </button>
+              </div>
             </>
           ) : (
             <>
