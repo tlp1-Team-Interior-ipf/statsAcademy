@@ -7,11 +7,10 @@ import '../styles/Chat.css';
 const Chat = () => {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
-    const [loading, setLoading] = useState(false);
+    const [typingMessage, setTypingMessage] = useState('');
     const { user } = useAuth();
     const messagesEndRef = useRef(null);
     const id = user.data.id;
-
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -32,31 +31,42 @@ const Chat = () => {
     }, [user]);
 
     useEffect(() => {
-        scrollToBottom(); // Ejecutar scroll cada vez que cambien los mensajes
-    }, [messages]);
+        scrollToBottom();
+    }, [messages, typingMessage]);
+
+    const simulateTyping = (fullMessage) => {
+        let index = 0;
+        setTypingMessage('');
+        const typingInterval = setInterval(() => {
+            setTypingMessage((prev) => prev + fullMessage.slice(index, index + 10));
+            index += 10;
+
+            if (index >= fullMessage.length) {
+                clearInterval(typingInterval);
+                setMessages((prev) => [
+                    ...prev,
+                    { sender: 'assistant', message: fullMessage },
+                ]);
+                setTypingMessage('');
+            }
+        }, 1);
+    };
 
     const handleSendMessage = async () => {
         if (!input.trim()) return;
         const userMessage = { sender: 'user', message: input };
         setMessages((prev) => [...prev, userMessage]);
         setInput('');
-        setLoading(true);
 
         try {
             const response = await axios.post(`http://localhost:4000/chat/${id}`, {
                 question: input,
             });
 
-            const assistantMessage = {
-                sender: 'assistant',
-                message: response.data.data,
-            };
-
-            setMessages((prev) => [...prev, assistantMessage]);
+            const assistantMessage = response.data.data;
+            simulateTyping(assistantMessage);
         } catch (error) {
             console.error('Error sending message:', error);
-        } finally {
-            setLoading(false);
         }
     };
 
@@ -92,13 +102,17 @@ const Chat = () => {
                             className={`message ${msg.sender === 'user' ? 'user' : 'assistant'}`}
                         >
                             {msg.sender === 'assistant' ? (
-                                <ReactMarkdown>{msg.message}</ReactMarkdown> // Renderizar Markdown
+                                <ReactMarkdown>{msg.message}</ReactMarkdown>
                             ) : (
                                 <p>{msg.message}</p>
                             )}
                         </div>
                     ))}
-                    {loading && <div className="loading">Escribiendo...</div>}
+                    {typingMessage && (
+                        <div className="message assistant">
+                            <ReactMarkdown>{typingMessage}</ReactMarkdown>
+                        </div>
+                    )}
                     <div ref={messagesEndRef} />
                 </div>
                 <div className="chat-input">
