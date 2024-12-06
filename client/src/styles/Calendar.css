@@ -1,0 +1,68 @@
+.rbc-today {
+    background-color: transparent;
+}
+
+
+.rbc-row-bg{
+    background-color: #badbff3c; /* Color de fondo de calendario */
+}
+
+
+.rbc-day-bg{
+    cursor: pointer;
+    z-index: 10; /* Posicionamiento del evento clic en las casillas */
+}
+
+
+/* Estilos del modal */
+/* Posicionamiento del modal y control del fondo */
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100000;
+  }
+  
+  /* Forma del modal */
+  .modal {
+    position: relative; 
+    background: white;
+    border-radius: 4px;
+    max-width: 500px;
+    width: 90%;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    outline: none;
+  }
+  
+  /* Estilos del contenido del modal */
+  .modal-content {
+    margin: auto;
+    text-align: center;
+    border: 1px solid #000;
+    padding: 20px;
+    background-color: #fff;
+    color: #000;
+  }
+  
+  /* Posición de los números horizontalmente */
+  .rbc-date-cell{
+    z-index: 0;
+    text-align: center; 
+  }
+
+  /* Posición de los numeros en verticalmente */
+  .rbc-month-row{
+    justify-content: center; 
+  }
+
+  /* Tamaño de los números */
+  .rbc-button-link{
+    font-size: 60px; 
+  }

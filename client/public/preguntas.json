@@ -1,0 +1,82 @@
+[
+  {
+    "id": "Q001",
+    "contenido": "¿Qué diferencia hay entre población y muestra?",
+    "eje_tematico": "Conceptos básicos de estadística",
+    "aspecto": "conocimiento",
+    "grado_dificultad": 3,
+    "respuestaCorrecta": "La población incluye a todos los elementos, mientras que la muestra es un subconjunto representativo."
+  },
+  {
+    "id": "Q002",
+    "contenido": "¿Qué son variables cualitativas y cuantitativas?",
+    "eje_tematico": "Tipos de datos",
+    "aspecto": "conocimiento",
+    "grado_dificultad": 3,
+    "respuestaCorrecta": "Las cualitativas describen cualidades y las cuantitativas representan valores numéricos."
+  },
+  {
+    "id": "Q003",
+    "contenido": "¿Cuándo usar un gráfico de barras?",
+    "eje_tematico": "Representación gráfica",
+    "aspecto": "conocimiento",
+    "grado_dificultad": 3,
+    "respuestaCorrecta": "Para comparar categorías o grupos."
+  },
+  {
+    "id": "Q004",
+    "contenido": "¿Qué es la media?",
+    "eje_tematico": "Medidas de tendencia central",
+    "aspecto": "conocimiento",
+    "grado_dificultad": 3,
+    "respuestaCorrecta": "Es el promedio de un conjunto de datos."
+  },
+  {
+    "id": "Q005",
+    "contenido": "¿Qué es la mediana?",
+    "eje_tematico": "Medidas de tendencia central",
+    "aspecto": "conocimiento",
+    "grado_dificultad": 3,
+    "respuestaCorrecta": "Es el valor central en un conjunto de datos ordenados."
+  },
+  {
+    "id": "Q006",
+    "contenido": "¿Qué es el modo?",
+    "eje_tematico": "Medidas de tendencia central",
+    "aspecto": "conocimiento",
+    "grado_dificultad": 3,
+    "respuestaCorrecta": "Es el valor que más se repite en un conjunto de datos."
+  },
+  {
+    "id": "Q007",
+    "contenido": "¿Qué representa la desviación estándar?",
+    "eje_tematico": "Variabilidad",
+    "aspecto": "conocimiento",
+    "grado_dificultad": 4,
+    "respuestaCorrecta": "Mide cuánto varían los datos respecto a la media."
+  },
+  {
+    "id": "Q008",
+    "contenido": "¿Cómo se calcula el promedio?",
+    "eje_tematico": "Cálculos básicos",
+    "aspecto": "conocimiento",
+    "grado_dificultad": 3,
+    "respuestaCorrecta": "Sumando todos los valores y dividiendo entre la cantidad de datos."
+  },
+  {
+    "id": "Q009",
+    "contenido": "¿Qué muestra un gráfico de dispersión?",
+    "eje_tematico": "Representación gráfica",
+    "aspecto": "conocimiento",
+    "grado_dificultad": 4,
+    "respuestaCorrecta": "La relación entre dos variables."
+  },
+  {
+    "id": "Q010",
+    "contenido": "¿Qué mide la varianza?",
+    "eje_tematico": "Variabilidad",
+    "aspecto": "conocimiento",
+    "grado_dificultad": 4,
+    "respuestaCorrecta": "La dispersión de los datos respecto a la media."
+  }
+]

@@ -1,0 +1,236 @@
+{
+  "language": "Language",
+  "My-Profile": "My Profile",
+  "Top-notes": "My Best Notes",
+  "Bad-notes": "My Worst Notes",
+  "My-Account": "My Account",
+  "Notifications": "Notifications",
+  "Help": "Help",
+  "My-Personal-goals": "My Personal Goals",
+  "User-calendar": "User calendar",
+  "Configuration": "Configuration",
+  "Library": "Library",
+  "Thematic-Unit": "Thematic unit",
+  "Settings": "Settings",
+  "Achievements": "Achievements",
+  "UserJourney": "User Journey",
+  "Reports": "Reports",
+  "My-personal-goals": "My personal goals",
+
+  "Share": "Share friends",
+  "Description-modal": "Description",
+  
+  "Button-Cancel": "Cancel",
+  "Button-Init-Class": "Init class",
+  
+  "Write": "Write...",
+  "Chat-Modal": "Below you will see the theme of ",
+  
+  "change-language": "Change language",
+  "welcome": "Welcome to my app",
+  
+  "StatsAcademy": "Stats Academy",
+
+  "Title-Landing": "Learning Statistics",
+
+  "Subtitle-Landing": "Discover the most effective way to learn Statistics with our personalized tutoring",
+
+  "Button-Start": "START",
+
+  "Carrousel-message-1": "Learn statistics in an easy and fun way.",
+  "Carrousel-message-2": "Join the academy and reach your goals.",
+  "Carrousel-message-3": "We adapt to different devices for your comfort.",
+
+  "Presentation-Gauss": "Try Gauss! Our intelligent tutor",
+  "Button-start-gauss": "Join now",
+
+  "Presentation-tools": "We have the tools you need",
+
+  "Tool-1": "Control panel",
+  "Tool-2": "Note Taker", 
+  "Tool-3": "Calendar",
+
+  "Welcome-home": "Your Tools",
+
+  "Title-card-1": "Chat",
+  "Title-card-2": "Organizer",
+  "Title-card-3": "Calendar",
+  "Title-card-4": "Control Panel",
+  "Title-card-5": "Library",
+  "Title-card-6": "Quiz Game",
+  "Card-1": "Chat with interactive lessons",
+  "Card-2": "Organizer to manage activities, goals, targets, and other important events",
+  "Card-3": "Calendar to define important events",
+  "Card-4": "Section to visualize the user's progress in the application",
+  "Card-5": "This is your library where you will find books on statistics",
+  "Card-6": "Quiz game to learn statistics in a fun way",
+
+
+  "Tool-kanban-button-add": "Add",
+  "Column-1": "To do",
+  "Column-2": "In Progress",
+  "Column-3": "Completed",
+  "Not-task-pending": "No outstanding personal goals",
+  "Not-task-process": "No personal goals in process",
+  "Not-task-finish": "No personal goals completed",
+
+  "Tool-calendar-subtitle": "Important events",
+  "Button-add": "Add important event",
+  "Not-event": "No major events",
+  "Modal-title": "Create your important event",
+  "Date": "Date",
+  "Input-event": "Write your important event",
+  "Event-date": "Date : ",
+  "Event-description": "Event : ",
+  "Button-save": "Save",
+  "Button-acept": "Accept",
+  "Button-cancel": "Cancel",
+  "Select-date": " Select the date",
+
+  "Modal-title-task": "Create your important goal",
+  "Input-goal": "Write your important goal",
+
+  "Library-title": "Find the Statistics books you want",
+  "Library-book-title": "",
+  "Library-book-description": "",
+  "Library-book-author": "Author",
+  "Library-book-pages": "Pages",
+  "Library-book-language": "Language",
+  "Library-book-link": "Buy it officially here",
+  
+  "Login-check": "Remember me",
+  "Login-help": "Forgot my password",
+  "Login-subtitle-1": "Or log in with a social network",
+  "Login-subtitle-2": "Don’t have an account?",
+  "Login-subtitle-3": "Sign up here!",
+  "Login-email": "Email",
+  "Login-password": "Password",
+
+
+  "Register-user": "Username",
+  "Register-email": "Email",
+  "Register-password": "Password",
+  "Register-terms": "Terms and Conditions",
+  "Register-subtitle-1": "Or sign up with a social network",
+  "Register-subtitle-2": "Already have an account?", 
+  "Register-subtitle-3": "Log in!",
+
+  "Drawer-change-avatar": "Change avatar",
+  "Drawer-title-1": "Account",
+  "Drawer-title-2": "Application",
+  "Drawer-login": "Login",
+  "Drawer-register": "Register",
+
+  "Drawer-row-1": "Control panel",
+  "Drawer-row-2": "My account",
+  "Drawer-row-3": "Notifications",
+  "Drawer-row-4": "Settings",
+  "Drawer-row-5": "Language",
+  "Drawer-row-6": "Help",
+  "Drawer-row-8": "Log out",
+
+  "Footer-title": "All rights reserved © 2024",
+  "Footer-subtitle-1": "Terms and conditions",
+  "Footer-subtitle-2": "Privacy Policy",
+  "Footer-contact": "CONTACT US",
+
+  "Profile-card-1": "Topics completed", 
+  "Profile-card-2": "Time in application", 
+  "Profile-card-3": "Achievements", 
+  "Profile-card-4": "Best notes", 
+  "Profile-card-5": "User journey", 
+  "Profile-card-6": "Worst notes",
+
+  "Mejores-notas-question": "Question...",
+  "Mejores-notas-answer": "Answer...",
+  "Mejores-notas-card": "Task",
+
+  "Peores-notas-question": "Question...",
+  "Peores-notas-answer": "Answer...",
+  "Peores-notas-card": "Task",
+
+  "My-Account-username": "Username",
+  "My-Account-email": "Email",
+  "My-Account-password": "Password",
+  "My-Account-delete": "Delete account",
+  "My-Account-cancel": "Cancel",
+  "My-Account-confirm": "Delete permanently",
+  "My-Account-enter-email": "Write your email",
+  "My-Account-confirm-delete": "Confirm delete your account",
+
+  "My-Account-email-mismatch":"Invalid email",
+  "My-Account-delete-failed": "Account no delete",
+  "My-Account-deleted": "Account deleted",
+
+  "Notifications-void": "No notifications",
+
+  "Help-title": "Frequently Asked Questions",
+  "Help-row-question-1": "What are achievements?",
+  "Help-row-question-2": "What is the user journey?",
+  "Help-row-question-3": "What happens if I delete my account?",
+  "Help-row-question-4": "How can I change my username or email?",
+  "Help-row-question-5": "What if I forget my password?",
+  "Help-row-question-6": "Can I restart the course?",
+  "Help-row-question-7": "What is Gauss?",
+
+  "Help-row-answer-1": "Achievements are goals you can achieve within the app.",
+  "Help-row-answer-2": "The user journey is the path a user follows in the app, from starting to completing tasks.",
+  "Help-row-answer-3": "If you accidentally delete your account, you can contact support to try to recover it.",
+  "Help-row-answer-4": "You can change your username or email in the account settings.",
+  "Help-row-answer-5": "If you forget your password, you can reset it using the 'Forgot my password' option.",
+  "Help-row-answer-6": "Yes, you can restart the course from the home page.",
+  "Help-row-answer-7": "Gauss is a data analysis tool integrated into the app.",
+
+  "JourneyMapText-1": "You have completed a",
+  "JourneyMapText-2": "of all topics",
+
+  "Progress": "Progress",
+
+  "TimeInApplication": "Time in application",
+
+  "TextAchievements": "Unlock achievements as you progress",
+
+  "Achievement-1": "First steps",
+  "Achievement-2": "Constancy",
+  "Achievement-3": "Overcoming",
+  "Achievement-4": "Explorer",
+  "Achievement-5": "Master",
+  "Achievement-6": "Committed",
+  "Achievement-7": "100% Completed",
+  "Achievement-8": "Perfectionist",
+
+  "DescAchievement-1": "Complete your first lesson",
+  "DescAchievement-2": "Log into the app for 5 days in a row",
+  "DescAchievement-3": "Improve a grade",
+  "DescAchievement-4": "Study 5 different topics",
+  "DescAchievement-5": "Get the top score on a quiz",
+  "DescAchievement-6": "Study for 30 minutes",
+  "DescAchievement-7": "Finish all available modules",
+  "DescAchievement-8": "Obtain more than 90 points in each topic",
+
+  "QuizGame": "",
+  "QuizGameTitle": "Ranking semanal de mejores jugadores en Quiz",
+  "GameOver": "Game over!",
+  "ShareResults:": "Share results",
+  "Next": "Siguiente",
+  "PlayQuiz": "Jugar al Quiz",
+  "Points": "Points",
+
+  "Units-1": "1 Basic concepts of statistics",
+  "Units-2": "2 Presentation of data",
+  "Units-3": "3 Descriptive statistics",
+
+  "Edit-task-title": "Edit your personal goal",
+
+
+  "Config-title": "Change the settings to your preference",
+  "Config-subtitle-1": "Theme",
+  "Config-subtitle-2": "Language",
+  "Config-subtitle-3": "Others",
+  "Config-row-1": "Dark",
+  "Config-row-2": "Light",
+  "Config-row-3": "English",
+  "Config-row-4": "Spanish",
+  "Config-save": "Save"
+
+}
