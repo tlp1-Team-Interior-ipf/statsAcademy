@@ -8,8 +8,8 @@ const Notifications = () => {
   const { BackgroundTheme } = Temas();
 
   const notifications = [
-    { title: "El evento ''Dia de la presentación del proyecto final'' empieza mañana", date: "06-12-2024"},
-    { title: "El evento ''Último día de práctica de la presentación'' empieza mañana", date: "05-12-2024"}
+    { id: 1,  title: "El evento ''Dia de la presentación del proyecto final'' empieza mañana", date: "06-12-2024"},
+    { id: 2,  title: "El evento ''Último día de práctica de la presentación'' empieza mañana", date: "05-12-2024"}
   ]
 
     return(

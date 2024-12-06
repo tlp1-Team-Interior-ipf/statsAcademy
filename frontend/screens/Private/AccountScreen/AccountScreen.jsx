@@ -67,7 +67,7 @@ const AccountScreen = () => {
           <Pressable
             onPress={handleChangeAvatar} 
             >
-            <Text style={StyleAccount.textChangeLan}>{t('change-language')}</Text>
+            <Text style={StyleAccount.textChangeLan}>{t('Drawer-change-avatar')}</Text>
           </Pressable>
 
           <View style={{backgroundColor: '#fff', height: '100%', width: '100%', borderRadius: 10, alignItems: 'center', top: 100}}>

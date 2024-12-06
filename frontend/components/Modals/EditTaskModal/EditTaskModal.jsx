@@ -1,5 +1,4 @@
 import { View, Text, TextInput, Pressable, KeyboardAvoidingView, Modal } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Ionicons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 import React, { useState, useEffect } from 'react';
@@ -49,7 +48,7 @@ const EditTaskModal = ({ task, setShowEditTask, setTasks }) => {
                         margin: 'auto',
                     }}
                 >
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 160, marginVertical: 10 }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 110, marginVertical: 10 }}>
                         <Text style={{ color: '#ddd', fontWeight: 'bold', fontSize: 17, top: -15 }}>
                             {t('Edit-task-title')}
                         </Text>

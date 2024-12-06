@@ -125,12 +125,12 @@ const QuizGameScreen = () => {
                   {player.position}. {player.name}   
                 </Text>
 
-                <Text style={{color: '#fff', right: 60}}>{player.score} {t('Points')}</Text>
+                <Text style={{color: '#fff', position: 'absolute', left: 230}}>{player.score} {t('Points')}</Text>
               </View>
             ))}
             </ScrollView>
           </View>
-          <Pressable style={styles.startButton} onPress={startGame}>
+          <Pressable style={styles.startButton} onPress={startGame} disabled >
             <Text style={styles.startButtonText}>{t('PlayQuiz')}</Text>
           </Pressable>
         </View>
@@ -267,7 +267,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   startButton: {
-    backgroundColor: "#3498db",
+    backgroundColor: "#3498db90",
     padding: 15,
     borderRadius: 10,
     alignItems: "center",
@@ -295,7 +295,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff20",
     marginBottom: 5,
     borderRadius: 5,
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   rankingText: {
     color: "#fff",

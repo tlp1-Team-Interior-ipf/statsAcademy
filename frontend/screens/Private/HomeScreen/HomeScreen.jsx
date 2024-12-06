@@ -50,7 +50,7 @@ const HomeScreen = () => {
             <BackgroundPoints positionBackground={760} />
 
             <View style={{top: 617}}>
-              <ThematicUnit1 ThematicUnit={t('Units-1')} />
+              <ThematicUnit1 ThematicUnit={t('Units-2')} />
             </View>
 
             <Topics2 topicTop={833} topicLeft={50} />

@@ -63,7 +63,7 @@ const ConfigScreen = () => {
 
 
         <View style={{backgroundColor: subContainer, borderRadius: 10, top: 20, zIndex: 10, height: 600}}>
-          <ScrollView>
+          {/* <ScrollView> */}
           <Text style={
             { color: lineTextLightBlueWrite, 
             fontSize: 17, 
@@ -273,7 +273,7 @@ const ConfigScreen = () => {
           <View style={{margin: 6, marginTop: 20, marginBottom: 40}}>
             <ButtonLogout />
           </View>
-        </ScrollView>
+        {/* </ScrollView> */}
         </View>
 
 
