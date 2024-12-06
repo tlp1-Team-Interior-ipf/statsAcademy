@@ -2,7 +2,7 @@
 .sidebar-container {
   position: fixed;
   top: 0;
-  left: -200px; /* Fuera de la pantalla por defecto */
+  left: 0;
   height: 100%;
   width: 200px; /* Ancho cuando está abierto */
   background-color: #10132F;
@@ -11,13 +11,13 @@
   align-items: center;
   justify-content: flex-start;
   z-index: 1000;
-  transition: transform 0.3s ease;
+  transform: translateX(-100%); /* Ocultar el Sidebar inicialmente */
+  transition: transform 0.2s ease-in-out;
   overflow-x: hidden; /* Ocultar contenido excedente */
 }
 
 .sidebar-container.open {
-  transform: translateX(0px); /* Mover a la pantalla */
-  left: 0;
+  transform: translateX(0); /* Mostrar el Sidebar */
 }
 
 /* Botón para cerrar el Sidebar */
@@ -54,6 +54,12 @@
 }
 
 .sidebar-links img:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
   filter: brightness(1.2);
+}
+
+.h4-text {
+  color: white;
+  font-size: 1.2rem;
+  margin-left: 10px;
 }

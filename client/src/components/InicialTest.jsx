@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/ContextHook';
 import '../styles/InitialTest.css';
+import { useSnackbar } from 'notistack';
 
 const InitialTest = () => {
   const [questions, setQuestions] = useState([]);
@@ -11,6 +12,7 @@ const InitialTest = () => {
   const [score, setScore] = useState(0);
   const [result, setResult] = useState('');
   const [finalNote, setFinalNote] = useState(null);
+  const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
   const { user } = useAuth();
   const userId = user.data.id;
@@ -128,7 +130,9 @@ const InitialTest = () => {
 
   const handleFinish = async () => {
     if (!finalNote) {
-      alert('Completa la evaluación antes de finalizar.');
+      enqueueSnackbar('Completa la evaluación antes de finalizar', {
+        variant: 'error',
+      });
       return;
     }
 
@@ -150,8 +154,13 @@ const InitialTest = () => {
       });
 
       if (response.ok) {
-        alert('Resultados guardados correctamente.');
-        navigate('/home');
+        enqueueSnackbar('¡Resultados guardados correctamente!', {
+          variant: 'success',
+          autoHideDuration: 2000,
+        });
+        setTimeout(() => {
+          navigate('/home');
+        }, 2000);
       } else {
         throw new Error('Error al guardar los resultados.');
       }
