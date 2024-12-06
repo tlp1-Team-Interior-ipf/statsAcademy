@@ -1,9 +1,10 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { ScrollView, TextInput, View, Text } from 'react-native';
+import { ScrollView, TextInput, View, Text, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRef, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Temas } from '../../../utils/selectTheme';
+import Markdown from 'react-native-markdown-display';
 
 const ChatScreen = () => {
     const { t } = useTranslation();
@@ -13,6 +14,12 @@ const ChatScreen = () => {
     const scrollViewRef = useRef(null);
 
     const { BackgroundTheme, InputBackground, UserMessageTheme, BotMessageTheme } = Temas();
+
+    const styles = {
+        body: {
+          color: '#FFFFFF', // blanco (white)
+        },
+      };
 
     useEffect(() => {
         const fetchChatHistory = async () => {
@@ -126,7 +133,7 @@ const ChatScreen = () => {
                             maxWidth: '80%',
                         }}
                     >
-                        <Text style={{ color: '#eee' }}>{message.text}</Text>
+                        <Markdown style={styles}>{message.text}</Markdown>
                     </View>
                 ))}
 
