@@ -29,7 +29,7 @@ const ProgressView = () => {
 
   return (
     <>
-    <h1 style={{marginTop: 80}}>Reportes del alumno</h1>
+    <h1 style={{marginTop: 80, marginLeft:20}}>Reportes del alumno</h1>
     <div style={{ width: 200, margin: 'auto' }}>
       {progress !== null ? (
         <CircularProgressbar

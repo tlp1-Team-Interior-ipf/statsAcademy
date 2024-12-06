@@ -1,9 +1,26 @@
+/* Animación fade-in para los mensajes */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Aplica la animación a los nuevos mensajes */
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
 /* Main container */
 .main-container {
     display: flex;
-    height: calc(100vh - 60px); /* Resta la altura del navbar */
+    height: calc(100vh - 60px);
     width: 100%;
-    margin-top: 60px; /* Asegura que el chat comience después del navbar */
+    margin-top: 60px;
 }
 
 /* Navbar */
@@ -67,11 +84,10 @@
 }
 
 .tutor-image {
-    width: 100%; /* Hace que la imagen ocupe el 100% del contenedor */
-    max-width: 300px; /* Limita el tamaño máximo de la imagen (puedes ajustar este valor) */
-    height: auto; /* Mantiene la proporción de la imagen */
-    margin-bottom: 10px; /* Espaciado debajo de la imagen */
-    position: relative;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 10px;
 }
 
 /* Chat container */
@@ -96,7 +112,6 @@
     text-align: center;
     font-size: 18px;
     font-weight: bold;
-    font-family: 'Kufam', sans-serif;
 }
 
 /* Chat messages */
@@ -109,7 +124,6 @@
     background-color: #ffffff;
 }
 
-/* Estilo general de los globos de mensaje */
 .message {
     padding: 12px 15px;
     margin: 10px 0;
@@ -119,10 +133,8 @@
     word-wrap: break-word;
     position: relative;
     text-align: justify;
-    animation: fadeIn 0.2s ease-out; /* Animación de aparición */
 }
 
-/* Ajuste de alineación y color para mensajes de usuario */
 .message.user {
     background-color: #0E7684;
     align-self: flex-end;
@@ -130,7 +142,6 @@
     color: white;
 }
 
-/* Triángulo decorativo para el usuario */
 .message.user::after {
     content: "";
     position: absolute;
@@ -139,11 +150,10 @@
     width: 0;
     height: 0;
     border: 15px solid transparent;
-    border-bottom-color: #0E7684; /* Make the triangle point upwards */
-    border-top: none; /* Remove the top border */
+    border-bottom-color: #0E7684;
+    border-top: none;
 }
 
-/* Ajuste de alineación y color para mensajes del bot */
 .message.assistant {
     background-color: #E5E5EA;
     align-self: flex-start;
@@ -151,7 +161,6 @@
     color: #333333;
 }
 
-/* Triángulo decorativo para el bot */
 .message.assistant::after {
     content: "";
     position: absolute;
@@ -160,16 +169,8 @@
     width: 0;
     height: 0;
     border: 15px solid transparent;
-    border-bottom-color: #E5E5EA; /* Make the triangle point upwards */
-    border-top: none; /* Remove the top border */
-}
-/* Loading indicator */
-.loading {
-    text-align: center;
-    font-style: italic;
-    color: #888888;
-    display: flex;
-    justify-content: start;
+    border-bottom-color: #E5E5EA;
+    border-top: none;
 }
 
 /* Chat input */
@@ -186,13 +187,13 @@
     border: 1px solid #cccccc;
     border-radius: 5px;
     font-size: 16px;
+    margin-right: 10px;
 }
 
 .chat-input button {
-    margin-left: 10px;
-    padding: 10px 20px;
+    padding: 10px 15px;
     background-color: #0E7684;
-    color: white;
+    color: #fff;
     border: none;
     border-radius: 5px;
     font-size: 16px;
@@ -200,17 +201,5 @@
 }
 
 .chat-input button:hover {
-    background-color: #095C6A;
-}
-
-/* Animación fade-in para los mensajes */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    background-color: #005e6b;
 }
