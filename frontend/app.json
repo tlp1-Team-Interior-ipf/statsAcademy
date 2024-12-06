@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "Stats Academy",
+    "slug": "statsAcademy",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/tutorialogo2.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/StatsAcademySplash2.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/tutorialogo2.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.david137.statsAcademy"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "3bf77ea4-3309-4bcc-a7c5-1cdc51de6bdd"
+      }
+    }
+  }
+}
